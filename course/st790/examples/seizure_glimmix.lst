@@ -1,0 +1,528 @@
+                           RANDOM INTERCEPT AND TIME
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._DS                 
+             Dependent Variable           _z                       
+             Weight Variable              _w                       
+             Covariance Structure         Unstructured             
+             Subject Effect               subject                  
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+              Class      Levels    Values
+
+              subject        59    101 102 103 104 106 107 108   
+                                   110 111 112 113 114 116 117   
+                                   118 121 122 123 124 126 128   
+                                   129 130 135 137 139 141 143   
+                                   145 147 201 202 203 204 205   
+                                   206 207 208 209 210 211 213   
+                                   214 215 217 218 219 220 221   
+                                   222 225 226 227 228 230 232   
+                                   234 236 238                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             4
+                      Columns in X                      4
+                      Columns in Z per Subject          2
+                      Subjects                         59
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             295
+                  Number of Observations Used             295
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+   CovP1      CovP2      CovP3      CovP4   Variance     Log Like   -2 Log Like
+
+  0.4467    0.08470     0.1638     1.9689     1.9689    -321.6225      643.2451
+
+
+                           RANDOM INTERCEPT AND TIME
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       643.24509912      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                               Estimated G Matrix
+ 
+               Row    Effect       subject        Col1        Col2
+
+                 1    Intercept    101          0.4467     0.08470
+                 2    v            101         0.08470      0.1638
+
+
+                         Estimated G Correlation Matrix
+ 
+               Row    Effect       subject        Col1        Col2
+
+                 1    Intercept    101          1.0000      0.3131
+                 2    v            101          0.3131      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      subject      0.4467
+                        UN(2,1)      subject     0.08470
+                        UN(2,2)      subject      0.1638
+                        Residual                  1.9689
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               643.2
+                     AIC (Smaller is Better)         659.2
+                     AICC (Smaller is Better)        659.7
+                     BIC (Smaller is Better)         675.9
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           3          0.00          1.0000
+
+
+                           RANDOM INTERCEPT AND TIME
+
+                              The Mixed Procedure
+
+                           Solution for Fixed Effects
+ 
+                                 Standard
+        Effect       Estimate       Error      DF    t Value    Pr > |t|
+
+        Intercept      1.1258      0.1376      57       8.18      <.0001
+        v            -0.02186      0.1076      57      -0.20      0.8397
+        trt           0.03115      0.1897     177       0.16      0.8698
+        v*trt         -0.2506      0.1504     177      -1.67      0.0973
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 v               1      57       0.04    0.8397
+                 trt             1     177       0.03    0.8698
+                 v*trt           1     177       2.78    0.0973
+                           RANDOM INTERCEPT AND TIME
+                            GLIMMIX Model Statistics
+
+                    Description                       Value
+
+                    Deviance                       474.3890
+                    Scaled Deviance                240.9403
+                    Pearson Chi-Square             426.8535
+                    Scaled Pearson Chi-Square      216.7972
+                    Extra-Dispersion Scale           1.9689
+                      RANDOM INTERCEPT AND TIME, USING MQL
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._DS                 
+             Dependent Variable           _z                       
+             Weight Variable              _w                       
+             Covariance Structure         Unstructured             
+             Subject Effect               subject                  
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+              Class      Levels    Values
+
+              subject        59    101 102 103 104 106 107 108   
+                                   110 111 112 113 114 116 117   
+                                   118 121 122 123 124 126 128   
+                                   129 130 135 137 139 141 143   
+                                   145 147 201 202 203 204 205   
+                                   206 207 208 209 210 211 213   
+                                   214 215 217 218 219 220 221   
+                                   222 225 226 227 228 230 232   
+                                   234 236 238                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             4
+                      Columns in X                      4
+                      Columns in Z per Subject          2
+                      Subjects                         59
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             295
+                  Number of Observations Used             295
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+   CovP1      CovP2      CovP3      CovP4   Variance     Log Like   -2 Log Like
+
+  0.6010     0.3753     0.4573     3.8924     3.8924    -369.0556      738.1111
+
+
+                      RANDOM INTERCEPT AND TIME, USING MQL
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       738.11111897      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                               Estimated G Matrix
+ 
+               Row    Effect       subject        Col1        Col2
+
+                 1    Intercept    101          0.6010      0.3753
+                 2    v            101          0.3753      0.4573
+
+
+                         Estimated G Correlation Matrix
+ 
+               Row    Effect       subject        Col1        Col2
+
+                 1    Intercept    101          1.0000      0.7159
+                 2    v            101          0.7159      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      subject      0.6010
+                        UN(2,1)      subject      0.3753
+                        UN(2,2)      subject      0.4573
+                        Residual                  3.8924
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               738.1
+                     AIC (Smaller is Better)         754.1
+                     AICC (Smaller is Better)        754.6
+                     BIC (Smaller is Better)         770.7
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           3          0.00          1.0000
+
+
+                      RANDOM INTERCEPT AND TIME, USING MQL
+
+                              The Mixed Procedure
+
+                           Solution for Fixed Effects
+ 
+                                 Standard
+        Effect       Estimate       Error      DF    t Value    Pr > |t|
+
+        Intercept      1.3476      0.1612      57       8.36      <.0001
+        v              0.1108      0.1578      57       0.70      0.4854
+        trt           0.02651      0.2221     177       0.12      0.9051
+        v*trt         -0.1037      0.2181     177      -0.48      0.6351
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 v               1      57       0.49    0.4854
+                 trt             1     177       0.01    0.9051
+                 v*trt           1     177       0.23    0.6351
+                      RANDOM INTERCEPT AND TIME, USING MQL
+                            GLIMMIX Model Statistics
+
+                    Description                       Value
+
+                    Deviance                      3577.8316
+                    Scaled Deviance                919.1894
+                    Pearson Chi-Square            5733.4816
+                    Scaled Pearson Chi-Square     1473.0026
+                    Extra-Dispersion Scale           3.8924
+                             RANDOM INTERCEPT ONLY
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._DS                 
+             Dependent Variable           _z                       
+             Weight Variable              _w                       
+             Covariance Structure         Unstructured             
+             Subject Effect               subject                  
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+              Class      Levels    Values
+
+              subject        59    101 102 103 104 106 107 108   
+                                   110 111 112 113 114 116 117   
+                                   118 121 122 123 124 126 128   
+                                   129 130 135 137 139 141 143   
+                                   145 147 201 202 203 204 205   
+                                   206 207 208 209 210 211 213   
+                                   214 215 217 218 219 220 221   
+                                   222 225 226 227 228 230 232   
+                                   234 236 238                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                      4
+                      Columns in Z per Subject          1
+                      Subjects                         59
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             295
+                  Number of Observations Used             295
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+            CovP1       CovP2    Variance      Log Like    -2 Log Like
+
+           0.5595      2.7924      2.7924     -333.2063       666.4127
+
+
+                             RANDOM INTERCEPT ONLY
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       666.41268188      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      subject      0.5595
+                        Residual                  2.7924
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               666.4
+                     AIC (Smaller is Better)         678.4
+                     AICC (Smaller is Better)        678.7
+                     BIC (Smaller is Better)         690.9
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           1          0.00          1.0000
+
+
+                           Solution for Fixed Effects
+ 
+                                 Standard
+        Effect       Estimate       Error      DF    t Value    Pr > |t|
+
+        Intercept      1.0763      0.1552      57       6.94      <.0001
+        v              0.1108     0.07835     234       1.41      0.1587
+        trt          -0.01960      0.2141     234      -0.09      0.9271
+        v*trt         -0.1037      0.1087     234      -0.95      0.3412
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 v               1     234       2.00    0.1587
+                 trt             1     234       0.01    0.9271
+                 v*trt           1     234       0.91    0.3412
+                             RANDOM INTERCEPT ONLY
+                            GLIMMIX Model Statistics
+
+                    Description                       Value
+
+                    Deviance                       719.3679
+                    Scaled Deviance                257.6183
+                    Pearson Chi-Square             677.1440
+                    Scaled Pearson Chi-Square      242.4972
+                    Extra-Dispersion Scale           2.7924
+                        RANDOM INTERCEPT ONLY USING MQL
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._DS                 
+             Dependent Variable           _z                       
+             Weight Variable              _w                       
+             Covariance Structure         Unstructured             
+             Subject Effect               subject                  
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+              Class      Levels    Values
+
+              subject        59    101 102 103 104 106 107 108   
+                                   110 111 112 113 114 116 117   
+                                   118 121 122 123 124 126 128   
+                                   129 130 135 137 139 141 143   
+                                   145 147 201 202 203 204 205   
+                                   206 207 208 209 210 211 213   
+                                   214 215 217 218 219 220 221   
+                                   222 225 226 227 228 230 232   
+                                   234 236 238                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                      4
+                      Columns in Z per Subject          1
+                      Subjects                         59
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             295
+                  Number of Observations Used             295
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+            CovP1       CovP2    Variance      Log Like    -2 Log Like
+
+           1.0712      5.7210      5.7210     -400.9810       801.9621
+
+
+                        RANDOM INTERCEPT ONLY USING MQL
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       801.96208738      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      subject      1.0712
+                        Residual                  5.7210
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               802.0
+                     AIC (Smaller is Better)         814.0
+                     AICC (Smaller is Better)        814.3
+                     BIC (Smaller is Better)         826.4
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           1          0.00          1.0000
+
+
+                           Solution for Fixed Effects
+ 
+                                 Standard
+        Effect       Estimate       Error      DF    t Value    Pr > |t|
+
+        Intercept      1.3476      0.2119      57       6.36      <.0001
+        v              0.1108      0.1122     234       0.99      0.3242
+        trt           0.02651      0.2920     234       0.09      0.9277
+        v*trt         -0.1037      0.1556     234      -0.67      0.5059
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 v               1     234       0.98    0.3242
+                 trt             1     234       0.01    0.9277
+                 v*trt           1     234       0.44    0.5059
+                        RANDOM INTERCEPT ONLY USING MQL
+                            GLIMMIX Model Statistics
+
+                    Description                       Value
+
+                    Deviance                      3577.8316
+                    Scaled Deviance                625.3892
+                    Pearson Chi-Square            5733.4816
+                    Scaled Pearson Chi-Square     1002.1873
+                    Extra-Dispersion Scale           5.7210

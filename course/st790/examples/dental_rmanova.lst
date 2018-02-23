@@ -1,0 +1,960 @@
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        1
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+Class       Levels  Values
+
+age              4  8 10 12 14                                                  
+
+gender           2  0 1                                                         
+
+child           27  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 
+                    24 25 26 27                                                 
+
+
+                    Number of Observations Read         108
+                    Number of Observations Used         108
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        2
+
+                               The GLM Procedure
+ 
+                        Dependent Variable: distance   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                      32    769.5642887     24.0488840     12.18   <.0001
+
+ Error                      75    148.1278409      1.9750379                   
+
+ Corrected Total           107    917.6921296                                  
+
+
+             R-Square     Coeff Var      Root MSE    distance Mean
+
+             0.838587      5.850026      1.405360         24.02315
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569     71.12   <.0001
+ child(gender)              25    377.9147727     15.1165909      7.65   <.0001
+ age                         3    237.1921296     79.0640432     40.03   <.0001
+ age*gender                  3     13.9925295      4.6641765      2.36   0.0781
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569     71.12   <.0001
+ child(gender)              25    377.9147727     15.1165909      7.65   <.0001
+ age                         3    209.4369739     69.8123246     35.35   <.0001
+ age*gender                  3     13.9925295      4.6641765      2.36   0.0781
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        3
+
+                               The GLM Procedure
+
+Source                  Type III Expected Mean Square
+
+gender                  Var(Error) + 4 Var(child(gender)) + Q(gender,age*gender)
+
+child(gender)           Var(Error) + 4 Var(child(gender))                       
+
+age                     Var(Error) + Q(age,age*gender)                          
+
+age*gender              Var(Error) + Q(age*gender)                              
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        4
+
+                               The GLM Procedure
+            Tests of Hypotheses for Mixed Model Analysis of Variance
+ 
+                        Dependent Variable: distance   
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+  *  gender                     1    140.464857    140.464857     9.29  0.0054
+
+     Error                     25    377.914773     15.116591                 
+  Error: MS(child(gender))
+  * This test assumes one or more other fixed effects are zero.
+
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+     child(gender)             25    377.914773     15.116591     7.65  <.0001
+  *  age                        3    209.436974     69.812325    35.35  <.0001
+     age*gender                 3     13.992529      4.664176     2.36  0.0781
+
+     Error: MS(Error)          75    148.127841      1.975038                 
+  * This test assumes one or more other fixed effects are zero.
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     5
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.DENT1               
+             Dependent Variable           distance                 
+             Covariance Structure         Variance Components      
+             Estimation Method            Type 3                   
+             Residual Variance Method     Factor                   
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+               Class     Levels    Values
+
+               age            4    8 10 12 14                    
+               gender         2    0 1                           
+               child         27    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                   14 15 16 17 18 19 20 21 22 23 
+                                   24 25 26 27                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                     15
+                      Columns in Z                     27
+                      Subjects                          1
+                      Max Obs per Subject             108
+
+
+                            Number of Observations
+
+                  Number of Observations Read             108
+                  Number of Observations Used             108
+                  Number of Observations Not Used           0
+
+
+                          Type 3 Analysis of Variance
+ 
+                                            Sum of
+             Source             DF         Squares     Mean Square
+
+             gender              1      140.464857      140.464857
+             age                 3      209.436974       69.812325
+             age*gender          3       13.992529        4.664176
+             child(gender)      25      377.914773       15.116591
+             Residual           75      148.127841        1.975038
+
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     6
+
+                              The Mixed Procedure
+
+                          Type 3 Analysis of Variance
+ 
+                                                                          Error
+Source         Expected Mean Square                  Error Term              DF
+
+gender         Var(Residual) + 4 Var(child(gender))  MS(child(gender))       25
+               + Q(gender,age*gender)                                          
+age            Var(Residual) + Q(age,age*gender)     MS(Residual)            75
+age*gender     Var(Residual) + Q(age*gender)         MS(Residual)            75
+child(gender)  Var(Residual) + 4 Var(child(gender))  MS(Residual)            75
+Residual       Var(Residual)                         .                        .
+
+                          Type 3 Analysis of Variance
+ 
+                        Source         F Value    Pr > F
+
+                        gender            9.29    0.0054
+                        age              35.35    <.0001
+                        age*gender        2.36    0.0781
+                        child(gender)     7.65    <.0001
+                        Residual           .       .    
+
+
+                              Covariance Parameter
+                                   Estimates
+ 
+                           Cov Parm          Estimate
+
+                           child(gender)       3.2854
+                           Residual            1.9750
+
+
+                                Fit Statistics
+
+                     -2 Res Log Likelihood           423.4
+                     AIC (Smaller is Better)         427.4
+                     AICC (Smaller is Better)        427.5
+                     BIC (Smaller is Better)         430.0
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                Effect          DF      DF    F Value    Pr > F
+
+                gender           1      25       9.29    0.0054
+                age              3      75      35.35    <.0001
+                age*gender       3      75       2.36    0.0781
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           7
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           8
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+           Dependent Variable        age1     age2     age3     age4
+
+                 Level of age           1        2        3        4
+
+
+    Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                        
+      DF = 25           age1           age2           age3           age4
+
+      age1          1.000000       0.570699       0.661320       0.521583
+                                     0.0023         0.0002         0.0063
+
+      age2          0.570699       1.000000       0.563167       0.726216
+                      0.0023                        0.0027         <.0001
+
+      age3          0.661320       0.563167       1.000000       0.728098
+                      0.0002         0.0027                        <.0001
+
+      age4          0.521583       0.726216       0.728098       1.000000
+                      0.0063         <.0001         <.0001               
+
+
+                             E = Error SSCP Matrix
+                                       
+    age_N represents the contrast between the nth level of age and the last
+ 
+                              age_1         age_2         age_3
+
+                age_1       124.518        41.879        51.375
+                age_2        41.879        63.405        11.625
+                age_3        51.375        11.625        79.500
+
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+              DF = 25          age_1          age_2          age_3
+
+              age_1         1.000000       0.471326       0.516359
+                                             0.0151         0.0069
+
+              age_2         0.471326       1.000000       0.163738
+                              0.0151                        0.4241
+
+              age_3         0.516359       0.163738       1.000000
+                              0.0069         0.4241               
+
+
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           9
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                                Sphericity Tests
+ 
+                                       Mauchly's
+    Variables                    DF    Criterion    Chi-Square    Pr > ChiSq
+
+    Transformed Variates          5    0.4998695     16.449181        0.0057
+    Orthogonal Components         5    0.7353334     7.2929515        0.1997
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          10
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569      9.29   0.0054
+ Error                      25    377.9147727     15.1165909                   
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          11
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ age                         3    209.4369739     69.8123246     35.35   <.0001
+ age*gender                  3     13.9925295      4.6641765      2.36   0.0781
+ Error(age)                 75    148.1278409      1.9750379                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    age                    <.0001    <.0001
+                    age*gender             0.0878    0.0797
+                    Error(age)                             
+
+
+                     Greenhouse-Geisser Epsilon      0.8672
+                     Huynh-Feldt-Lecoutre Epsilon    0.9769
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    12
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    13
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+           Dependent Variable        age1     age2     age3     age4
+
+                 Level of age           8       10       12       14
+
+
+          age_N represents the nth degree polynomial contrast for age
+                                       
+                   M Matrix Describing Transformed Variables
+ 
+                    age1              age2              age3              age4
+
+ age_1      -.6708203932      -.2236067977      0.2236067977      0.6708203932
+ age_2      0.5000000000      -.5000000000      -.5000000000      0.5000000000
+ age_3      -.2236067977      0.6708203932      -.6708203932      0.2236067977
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    14
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569      9.29   0.0054
+ Error                      25    377.9147727     15.1165909                   
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    15
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+          age_N represents the nth degree polynomial contrast for age
+
+                            Contrast Variable: age_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    208.2660038    208.2660038     88.00   <.0001
+ gender                      1     12.1141519     12.1141519      5.12   0.0326
+ Error                      25     59.1673295      2.3666932                   
+
+
+                            Contrast Variable: age_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     0.95880682     0.95880682      0.92   0.3465
+ gender                      1     1.19954756     1.19954756      1.15   0.2935
+ Error                      25    26.04119318     1.04164773                   
+
+
+                            Contrast Variable: age_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     0.21216330     0.21216330      0.08   0.7739
+ gender                      1     0.67882997     0.67882997      0.27   0.6081
+ Error                      25    62.91931818     2.51677273                   
+                       UNNORMALIZED HELMERT TRANSFORATION                     16
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+                       UNNORMALIZED HELMERT TRANSFORATION                     17
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+           Dependent Variable        age1     age2     age3     age4
+
+                 Level of age           8       10       12       14
+
+
+                 age_N represents the contrast between the nth
+                 level of age and the mean of subsequent levels
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                    age1              age2              age3              age4
+
+ age_1       1.000000000      -0.333333333      -0.333333333      -0.333333333
+ age_2       0.000000000       1.000000000      -0.500000000      -0.500000000
+ age_3       0.000000000       0.000000000       1.000000000      -1.000000000
+                       UNNORMALIZED HELMERT TRANSFORATION                     18
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569      9.29   0.0054
+ Error                      25    377.9147727     15.1165909                   
+                       UNNORMALIZED HELMERT TRANSFORATION                     19
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+  age_N represents the contrast between the nth level of age and the mean of 
+                               subsequent levels
+
+                            Contrast Variable: age_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    146.8395997    146.8395997     45.43   <.0001
+ gender                      1      4.5679948      4.5679948      1.41   0.2457
+ Error                      25     80.8106061      3.2324242                   
+
+
+                            Contrast Variable: age_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    111.9886890    111.9886890     39.07   <.0001
+ gender                      1     13.0998001     13.0998001      4.57   0.0425
+ Error                      25     71.6548295      2.8661932                   
+
+
+                            Contrast Variable: age_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    49.29629630    49.29629630     15.50   0.0006
+ gender                      1     3.66666667     3.66666667      1.15   0.2932
+ Error                      25    79.50000000     3.18000000                   
+                        NORMALIZED HELMERT TRANSFORATION                      20
+
+                               The GLM Procedure
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+                        NORMALIZED HELMERT TRANSFORATION                      21
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                   M Matrix Describing Transformed Variables
+ 
+                    age1              age2              age3              age4
+
+ MVAR1       0.866025404      -0.288675135      -0.288675135      -0.288675135
+                        NORMALIZED HELMERT TRANSFORATION                      22
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                Variables have been transformed by the M Matrix
+ 
+                   Characteristic               Characteristic Vector  V'EV=1
+                             Root    Percent           MVAR1
+
+                       0.05652717     100.00      0.12845032
+
+
+                MANOVA Test Criteria and Exact F Statistics for
+                   the Hypothesis of No Overall gender Effect
+            on the Variables Defined by the M Matrix Transformation
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                            S=1    M=-0.5    N=11.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.94649719       1.41         1        25    0.2457
+Pillai's Trace              0.05350281       1.41         1        25    0.2457
+Hotelling-Lawley Trace      0.05652717       1.41         1        25    0.2457
+Roy's Greatest Root         0.05652717       1.41         1        25    0.2457
+                        NORMALIZED HELMERT TRANSFORATION                      23
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                   M Matrix Describing Transformed Variables
+ 
+                    age1              age2              age3              age4
+
+ MVAR1                 0       0.816496581       -0.40824829       -0.40824829
+                        NORMALIZED HELMERT TRANSFORATION                      24
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                Variables have been transformed by the M Matrix
+ 
+                   Characteristic               Characteristic Vector  V'EV=1
+                             Root    Percent           MVAR1
+
+                       0.18281810     100.00      0.14468480
+
+
+                MANOVA Test Criteria and Exact F Statistics for
+                   the Hypothesis of No Overall gender Effect
+            on the Variables Defined by the M Matrix Transformation
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                            S=1    M=-0.5    N=11.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.84543853       4.57         1        25    0.0425
+Pillai's Trace              0.15456147       4.57         1        25    0.0425
+Hotelling-Lawley Trace      0.18281810       4.57         1        25    0.0425
+Roy's Greatest Root         0.18281810       4.57         1        25    0.0425
+                        NORMALIZED HELMERT TRANSFORATION                      25
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                   M Matrix Describing Transformed Variables
+ 
+                    age1              age2              age3              age4
+
+ MVAR1                 0                 0       0.707106781      -0.707106781
+                        NORMALIZED HELMERT TRANSFORATION                      26
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                Variables have been transformed by the M Matrix
+ 
+                   Characteristic               Characteristic Vector  V'EV=1
+                             Root    Percent           MVAR1
+
+                       0.04612159     100.00      0.15861032
+
+
+                MANOVA Test Criteria and Exact F Statistics for
+                   the Hypothesis of No Overall gender Effect
+            on the Variables Defined by the M Matrix Transformation
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                            S=1    M=-0.5    N=11.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.95591182       1.15         1        25    0.2932
+Pillai's Trace              0.04408818       1.15         1        25    0.2932
+Hotelling-Lawley Trace      0.04612159       1.15         1        25    0.2932
+Roy's Greatest Root         0.04612159       1.15         1        25    0.2932
+                        NORMALIZED HELMERT TRANSFORATION                      27
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+                        NORMALIZED HELMERT TRANSFORATION                      28
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age1p   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     3.42599607     3.42599607      1.41   0.2457
+
+ Error                      25    60.60795455     2.42431818                   
+
+ Corrected Total            26    64.03395062                                  
+
+
+               R-Square     Coeff Var      Root MSE    age1p Mean
+
+               0.053503     -73.36496      1.557022     -2.122297
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1     3.42599607     3.42599607      1.41   0.2457
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1     3.42599607     3.42599607      1.41   0.2457
+                        NORMALIZED HELMERT TRANSFORATION                      29
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age2p   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     8.73320006     8.73320006      4.57   0.0425
+
+ Error                      25    47.76988636     1.91079545                   
+
+ Corrected Total            26    56.50308642                                  
+
+
+               R-Square     Coeff Var      Root MSE    age2p Mean
+
+               0.154561     -76.82446      1.382315     -1.799317
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1     8.73320006     8.73320006      4.57   0.0425
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1     8.73320006     8.73320006      4.57   0.0425
+                        NORMALIZED HELMERT TRANSFORATION                      30
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age3p   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     1.83333333     1.83333333      1.15   0.2932
+
+ Error                      25    39.75000000     1.59000000                   
+
+ Corrected Total            26    41.58333333                                  
+
+
+               R-Square     Coeff Var      Root MSE    age3p Mean
+
+               0.044088     -123.4561      1.260952     -1.021376
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1     1.83333333     1.83333333      1.15   0.2932
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1     1.83333333     1.83333333      1.15   0.2932
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            31
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            32
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age1   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     18.6877104     18.6877104      3.45   0.0750
+
+ Error                      25    135.3863636      5.4154545                   
+
+ Corrected Total            26    154.0740741                                  
+
+
+               R-Square     Coeff Var      Root MSE     age1 Mean
+
+               0.121290      10.48949      2.327113      22.18519
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1    18.68771044    18.68771044      3.45   0.0750
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    18.68771044    18.68771044      3.45   0.0750
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            33
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age2   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     16.3806818     16.3806818      3.91   0.0590
+
+ Error                      25    104.6193182      4.1847727                   
+
+ Corrected Total            26    121.0000000                                  
+
+
+               R-Square     Coeff Var      Root MSE     age2 Mean
+
+               0.135378      8.830238      2.045672      23.16667
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1    16.38068182    16.38068182      3.91   0.0590
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    16.38068182    16.38068182      3.91   0.0590
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            34
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age3   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     45.0139415     45.0139415      6.97   0.0141
+
+ Error                      25    161.3934659      6.4557386                   
+
+ Corrected Total            26    206.4074074                                  
+
+
+               R-Square     Coeff Var      Root MSE     age3 Mean
+
+               0.218083      10.30834      2.540815      24.64815
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1    45.01394150    45.01394150      6.97   0.0141
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    45.01394150    45.01394150      6.97   0.0141
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            35
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: age4   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                       1     74.3750526     74.3750526     14.92   0.0007
+
+ Error                      25    124.6434659      4.9857386                   
+
+ Corrected Total            26    199.0185185                                  
+
+
+               R-Square     Coeff Var      Root MSE     age4 Mean
+
+               0.373709      8.557512      2.232877      26.09259
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ gender                      1    74.37505261    74.37505261     14.92   0.0007
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    74.37505261    74.37505261     14.92   0.0007
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            36
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                             E = Error SSCP Matrix
+ 
+                    age1              age2              age3              age4
+
+  age1      135.38636364      67.920454545      97.755681818      67.755681818
+  age2      67.920454545      104.61931818      73.178977273      82.928977273
+  age3      97.755681818      73.178977273      161.39346591      103.26846591
+  age4      67.755681818      82.928977273      103.26846591      124.64346591
+
+
+    Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                        
+      DF = 25           age1           age2           age3           age4
+
+      age1          1.000000       0.570699       0.661320       0.521583
+                                     0.0023         0.0002         0.0063
+
+      age2          0.570699       1.000000       0.563167       0.726216
+                      0.0023                        0.0027         <.0001
+
+      age3          0.661320       0.563167       1.000000       0.728098
+                      0.0002         0.0027                        <.0001
+
+      age4          0.521583       0.726216       0.728098       1.000000
+                      0.0063         <.0001         <.0001               
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            37
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                      H = Type III SSCP Matrix for gender
+ 
+                    age1              age2              age3              age4
+
+  age1      18.687710438      17.496212121      29.003577441      37.281355219
+  age2      17.496212121      16.380681818      27.154356061      34.904356061
+  age3      29.003577441      27.154356061      45.013941498      57.861163721
+  age4      37.281355219      34.904356061      57.861163721      74.375052609
+
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+ 
+Characteristic           Characteristic Vector  V'EV=1
+          Root  Percent          age1          age2          age3          age4
+
+    0.66030051   100.00    0.01032388   -0.04593889   -0.01003125    0.11841126
+    0.00000000     0.00   -0.07039943    0.13377597    0.00249339   -0.02943257
+    0.00000000     0.00   -0.08397385   -0.01167207    0.12114416   -0.04667529
+    0.00000000     0.00    0.05246789    0.05239507    0.05062221   -0.09027154
+
+
+                MANOVA Test Criteria and Exact F Statistics for
+                   the Hypothesis of No Overall gender Effect
+                      H = Type III SSCP Matrix for gender
+                             E = Error SSCP Matrix
+                                        
+                               S=1    M=1    N=10
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.60230061       3.63         4        22    0.0203
+Pillai's Trace              0.39769939       3.63         4        22    0.0203
+Hotelling-Lawley Trace      0.66030051       3.63         4        22    0.0203
+Roy's Greatest Root         0.66030051       3.63         4        22    0.0203
+                         MULTIVARIATE PROFILE ANALYSIS                        38
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         gender             2    0 1   
+
+
+                    Number of Observations Read          27
+                    Number of Observations Used          27
+                         MULTIVARIATE PROFILE ANALYSIS                        39
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+           Dependent Variable        age1     age2     age3     age4
+
+                 Level of age           1        2        3        4
+
+
+MANOVA Test Criteria and Exact F Statistics for the Hypothesis of no age Effect
+                       H = Type III SSCP Matrix for age
+                             E = Error SSCP Matrix
+                                        
+                            S=1    M=0.5    N=10.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.19479424      31.69         3        23    <.0001
+Pillai's Trace              0.80520576      31.69         3        23    <.0001
+Hotelling-Lawley Trace      4.13362211      31.69         3        23    <.0001
+Roy's Greatest Root         4.13362211      31.69         3        23    <.0001
+
+
+                  MANOVA Test Criteria and Exact F Statistics
+                   for the Hypothesis of no age*gender Effect
+                    H = Type III SSCP Matrix for age*gender
+                             E = Error SSCP Matrix
+                                        
+                             S=1    M=0.5    N=10.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.73988739       2.70         3        23    0.0696
+Pillai's Trace              0.26011261       2.70         3        23    0.0696
+Hotelling-Lawley Trace      0.35155702       2.70         3        23    0.0696
+Roy's Greatest Root         0.35155702       2.70         3        23    0.0696
+                         MULTIVARIATE PROFILE ANALYSIS                        40
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ gender                      1    140.4648569    140.4648569      9.29   0.0054
+ Error                      25    377.9147727     15.1165909                   

@@ -1,0 +1,321 @@
+                 RANDOM INTERCEPT AND TIME, ADAPTIVE QUADRATURE                1
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.SEIZURE        
+        Dependent Variable                          seize               
+        Distribution for Dependent Variable         Poisson             
+        Random Effects                              b1i b2i             
+        Distribution for Random Effects             Normal              
+        Subject Variable                            subject             
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          Adaptive Gaussian   
+                                                    Quadrature          
+
+
+                                   Dimensions
+
+                    Observations Used                    295
+                    Observations Not Used                  0
+                    Total Observations                   295
+                    Subjects                              59
+                    Max Obs per Subject                    5
+                    Parameters                             7
+                    Quadrature Points                     10
+
+
+                               Initial Parameters
+ 
+                                                                        Negative
+                                                                             Log
+      b0        b1        b2        b3      sb12      cb12      sb22  Likelihood
+
+       1         0      0.05      -0.2       0.5     -0.05       0.2  927.420993
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1      5       925.4469      1.974083     12.8027    -316.197
+             2      8       924.9934       0.45356     9.81925    -19.5564
+             3     11       924.9199      0.073403     12.4002    -1.40737
+             4     13       924.7871      0.132878     8.52769    -2.23926
+             5     15       924.7409      0.046162     7.09333    -1.65016
+             6     19       924.4969      0.243969     2.10133    -0.66712
+             7     22       924.4803      0.016623     1.84057    -0.25643
+             8     24       924.4554      0.024882     0.83639    -0.16647
+             9     27       924.4510      0.004416     0.21356    -0.01071
+            10     30       924.4508      0.000208    0.056968    -0.00054
+            11     33       924.4508      0.000014    0.002227    -0.00003
+            12     36       924.4508      2.716E-8    0.000276    -5.96E-8
+                 RANDOM INTERCEPT AND TIME, ADAPTIVE QUADRATURE                2
+
+                             The NLMIXED Procedure
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 1848.9
+                    AIC (smaller is better)           1862.9
+                    AICC (smaller is better)          1863.3
+                    BIC (smaller is better)           1877.4
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  b0          1.0711   0.1405   57    7.62   <.0001   0.7896   1.3525 -0.00009
+  b1        -0.00230   0.1097   57   -0.02   0.9834  -0.2220   0.2174 -0.00028
+  b2         0.04959   0.1931   57    0.26   0.7982  -0.3370   0.4362 -0.00007
+  b3         -0.3075   0.1513   57   -2.03   0.0468  -0.6104 -0.00450 -0.00014
+  sb12        0.5010   0.1010   57    4.96   <.0001   0.2988   0.7032 -0.00002
+  cb12       0.05631  0.05590   57    1.01   0.3180 -0.05563   0.1683 0.000018
+  sb22        0.2333  0.06070   57    3.84   0.0003   0.1117   0.3548 9.296E-6
+                RANDOM INTERCEPT AND TIME, LAPLACE APPROXIMATION               3
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.SEIZURE        
+        Dependent Variable                          seize               
+        Distribution for Dependent Variable         Poisson             
+        Random Effects                              b1i b2i             
+        Distribution for Random Effects             Normal              
+        Subject Variable                            subject             
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          Adaptive Gaussian   
+                                                    Quadrature          
+
+
+                                   Dimensions
+
+                    Observations Used                    295
+                    Observations Not Used                  0
+                    Total Observations                   295
+                    Subjects                              59
+                    Max Obs per Subject                    5
+                    Parameters                             7
+                    Quadrature Points                      1
+
+
+                               Initial Parameters
+ 
+                                                                        Negative
+                                                                             Log
+      b0        b1        b2        b3      sb12      cb12      sb22  Likelihood
+
+       1         0      0.05      -0.2       0.5     -0.05       0.2   927.63128
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1      5       925.6352      1.996085     12.2216    -313.582
+             2      8       925.1817      0.453447     9.70625    -19.5311
+             3     11       925.1085      0.073214     12.2202    -1.36886
+             4     13       924.9856      0.122887     8.02645    -2.21576
+             5     15       924.9352      0.050458     6.83717    -1.59340
+             6     19       924.7209      0.214288     2.03388    -0.59727
+             7     22       924.6937      0.027171     0.86578    -0.41602
+             8     24       924.6764      0.017363     0.61021    -0.10916
+             9     27       924.6700      0.006411     0.16382    -0.01367
+            10     30       924.6698      0.000124    0.058418    -0.00038
+            11     33       924.6698      0.000017    0.001036    -0.00003
+            12     36       924.6698      5.492E-9    0.000152    -1.24E-8
+                RANDOM INTERCEPT AND TIME, LAPLACE APPROXIMATION               4
+
+                             The NLMIXED Procedure
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 1849.3
+                    AIC (smaller is better)           1863.3
+                    AICC (smaller is better)          1863.7
+                    BIC (smaller is better)           1877.9
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  b0          1.0712   0.1404   57    7.63   <.0001   0.7901   1.3524 -0.00006
+  b1        -0.00237   0.1095   57   -0.02   0.9828  -0.2216   0.2168 -0.00015
+  b2         0.04950   0.1929   57    0.26   0.7984  -0.3367   0.4357 -0.00002
+  b3         -0.3072   0.1510   57   -2.04   0.0465  -0.6095 -0.00493 -0.00008
+  sb12        0.4999   0.1007   57    4.96   <.0001   0.2982   0.7016 0.000018
+  cb12       0.05656  0.05567   57    1.02   0.3139 -0.05491   0.1680 -3.79E-7
+  sb22        0.2319  0.06028   57    3.85   0.0003   0.1112   0.3526 -0.00003
+                   RANDOM INTERCEPT ONLY, ADAPTIVE QUADRATURE                  5
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.SEIZURE        
+        Dependent Variable                          seize               
+        Distribution for Dependent Variable         Poisson             
+        Random Effects                              bi                  
+        Distribution for Random Effects             Normal              
+        Subject Variable                            subject             
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          Adaptive Gaussian   
+                                                    Quadrature          
+
+
+                                   Dimensions
+
+                    Observations Used                    295
+                    Observations Not Used                  0
+                    Total Observations                   295
+                    Subjects                              59
+                    Max Obs per Subject                    5
+                    Parameters                             5
+                    Quadrature Points                     25
+
+
+                               Initial Parameters
+ 
+                                                                   Negative
+                                                                        Log
+           b0          b1          b2          b3         sb2    Likelihood
+
+            1           0        0.05        -0.2         0.6    1024.16924
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1      5      1010.6733      13.49594     2.22167    -1118.62
+             2      8      1010.6207      0.052574     1.16704    -0.46726
+             3     10      1010.6116      0.009101     1.89908    -0.07502
+             4     14      1010.5806      0.030985     0.68678    -0.09185
+             5     17      1010.5770      0.003646     0.11245    -0.01551
+             6     20      1010.5768       0.00021    0.017368    -0.00049
+             7     23      1010.5768      4.108E-6    0.000015    -8.21E-6
+
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 2021.2
+                    AIC (smaller is better)           2031.2
+                   RANDOM INTERCEPT ONLY, ADAPTIVE QUADRATURE                  6
+
+                             The NLMIXED Procedure
+
+                                 Fit Statistics
+
+                    AICC (smaller is better)          2031.4
+                    BIC (smaller is better)           2041.5
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  b0          1.0326   0.1527   58    6.76   <.0001   0.7269   1.3382 -0.00001
+  b1          0.1108  0.04689   58    2.36   0.0215  0.01694   0.2047 -0.00002
+  b2        -0.02385   0.2107   58   -0.11   0.9102  -0.4455   0.3978 -2.15E-6
+  b3         -0.1037  0.06505   58   -1.59   0.1164  -0.2339  0.02654 2.546E-6
+  sb2         0.6090   0.1170   58    5.20   <.0001   0.3747   0.8433 0.000014
+                  RANDOM INTERCEPT ONLY, LAPLACE APPROXIMATION                 7
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.SEIZURE        
+        Dependent Variable                          seize               
+        Distribution for Dependent Variable         Poisson             
+        Random Effects                              bi                  
+        Distribution for Random Effects             Normal              
+        Subject Variable                            subject             
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          Adaptive Gaussian   
+                                                    Quadrature          
+
+
+                                   Dimensions
+
+                    Observations Used                    295
+                    Observations Not Used                  0
+                    Total Observations                   295
+                    Subjects                              59
+                    Max Obs per Subject                    5
+                    Parameters                             5
+                    Quadrature Points                      1
+
+
+                               Initial Parameters
+ 
+                                                                   Negative
+                                                                        Log
+           b0          b1          b2          b3         sb2    Likelihood
+
+            1           0        0.05        -0.2         0.6    1024.27156
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1      5      1010.7754      13.49618     2.21993    -1118.62
+             2      8      1010.7232      0.052196     1.16983    -0.46484
+             3     10      1010.7135      0.009654     1.90632    -0.07435
+             4     14      1010.6829      0.030666     0.65564    -0.09169
+             5     17      1010.6795      0.003376     0.11649    -0.01425
+             6     20      1010.6793      0.000225    0.019588    -0.00053
+             7     23      1010.6793      5.396E-6    0.000024    -0.00001
+             8     25      1010.6793      5.23E-12    0.000024    -117E-13
+
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+
+                  RANDOM INTERCEPT ONLY, LAPLACE APPROXIMATION                 8
+
+                             The NLMIXED Procedure
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 2021.4
+                    AIC (smaller is better)           2031.4
+                    AICC (smaller is better)          2031.6
+                    BIC (smaller is better)           2041.7
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  b0          1.0326   0.1526   58    6.77   <.0001   0.7272   1.3381 1.427E-7
+  b1          0.1108  0.04689   58    2.36   0.0215  0.01694   0.2047 -4.96E-9
+  b2        -0.02385   0.2106   58   -0.11   0.9102  -0.4453   0.3976 9.373E-8
+  b3         -0.1037  0.06505   58   -1.59   0.1164  -0.2339  0.02654 1.425E-7
+  sb2         0.6083   0.1169   58    5.20   <.0001   0.3743   0.8423 -6.42E-7

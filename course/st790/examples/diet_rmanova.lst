@@ -1,0 +1,1038 @@
+                                 The SAS System                                1
+
+                      Obs    pig    dose    week    weight
+
+                        1     1       1       1       455 
+                        2     1       1       3       460 
+                        3     1       1       4       510 
+                        4     1       1       5       504 
+                        5     1       1       6       436 
+                        6     1       1       7       466 
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        2
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+          Class         Levels    Values
+
+          week               6    1 3 4 5 6 7                         
+
+          dose               3    1 2 3                               
+
+          pig               15    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+
+
+                    Number of Observations Read          90
+                    Number of Observations Used          90
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        3
+
+                               The GLM Procedure
+ 
+                         Dependent Variable: weight   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                      29    276299.5000      9527.5690     17.56   <.0001
+
+ Error                      60     32552.6000       542.5433                   
+
+ Corrected Total            89    308852.1000                                  
+
+
+              R-Square     Coeff Var      Root MSE    weight Mean
+
+              0.894601      4.166081      23.29256       559.1000
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333     17.09   <.0001
+ pig(dose)                  12    105434.2000      8786.1833     16.19   <.0001
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333     17.09   <.0001
+ pig(dose)                  12    105434.2000      8786.1833     16.19   <.0001
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        4
+
+                               The GLM Procedure
+
+   Source                  Type III Expected Mean Square
+
+   dose                    Var(Error) + 6 Var(pig(dose)) + Q(dose,week*dose) 
+
+   pig(dose)               Var(Error) + 6 Var(pig(dose))                     
+
+   week                    Var(Error) + Q(week,week*dose)                    
+
+   week*dose               Var(Error) + Q(week*dose)                         
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        5
+
+                               The GLM Procedure
+            Tests of Hypotheses for Mixed Model Analysis of Variance
+ 
+                         Dependent Variable: weight   
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+  *  dose                       2         18548   9274.033333     1.06  0.3782
+
+     Error: MS(pig(dose))      12        105434   8786.183333                 
+  * This test assumes one or more other fixed effects are zero.
+
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+     pig(dose)                 12        105434   8786.183333    16.19  <.0001
+  *  week                       5        142555         28511    52.55  <.0001
+     week*dose                 10   9762.733333    976.273333     1.80  0.0801
+
+     Error: MS(Error)          60         32553    542.543333                 
+  * This test assumes one or more other fixed effects are zero.
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     6
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.PIGS2               
+             Dependent Variable           weight                   
+             Covariance Structure         Variance Components      
+             Estimation Method            Type 3                   
+             Residual Variance Method     Factor                   
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          6    1 3 4 5 6 7                   
+               dose          3    1 2 3                         
+               pig          15    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15                         
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                     28
+                      Columns in Z                     15
+                      Subjects                          1
+                      Max Obs per Subject              90
+
+
+                            Number of Observations
+
+                  Number of Observations Read              90
+                  Number of Observations Used              90
+                  Number of Observations Not Used           0
+
+
+                          Type 3 Analysis of Variance
+ 
+                                          Sum of
+               Source         DF         Squares     Mean Square
+
+               dose            2           18548     9274.033333
+               week            5          142555           28511
+               week*dose      10     9762.733333      976.273333
+               pig(dose)      12          105434     8786.183333
+               Residual       60           32553      542.543333
+
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     7
+
+                              The Mixed Procedure
+
+                          Type 3 Analysis of Variance
+ 
+                                                                 Error
+Source     Expected Mean Square                 Error Term          DF  F Value
+
+dose       Var(Residual) + 6 Var(pig(dose))     MS(pig(dose))       12     1.06
+           + Q(dose,week*dose)                                                 
+week       Var(Residual) + Q(week,week*dose)    MS(Residual)        60    52.55
+week*dose  Var(Residual) + Q(week*dose)         MS(Residual)        60     1.80
+pig(dose)  Var(Residual) + 6 Var(pig(dose))     MS(Residual)        60    16.19
+Residual   Var(Residual)                        .                    .      .  
+
+                                Type 3 Analysis
+                                  of Variance
+ 
+                               Source     Pr > F
+
+                               dose       0.3782
+                               week       <.0001
+                               week*dose  0.0801
+                               pig(dose)  <.0001
+                               Residual    .    
+
+
+                              Covariance Parameter
+                                   Estimates
+ 
+                             Cov Parm      Estimate
+
+                             pig(dose)      1373.94
+                             Residual        542.54
+
+
+                                Fit Statistics
+
+                     -2 Res Log Likelihood           720.0
+                     AIC (Smaller is Better)         724.0
+                     AICC (Smaller is Better)        724.2
+                     BIC (Smaller is Better)         725.5
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 dose            2      12       1.06    0.3782
+                 week            5      60      52.55    <.0001
+                 week*dose      10      60       1.80    0.0801
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           8
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           9
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+  Dependent Variable       week1    week3    week4    week5    week6    week7
+
+       Level of week           1        2        3        4        5        6
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+DF = 12       week1       week3       week4       week5       week6       week7
+
+week1      1.000000    0.707584    0.459151    0.543739    0.492366    0.502098
+                         0.0068      0.1145      0.0548      0.0874      0.0804
+
+week3      0.707584    1.000000    0.889996    0.874228    0.676753    0.834899
+             0.0068                  <.0001      <.0001      0.0111      0.0004
+
+week4      0.459151    0.889996    1.000000    0.881217    0.789575    0.847786
+             0.1145      <.0001                  <.0001      0.0013      0.0003
+
+week5      0.543739    0.874228    0.881217    1.000000    0.803051    0.919350
+             0.0548      <.0001      <.0001                  0.0009      <.0001
+
+week6      0.492366    0.676753    0.789575    0.803051    1.000000    0.895603
+             0.0874      0.0111      0.0013      0.0009                  <.0001
+
+week7      0.502098    0.834899    0.847786    0.919350    0.895603    1.000000
+             0.0804      0.0004      0.0003      <.0001      <.0001            
+
+
+                             E = Error SSCP Matrix
+                                        
+   week_N represents the contrast between the nth level of week and the last
+ 
+                week_1        week_2        week_3        week_4        week_5
+
+  week_1       25083.6       13574.0       12193.2        4959.0        2274.8
+  week_2       13574.0       10638.4        9099.2        4354.6        -968.2
+  week_3       12193.2        9099.2       11136.8        4293.8        1623.6
+  week_4        4959.0        4354.6        4293.8        5194.4        -365.8
+  week_5        2274.8        -968.2        1623.6        -365.8        7425.2
+
+
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          10
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+ DF = 12        week_1        week_2        week_3        week_4        week_5
+
+ week_1       1.000000      0.830950      0.729529      0.434442      0.166684
+                              0.0004        0.0047        0.1380        0.5863
+
+ week_2       0.830950      1.000000      0.835959      0.585791     -0.108936
+                0.0004                      0.0004        0.0354        0.7231
+
+ week_3       0.729529      0.835959      1.000000      0.564539      0.178544
+                0.0047        0.0004                      0.0444        0.5595
+
+ week_4       0.434442      0.585791      0.564539      1.000000     -0.058901
+                0.1380        0.0354        0.0444                      0.8484
+
+ week_5       0.166684     -0.108936      0.178544     -0.058901      1.000000
+                0.5863        0.7231        0.5595        0.8484              
+
+
+                                Sphericity Tests
+ 
+                                       Mauchly's
+    Variables                    DF    Criterion    Chi-Square    Pr > ChiSq
+
+    Transformed Variates         14    0.0160527     41.731963        0.0001
+    Orthogonal Components        14    0.0544835     29.389556        0.0093
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          11
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333      1.06   0.3782
+ Error                      12    105434.2000      8786.1833                   
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          12
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+ Error(week)                60     32552.6000       542.5433                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    week                   <.0001    <.0001
+                    week*dose              0.1457    0.1243
+                    Error(week)                            
+
+
+                     Greenhouse-Geisser Epsilon      0.4856
+                     Huynh-Feldt-Lecoutre Epsilon    0.6177
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    13
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    14
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+  Dependent Variable       week1    week3    week4    week5    week6    week7
+
+       Level of week           1        3        4        5        6        7
+
+
+         week_N represents the nth degree polynomial contrast for week
+                                       
+                   M Matrix Describing Transformed Variables
+ 
+                             week1             week3             week4
+
+          week_1      -.6900655593      -.2760262237      -.0690065559
+          week_2      0.5455447256      -.3273268354      -.4364357805
+          week_3      -.2331262021      0.6061281254      0.0932504808
+          week_4      0.0703659384      -.4817360399      0.5196253913
+          week_5      -.0149872662      0.2248089935      -.5994906493
+
+          week_N represents the nth degree polynomial contrast for week
+                                        
+                    M Matrix Describing Transformed Variables
+ 
+                             week5             week6             week7
+
+          week_1      0.1380131119      0.3450327797      0.5520524475
+          week_2      -.3273268354      0.0000000000      0.5455447256
+          week_3      -.4196271637      -.4662524041      0.4196271637
+          week_4      0.2760509891      -.6062296232      0.2219233442
+          week_5      0.6744269805      -.3596943896      0.0749363312
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    15
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333      1.06   0.3782
+ Error                      12    105434.2000      8786.1833                   
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    16
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+ Error(week)                60     32552.6000       542.5433                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    week                   <.0001    <.0001
+                    week*dose              0.1457    0.1243
+                    Error(week)                            
+
+
+                     Greenhouse-Geisser Epsilon      0.4856
+                     Huynh-Feldt-Lecoutre Epsilon    0.6177
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    17
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+         week_N represents the nth degree polynomial contrast for week
+
+                           Contrast Variable: week_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    131764.8029    131764.8029     87.35   <.0001
+ dose                        2      2495.2133      1247.6067      0.83   0.4608
+ Error                      12     18100.8743      1508.4062                   
+
+
+                           Contrast Variable: week_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    2011.479365    2011.479365      6.67   0.0240
+ dose                        2    4489.677778    2244.838889      7.45   0.0079
+ Error                      12    3617.509524     301.459127                   
+
+
+                           Contrast Variable: week_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    2862.193623    2862.193623      9.19   0.0104
+ dose                        2     694.109855     347.054928      1.11   0.3597
+ Error                      12    3736.192174     311.349348                   
+
+
+                           Contrast Variable: week_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    3954.881058    3954.881058     17.28   0.0013
+ dose                        2    1878.363604     939.181802      4.10   0.0439
+ Error                      12    2746.984214     228.915351                   
+
+
+                           Contrast Variable: week_5
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    1961.143097    1961.143097      5.41   0.0384
+ dose                        2     205.368763     102.684382      0.28   0.7583
+ Error                      12    4351.039802     362.586650                   
+                       UNNORMALIZED PROFILE TRANSFORATION                     18
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+                       UNNORMALIZED PROFILE TRANSFORATION                     19
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+  Dependent Variable       week1    week3    week4    week5    week6    week7
+
+       Level of week           1        3        4        5        6        7
+
+
+            week_N represents the nth successive difference in week
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                             week1             week3             week4
+
+          week_1       1.000000000      -1.000000000       0.000000000
+          week_2       0.000000000       1.000000000      -1.000000000
+          week_3       0.000000000       0.000000000       1.000000000
+          week_4       0.000000000       0.000000000       0.000000000
+          week_5       0.000000000       0.000000000       0.000000000
+
+            week_N represents the nth successive difference in week
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                             week5             week6             week7
+
+          week_1       0.000000000       0.000000000       0.000000000
+          week_2       0.000000000       0.000000000       0.000000000
+          week_3      -1.000000000       0.000000000       0.000000000
+          week_4       1.000000000      -1.000000000       0.000000000
+          week_5       0.000000000       1.000000000      -1.000000000
+                       UNNORMALIZED PROFILE TRANSFORATION                     20
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333      1.06   0.3782
+ Error                      12    105434.2000      8786.1833                   
+                       UNNORMALIZED PROFILE TRANSFORATION                     21
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+ Error(week)                60     32552.6000       542.5433                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    week                   <.0001    <.0001
+                    week*dose              0.1457    0.1243
+                    Error(week)                            
+
+
+                     Greenhouse-Geisser Epsilon      0.4856
+                     Huynh-Feldt-Lecoutre Epsilon    0.6177
+                       UNNORMALIZED PROFILE TRANSFORATION                     22
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+            week_N represents the nth successive difference in week
+
+                           Contrast Variable: week_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    35721.60000    35721.60000     50.00   <.0001
+ dose                        2     1112.40000      556.20000      0.78   0.4810
+ Error                      12     8574.00000      714.50000                   
+
+
+                           Contrast Variable: week_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    23128.06667    23128.06667     77.59   <.0001
+ dose                        2     1980.13333      990.06667      3.32   0.0711
+ Error                      12     3576.80000      298.06667                   
+
+
+                           Contrast Variable: week_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     836.266667     836.266667      1.30   0.2772
+ dose                        2       2.133333       1.066667      0.00   0.9983
+ Error                      12    7743.600000     645.300000                   
+
+
+                           Contrast Variable: week_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     2331.26667     2331.26667      2.10   0.1734
+ dose                        2     6618.53333     3309.26667      2.97   0.0893
+ Error                      12    13351.20000     1112.60000                   
+
+
+                           Contrast Variable: week_5
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    17136.60000    17136.60000     27.69   0.0002
+ dose                        2      619.20000      309.60000      0.50   0.6184
+ Error                      12     7425.20000      618.76667                   
+                       UNNORMALIZED HELMERT TRANSFORATION                     23
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+                       UNNORMALIZED HELMERT TRANSFORATION                     24
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+  Dependent Variable       week1    week3    week4    week5    week6    week7
+
+       Level of week           1        2        3        4        5        6
+
+
+                 week_N represents the contrast between the nth
+                level of week and the mean of subsequent levels
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                             week1             week3             week4
+
+          week_1       1.000000000      -0.200000000      -0.200000000
+          week_2       0.000000000       1.000000000      -0.250000000
+          week_3       0.000000000       0.000000000       1.000000000
+          week_4       0.000000000       0.000000000       0.000000000
+          week_5       0.000000000       0.000000000       0.000000000
+
+                 week_N represents the contrast between the nth
+                level of week and the mean of subsequent levels
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                             week5             week6             week7
+
+          week_1      -0.200000000      -0.200000000      -0.200000000
+          week_2      -0.250000000      -0.250000000      -0.250000000
+          week_3      -0.333333333      -0.333333333      -0.333333333
+          week_4       1.000000000      -0.500000000      -0.500000000
+          week_5       0.000000000       1.000000000      -1.000000000
+                       UNNORMALIZED HELMERT TRANSFORATION                     25
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333      1.06   0.3782
+ Error                      12    105434.2000      8786.1833                   
+                       UNNORMALIZED HELMERT TRANSFORATION                     26
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ week                        5    142554.5000     28510.9000     52.55   <.0001
+ week*dose                  10      9762.7333       976.2733      1.80   0.0801
+ Error(week)                60     32552.6000       542.5433                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    week                   <.0001    <.0001
+                    week*dose              0.1457    0.1243
+                    Error(week)                            
+
+
+                     Greenhouse-Geisser Epsilon      0.4856
+                     Huynh-Feldt-Lecoutre Epsilon    0.6177
+                       UNNORMALIZED HELMERT TRANSFORATION                     27
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+ week_N represents the contrast between the nth level of week and the mean of 
+                               subsequent levels
+
+                           Contrast Variable: week_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    114791.2560    114791.2560     93.69   <.0001
+ dose                        2       343.6960       171.8480      0.14   0.8705
+ Error                      12     14701.9680      1225.1640                   
+
+
+                           Contrast Variable: week_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    35065.83750    35065.83750     64.01   <.0001
+ dose                        2      481.90000      240.95000      0.44   0.6541
+ Error                      12     6574.32500      547.86042                   
+
+
+                           Contrast Variable: week_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    2200.185185    2200.185185      3.10   0.1037
+ dose                        2    3888.059259    1944.029630      2.74   0.1046
+ Error                      12    8512.755556     709.396296                   
+
+
+                           Contrast Variable: week_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    12936.01667    12936.01667     20.93   0.0006
+ dose                        2     8797.73333     4398.86667      7.12   0.0092
+ Error                      12     7416.50000      618.04167                   
+
+
+                           Contrast Variable: week_5
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    17136.60000    17136.60000     27.69   0.0002
+ dose                        2      619.20000      309.60000      0.50   0.6184
+ Error                      12     7425.20000      618.76667                   
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            28
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            29
+
+                               The GLM Procedure
+
+ Level of         ------------week1-----------    ------------week3-----------
+ dose        N            Mean         Std Dev            Mean         Std Dev
+
+ 1           5      466.400000      16.7272233      519.400000      40.6423425
+ 2           5      494.400000      31.9108132      551.000000      41.8927201
+ 3           5      497.800000      28.6740301      534.600000      29.7623924
+
+ Level of         ------------week4-----------    ------------week5-----------
+ dose        N            Mean         Std Dev            Mean         Std Dev
+
+ 1           5      568.800000      39.5878769      561.600000      42.8404015
+ 2           5      574.200000      27.9946423      567.000000      62.0604544
+ 3           5      579.800000      29.9532970      571.800000      39.2390112
+
+ Level of         ------------week6-----------    ------------week7-----------
+ dose        N            Mean         Std Dev            Mean         Std Dev
+
+ 1           5      546.600000      66.8789952      572.000000      61.8182821
+ 2           5      603.000000      53.3057220      644.000000      57.5499783
+ 3           5      588.200000      43.7058349      623.200000      35.3723056
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            30
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                             E = Error SSCP Matrix
+ 
+                            week1             week3             week4
+
+          week1            8481.2            8538.8            4819.8
+          week3            8538.8           17170.4             13293
+          week4            4819.8             13293           12992.4
+          week5            8513.6           19476.4           17077.4
+          week6              8710           17034.2           17287.8
+          week7            8468.2           20035.4           17697.2
+
+                             E = Error SSCP Matrix
+ 
+                            week5             week6             week7
+
+          week1            8513.6              8710            8468.2
+          week3           19476.4           17034.2           20035.4
+          week4           17077.4           17287.8           17697.2
+          week5             28906           26226.4           28625.2
+          week6           26226.4             36898           31505.8
+          week7           28625.2           31505.8           33538.8
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+DF = 12       week1       week3       week4       week5       week6       week7
+
+week1      1.000000    0.707584    0.459151    0.543739    0.492366    0.502098
+                         0.0068      0.1145      0.0548      0.0874      0.0804
+
+week3      0.707584    1.000000    0.889996    0.874228    0.676753    0.834899
+             0.0068                  <.0001      <.0001      0.0111      0.0004
+
+week4      0.459151    0.889996    1.000000    0.881217    0.789575    0.847786
+             0.1145      <.0001                  <.0001      0.0013      0.0003
+
+week5      0.543739    0.874228    0.881217    1.000000    0.803051    0.919350
+             0.0548      <.0001      <.0001                  0.0009      <.0001
+
+week6      0.492366    0.676753    0.789575    0.803051    1.000000    0.895603
+             0.0874      0.0111      0.0013      0.0009                  <.0001
+
+week7      0.502098    0.834899    0.847786    0.919350    0.895603    1.000000
+             0.0804      0.0004      0.0003      <.0001      <.0001            
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            31
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                       H = Type III SSCP Matrix for dose
+ 
+                            week1             week3             week4
+
+          week1            2969.2            2177.2             859.4
+          week3            2177.2            2497.6               410
+          week4             859.4               410      302.53333333
+          week5               813             411.6             280.4
+          week6            4725.2            4428.8      1132.1333333
+          week7            5921.6            5657.6      1392.5333333
+
+                       H = Type III SSCP Matrix for dose
+ 
+                            week5             week6             week7
+
+          week1               813            4725.2            5921.6
+          week3             411.6            4428.8            5657.6
+          week4             280.4      1132.1333333      1392.5333333
+          week5             260.4            1096.4              1352
+          week6            1096.4      8550.9333333      10830.933333
+          week7              1352      10830.933333      13730.133333
+
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                       H = Type III SSCP Matrix for dose
+                             E = Error SSCP Matrix
+ 
+Characteristic           Characteristic Vector  V'EV=1
+          Root  Percent         week1         week3         week4         week5
+                                week6         week7
+
+    2.76663572    57.81    0.01008494   -0.00856690    0.00598260   -0.01350074
+                          -0.00631967    0.01895546
+    2.01931265    42.19    0.02377927   -0.04047800    0.03355915    0.00129118
+                          -0.01481413    0.01295337
+    0.00000000     0.00   -0.00022690   -0.00372379   -0.01380715    0.01173179
+                          -0.00015021    0.00199588
+    0.00000000     0.00   -0.00425334    0.00094691    0.00882637   -0.00027390
+                          -0.00381939    0.00358891
+    0.00000000     0.00   -0.00592948   -0.00835257    0.00451460   -0.00286298
+                          -0.00450358    0.00937569
+    0.00000000     0.00   -0.00257775   -0.00142122    0.00128210   -0.00084350
+                           0.01035699   -0.00651966
+
+
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            32
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                 MANOVA Test Criteria and F Approximations for
+                    the Hypothesis of No Overall dose Effect
+                       H = Type III SSCP Matrix for dose
+                             E = Error SSCP Matrix
+                                        
+                             S=2    M=1.5    N=2.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.08793025       2.77        12        14    0.0363
+Pillai's Trace              1.40330988       3.14        12        16    0.0176
+Hotelling-Lawley Trace      4.78594837       2.63        12    8.2712    0.0852
+Roy's Greatest Root         2.76663572       3.69         6         8    0.0464
+
+         NOTE: F Statistic for Roy's Greatest Root is an upper bound.
+                 NOTE: F Statistic for Wilks' Lambda is exact.
+                         MULTIVARIATE PROFILE ANALYSIS                        33
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         dose               3    1 2 3 
+
+
+                    Number of Observations Read          15
+                    Number of Observations Used          15
+                         MULTIVARIATE PROFILE ANALYSIS                        34
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                      Repeated Measures Level Information
+ 
+  Dependent Variable       week1    week3    week4    week5    week6    week7
+
+       Level of week           1        2        3        4        5        6
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+DF = 12       week1       week3       week4       week5       week6       week7
+
+week1      1.000000    0.707584    0.459151    0.543739    0.492366    0.502098
+                         0.0068      0.1145      0.0548      0.0874      0.0804
+
+week3      0.707584    1.000000    0.889996    0.874228    0.676753    0.834899
+             0.0068                  <.0001      <.0001      0.0111      0.0004
+
+week4      0.459151    0.889996    1.000000    0.881217    0.789575    0.847786
+             0.1145      <.0001                  <.0001      0.0013      0.0003
+
+week5      0.543739    0.874228    0.881217    1.000000    0.803051    0.919350
+             0.0548      <.0001      <.0001                  0.0009      <.0001
+
+week6      0.492366    0.676753    0.789575    0.803051    1.000000    0.895603
+             0.0874      0.0111      0.0013      0.0009                  <.0001
+
+week7      0.502098    0.834899    0.847786    0.919350    0.895603    1.000000
+             0.0804      0.0004      0.0003      <.0001      <.0001            
+
+
+                             E = Error SSCP Matrix
+                                        
+   week_N represents the contrast between the nth level of week and the last
+ 
+                week_1        week_2        week_3        week_4        week_5
+
+  week_1       25083.6       13574.0       12193.2        4959.0        2274.8
+  week_2       13574.0       10638.4        9099.2        4354.6        -968.2
+  week_3       12193.2        9099.2       11136.8        4293.8        1623.6
+  week_4        4959.0        4354.6        4293.8        5194.4        -365.8
+  week_5        2274.8        -968.2        1623.6        -365.8        7425.2
+
+
+                         MULTIVARIATE PROFILE ANALYSIS                        35
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+ DF = 12        week_1        week_2        week_3        week_4        week_5
+
+ week_1       1.000000      0.830950      0.729529      0.434442      0.166684
+                              0.0004        0.0047        0.1380        0.5863
+
+ week_2       0.830950      1.000000      0.835959      0.585791     -0.108936
+                0.0004                      0.0004        0.0354        0.7231
+
+ week_3       0.729529      0.835959      1.000000      0.564539      0.178544
+                0.0047        0.0004                      0.0444        0.5595
+
+ week_4       0.434442      0.585791      0.564539      1.000000     -0.058901
+                0.1380        0.0354        0.0444                      0.8484
+
+ week_5       0.166684     -0.108936      0.178544     -0.058901      1.000000
+                0.5863        0.7231        0.5595        0.8484              
+
+
+                                Sphericity Tests
+ 
+                                       Mauchly's
+    Variables                    DF    Criterion    Chi-Square    Pr > ChiSq
+
+    Transformed Variates         14    0.0160527     41.731963        0.0001
+    Orthogonal Components        14    0.0544835     29.389556        0.0093
+
+
+MANOVA Test Criteria and Exact F Statistics for the Hypothesis of no week Effect
+                       H = Type III SSCP Matrix for week
+                             E = Error SSCP Matrix
+                                        
+                              S=1    M=1.5    N=3
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.03881848      39.62         5         8    <.0001
+Pillai's Trace              0.96118152      39.62         5         8    <.0001
+Hotelling-Lawley Trace     24.76092347      39.62         5         8    <.0001
+Roy's Greatest Root        24.76092347      39.62         5         8    <.0001
+
+
+                         MULTIVARIATE PROFILE ANALYSIS                        36
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                   MANOVA Test Criteria and F Approximations
+                   for the Hypothesis of no week*dose Effect
+                     H = Type III SSCP Matrix for week*dose
+                             E = Error SSCP Matrix
+                                        
+                               S=2    M=1    N=3
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.17905151       2.18        10        16    0.0793
+Pillai's Trace              1.07058517       2.07        10        18    0.0856
+Hotelling-Lawley Trace      3.19076786       2.42        10       9.6    0.0937
+Roy's Greatest Root         2.66824588       4.80         5         9    0.0205
+
+         NOTE: F Statistic for Roy's Greatest Root is an upper bound.
+                 NOTE: F Statistic for Wilks' Lambda is exact.
+                         MULTIVARIATE PROFILE ANALYSIS                        37
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ dose                        2     18548.0667      9274.0333      1.06   0.3782
+ Error                      12    105434.2000      8786.1833                   

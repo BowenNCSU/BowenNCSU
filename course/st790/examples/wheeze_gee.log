@@ -1,0 +1,387 @@
+1                                                          The SAS System                               09:18 Monday, March 14, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.21 seconds
+      cpu time            0.02 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 8, EXAMPLE 6, Six Cities Study
+4          
+5            Fit a logistic regression model to the "wheezing" data.
+6            These are binary data, thus, we use the Bernoulli (bin)
+7            mean/variance assumptions.  The model is fitted with different
+8            working correlation matrices using PROC GENMOD, PROC GEE,
+9            PROC GLIMMIX
+10         
+11         ******************************************************************/
+12         
+13         options ls=80 ps=59 nodate; run;
+14         
+15         /******************************************************************
+16         
+17           The data look like (first 4 records):
+2                                The SAS System
+
+18         
+19             1 portage   9 0 1  10 0 1  11 0 1  12 0 0
+20             2 kingston  9 1 1  10 2 1  11 2 0  12 2 0
+21             3 kingston  9 0 1  10 0 0  11 1 0  12 1 0
+22             4 portage   9 0 0  10 0 1  11 0 1  12 1 0
+23         
+24                   .
+25                   .
+26                   .
+27         
+28           column 1      child
+29           column 2      city
+30           columns 3-5   age=9, smoking indiciator, wheezing response
+31           columns 6-8   age=10, smoking indiciator, wheezing response
+32           columns 9-11  age=11, smoking indiciator, wheezing response
+33           columns 12-14 age=12, smoking indiciator, wheezing response
+34         
+35           Some of the children have missing values for smoking and wheezing,
+36           as shown in Chapter 1.  There are 32 children all together.  See
+36       ! the
+37           output for the full data printed out one observation per line.
+38         
+39           We read in the data using the "@@" symbol so that SAS will continue
+40           to read for data on the same line and the OUTPUT statement to
+41           write each block of three observations for each age in as a
+41       ! separate
+42           data record.  The resulting data set is one with a separate line
+42       ! for
+43           each observation.  City is a character variable.
+44         
+45         ******************************************************************/
+46         
+47         data wheeze; infile 'wheeze.dat';
+48           input child city$ @@;
+49           do i=1 to 4;
+50             input age smoke wheeze @@;
+51             output;
+52           end;
+53         run;
+
+NOTE: The infile 'wheeze.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/wheeze
+      .dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Feb2016:17:40:23,
+      File Size (bytes)=1360
+
+NOTE: 32 records were read from the infile 'wheeze.dat'.
+      The minimum record length was 41.
+      The maximum record length was 43.
+NOTE: SAS went to a new line when INPUT statement reached past the end of a 
+      line.
+NOTE: The data set WORK.WHEEZE has 128 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+3                                The SAS System
+
+      cpu time            0.01 seconds
+      
+
+54         
+55         proc print data=wheeze(obs=10); run;
+
+NOTE: There were 10 observations read from the data set WORK.WHEEZE.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+56         
+57         /*****************************************************************
+58         
+59           Fit the logistic regression model using PROC GENMOD and PROC GEE
+60           three different working correlation matrix assumptions:
+61         
+62           -  unstructured
+63           -  compound symmetry
+64           -  AR(1)
+65         
+66           We fit a model with linear predictor allowing effects of
+67           city and maternal smoking status subject to the caveats noted
+68           in Sections 8.2 and 8.6.
+69         
+70           The DIST=BIN option in the MODEL statement specifies that the
+71           Bernoulli mean-variance relationship be assumed.  The LINK=LOGIT
+72           option asks for the logistic mean model.
+73         
+74           The REPEATED statement specifies the working correlation
+75           structure to be assumed.    The CORRW option in the REPEATED
+76           statement prints out the estimated working correlation matrix
+77           under the assumption given in the TYPE= option.  The COVB
+78           option prints out the estimated covariance matrix of the estimate
+79           of beta -- both the usual estimate and the robust version
+80           are printed.  The MODELSE option specifies that the standard
+81           error estimates printed for the elements of betahat are based
+82           on the usual theory.  By default, the ones based on the "robust"
+83           version of the sampling covariance matrix are printed, too.
+84         
+85           The dispersion parameter phi is held fixed at 1 by default.
+86         
+87           The missing values are coded in the usual SAS way by periods (.).
+88           We delete these from the full data set, so that the data set input
+89           to PROC GENMOD contains only the observed data.  As noted in
+89       ! Section
+90           8.7, the missingness mechanism must be MCAR for the analysis to be
+91           valid, which is very likely not true.  Thus, this analysis is for
+92           illustrative purposes only to demonstrate how to deal with
+92       ! unbalanced
+93           data.  We must use the WITHIN option of the REPEATED
+94           statement to give SAS the time variable AGE as a
+95           classification variable so that it can figure out where the missing
+96           values are and use this information in estimating the correlation
+97           matrix.
+4                                The SAS System
+
+98         
+99           PROC GENMOD models by default the probability that Y=0 rather
+100          than Y=1.  To make PROC GENMOD model probability that
+101          Y=1, as is standard, one must include the DESCENDING option in
+102          the PROC GENMOD statement.  An explicit statement about
+103          what is being modeled will appear in the log file and output.
+104        
+105         ******************************************************************/
+106        
+107        data wheeze; set wheeze;
+108          if wheeze=. then delete;
+109          time=age;
+110        run;
+
+NOTE: There were 128 observations read from the data set WORK.WHEEZE.
+NOTE: The data set WORK.WHEEZE has 100 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+111        
+112        title "PROC GENMOD, UNSTRUCTURED CORRELATION";
+113        proc genmod data=wheeze descending;
+114          class child city smoke time;
+115          model wheeze = city smoke / dist=bin link=logit;
+116          repeated subject=child / type=un corrw covb modelse within=time;
+117        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: PROC GENMOD is modeling the probability that wheeze='1'.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter was held fixed.
+NOTE: The PROCEDURE GENMOD printed pages 2-4.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+118        
+119        title "PROC GENMOD, INDEPENDENCE";
+120        proc genmod data=wheeze descending;
+121          class child city smoke time;
+122          model wheeze = city smoke / dist=bin link=logit;
+123          repeated subject=child / type=ind covb modelse within=time;
+124        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: PROC GENMOD is modeling the probability that wheeze='1'.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter was held fixed.
+5                                The SAS System
+
+NOTE: The PROCEDURE GENMOD printed pages 5-7.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+125        
+126        title "PROC GENMOD, COMPOUND SYMMETRY (EXCHANGEABLE) CORRELATION";
+127        proc genmod data=wheeze descending;
+128          class child city smoke time;
+129          model wheeze = city smoke / dist=bin link=logit;
+130          repeated subject=child / type=cs corrw covb modelse within=time;
+131        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: PROC GENMOD is modeling the probability that wheeze='1'.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter was held fixed.
+NOTE: The PROCEDURE GENMOD printed pages 8-10.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+132        
+133        title "PROC GENMOD, AR(1) CORRELATION";
+134        proc genmod data=wheeze descending;
+135          class child city smoke time;
+136          model wheeze = city smoke / dist=bin link=logit;
+137          repeated subject=child / type=ar(1) corrw covb modelse within=time;
+138        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: PROC GENMOD is modeling the probability that wheeze='1'.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter was held fixed.
+NOTE: The PROCEDURE GENMOD printed pages 11-13.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+139        
+140        *  Using PROC GEE;
+141        
+142        title "PROC GEE, INDEPENDENCE";
+143        proc gee data=wheeze descending;
+NOTE: The GEE procedure is experimental in this release of the SAS system.
+144          class child city smoke time;
+145          model wheeze = city smoke / dist=bin link=logit;
+146          repeated subject=child / type=ind covb modelse within=time;
+6                                The SAS System
+
+147        run;
+
+NOTE: PROC GEE is modeling the probability that wheeze='1'.
+NOTE: The PROCEDURE GEE printed pages 14-16.
+NOTE: PROCEDURE GEE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+148        
+149        title "PROC GEE, COMPOUND SYMMETRY (EXCHANGEABLE) CORRELATION";
+150        proc gee data=wheeze descending;
+NOTE: The GEE procedure is experimental in this release of the SAS system.
+151          class child city smoke time;
+152          model wheeze = city smoke / dist=bin link=logit;
+153          repeated subject=child / type=cs corrw covb modelse within=time;
+154        run;
+
+NOTE: PROC GEE is modeling the probability that wheeze='1'.
+NOTE: The PROCEDURE GEE printed pages 17-19.
+NOTE: PROCEDURE GEE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+155        
+156        /*****************************************************************
+157        
+158          We demonstrate the use of PROC GLIMMIX to instead estimate
+159          the correlation parameters using the quadratic estimating
+160          equation.  This procedure is really meant for fitting
+161          SS generalized linear mixed effects models as in Chapter 9 of the
+162          course.  However, just as PROC MIXED can be used to fit PA linear
+163          models, GLIMMIX can be used to fit PA models of the "generalized
+164          linear models type." Some of the syntax is indeed similar to that
+165          for PROC MIXED as a result.
+166        
+167          The DIST, LINK, and OFFSET options in the model statement are the
+168          same as for GENMOD and GEE.  As with MIXED, one must use the
+168      ! SOLUTION
+169          option in the MODEL statement to get the parameter estimates. The
+170          EMPIRICAL option in the PROC statement requests robust empiriacal
+171          standard errors.  The METHOD=MMPL option in the PROC statement
+171      ! requests
+172          that the quadratic estimating equation for estimating the
+172      ! correlation
+173          parameter and scale parameter be used.  Another option, RMPL, uses
+173      ! a
+174          REML version of this.
+175        
+176          Specification of the overall covariance matrix, and particularly
+176      ! the
+177          working correlation structure, is a bit different from the above
+178          procedures.  Because this procedure really isn't directly designed
+179          to fit PA models, the syntax is a bit arcane.  Instead of having a
+180          REPEATED statement that can be tricked into fitting an overall
+181          covariance matrix as we did with PROC MIXED, GLIMMIX uses the
+7                                The SAS System
+
+181      ! "residual"
+182          option to do this in a RANDOM statement.  The way it is used below
+183          requests that what SAS calls a "R-side" covariance matrix (what we
+184          would call the overall covariance matrix in this context) be
+185          constructed.  You should consult the documentation for details.
+186        
+187        ******************************************************************/
+188        
+189        title "PROC GLIMMIX, COMPOUND SYMMETRY (EXCHANGEABLE) CORRELATION";
+190        proc glimmix data=wheeze method=mmpl empirical;
+191          class child city smoke time;
+192          model wheeze = city smoke / dist=bin link=logit covb solution;
+193          random time / subject=child type=cs vcorr residual;
+194        run;
+
+
+
+NOTE: Convergence criterion (PCONV=1.11022E-8) satisfied.
+NOTE: The PROCEDURE GLIMMIX printed pages 20-22.
+NOTE: PROCEDURE GLIMMIX used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+195        
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.43 seconds
+      cpu time            0.15 seconds
+      

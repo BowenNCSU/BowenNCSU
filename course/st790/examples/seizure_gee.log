@@ -1,0 +1,424 @@
+1                                                          The SAS System                            15:06 Monday, February 29, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.17 seconds
+      cpu time            0.03 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 8, EXAMPLE 5, Epileptic Seizure Study
+4          
+5            Fit a population-averaged loglinear model to the epileptic
+6            seizure data of Thall and Vail (1990) using several SAS procedures:
+7          
+8            PROC GENMOD and PROC GEE, for which the working correlation matrix
+9            parameter alpha is estimated using moment methods.
+10         
+11           PROC GLIMMIX can also be used without random effects to fit PA
+12           models with working correlation parameter alpha estimated by
+13           solving the quadratic estimating equation with Gaussian working
+14           assumption.
+15         
+16           These are count data, so we use the Poisson mean/variance
+17           assumptions and allow for overdispersion.  The model is fitted with
+18           several different working assumptions on the overall correlation
+2                                                          The SAS System                            15:06 Monday, February 29, 2016
+
+19           matrix:  completely unstructured, compound symmetric, and AR(1).
+20         
+21           Subject 207 has what appear to be very unusual data -- for
+22           this subject, both baseline and study-period numbers of seizures
+23           are huge, much larger than for any other subject.  We do not delete
+24           207 for the analyses here, but many authors have done so.  See
+25           Diggle, Heagerty, Liang, and Zeger (2002) and Thall and Vail (1990)
+26           for more on this subject.
+27         
+28         ******************************************************************/
+29         
+30         options ls=80 ps=59 nodate; run;
+31         
+32         /******************************************************************
+33         
+34           The data look like (first 8 records on first 2 subjects)
+35         
+36                104  11   0   0  11  31
+37                104   5   1   0  11  31
+38                104   3   2   0  11  31
+39                104   3   3   0  11  31
+40                104   3   4   0  11  31
+41                106  11   0   0  11  30
+42                106   3   1   0  11  30
+43                106   5   2   0  11  30
+44                106   3   3   0  11  30
+45                106   3   4   0  11  30
+46         
+47           column 1      subject
+48           column 2      number of seizures
+49           column 3      visit (baseline 0, 1--4 biweekly visits)
+50           column 4      = 0 if placebo, = 1 if progabide
+51           column 5      baseline number of seizures in 8 weeks prior to study
+52           column 6      age
+53         
+54           Note that the baseline seizures are included in the dataset as both
+55           a separate variable and as the response at time 0.
+56         
+57         ******************************************************************/
+58         
+59         data seizure; infile 'seize.dat';
+60             input subject seize visit trt base age;
+61         *    if subject=207 then delete;
+62         run;
+
+NOTE: The infile 'seize.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/seize.
+      dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Feb2016:11:01:15,
+      File Size (bytes)=7080
+
+NOTE: 295 records were read from the infile 'seize.dat'.
+      The minimum record length was 23.
+      The maximum record length was 23.
+3                                The SAS System
+
+NOTE: The data set WORK.SEIZURE has 295 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+63         
+64         *  create additional indicator variables;
+65         
+66         data seizure; set seizure;
+67            logage=log(age);
+68            o=2; v=1;
+69            if visit=0 then o=8;
+70            if visit=0 then v=0;
+71            logo=log(o);
+72            visit4=1;
+73            if visit<4 then visit4=0;
+74         run;
+
+NOTE: There were 295 observations read from the data set WORK.SEIZURE.
+NOTE: The data set WORK.SEIZURE has 295 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+75         
+76         /*****************************************************************
+77         
+78           We fit the basic and modified models presented in Section 8.8 of
+79           the course notes. The definitions of o, v, and v4 correspond to
+79       ! those
+80           in that section.
+81         
+82           We first use PROC GENMOD and PROC GEE.  The syntax for each is the
+82       ! same.
+83         
+84           The DIST=POISSON option in the model statement specifies
+85           that the Poisson requirement that mean = variance, be used.
+86           The LINK=LOG option asks for the loglinear model.  Other
+87           LINK= choices are available.
+88         
+89           The REPEATED statement specifies the "working" correlation
+90           structure to be assumed.    The CORRW option in the REPEATED
+91           statement prints out the estimated working correlation matrix
+92           under the assumption given in the TYPE= option.  By default,
+93           robust/empirical standard errors are used; the MODELSE
+94           option specifies that the standard errors based on assuming
+95           that the working correlation nodel is correctly specified are also
+96           printed.  The REPEATED statement has an option WITHIN= to align the
+97           time points correctly in the event of unbalanced/missing data; we
+98           illustrate this here even though we do not need to use it, as the
+98       ! data
+99           are balanced.
+100        
+101          The dispersion parameter is estimated rather then being held
+102          fixed at 1 -- this allows for the possibility of overdispersion.
+4                                The SAS System
+
+103        
+104          The OFFSET option implements the division by the length of the time
+105          period, as discussed in the course notes.  In principle, this could
+106          also be accomplished by dividing the raw counts by 8 or 2 as
+106      ! appropriate;
+107          however, many programs for solving GEEs or fitting generalized
+107      ! linear
+108          models restrict the response to be an integer if the distribution
+108      ! is
+109          specified as POISSON, so this doesn't necessarily always work.
+110        
+111        ******************************************************************/
+112        
+113        * proc genmod, fits with three different working correlation models;
+114        
+115        title "PROC GENMOD, UNSTRUCTURED CORRELATION";
+116        proc genmod data=seizure;
+117          class subject visit;
+118          model seize = v trt trt*v /  dist = poisson link = log offset=logo;
+119          repeated subject=subject / within=visit type=un corrw covb modelse;
+120        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: Algorithm converged.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0660341507 to avoid singularity.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0604425007 to avoid singularity.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0599229254 to avoid singularity.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0598040485 to avoid singularity.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0598119722 to avoid singularity.
+NOTE: The working correlation has been ridged with a maximum value of 
+      0.0598085583 to avoid singularity.
+NOTE: Algorithm converged.
+NOTE: The scale parameter for GEE estimation was computed as the square root of 
+      the normalized Pearson's chi-square.
+NOTE: The PROCEDURE GENMOD printed pages 1-3.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+121        
+122        title "PROC GENMOD, COMPOUND SYMMETRIC CORRELATION";
+123        proc genmod data=seizure;
+124          class subject visit;
+125          model seize = v trt trt*v / dist = poisson link = log offset=logo;
+126          repeated subject=subject / within=visit type=cs corrw covb modelse;
+127        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+5                                The SAS System
+
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter for GEE estimation was computed as the square root of 
+      the normalized Pearson's chi-square.
+NOTE: The PROCEDURE GENMOD printed pages 4-6.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+128        
+129        title "PROC GENMOD, AR(1) CORRELATION";
+130        proc genmod data=seizure;
+131          class subject visit;
+132          model seize = v trt trt*v / dist = poisson link = log offset=logo;
+133          repeated subject=subject / within=visit  type=ar(1) corrw covb
+133      ! modelse;
+134        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter for GEE estimation was computed as the square root of 
+      the normalized Pearson's chi-square.
+NOTE: The PROCEDURE GENMOD printed pages 7-9.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+135        
+136        *  fancier model, compound symmetric only;
+137        
+138        title "PROC GENMOD, FANCIER MODEL";
+139        proc genmod data=seizure;
+140          class subject visit;
+141          model seize = logage v visit4 trt trt*v trt*visit4 /
+142                         dist = poisson link = log offset=logo;
+143          repeated subject=subject / within=visit type=cs corrw covb modelse;
+144        run;
+
+NOTE: The variables in the WITHIN= subject effect are sorted by internal 
+      (unformatted) values. To sort by formatted values specify the 
+      ORDER=FORMATTED option following the variable in the CLASS statement.
+NOTE: Algorithm converged.
+NOTE: Algorithm converged.
+NOTE: The scale parameter for GEE estimation was computed as the square root of 
+      the normalized Pearson's chi-square.
+NOTE: The PROCEDURE GENMOD printed pages 10-12.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+6                                The SAS System
+
+145        
+146        *  proc gee;
+147        
+148        title "PROC GEE, COMPOUND SYMMETRIC CORRELATION";
+149        proc gee data=seizure;
+NOTE: The GEE procedure is experimental in this release of the SAS system.
+150          class subject visit;
+151          model seize = v trt trt*v /  dist = poisson link = log offset=logo;
+152          repeated subject=subject / within=visit  type=cs corrw covb modelse
+152      ! ;
+153        run;
+
+NOTE: The PROCEDURE GEE printed pages 13-14.
+NOTE: PROCEDURE GEE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+154        
+155        title "PROC GEE, FANCIER MODEL";
+156        proc gee data=seizure;
+NOTE: The GEE procedure is experimental in this release of the SAS system.
+157          class subject visit;
+158          model seize = logage v visit4 trt trt*v trt*visit4 /
+159                         dist = poisson link = log offset=logo;
+160          repeated subject=subject / within=visit type=cs corrw covb modelse;
+161        run;
+
+NOTE: The PROCEDURE GEE printed pages 15-17.
+NOTE: PROCEDURE GEE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+162        
+163        /*****************************************************************
+164        
+165          PROC GENMOD and PROC GEE use moment methods to estimate the
+166          correlation parameters.  We demonstrate the use of PROC GLIMMIX to
+167          instead estimate the correlation parameters using the quadratic
+168          estimating equation.  This procedure is really meant for fitting
+169          SS generalized linear mixed effects models as in Chapter 9 of the
+170          course.  However, just as PROC MIXED can be used to fit PA linear
+171          models, GLIMMIX can be used to fit PA models of the "generalized
+172          linear models type." Some of the syntax is indeed similar to that
+173          for PROC MIXED as a result.
+174        
+175          The DIST, LINK, and OFFSET options in the model statement are the
+176          same as for GENMOD and GEE.  As with MIXED, one must use the
+176      ! SOLUTION
+177          option in the MODEL statement to get the parameter estimates. The
+178          EMPIRICAL option in the PROC statement requests robust empiriacal
+179          standard errors.  The METHOD=MMPL option in the PROC statement
+179      ! requests
+180          that the quadratic estimating equation for estimating the
+180      ! correlation
+181          parameter and scale parameter be used.  Another option, RMPL, uses
+7                                The SAS System
+
+181      ! a
+182          REML version of this.
+183        
+184          Specification of the overall covariance matrix, and particularly
+184      ! the
+185          working correlation structure, is a bit different from the above
+186          procedures.  Because this procedure really isn't directly designed
+187          to fit PA models, the syntax is a bit arcane.  Instead of having a
+188          REPEATED statement that can be tricked into fitting an overall
+189          covariance matrix as we did with PROC MIXED, GLIMMIX uses the
+189      ! "residual"
+190          option to do this in a RANDOM statement.  The way it is used below
+191          requests that what SAS calls a "R-side" covariance matrix (what we
+192          would call the overall covariance matrix in this context) be
+193          constructed.  You should consult the documentation for details.
+194        
+195        ******************************************************************/
+196        
+197        title "PROC GLIMMIX, COMPOUND SYMMETRIC CORRELATION";
+198        proc glimmix data=seizure method=mmpl empirical;
+199          class subject visit;
+200          model seize = v trt trt*v / dist = poisson link = log offset=logo
+201              covb solution;
+202          random visit / subject=subject type=cs vcorr residual;
+203        
+204        *  Alternatively, the following statement is equivalent;
+205        *  random _residual_ / subject=subject type=cs vcorr;
+206        run;
+
+
+
+NOTE: Convergence criterion (PCONV=1.11022E-8) satisfied.
+NOTE: The PROCEDURE GLIMMIX printed pages 18-20.
+NOTE: PROCEDURE GLIMMIX used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+207        
+208        title "PROC GLIMMIX, FANCIER MODEL";
+209        proc glimmix data=seizure method=mmpl empirical;
+210          class subject visit;
+211          model seize = logage v visit4 trt trt*v trt*visit4 / dist = poisson
+211      !  link = log offset=logo
+212              covb solution;
+213          random visit / subject=subject type=cs vcorr residual;
+214        *  random _residual_ / subject=subject type=cs vcorr;
+215        run;
+
+
+
+NOTE: Convergence criterion (PCONV=1.11022E-8) satisfied.
+NOTE: The PROCEDURE GLIMMIX printed pages 21-23.
+NOTE: PROCEDURE GLIMMIX used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+8                                The SAS System
+
+
+216        
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.42 seconds
+      cpu time            0.27 seconds
+      

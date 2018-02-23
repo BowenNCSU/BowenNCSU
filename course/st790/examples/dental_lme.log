@@ -1,0 +1,634 @@
+1                                                          The SAS System                            12:11 Sunday, February 14, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+WARNING: Your system is scheduled to expire on March 30, 2016, which is 45 days from now. The SAS System will no longer function on 
+         or after that date. Please contact your SAS Installation Representative to obtain your updated SAS Installation Data (SID) 
+         file, which includes SETINIT information.
+To locate the name of your SAS Installation Representative go to http://support.sas.com/repfinder and provide your site number 
+70081220 and company name as NORTH CAROLINA STATE UNIVERSITY-SFA-T&R. On the SAS REP list provided, locate the REP for operating 
+system LIN X64.
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.18 seconds
+      cpu time            0.03 seconds
+      
+1           /*******************************************************************
+2          
+3            CHAPTER 6, EXAMPLE 1, Dental Study
+4          
+5            Subject-specific linear mixed effects model
+6          
+7            We use the RANDOM statement of PROC MIXED with TYPE=UN
+8            and possibly the GROUP= option to specify the among-individual
+9            covariance matrix D (possibly different by levels of GROUP)
+10         
+11           We now use the REPEATED statement with various TYPE= specifications,
+12           the LOCAL option, and possibly the GROUP = option with SUBJECT = to
+2                                                          The SAS System                            12:11 Sunday, February 14, 2016
+
+13           specify the within-individual covariance matrix R_i:
+14         
+15              - TYPE = specifies the form of the component of R_i due to the
+16                realization process; typically, one would choose a correlation
+17                structure that "damps out" over time.  Leaving out TYPE =
+18                fits R_i = sigma^2 I_{n_i} where sigma^2 can be made different
+19                by GROUP with the GROUP = option
+20         
+21              - LOCAL specifies that the user wishes to include a measurement
+22                error process component with constant variance over time.
+23                If LOCAL is not present, the overall form of R_i is determined
+24                by the TYPE = specification
+25         
+26              - Leaving out the REPEATED statement produces the default
+27                R_i = sigma^2 I_{n_i}
+28         
+29         *******************************************************************/
+30         
+31         options ls=80 ps=59 nodate; run;
+32         
+33         /******************************************************************
+34         
+35           Read in the data set
+36         
+37         *******************************************************************/
+38         
+39         data dent1; infile 'dental.dat';
+40           input obsno child age distance gender;
+41         run;
+
+NOTE: The infile 'dental.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/dental
+      .dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=09Jan2016:10:28:31,
+      File Size (bytes)=1552
+
+NOTE: 109 records were read from the infile 'dental.dat'.
+      The minimum record length was 0.
+      The maximum record length was 16.
+NOTE: SAS went to a new line when INPUT statement reached past the end of a 
+      line.
+NOTE: The data set WORK.DENT1 has 108 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+42         
+43         data dent1; set dent1;
+44           time=age;
+45         run;
+
+NOTE: There were 108 observations read from the data set WORK.DENT1.
+NOTE: The data set WORK.DENT1 has 108 observations and 6 variables.
+3                                The SAS System
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+46         
+47         /*******************************************************************
+48         
+49           Use PROC MIXED to fit the random coefficient model with different
+50           assumptions about among- and within-individual covariance
+51           struture.  We use ML -- leave off method=ML to get the default
+52           REML fit.  In all cases, we parametrize the random intercepts and
+53           slopes in terms of separate mean intercept and slope for each
+54           gender.
+55         
+56           The G and GCORR options in the RANDOM statement ask that the
+57           D matrix and its corresponding correlation matrix it implies
+58           be printed.  The V and VCORR options ask that the overall
+59           V matrix be printed (for the first subject or particular
+60           subjects as specified).
+61         
+62           To fit a random coefficient model, we must specify that both
+63           intercept and slope are random in the RANDOM statement.
+64         
+65         *******************************************************************/
+66         
+67         /******************************************************************
+68         
+69           MODEL (a)
+70         
+71           R_i = diagonal with constant variance sigma^2 same in both genders
+72           No REPEATED statement necessary to fit this R_i (default)
+73         
+74           D = (2x2) unstructured matrix same for both genders, specified
+75           in the RANDOM statement
+76         
+77         *******************************************************************/
+78         
+79         title '(a) DIAGONAL WITHIN-CHILD COVARIANCE MATRIX R_i';
+80         title2 'WITH CONSTANT VARIANCE SAME FOR EACH GENDER';
+81         title3 'SAME D MATRIX FOR BOTH GENDERS';
+82         proc mixed method=ml data=dent1;
+83           class gender child;
+84           model distance = gender gender*age / noint solution;
+85           random intercept age / type=un subject=child g gcorr v vcorr;
+86         
+87         * comparison of mean slopes and whether mean intercepts and slopes;
+88         * coincide for each gender;
+89         
+90           estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+91           contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+92         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 1-3.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.03 seconds
+4                                The SAS System
+
+      cpu time            0.03 seconds
+      
+
+93         
+94         /******************************************************************
+95         
+96            MODEL (b)
+97         
+98             Fit the same model as (a) but with a separate diagonal Ri matrix
+98       ! for
+99            each gender.  Thus, there are 2 separate variances sigma^2_(G and
+99       ! B)
+100           specified using GROUP=GENDER in the REPEATED statement
+101        
+102           D still = (2x2) unstructured matrix same for both genders as in
+102      ! (a)
+103           (specified in the RANDOM statement)
+104        
+105        *******************************************************************/
+106        
+107        title '(b) DIAGONAL WITHIN-CHILD COVARIANCE MATRIX R_i';
+108        title2 'WITH SEPARATE CONSTANT VARIANCE FOR EACH GENDER';
+109        title3 'SAME D MATRIX FOR BOTH GENDERS';
+110        proc mixed  method=ml data=dent1;
+111          class  child gender;
+112          model distance = gender gender*age / noint solution;
+113          repeated / group=gender subject=child;
+114          random intercept age / type=un subject=child g gcorr v=1,12
+114      ! vcorr=1,12;
+115          estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+116          contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+117        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 4-7.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+118        
+119        /******************************************************************
+120        
+121           MODEL (c)
+122        
+123           Fit the same model as (b) but now with D a (2x2) unstructured
+124           matrix different across genders, so there are two matrices D_G and
+124      !  D_B
+125           This is specified in the RANDOM statement by the GROUP=GENDER
+125      ! option
+126        
+127        *******************************************************************/
+128        
+129        title '(c) DIAGONAL WITHIN-CHILD COVARIANCE MATRIX R_i';
+130        title2 'WITH SEPARATE CONSTANT VARIANCE FOR EACH GENDER';
+131        title3 'DIFFERENT D MATRIX FOR BOTH GENDERS';
+132        proc mixed  method=ml data=dent1;
+5                                The SAS System
+
+133          class  child gender;
+134          model distance = gender gender*age / noint solution;
+135          repeated / group=gender subject=child;
+136          random intercept age / type=un group=gender subject=child g gcorr
+136      ! v=1,12 vcorr=1,12;
+137          estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+138          contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+139        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 8-11.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+140        /******************************************************************
+141        
+142           MODEL (d)
+143        
+144           R_ii is the sum of two components, an AR(1) component for
+144      ! realizations
+145           with common variance sigma^2_P for both genders and a diagonal
+146           component with variance sigma^2_M common to both genders for
+147           measurerment error
+148        
+149           In the REPEATED statement, TYPE = specifies the realization
+149      ! component
+150        
+151           Here, we use the AR(1) specification, as we have equally-spaced
+152           time points.  SAS allows the correlation parameter alpha to
+152      ! satisfy
+153           | alpha | <= 1, so that negative values are possible.  In the
+153      ! "Covariance
+154           Parameter Estimates" table, "Variance" is sigma^2_P and "AR(1)" is
+154      !  alpha.
+155        
+156           The LOCAL option specifies the measurement error component; in the
+156      !  table,
+157           "Residual" is sigma^2_M.
+158        
+159           Thus, the estimated R_i matrix has diagonal elements
+159      ! sigma^2_P+sigma^_M
+160           = "Variance + Residual"  and off-diagonal elements sigma^2_P
+160      ! alpha^|j-j'|,
+161           where (j,j') are time indices of time.  Thus, the implied
+161      ! correlation
+162           between Y_ij and Y_ij' is alpha^|j-j'|
+162      ! sigma^2_P/(sigma^2_P+sigma^2_M).
+163        
+164           D = (2x2) unstructured matrix same for both genders is specified
+164      ! as
+165           above in the RANDOM statement
+166        
+167           Even though from the .log file the optimization seems to have
+168           "converged,"  note that things are suspect.  The estimated lag-1
+168      ! correlation
+6                                The SAS System
+
+169           parameter alpha = -0.9935, or virtually -1.  Clearly, the
+169      ! optimization has
+170           been driven to put the estimate on the boundary of the parameter
+171           space, reflecting that there is some practical difficulty in
+171      ! identifying
+172           this model.  This is most likely because there really isn't any
+173           need for the AR(1) structure.
+174        
+175        *******************************************************************/
+176        
+177        title '(d) COMMON AR(1) WITHIN-CHILD REALIZATION COMPONENT AND';
+178        title2 'COMMON WITHIN-CHILD MEASUREMENT ERROR COMPONENT FOR R_i';
+179        title3 'SAME D MATRIX FOR BOTH GENDERS';
+180        proc mixed method=ml data=dent1;
+181          class gender child time;
+182          model distance = gender gender*age / noint solution ;
+183          random intercept age / type=un subject=child g gcorr v vcorr;
+184          repeated time / type=ar(1) local subject=child rcorr r;
+185          estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+186          contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+187        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 12-15.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+188        
+189        
+190        /******************************************************************
+191        
+192           MODEL (e)
+193        
+194           Re-fit Model (d) using the SP(EXP)(time) correlation model, which
+195           is just a reparameterization of the AR(1) model in our case, where
+196           where alpha in the AR(1) parameterization is replaced by
+196      ! exp(-1/alpha^*).
+197           Thus, this specification enforces the correlation to be > 0 -- if
+198           alpha^* starts heading off to zero, the estimated implied
+198      ! correlation
+199           is zero.
+200        
+201           This fit results in a message in the .log file:
+202        
+203           NOTE: Convergence criteria met but final hessian is not positive
+203      ! definite.
+204           NOTE: A linear combination of covariance parameters is confounded
+204      ! with the
+205                 residual
+206        
+207           This is because this parameterization constrains the within-child
+208           correlation parameter alpha to be positive as noted above, and it
+208      ! is
+209           being driven to zero.  Thus, there is no way to identify both the
+210           realization variance sigma^2_P ("Variance") and the measurement
+7                                The SAS System
+
+210      ! error
+211           variance sigma^2_M ("Residual").  Again, previous diagnostics
+211      ! suggested
+212           in SAS-ese) and the measurement error variance.  Again, there very
+212      !  like
+213           nonnegiligible within-child correlation, so it is moving the
+213      ! estimate
+214           of correlation parameter, and thus correlation, to 0.
+215        
+216         *******************************************************************/
+217        
+218        title '(e) COMMON AR(1) WITHIN-CHILD REALIZATION COMPONENT AND';
+219        title2 'COMMON WITHIN-CHILD MEASUREMENT ERROR COMPONENT FOR R_i';
+220        title3 'USING EXPONENTIAL MODEL; SAME D MATRIX FOR BOTH GENDERS';
+221        proc mixed method=ml data=dent1;
+222          class gender child time;
+223          model distance = gender gender*age / noint solution ;
+224          random intercept age / type=un subject=child g gcorr v vcorr;
+225          repeated  time / type=sp(exp)(age) local subject=child rcorr r;
+226          estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+227          contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+228        run;
+
+NOTE: Convergence criteria met but final hessian is not positive definite.
+NOTE: A linear combination of covariance parameters is confounded with the 
+      residual variance.
+NOTE: The PROCEDURE MIXED printed pages 16-19.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+229        
+230        /******************************************************************
+231        
+232           MODEL (f)
+233        
+234            This is the same as (d) except that we allow alpha and sigma^2_P
+235            to differ by gender -- apparently the LOCAL statement creates a
+236            COMMON measurement error variance sigma^2_M ("Residual") despite
+237            the GROUP option.  See above for the description of the
+238            parameterization and implied within-child correlation.
+239        
+240            This appears to converge, note that the implied overall R_i
+241            correlation matrix for girls has estimated off-diagonals
+241      ! virtually
+242            equal to zero.  The implied within-boy correlation, on the other
+243            hand, is -0.45 at lag 1.  Recall from the within-child
+243      ! examination
+244            of sample autocorrelation in Chapter 2 that this appeared
+244      ! strongly
+245            negative, and we surmised that it is likely driven by an outlying
+246            observation for one boy.
+247        
+248        *******************************************************************/
+249        
+250        title '(f) DIFFERENT AR(1) WITHIN-CHILD REALIZATION COMPONENT AND';
+8                                The SAS System
+
+251        title2 'SAME WITHIN-CHILD MEASUREMENT ERROR COMPONENT BY GENDER';
+252        title3 'DIFFERENT D MATRIX FOR EACH GENDER';
+253        proc mixed method=ml data=dent1;
+254          class gender child time;
+255          model distance = gender gender*age / noint solution ;
+256          random intercept age / type=un subject=child g gcorr v=1,12
+256      ! vcorr=1,12 group=gender;
+257          repeated time / type=ar(1) local subject=child r = 1,12 rcorr=1,12
+257      ! group=gender;
+258          estimate 'diff in mean slope' gender 0 0 gender*age 1 -1;
+259          contrast 'overall gender diff' gender 1 -1, gender*age 1 -1 /chisq;
+260        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 20-24.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+261        
+262        /******************************************************************
+263        
+264           Here are the AIC and BIC values for each fit:
+265        
+266                         (a)  AIC (Smaller is Better)         443.8
+267                         (b)  AIC (Smaller is Better)         424.0*
+268                         (c)  AIC (Smaller is Better)         429.1
+269                         (d)  AIC (Smaller is Better)         444.0
+270                         (e)  AIC (Smaller is Better)         445.8
+271                         (f)  AIC (Smaller is Better)         432.6
+272        
+273                         (a)  BIC (Smaller is Better)         454.2
+274                         (b)  BIC (Smaller is Better)         435.7*
+275                         (c)  BIC (Smaller is Better)         444.7
+276                         (d)  BIC (Smaller is Better)         457.0
+277                         (e)  BIC (Smaller is Better)         457.5
+278                         (f)  BIC (Smaller is Better)         452.0
+279        
+280            From above, the AIC and BIC values for model (d) are meaningless
+281            because the optimization did not really "converge."
+282        
+283            Both criteria suggest, among the models that can be identified
+284            from the data, model (b), with common D and diagonal R_i with
+285            separate within-child variances for each gender fits best.
+285      ! (These
+286            variances thus represent the sum of realization process and
+287            measurement error variance for each gender.)
+288        
+289            We can compare the results to the PA fit we did earlier.  The
+290            AIC and BIC using ML for the preferred PA model with overall
+291            covariance structure compound symmetric and different by gender
+292            yielded AIC = 424.8 and BIC = 435.2.  These values are entirely
+293            comparable to those for model (b).  In fact, the fitted overall
+294            compound symmetric covariance and correlation matrix  from the PA
+295            fit has overall variance = 4.4704 and correlation = 0.8680  for
+296            girls and variance = 5.2041 and correlation = 0.4701 for boys.
+9                                The SAS System
+
+297            Here, the estimated V matrices are not exactly compound
+297      ! symmetric,
+298            but they are close: For girls
+299        
+300                               Estimated V Matrix for child 1
+301        
+302                       Row        Col1        Col2        Col3        Col4
+303        
+304                         1      3.1426      2.7933      2.8889      2.9845
+305                         2      2.7933      3.4128      3.1426      3.3172
+306                         3      2.8889      3.1426      3.8411      3.6499
+307                         4      2.9845      3.3172      3.6499      4.4275
+308        
+309                              Estimated V Correlation Matrix for child 1
+310        
+311                       Row        Col1        Col2        Col3        Col4
+312        
+313                         1      1.0000      0.8529      0.8315      0.8001
+314                         2      0.8529      1.0000      0.8680      0.8534
+315                         3      0.8315      0.8680      1.0000      0.8851
+316                         4      0.8001      0.8534      0.8851      1.0000
+317        
+318            and for boys
+319        
+320                              Estimated V Matrix for child 12
+321        
+322                       Row        Col1        Col2        Col3        Col4
+323        
+324                         1      5.3271      2.7933      2.8889      2.9845
+325                         2      2.7933      5.5973      3.1426      3.3172
+326                         3      2.8889      3.1426      6.0256      3.6499
+327                         4      2.9845      3.3172      3.6499      6.6120
+328        
+329                              Estimated V Correlation Matrix for child 12
+330        
+331                       Row        Col1        Col2        Col3        Col4
+332        
+333                         1      1.0000      0.5115      0.5099      0.5029
+334                         2      0.5115      1.0000      0.5411      0.5453
+335                         3      0.5099      0.5411      1.0000      0.5782
+336                         4      0.5029      0.5453      0.5782      1.0000
+337        
+338        *******************************************************************/
+339        
+340        /******************************************************************
+341        
+342           MODEL (b), revisited
+343        
+344           Make some diagnostic plots of the "residuals" -- there are two
+345           types of residuals:
+346        
+347          - marginal (PA)   Y_i - X_i betahat  for individual i
+348        
+349          - conditional (SS)   Y_i - X_i betahat - Z_i bhat_i  for individual
+349      !  i
+350        
+351          where bhat_i are the empirical Bayes estimates of the random effect
+10                               The SAS System
+
+351      !  b_i.
+352          The RESIDUAL option in the MODEL statement requests that the
+352      ! residuals
+353          be computed.  The PLOTS option in the PROC MIXED statement requests
+354          that plots of the residuals be constructed:  an ordinary residuals
+355          vs. predicted values, a Q-Q plot of the residuals to assess
+355      ! normality,
+356          and a histogram.  The OUTPM option along with the RESIDUAL option
+356      ! requests
+357          that the PA predicted values X_i betahat and the marginal residuals
+358          be output to a data set.  The OUTP option does the same for the SS
+359          predicted values X_i betahat + Z_i bhat_i and conditional
+359      ! residuals.
+360        
+361          Note that the conditional predicted values and residuals will be
+362          subject to shrinkage, as discussed in Section 6.4.
+363        
+364          The SOLUTION option in the RANDOM statement produces the empirical
+365          Bayes estimates bhat_i.
+366        
+367          We use REML for this call.  The STUDENTPANEL graph name in the
+367      ! PLOTS
+368          option requests that the residuals be standardized by dividing by
+369          estimates of their variances; see the PROC MIXED documentation.
+370        
+371          Can get estimated semivariogram of the residuals using PROC
+371      ! VARIOGRAM.
+372        
+373          We request that the output, which includes the plots, be put in
+374          the file dentresid.pdf.
+375        
+376        *******************************************************************/
+377        
+378        title '(b) DIAGONAL WITHIN-CHILD COVARIANCE MATRIX R_i';
+379        title2 'WITH SEPARATE CONSTANT VARIANCE FOR EACH GENDER';
+380        title3 'SAME D MATRIX FOR BOTH GENDERS';
+381        
+382        ods graphics on;
+383        ods pdf file="dentalresid.sas.pdf";
+NOTE: Writing ODS PDF output to DISK destination 
+      "/home/davidian/ST/Documents/teaching/longitudinal/examples/dentalresid.sa
+      s.pdf", printer "PDF".
+384        proc mixed  data=dent1 plots=studentpanel(marginal conditional) ;
+385          class  child gender;
+386          model distance = gender gender*age / noint solution residual
+387              outp=dentss outpm=dentpa;
+388          repeated / group=gender subject=child;
+389          random intercept age / type=un subject=child g gcorr v=1,12
+390              vcorr=1,12 solution;
+391        run;
+
+NOTE: Convergence criteria met.
+NOTE: The data set WORK.DENTSS has 108 observations and 15 variables.
+NOTE: The data set WORK.DENTPA has 108 observations and 15 variables.
+NOTE: The PROCEDURE MIXED printed pages 25-29.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           5.93 seconds
+11                               The SAS System
+
+      cpu time            0.83 seconds
+      
+
+392        ods pdf close;
+NOTE: ODS PDF printed 11 pages to 
+      /home/davidian/ST/Documents/teaching/longitudinal/examples/dentalresid.sas
+      .pdf.
+393        ods graphics off;
+394        
+395        *  Marginal predicted values and residuals for the first 5 girls;
+396        
+397        proc print data=dentpa(obs=20);
+398        run;
+
+NOTE: There were 20 observations read from the data set WORK.DENTPA.
+NOTE: The PROCEDURE PRINT printed page 30.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+399        
+400        *  Conditional predicted values and residuals for the first 5 girls;
+401        
+402        proc print data=dentss(obs=20);
+403        run;
+
+NOTE: There were 20 observations read from the data set WORK.DENTSS.
+NOTE: The PROCEDURE PRINT printed page 31.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+404        
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           6.31 seconds
+      cpu time            1.03 seconds
+      

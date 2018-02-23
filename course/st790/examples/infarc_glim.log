@@ -1,0 +1,167 @@
+1                                                          The SAS System                               09:39 Tuesday, March 1, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.16 seconds
+      cpu time            0.03 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 7, Fitting a logistic regression model using PROC
+4            GENMOD.
+5          
+6            We consider data with binary response (woman has suffered a
+7            myocardial infarction (0=no, 1=yes), with covariates given
+8            below.
+9          
+10         ******************************************************************/
+11         
+12         options ls=80 ps=59 nodate; run;
+13         
+14         /******************************************************************
+15         
+16           The data look like (first 10 records)
+17         
+2                                The SAS System
+
+18              1 1 33 1 0
+19              2 0 32 0 0
+20              3 1 37 0 1
+21              4 0 36 0 0
+22              5 1 50 1 1
+23              6 1 40 0 0
+24              7 0 35 0 0
+25              8 1 33 0 0
+26              9 1 33 0 0
+27              10 0 31 0 0
+28         
+29           column 1      subject id
+30           column 2      oral contraceptive indicator (0=no,1=yes)
+31           column 3      age (years)
+32           column 4      smoking indicator (0=no,1=yes)
+33           column 5      binary response -- whether MI has been suffered
+34                         (0=no,1=yes)
+35         
+36         ******************************************************************/
+37         
+38         data mi; infile 'infarc.dat';
+39           input id oral age smoke mi;
+40         run;
+
+NOTE: The infile 'infarc.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/infarc
+      .dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=01Mar2016:09:17:29,
+      File Size (bytes)=2492
+
+NOTE: 200 records were read from the infile 'infarc.dat'.
+      The minimum record length was 10.
+      The maximum record length was 12.
+NOTE: The data set WORK.MI has 200 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+41         
+42         /*****************************************************************
+43         
+44           Fit the logistic regression model using PROC GENMOD.
+45           We do not use a CLASS statement here, as the covariates are
+46           either continuous (AGE) or already in "dummy" form (ORAL, SMOKE).
+47           The model statement with the LINK=LOGIT option results in the
+48           logistic regression model.  The DIST=BINOMIAL
+49           specifies the Bernoulli distribution, which is the simplest case
+50           of a binomial distribution.
+51         
+52           PROC GENMOD models by default the probability that Y=0 rather
+53           than Y=1.  To make PROC GENMOD model probability that
+54           Y=1, as is standard, one must include the DESCENDING option in
+55           the PROC GENMOD statement.  An explicit statement about
+3                                The SAS System
+
+56           what is being modeled will appear in the log file and output.
+57         
+58           The ESTIMATE statement with the EXP option will output
+59           the exponential of the specified linear combination of the
+60           parameters.  We use it here to compute an odds ratio.  The logistic
+61           model says that the ODDS of having a MI, given a woman's
+61       ! covariates,
+62           which is the ratio of the probability of having a MI to not having
+63           one, are
+64         
+65             exp(beta_0 + beta_1 oral + beta_2 age + beta_3 smoke)
+66         
+67           The ODDS RATIO compares 2 odds - for example, if we are interested
+68           in comparing the odds of a MI if a randomly chosen woman smokes
+69           (smoke=1) relative to those if she does not (smoke=0), with all her
+70           other covariates fixed, from above, this ratio is exp(beta_3).
+71           Thus, exp(beta_3) is a multiplicative factor that measures by how
+71       ! much
+72           her odds of MI change.  If beta_3>0, this factor is >1, meaning
+72       ! that
+73           the odds increase; if beta_3<0, this factor is <1, meaning that the
+73       !  odds
+74           decrease.  beta_3 is referred to as the LOG ODDS RATIO.
+75         
+76         ******************************************************************/
+77         
+78         proc genmod data=mi descending;
+79           model mi = oral age smoke / dist = binomial link = logit;
+80           estimate "smk log odds ratio" int 0 oral 0 age 0 smoke 1 / exp;
+81         run;
+
+NOTE: PROC GENMOD is modeling the probability that mi='1'.
+NOTE: The Pearson chi-square and deviance are not computed since the AGGREGATE 
+      option is not specified.
+NOTE: Algorithm converged.
+NOTE: The scale parameter was held fixed.
+NOTE: The PROCEDURE GENMOD printed pages 1-2.
+NOTE: PROCEDURE GENMOD used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.22 seconds
+      cpu time            0.08 seconds
+      

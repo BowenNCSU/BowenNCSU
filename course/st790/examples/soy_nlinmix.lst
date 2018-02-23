@@ -1,0 +1,483 @@
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         1
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._NLINMIX            
+             Dependent Variable           pseudo_lwt               
+             Weight Variable              _weight_                 
+             Covariance Structure         Unstructured             
+             Subject Effect               plot                     
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               plot         48    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48                
+
+
+                                  Dimensions
+
+                      Covariance Parameters             7
+                      Columns in X                      3
+                      Columns in Z per Subject          3
+                      Subjects                         48
+                      Max Obs per Subject              10
+
+
+                            Number of Observations
+
+                  Number of Observations Read             412
+                  Number of Observations Used             412
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+    CovP1     CovP2     CovP3     CovP4     CovP5     CovP6     CovP7  Variance
+
+  10.5420   -0.5803    1.5168  -0.01436  -0.00032  2.142E-6   0.05149   0.05149
+
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         2
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                                Parameter Search
+ 
+                             Log Like    -2 Log Like
+
+                            -356.4227       712.8455
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       712.84545750      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      plot        10.5420
+                        UN(2,1)      plot        -0.5803
+                        UN(2,2)      plot         1.5168
+                        UN(3,1)      plot       -0.01436
+                        UN(3,2)      plot       -0.00032
+                        UN(3,3)      plot       2.142E-6
+                        Residual                 0.05149
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               712.8
+                     AIC (Smaller is Better)         732.8
+                     AICC (Smaller is Better)        733.4
+                     BIC (Smaller is Better)         751.6
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           6          0.00          1.0000
+
+
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         3
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                 Standard
+       Effect        Estimate       Error      DF    t Value    Pr > |t|
+
+       d_beta1        16.8881      0.5933     268      28.47      <.0001
+       d_beta2        51.6734      0.4333     268     119.26      <.0001
+       d_beta3         0.1331    0.001515     268      87.84      <.0001
+
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b1                 1    -0.00059      1.1745     268      -0.00      0.9996
+ d_b2                 1    0.009576      0.9514     268       0.01      0.9920
+ d_b3                 1    0.000651           0     268      Infty      <.0001
+ d_b1                 2      0.3255      1.1968     268       0.27      0.7858
+ d_b2                 2      0.1345      0.9670     268       0.14      0.8894
+ d_b3                 2    0.001129           0     268      Infty      <.0001
+ d_b1                 3      1.1109      1.1431     268       0.97      0.3320
+ d_b2                 3      0.7992      0.9826     268       0.81      0.4168
+ d_b3                 3    -0.00715           0     268     -Infty      <.0001
+ d_b1                 4    -0.07819      1.2022     268      -0.07      0.9482
+ d_b2                 4    0.000515      0.9287     268       0.00      0.9996
+ d_b3                 4    0.006800           0     268      Infty      <.0001
+ d_b1                 5      0.5566      1.2307     268       0.45      0.6515
+ d_b2                 5    -0.08587      1.0180     268      -0.08      0.9328
+ d_b3                 5    -0.00197           0     268     -Infty      <.0001
+ d_b1                 6      0.6765      1.1854     268       0.57      0.5687
+ d_b2                 6      0.3455      0.9547     268       0.36      0.7177
+ d_b3                 6    -0.00008           0     268     -Infty      <.0001
+ d_b1                 7      0.1296      1.1779     268       0.11      0.9125
+ d_b2                 7      0.3769      0.9723     268       0.39      0.6986
+ d_b3                 7    -0.00008           0     268     -Infty      <.0001
+ d_b1                 8      0.1845      1.1597     268       0.16      0.8737
+ d_b2                 8      0.7491      0.9586     268       0.78      0.4352
+ d_b3                 8    -0.00049           0     268     -Infty      <.0001
+ d_b1                 9      1.0915      1.1876     268       0.92      0.3589
+ d_b2                 9     -0.1194      0.9654     268      -0.12      0.9016
+ d_b3                 9    -0.00359           0     268     -Infty      <.0001
+ d_b1                10      2.7066      1.2067     268       2.24      0.0257
+ d_b2                10      0.4541      0.9713     268       0.47      0.6405
+ d_b3                10    -0.00529           0     268     -Infty      <.0001
+ d_b1                11      3.1388      1.2375     268       2.54      0.0118
+ d_b2                11    -0.07631      0.9656     268      -0.08      0.9371
+ d_b3                11    -0.00453           0     268     -Infty      <.0001
+ d_b1                12      2.6182      1.2604     268       2.08      0.0387
+ d_b2                12     -0.7955      0.9514     268      -0.84      0.4038
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         4
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b3                12    -0.00119           0     268     -Infty      <.0001
+ d_b1                13      1.6379      1.2341     268       1.33      0.1856
+ d_b2                13     -0.3849      0.9470     268      -0.41      0.6847
+ d_b3                13    0.000827           0     268      Infty      <.0001
+ d_b1                14      3.3148      1.2313     268       2.69      0.0075
+ d_b2                14     0.09505      0.9693     268       0.10      0.9220
+ d_b3                14    -0.00544           0     268     -Infty      <.0001
+ d_b1                15      2.2310      1.2263     268       1.82      0.0700
+ d_b2                15      0.3233      0.9551     268       0.34      0.7353
+ d_b3                15    -0.00086           0     268     -Infty      <.0001
+ d_b1                16      2.4850      1.2572     268       1.98      0.0491
+ d_b2                16     -0.3175      0.9464     268      -0.34      0.7375
+ d_b3                16    0.000704           0     268      Infty      <.0001
+ d_b1                17     -5.5134      0.9957     268      -5.54      <.0001
+ d_b2                17      0.5870      0.9527     268       0.62      0.5384
+ d_b3                17    0.008527           0     268      Infty      <.0001
+ d_b1                18     -5.9728      0.9483     268      -6.30      <.0001
+ d_b2                18      1.0135      0.9728     268       1.04      0.2984
+ d_b3                18    0.003017           0     268      Infty      <.0001
+ d_b1                19     -4.6124      1.0048     268      -4.59      <.0001
+ d_b2                19      1.4598      0.9654     268       1.51      0.1317
+ d_b3                19    0.005379           0     268      Infty      <.0001
+ d_b1                20     -6.1586      0.9444     268      -6.52      <.0001
+ d_b2                20      1.3805      0.9672     268       1.43      0.1547
+ d_b3                20    0.005079           0     268      Infty      <.0001
+ d_b1                21     -6.4296      0.9498     268      -6.77      <.0001
+ d_b2                21      0.5592      0.9592     268       0.58      0.5604
+ d_b3                21    0.006692           0     268      Infty      <.0001
+ d_b1                22     -8.1997      0.8852     268      -9.26      <.0001
+ d_b2                22      0.7760      0.9424     268       0.82      0.4110
+ d_b3                22     0.01205           0     268      Infty      <.0001
+ d_b1                23     -5.4648      0.9969     268      -5.48      <.0001
+ d_b2                23      0.5289      0.9538     268       0.55      0.5797
+ d_b3                23    0.008142           0     268      Infty      <.0001
+ d_b1                24     -5.3764      0.9750     268      -5.51      <.0001
+ d_b2                24      0.6041      0.9733     268       0.62      0.5354
+ d_b3                24    0.002331           0     268      Infty      <.0001
+ d_b1                25     -0.6863      1.1139     268      -0.62      0.5383
+ d_b2                25      0.4240      0.9819     268       0.43      0.6662
+ d_b3                25    -0.00254           0     268     -Infty      <.0001
+ d_b1                26     -0.1886      1.1234     268      -0.17      0.8668
+ d_b2                26      0.5026      0.9826     268       0.51      0.6095
+ d_b3                26    -0.00299           0     268     -Infty      <.0001
+ d_b1                27     -0.3536      1.0550     268      -0.34      0.7378
+ d_b2                27      0.8596      1.0099     268       0.85      0.3954
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         5
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b3                27    -0.01063           0     268     -Infty      <.0001
+ d_b1                28     -1.1665      1.1186     268      -1.04      0.2980
+ d_b2                28      0.5897      0.9708     268       0.61      0.5441
+ d_b3                28    0.001247           0     268      Infty      <.0001
+ d_b1                29     -1.3522      1.0818     268      -1.25      0.2124
+ d_b2                29      0.7162      0.9867     268       0.73      0.4685
+ d_b3                29    -0.00328           0     268     -Infty      <.0001
+ d_b1                30     -0.9239      1.1091     268      -0.83      0.4056
+ d_b2                30      0.2853      0.9827     268       0.29      0.7718
+ d_b3                30    -0.00275           0     268     -Infty      <.0001
+ d_b1                31      2.0647      1.2542     268       1.65      0.1009
+ d_b2                31     -1.1786      0.9610     268      -1.23      0.2211
+ d_b3                31    0.000390           0     268      Infty      <.0001
+ d_b1                32      0.3252      1.1049     268       0.29      0.7688
+ d_b2                32      1.0266      0.9913     268       1.04      0.3013
+ d_b3                32    -0.00542           0     268     -Infty      <.0001
+ d_b1                33      0.3096      1.2456     268       0.25      0.8039
+ d_b2                33    -0.01635      0.9870     268      -0.02      0.9868
+ d_b3                33    -0.00069           0     268     -Infty      <.0001
+ d_b1                34     -1.9444      1.2118     268      -1.60      0.1098
+ d_b2                34     -0.3797      0.9676     268      -0.39      0.6950
+ d_b3                34    0.007434           0     268      Infty      <.0001
+ d_b1                35      1.1734      1.3093     268       0.90      0.3710
+ d_b2                35     -1.2482      0.9758     268      -1.28      0.2019
+ d_b3                35    0.000995           0     268      Infty      <.0001
+ d_b1                36      0.6921      1.2974     268       0.53      0.5942
+ d_b2                36     -0.8501      0.9711     268      -0.88      0.3821
+ d_b3                36    0.003240           0     268      Infty      <.0001
+ d_b1                37      1.4548      1.2842     268       1.13      0.2583
+ d_b2                37     -0.5913      0.9878     268      -0.60      0.5499
+ d_b3                37    -0.00260           0     268     -Infty      <.0001
+ d_b1                38      1.9123      1.2992     268       1.47      0.1422
+ d_b2                38     -0.6749      0.9867     268      -0.68      0.4945
+ d_b3                38    -0.00280           0     268     -Infty      <.0001
+ d_b1                39      1.0377      1.2692     268       0.82      0.4143
+ d_b2                39      0.1859      0.9824     268       0.19      0.8501
+ d_b3                39    0.000081           0     268      Infty      <.0001
+ d_b1                40     -0.7028      1.1830     268      -0.59      0.5530
+ d_b2                40      0.5652      1.0007     268       0.56      0.5727
+ d_b3                40    -0.00340           0     268     -Infty      <.0001
+ d_b1                41      3.6006      1.3630     268       2.64      0.0087
+ d_b2                41     -1.2645      0.9801     268      -1.29      0.1981
+ d_b3                41    -0.00296           0     268     -Infty      <.0001
+ d_b1                42      2.6582      1.3422     268       1.98      0.0487
+ d_b2                42     -0.6194      0.9727     268      -0.64      0.5248
+          NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES         6
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b3                42    0.000734           0     268      Infty      <.0001
+ d_b1                43      3.7721      1.3808     268       2.73      0.0067
+ d_b2                43     -1.8133      0.9788     268      -1.85      0.0650
+ d_b3                43    -0.00305           0     268     -Infty      <.0001
+ d_b1                44      4.6739      1.4184     268       3.30      0.0011
+ d_b2                44     -1.2497      0.9630     268      -1.30      0.1955
+ d_b3                44    0.001112           0     268      Infty      <.0001
+ d_b1                45      2.6433      1.3270     268       1.99      0.0474
+ d_b2                45     -0.9114      0.9837     268      -0.93      0.3550
+ d_b3                45    -0.00282           0     268     -Infty      <.0001
+ d_b1                46      3.2141      1.3677     268       2.35      0.0195
+ d_b2                46     -1.0266      0.9703     268      -1.06      0.2910
+ d_b3                46    0.000608           0     268      Infty      <.0001
+ d_b1                47      0.9485      1.2814     268       0.74      0.4598
+ d_b2                47     -0.7287      0.9834     268      -0.74      0.4594
+ d_b3                47    -0.00078           0     268     -Infty      <.0001
+ d_b1                48      2.4368      1.3414     268       1.82      0.0704
+ d_b2                48     -1.0195      0.9743     268      -1.05      0.2963
+ d_b3                48    0.000216           0     268      Infty      <.0001
+           COVARIATES, NO RANDOM EFFECT FOR HALF LIFE OR GROWTH RATE           7
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK._NLINMIX            
+             Dependent Variable           pseudo_lwt               
+             Weight Variable              _weight_                 
+             Covariance Structure         Unstructured             
+             Subject Effect               plot                     
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               plot         48    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48                
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                     18
+                      Columns in Z per Subject          1
+                      Subjects                         48
+                      Max Obs per Subject              10
+
+
+                            Number of Observations
+
+                  Number of Observations Read             412
+                  Number of Observations Used             412
+                  Number of Observations Not Used           0
+
+
+                                Parameter Search
+ 
+            CovP1       CovP2    Variance      Log Like    -2 Log Like
+
+           1.0598     0.04691     0.04691     -291.6862       583.3724
+
+
+           COVARIATES, NO RANDOM EFFECT FOR HALF LIFE OR GROWTH RATE           8
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  1              1       583.37236412      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        UN(1,1)      plot         1.0598
+                        Residual                 0.04691
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood               583.4
+                     AIC (Smaller is Better)         623.4
+                     AICC (Smaller is Better)        625.5
+                     BIC (Smaller is Better)         660.8
+
+
+                        PARMS Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           1          0.00          1.0000
+
+
+                          Solution for Fixed Effects
+ 
+                                 Standard
+       Effect        Estimate       Error      DF    t Value    Pr > |t|
+
+       d_beta11       19.0697      1.1093     352      17.19      <.0001
+       d_beta12       21.3162      1.1515     352      18.51      <.0001
+       d_beta13       10.4353      0.6438     352      16.21      <.0001
+       d_beta14       17.9742      0.9607     352      18.71      <.0001
+       d_beta15       15.8100      0.9171     352      17.24      <.0001
+       d_beta16       17.2999      0.9776     352      17.70      <.0001
+       d_beta21       54.4257      1.0090     352      53.94      <.0001
+       d_beta22       53.7591      0.9964     352      53.96      <.0001
+       d_beta23       52.1738      0.9125     352      57.18      <.0001
+       d_beta24       51.5560      0.9074     352      56.81      <.0001
+       d_beta25       49.7136      0.9067     352      54.83      <.0001
+       d_beta26       48.4907      0.9267     352      52.33      <.0001
+           COVARIATES, NO RANDOM EFFECT FOR HALF LIFE OR GROWTH RATE           9
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                 Standard
+       Effect        Estimate       Error      DF    t Value    Pr > |t|
+
+       d_beta31        0.1249    0.003132     352      39.90      <.0001
+       d_beta32        0.1236    0.003156     352      39.15      <.0001
+       d_beta33        0.1410    0.003713     352      37.99      <.0001
+       d_beta34        0.1385    0.003673     352      37.71      <.0001
+       d_beta35        0.1370    0.003821     352      35.86      <.0001
+       d_beta36        0.1345    0.003952     352      34.04      <.0001
+
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b1                 1    -0.08197      0.8239     352      -0.10      0.9208
+ d_b1                 2    -0.07831      0.8380     352      -0.09      0.9256
+ d_b1                 3      0.8270      0.8340     352       0.99      0.3221
+ d_b1                 4     -0.9308      0.8143     352      -1.14      0.2538
+ d_b1                 5      0.6501      0.8638     352       0.75      0.4522
+ d_b1                 6     0.08596      0.8258     352       0.10      0.9172
+ d_b1                 7     -0.1493      0.8371     352      -0.18      0.8586
+ d_b1                 8     -0.3228      0.8212     352      -0.39      0.6945
+ d_b1                 9     -0.3688      0.8469     352      -0.44      0.6635
+ d_b1                10      0.1453      0.8519     352       0.17      0.8647
+ d_b1                11      0.5271      0.8555     352       0.62      0.5382
+ d_b1                12      0.3617      0.8539     352       0.42      0.6721
+ d_b1                13     -0.5230      0.8454     352      -0.62      0.5366
+ d_b1                14      0.6025      0.8562     352       0.70      0.4821
+ d_b1                15     -0.5087      0.8455     352      -0.60      0.5478
+ d_b1                16     -0.2361      0.8482     352      -0.28      0.7809
+ d_b1                17      0.1811      0.6947     352       0.26      0.7944
+ d_b1                18      0.3049      0.6977     352       0.44      0.6624
+ d_b1                19      0.5820      0.7044     352       0.83      0.4092
+ d_b1                20     -0.2087      0.6851     352      -0.30      0.7608
+ d_b1                21     -0.1183      0.6873     352      -0.17      0.8635
+ d_b1                22     -1.9731      0.6421     352      -3.07      0.0023
+ d_b1                23      0.2883      0.6973     352       0.41      0.6795
+ d_b1                24      0.9438      0.7131     352       1.32      0.1865
+ d_b1                25     -0.2523      0.8391     352      -0.30      0.7638
+ d_b1                26    -0.02389      0.8418     352      -0.03      0.9774
+ d_b1                27      0.5054      0.8479     352       0.60      0.5515
+ d_b1                28     -0.9946      0.8301     352      -1.20      0.2316
+ d_b1                29     -0.6122      0.8347     352      -0.73      0.4638
+ d_b1                30     -0.2648      0.8389     352      -0.32      0.7524
+ d_b1                31      1.4168      0.8581     352       1.65      0.0996
+ d_b1                32      0.2258      0.8447     352       0.27      0.7894
+           COVARIATES, NO RANDOM EFFECT FOR HALF LIFE OR GROWTH RATE          10
+                                                     10:21 Monday, April 4, 2016
+
+                              The Mixed Procedure
+
+                          Solution for Random Effects
+ 
+                                        Std Err
+ Effect    plot            Estimate        Pred      DF    t Value    Pr > |t|
+
+ d_b1                33     -0.1253      0.8031     352      -0.16      0.8761
+ d_b1                34     -1.9592      0.7754     352      -2.53      0.0120
+ d_b1                35      0.6827      0.8148     352       0.84      0.4027
+ d_b1                36    -0.03541      0.8044     352      -0.04      0.9649
+ d_b1                37      0.8709      0.8175     352       1.07      0.2874
+ d_b1                38      1.1210      0.8210     352       1.37      0.1730
+ d_b1                39    -0.03580      0.8044     352      -0.04      0.9645
+ d_b1                40     -0.5191      0.7972     352      -0.65      0.5154
+ d_b1                41      0.6039      0.8347     352       0.72      0.4698
+ d_b1                42     -0.5639      0.8198     352      -0.69      0.4920
+ d_b1                43      0.9634      0.8391     352       1.15      0.2517
+ d_b1                44      0.3674      0.8317     352       0.44      0.6589
+ d_b1                45     0.06350      0.8279     352       0.08      0.9389
+ d_b1                46     -0.1474      0.8252     352      -0.18      0.8583
+ d_b1                47     -0.9245      0.8151     352      -1.13      0.2575
+ d_b1                48     -0.3624      0.8224     352      -0.44      0.6597

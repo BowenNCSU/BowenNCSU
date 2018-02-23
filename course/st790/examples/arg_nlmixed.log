@@ -1,0 +1,248 @@
+1                                                          The SAS System                                10:55 Friday, April 1, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.17 seconds
+      cpu time            0.03 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 9, Argatroban pharmacokinetic study
+4          
+5            Fit a subject-specific nonlinear mixed effects model to the
+6            argatroban PK data in Section 9.5 of Davidian and Giltinan (1995)
+7            using SAS PROC NLMIXED.  The procedure implments the model using
+8            the first order linearization about zero and solving GEE-2
+9            equations (METHOD=FIRO) and adaptive Gaussian quadature (the default).
+10         
+11         ******************************************************************/
+12         
+13         options ps=55 ls=80 nodate;
+2                                The SAS System
+
+14         
+15         %inc 'nlmm801.sas'
+16              / nosource;
+1219       
+1220       /******************************************************************
+1221       
+1222           The data look like (data on first subject)
+1223       
+1224           1 1 1 30 95.7
+1225           2 1 1 60 122
+1226           3 1 1 90 133
+1227           4 1 1 160 162
+1228           5 1 1 200 200
+1229           6 1 1 240 172
+1230           7 1 1 245 122
+1231           8 1 1 250 120
+1232           9 1 1 260 60.6
+1233          10 1 1 275 70
+1234          11 1 1 295 47.3
+1235       
+1236         column 1      observation no
+1237         column 2      subject id
+1238         column 3      infusion rate
+1239         column 4      time (min)
+1240         column 5      argatroban concentration
+1241       
+1242       ******************************************************************/
+1243       
+1244       data arg; infile 'argconc.dat';
+1245         input obsno indiv dose time conc;
+1246         tinf=240;
+1247         t1=1; if time>tinf then t1=0;
+1248         t2=tinf*(1-t1)+t1*time;
+1249       run;
+
+NOTE: The infile 'argconc.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/nlmm_examples/a
+      rgconc.dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Mar2016:11:01:19,
+      File Size (bytes)=8624
+
+NOTE: 475 records were read from the infile 'argconc.dat'.
+      The minimum record length was 12.
+      The maximum record length was 21.
+NOTE: The data set WORK.ARG has 475 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+3                                The SAS System
+
+1250       data arg; infile 'argconc.dat';
+1251         input obsno id dose time conc;
+1252       run;
+
+NOTE: The infile 'argconc.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/nlmm_examples/a
+      rgconc.dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Mar2016:11:01:19,
+      File Size (bytes)=8624
+
+NOTE: 475 records were read from the infile 'argconc.dat'.
+      The minimum record length was 12.
+      The maximum record length was 21.
+NOTE: The data set WORK.ARG has 475 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1253       
+1254       data arg; set arg;
+1255         tinf=240;
+1256         t1=1;
+1257         if time>tinf then t1=0;
+1258         t2=tinf*(1-t1)+t1*time;
+1259       run;
+
+NOTE: There were 475 observations read from the data set WORK.ARG.
+NOTE: The data set WORK.ARG has 475 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1260       
+1261       /*****************************************************************
+1262       
+1263          PROC NLMIXED is very general, so requires a lot of intervention
+1264          by the user to set up the model.  It is necessary to specify
+1265          starting values for all parameters.  Starting values for the fixed
+1266          effects might be found by fitting the model by OLS taking all
+1267          observations to be independent, and then using the NLINMIX macro
+1268          or R nlme() to get starting values for the covariance parameters.
+1269       
+1270          The default integation method is adaptive Gaussian quadrature.
+1270     ! The
+1271          number of quadrature points (abscissae) is calculated adaptively.
+1271     !  If
+1272          you want to specify a fixed number of points L, specify
+1273       
+4                                The SAS System
+
+1274          METHOD=GAUSS QPOINTS=L
+1275       
+1276          in the PROC NLMIXED statement.  The full Laplace method with no
+1277          with no further linearization with QPOINTS=1.  The quadrature
+1278          can be made nonadaptive with the NOAD option.
+1279       
+1280          As shown below, the user has to specify starting values for all
+1281          fixed effects and covariance parameters in the PARMS statement.
+1282          Programming statements allow the user to specify whatever model
+1283          s/he wants, with any sort of nonlinearity.  The MODEL statement
+1284          specifies the within-individual conditional distribution.  See
+1285          the documentation for the built-in conditional distributions that
+1286          are possible - these assume within-individual independence of the
+1287          Y_ij.  The user can specify his/her own within-individual
+1287     ! conditional
+1288          likelihood with some programming.  The RANDOM statement is where
+1288     ! one
+1289          specifies the random effects - the syntax is pretty obvious.
+1290       
+1291          See the proc nlmixed documentation for information on syntax,
+1292          required statements, and options.
+1293       
+1294          Compare the results to those from NLINMIX and nlme() - they are
+1295          somewhat different, particularly for estimation of the covariance
+1296          parameters.
+1297       
+1298       ******************************************************************/
+1299       
+1300       title "ARGATROBAN PK USING ADAPTIVE GAUSSIAN QUADRATURE";
+1301       proc nlmixed data=arg method=gauss qpoints=10;
+1302         parms beta1=-6.0 beta2=-2.0 s2b1=0.14 cb12=0.006 s2b2=0.005
+1302     ! s2=20.0,delta=0.5;
+1303         cl=exp(beta1+b1);
+1304         v=exp(beta2+b2);
+1305         pred=(dose/cl)*(1-exp(-cl*t2/v))*exp(-cl*(1-t1)*(time-tinf)/v);
+1306         model conc ~ normal(pred,(pred**(2*delta))*s2);
+1307         random b1 b2 ~ normal([0,0],[s2b1,cb12,s2b2])
+1308            subject=id;
+1309       run;
+
+NOTE: Convergence criterion (GCONV=1E-8) satisfied.
+NOTE: At least one element of the gradient is greater than 1e-3.
+NOTE: The PROCEDURE NLMIXED printed pages 1-3.
+NOTE: PROCEDURE NLMIXED used (Total process time):
+      real time           46.54 seconds
+      cpu time            46.54 seconds
+      
+
+1310       
+1311       *  Check the .log file -- this fit is not reliable;
+1312       
+1313       title "ARGATROBAN PK USING FO METHOD WITH GEE-2";
+1314       proc nlmixed data=arg method=firo;
+5                                The SAS System
+
+1315         parms beta1=-6.0 beta2=-2.0 s2b1=0.14 cb12=0.006 s2b2=0.005
+1315     ! s2=20.0,delta=0.5;
+1316         cl=exp(beta1+b1);
+1317         v=exp(beta2+b2);
+1318         pred=(dose/cl)*(1-exp(-cl*t2/v))*exp(-cl*(1-t1)*(time-tinf)/v);
+1319         model conc ~ normal(pred,(pred**(2*delta))*s2);
+1320         random b1 b2 ~ normal([0,0],[s2b1,cb12,s2b2])
+1321            subject=id;
+1322       run;
+
+NOTE: Convergence criterion (GCONV=1E-8) satisfied.
+NOTE: At least one element of the gradient is greater than 1e-3.
+NOTE: Moore-Penrose inverse is used in covariance matrix.
+WARNING: The final Hessian matrix is full rank but has at least one negative 
+         eigenvalue. Second-order optimality condition violated.
+NOTE: The PROCEDURE NLMIXED printed pages 4-6.
+NOTE: PROCEDURE NLMIXED used (Total process time):
+      real time           0.44 seconds
+      cpu time            0.45 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           47.24 seconds
+      cpu time            47.05 seconds
+      

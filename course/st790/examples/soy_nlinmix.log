@@ -1,0 +1,664 @@
+1                                                          The SAS System                                10:21 Monday, April 4, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.16 seconds
+      cpu time            0.02 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 9, Soybean study
+4          
+5            Fit a subject-specific nonlinear mixed effects model to the
+6            soybean data.  This macro implements approximate
+7            maximum likelihood based on models that are linearized about
+8            the empirical Bayes estimates of the random effects and about
+9            zero.
+10         
+11           See the macro file nlmm801.sas and the SAS website (search on "nlinmix
+12           macro" in customer resources) for details on options and usage.  The
+13           macro relies on linearizing the model at each iteration so that
+14           the linearized model can be fitted using PROC MIXED.
+15         
+16         ******************************************************************/
+17         
+18         options ps=55 ls=80 nodate;
+2                                The SAS System
+
+19         
+20         %inc 'nlmm801.sas' / nosource;
+1223       
+1224       /******************************************************************
+1225       
+1226           The data on the first 2 plots are
+1227       
+1228           1 1988F1 F 1988 14 0.106
+1229           1 1988F1 F 1988 21 0.261
+1230           1 1988F1 F 1988 28 0.666
+1231           1 1988F1 F 1988 35 2.11
+1232           1 1988F1 F 1988 42 3.56
+1233           1 1988F1 F 1988 49 6.23
+1234           1 1988F1 F 1988 56 8.71
+1235           1 1988F1 F 1988 63 13.35
+1236           1 1988F1 F 1988 70 16.3417
+1237           1 1988F1 F 1988 77 17.75083
+1238           2 1988F2 F 1988 14 0.104
+1239           2 1988F2 F 1988 21 0.269
+1240           2 1988F2 F 1988 28 0.778
+1241           2 1988F2 F 1988 35 2.12
+1242           2 1988F2 F 1988 42 2.93
+1243           2 1988F2 F 1988 49 5.29
+1244           2 1988F2 F 1988 56 9.5
+1245           2 1988F2 F 1988 70 16.9667
+1246           2 1988F2 F 1988 77 17.7467
+1247       
+1248           column 1      plot id (numeric, 48 plots total)
+1249           column 2      alternate plot id
+1250           column 4      year
+1251           column 5      day
+1252           column 6      average leaf weight/plant
+1253       
+1254           NOTE:  These are the data from R, so rounded to 5 decimal places.
+1255       
+1256       ******************************************************************/
+1257       
+1258       data soy; infile 'soyR.dat';
+1259         input plot id $ geno $ year day lwt;
+1260       run;
+
+NOTE: The infile 'soyR.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/nlmm_examples/s
+      oyR.dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=04Apr2016:09:08:09,
+      File Size (bytes)=10961
+
+NOTE: 412 records were read from the infile 'soyR.dat'.
+      The minimum record length was 22.
+      The maximum record length was 28.
+3                                The SAS System
+
+NOTE: The data set WORK.SOY has 412 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+1261       
+1262       data soy; set soy;
+1263         d1=0; if geno="F" and year=1988 then d1=1;
+1264         d2=0; if geno="P" and year=1988 then d2=1;
+1265         d3=0; if geno="F" and year=1989 then d3=1;
+1266         d4=0; if geno="P" and year=1989 then d4=1;
+1267         d5=0; if geno="F" and year=1990 then d5=1;
+1268         d6=0; if geno="P" and year=1990 then d6=1;
+1269       run;
+
+NOTE: There were 412 observations read from the data set WORK.SOY.
+NOTE: The data set WORK.SOY has 412 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1270       
+1271       /*****************************************************************
+1272       
+1273         First fit the logistic growth model with no covariates.
+1274       
+1275         Specification of the model is self-evident and is done in the MODEL
+1276         section - the final expression for f(z_ij,beta_i) should be in the
+1277         variable PREDV.
+1278       
+1279         The user can specify analytical derivatives in the DERIVS section
+1280         if desired; see the documentation.  We use numerical derivatives
+1281         here.
+1282       
+1283         The WEIGHT section allows specification of a within-individual
+1284         variance model, but it does not support estimation of unknown
+1285         parameters delta in the variance function.  We use the estimated
+1286         value obtained from nlme(), which do allow this.
+1287       
+1288         The PARMS section is for specifying starting values for beta
+1289       
+1290         The STMTS section calls PROC MIXED to fit the linearized model
+1291         at each interation.  The response variable must be the response
+1292         variable in the data set with "PSEUDO_" in front.  The MODEL
+1293         statement includes the fixed effects, appended by "D_" and the
+1294         RANDOM statement includes the random effects similarly.
+1295       
+1296         EXPAND=ZERO does the first order linearization about zero;
+1297         EXPAND=EBLUP expands about current empirical Bayes estimates of
+1298         random effects.
+1299       
+4                                The SAS System
+
+1300         The PROCOPT section allows various options to be specified; see
+1301         the documentation in the macro.
+1302       
+1303          It would be possible to extract the estimated random effects from
+1304          this fit and plot them against the covariates genotype and year,
+1305          as in the nlme() fits; see the macro documentation.  We do not do
+1306          this here.
+1307       
+1308          Note from the .log file that the estimated D matrix is not
+1309          positive definite.  As in the R fits, it appears that the
+1309     ! among-plot
+1310          variation in some of the parameters may be negligible relative to
+1311          others.   The fit of the model with covariates with random effects
+1312          for all parameters, not shown here, ends up with similar problems.
+1313          Thus, below,  n fits with covariates, we take the random effect
+1314          associated with the "half life" and growth rate constant
+1314     ! parameters
+1315          beta2i and beta3i to be negligible.
+1316       
+1317       ******************************************************************/
+1318       
+1319       title "NO COVARIATES, LINEARIZATION ABOUT EMPIRICAL BAYES ESTIMATES";
+1320       %nlinmix(data=soy,
+1321          model=%str(
+1322            beta1i=beta1+b1;
+1323            beta2i=beta2+b2;
+1324            beta3i=beta3+b3;
+1325            denom=1+exp(-beta3i*(day-beta2i));
+1326            predv=beta1i/denom;
+1327            ),
+1328          weight=%str(
+1329            _weight_= 1/predv**(2*0.95);
+1330          ),
+1331          parms=%str(
+1332              beta1=20 beta2=50 beta3=0.125),
+1333          stmts=%str(
+1334              class plot;
+1335              model pseudo_lwt = d_beta1 d_beta2 d_beta3 /
+1336                                 noint notest solution;
+1337             random d_b1 d_b2 d_b3 / subject=plot type=un solution;
+1338             weight _weight_;
+1339          ),
+1340          expand=eblup,
+1341              procopt=%str(maxiter=500 method=ml)
+1342       )
+
+                          The NLINMIX Macro
+
+           Data Set                     : soy
+           Response                     : lwt
+           Fixed-Effect Parameters      : beta1 beta2 beta3
+           Random-Effect Parameters     : b1 b2 b3
+           Expansion Point              : eblup
+                                 The SAS System
+
+
+
+Calling PROC NLIN to initialize.
+beta1 = beta1
+beta2 = beta2
+beta3 = beta3
+WARNING: Step size shows no improvement.
+WARNING: PROC NLIN failed to converge.
+Iteratively calling PROC MIXED.
+   PROC MIXED call 0
+   
+iteration = 0
+convergence criterion = .
+beta1=17.24245764 beta2=51.462709174 beta3=0.1293020771 COVP1=8.6543210333 
+COVP2=0.5714123454 COVP3=3.9361104004 COVP4=-0.009334612 COVP5=-0.005873023 
+COVP6=0 COVP7=0.0529859118
+   PROC MIXED call 1
+   
+iteration = 1
+convergence criterion = 1.4398471107
+beta1=17.198066544 beta2=51.906471553 beta3=0.130852431 COVP1=9.6318840974 
+COVP2=-0.868434765 COVP3=2.3631791372 COVP4=-0.011649285 COVP5=-0.002392236 
+COVP6=2.6646446E-6 COVP7=0.0486466108
+   PROC MIXED call 2
+   
+iteration = 2
+convergence criterion = 0.4877524197
+beta1=16.797047924 beta2=51.586175238 beta3=0.1331390565 COVP1=10.531884967 
+COVP2=-0.380682346 COVP3=2.1011519053 COVP4=-0.014318977 COVP5=-0.00155947 
+COVP6=3.639669E-6 COVP7=0.0509943203
+   PROC MIXED call 3
+   
+iteration = 3
+convergence criterion = 0.1927749205
+beta1=16.889246086 beta2=51.679554446 beta3=0.1330646664 COVP1=10.434616762 
+COVP2=-0.573457266 COVP3=1.7210327236 COVP4=-0.014324394 COVP5=-0.000995919 
+COVP6=3.8853549E-6 COVP7=0.0512606517
+   PROC MIXED call 4
+   
+iteration = 4
+convergence criterion = 0.0674390953
+beta1=16.851806519 beta2=51.629165545 beta3=0.1332171712 COVP1=10.574426577 
+COVP2=-0.506018171 COVP3=1.6548113388 COVP4=-0.014457086 COVP5=-0.000644474 
+COVP6=2.7957506E-6 COVP7=0.0514363704
+   PROC MIXED call 5
+   
+iteration = 5
+convergence criterion = 0.0699715973
+beta1=16.890893736 beta2=51.676414431 beta3=0.1330666832 COVP1=10.521481423 
+COVP2=-0.575989768 COVP3=1.5625910154 COVP4=-0.01437504 COVP5=-0.000495176 
+COVP6=2.6838798E-6 COVP7=0.0514432368
+   PROC MIXED call 6
+   
+                                 The SAS System
+
+iteration = 6
+convergence criterion = 0.0153939558
+beta1=16.879126538 beta2=51.662476159 beta3=0.1331004341 COVP1=10.553415363 
+COVP2=-0.560595812 COVP3=1.549173577 COVP4=-0.014388456 COVP5=-0.000399582 
+COVP6=2.3142119E-6 COVP7=0.05148556
+   PROC MIXED call 7
+   
+iteration = 7
+convergence criterion = 0.0193992043
+beta1=16.889635179 beta2=51.675237566 beta3=0.1330594742 COVP1=10.536932616 
+COVP2=-0.579995016 COVP3=1.5265592849 COVP4=-0.014362778 COVP5=-0.000363642 
+COVP6=2.2783724E-6 COVP7=0.0514832976
+   PROC MIXED call 8
+   
+iteration = 8
+convergence criterion = 0.0047069254
+beta1=16.885931972 beta2=51.670798905 beta3=0.1330705899 COVP1=10.545375325 
+COVP2=-0.575288091 COVP3=1.5244995403 COVP4=-0.014366094 COVP5=-0.000341048 
+COVP6=2.1819067E-6 COVP7=0.0514927452
+   PROC MIXED call 9
+   
+iteration = 9
+convergence criterion = 0.0051527454
+beta1=16.888657811 beta2=51.674073595 beta3=0.1330602236 COVP1=10.540655964 
+COVP2=-0.580440836 COVP3=1.5189285654 COVP4=-0.014359177 COVP5=-0.000332837 
+COVP6=2.1749407E-6 COVP7=0.0514914465
+   PROC MIXED call 10
+   
+iteration = 10
+convergence criterion = 0.0013910281
+beta1=16.887537799 beta2=51.672729325 beta3=0.1330637394 COVP1=10.542933781 
+COVP2=-0.579049808 COVP3=1.5186647663 COVP4=-0.014360169 COVP5=-0.000327477 
+COVP6=2.1505763E-6 COVP7=0.0514938229
+   PROC MIXED call 11
+   
+iteration = 11
+convergence criterion = 0.001360685
+beta1=16.888258407 beta2=51.67358775 beta3=0.1330610626 COVP1=10.541630011 
+COVP2=-0.580410493 COVP3=1.5172773151 COVP4=-0.014358362 COVP5=-0.000325626 
+COVP6=2.1496766E-6 COVP7=0.0514933614
+   PROC MIXED call 12
+   
+iteration = 12
+convergence criterion = 0.0004067945
+beta1=16.887938945 beta2=51.673204493 beta3=0.1330620896 COVP1=10.542253824 
+COVP2=-0.580003699 COVP3=1.5172712161 COVP4=-0.014358677 COVP5=-0.000324354 
+COVP6=2.1435555E-6 COVP7=0.0514939748
+   PROC MIXED call 13
+   
+iteration = 13
+convergence criterion = 0.000359958
+beta1=16.888132333 beta2=51.673434278 beta3=0.1330613813 COVP1=10.541897639 
+COVP2=-0.580363657 COVP3=1.5169227075 COVP4=-0.014358207 COVP5=-0.000323941 
+                                 The SAS System
+
+COVP6=2.1435758E-6 COVP7=0.0514938294
+   PROC MIXED call 14
+   
+iteration = 14
+convergence criterion = 0.0001175729
+beta1=16.888043099 beta2=51.673327307 beta3=0.1330616725 COVP1=10.542069306 
+COVP2=-0.580246084 COVP3=1.5169360935 COVP4=-0.014358305 COVP5=-0.000323639 
+COVP6=2.1420331E-6 COVP7=0.0514939896
+   PROC MIXED call 15
+   
+iteration = 15
+convergence criterion = 0.0000955709
+beta1=16.888095395 beta2=51.673389432 beta3=0.1330614828 COVP1=10.541972272 
+COVP2=-0.580341655 COVP3=1.516847879 COVP4=-0.014358183 COVP5=-0.000323548 
+COVP6=2.142103E-6 COVP7=0.051493946
+   PROC MIXED call 16
+   
+iteration = 16
+convergence criterion = 0.0000336379
+beta1=16.888070668 beta2=51.673359814 beta3=0.1330615644 COVP1=10.542019552 
+COVP2=-0.580308017 COVP3=1.5168550057 COVP4=-0.014358212 COVP5=-0.000323475 
+COVP6=2.1417119E-6 COVP7=0.0514939881
+   PROC MIXED call 17
+   
+iteration = 17
+convergence criterion = 0.0000254726
+beta1=16.888084862 beta2=51.673376682 beta3=0.1330615132 COVP1=10.541993122 
+COVP2=-0.58033349 COVP3=1.5168325141 COVP4=-0.01435818 COVP5=-0.000323455 
+COVP6=2.1417461E-6 COVP7=0.0514939754
+   PROC MIXED call 18
+   
+iteration = 18
+convergence criterion = 9.5460076E-6
+beta1=16.888078034 beta2=51.673368509 beta3=0.133061536 COVP1=10.542006138 
+COVP2=-0.580323944 COVP3=1.5168352649 COVP4=-0.014358189 COVP5=-0.000323438 
+COVP6=2.1416462E-6 COVP7=0.0514939865
+   PROC MIXED call 19
+   
+iteration = 19
+convergence criterion = 2.1003427E-7
+beta1=16.888081894 beta2=51.673373099 beta3=0.1330615221 COVP1=10.542003924 
+COVP2=-0.580323822 COVP3=1.5168349463 COVP4=-0.014358186 COVP5=-0.000323438 
+COVP6=2.1416458E-6 COVP7=0.0514939757
+   PROC MIXED call 20
+   
+iteration = 20
+convergence criterion = 2.8057287E-8
+beta1=16.888080054 beta2=51.673371143 beta3=0.1330615272 COVP1=10.54200422 
+COVP2=-0.580323838 COVP3=1.5168349889 COVP4=-0.014358187 COVP5=-0.000323438 
+COVP6=2.1416458E-6 COVP7=0.0514939771
+   PROC MIXED call 21
+   
+iteration = 21
+                                 The SAS System
+
+convergence criterion = 4.6635812E-9
+beta1=16.888080175 beta2=51.673371226 beta3=0.1330615272 COVP1=10.542004171 
+COVP2=-0.580323835 COVP3=1.5168349818 COVP4=-0.014358187 COVP5=-0.000323438 
+COVP6=2.1416458E-6 COVP7=0.0514939769
+NLINMIX convergence criteria met.
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1342:71   
+NOTE: There were 412 observations read from the data set WORK._NLINMIX.
+NOTE: The data set WORK._NLINMIX has 412 observations and 37 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+   PROC MIXED call 22
+
+NOTE: Convergence criteria met.
+NOTE: Estimated G matrix is not positive definite.
+NOTE: The data set WORK._SOLNR has 144 observations and 7 variables.
+NOTE: The data set WORK._COV has 7 observations and 3 variables.
+NOTE: The data set WORK._SOLN has 3 observations and 6 variables.
+NOTE: The data set WORK._FIT has 4 observations and 2 variables.
+NOTE: The PROCEDURE MIXED printed pages 1-6.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1342:51   
+NOTE: There were 4 observations read from the data set WORK._FIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1343       run;
+1344       
+1345       title "COVARIATES, NO RANDOM EFFECT FOR HALF LIFE OR GROWTH RATE";
+1346       %nlinmix(data=soy,
+1347          model=%str(
+1348            beta1i=beta11*d1+beta12*d2+beta13*d3+beta14*d4+beta15*d5+beta16*
+1348     ! d6+b1;
+1349            beta2i=beta21*d1+beta22*d2+beta23*d3+beta24*d4+beta25*d5+beta26*
+1349     ! d6;
+1350            beta3i=beta31*d1+beta32*d2+beta33*d3+beta34*d4+beta35*d5+beta36*
+1350     ! d6;
+1351            denom=1+exp(-beta3i*(day-beta2i));
+1352            predv=beta1i/denom;
+9                                The SAS System      10:21 Monday, April 4, 2016
+
+1353            ),
+1354          weight=%str(
+1355            _weight_= 1/predv**(2*0.95);
+1356          ),
+1357          parms=%str(beta11=20 beta12=20 beta13=20 beta14=20 beta15=20
+1357     ! beta16=20
+1358                     beta21=50 beta22=50 beta23=50 beta24=50 beta25=50
+1358     ! beta26=50
+1359                     beta31=0.125 beta32=0.125 beta33=0.125 beta34=0.125
+1359     ! beta35=0.125 beta36=0.125),
+1360          stmts=%str(
+1361              class plot;
+1362              model pseudo_lwt = d_beta11 d_beta12 d_beta13 d_beta14
+1362     ! d_beta15 d_beta16
+1363                                 d_beta21 d_beta22 d_beta23 d_beta24
+1363     ! d_beta25 d_beta26
+1364                                 d_beta31 d_beta32 d_beta33 d_beta34
+1364     ! d_beta35 d_beta36 /
+1365                                 noint notest solution;
+1366             random d_b1  / subject=plot type=un solution;
+1367             weight _weight_;
+1368          ),
+1369          expand=eblup,
+1370          procopt=%str(maxiter=500 method=ml)
+1371       )
+
+                          The NLINMIX Macro
+
+           Data Set                     : soy
+           Response                     : lwt
+           Fixed-Effect Parameters      : beta11 beta12 beta13 beta14 beta15 
+beta16 beta21 beta22 beta23 beta24 beta25 beta26 beta31 beta32 beta33 beta34 
+beta35 beta36
+           Random-Effect Parameters     : b1
+           Expansion Point              : eblup
+
+
+Calling PROC NLIN to initialize.
+beta11 = beta11
+beta12 = beta12
+beta13 = beta13
+beta14 = beta14
+beta15 = beta15
+beta16 = beta16
+beta21 = beta21
+beta22 = beta22
+beta23 = beta23
+beta24 = beta24
+beta25 = beta25
+beta26 = beta26
+beta31 = beta31
+beta32 = beta32
+beta33 = beta33
+                                 The SAS System
+
+beta34 = beta34
+beta35 = beta35
+beta36 = beta36
+WARNING: Step size shows no improvement.
+WARNING: PROC NLIN failed to converge.
+Iteratively calling PROC MIXED.
+   PROC MIXED call 0
+   
+iteration = 0
+convergence criterion = .
+beta11=19.164993957 beta12=21.428216754 beta13=10.688726585 beta14=18.207188834 
+beta15=16.212803733 beta16=17.451959932 beta21=54.51741978 beta22=53.848289303 
+beta23=52.662402003 beta24=51.815592071 beta25=50.097507297 beta26=48.620515074 
+beta31=0.1245773643 beta32=0.1233148036 beta33=0.1377822722 beta34=0.1371986601 
+beta35=0.1355646159 beta36=0.1340059849 COVP1=0.9296114606 COVP2=0.0476253536
+   PROC MIXED call 1
+   
+iteration = 1
+convergence criterion = 0.0946780312
+beta11=19.202497998 beta12=21.416632197 beta13=10.613985946 beta14=18.139128794 
+beta15=16.142993094 beta16=17.424420788 beta21=54.511376022 beta22=53.828562977 
+beta23=52.38964697 beta24=51.66873574 beta25=49.962050761 beta26=48.570884543 
+beta31=0.1248115276 beta32=0.1234036883 beta33=0.140358136 beta34=0.1381299879 
+beta35=0.1363381905 beta36=0.1342787108 COVP1=1.0268296723 COVP2=0.0467372492
+   PROC MIXED call 2
+   
+iteration = 2
+convergence criterion = 0.0253975173
+beta11=19.080806551 beta12=21.327002392 beta13=10.459205554 beta14=17.990271551 
+beta15=15.867637979 beta16=17.314112566 beta21=54.43479991 beta22=53.768478659 
+beta23=52.209877072 beta24=51.573580653 beta25=49.774773284 beta26=48.50610098 
+beta31=0.1249258414 beta32=0.1235350455 beta33=0.1409116709 beta34=0.1384591922 
+beta35=0.1368117854 beta36=0.1344564436 COVP1=1.0535881968 COVP2=0.0469190309
+   PROC MIXED call 3
+   
+iteration = 3
+convergence criterion = 0.0044919825
+beta11=19.072560053 beta12=21.318580749 beta13=10.440268777 beta14=17.978465315 
+beta15=15.827323998 beta16=17.303538586 beta21=54.4277038 beta22=53.761038817 
+beta23=52.180593231 beta24=51.559696669 beta25=49.731709524 beta26=48.494465055 
+beta31=0.1249424867 beta32=0.1235562976 beta33=0.1410100141 beta34=0.1385131085 
+beta35=0.1369679673 beta36=0.1345067698 COVP1=1.0583422517 COVP2=0.0469085302
+   PROC MIXED call 4
+   
+iteration = 4
+convergence criterion = 0.0011042764
+beta11=19.0702144 beta12=21.316661733 beta13=10.436170227 beta14=17.974942716 
+beta15=15.814078699 beta16=17.300647372 beta21=54.426030763 beta22=53.75947413 
+beta23=52.17499835 beta24=51.55671328 beta25=49.718294884 beta26=48.49151962 
+beta31=0.1249456139 beta32=0.1235604676 beta33=0.1410269835 beta34=0.1385244406 
+beta35=0.137015988 beta36=0.1345192385 COVP1=1.059512246 COVP2=0.0469097604
+   PROC MIXED call 5
+   
+                                 The SAS System
+
+iteration = 5
+convergence criterion = 0.0002286739
+beta11=19.069849072 beta12=21.316304375 beta13=10.435481284 beta14=17.97440258 
+beta15=15.811097737 beta16=17.300074632 beta21=54.425764701 beta22=53.759181001 
+beta23=52.174040173 beta24=51.55618549 beta25=49.71485626 beta26=48.490857945 
+beta31=0.1249461309 beta32=0.1235612564 beta33=0.1410299248 beta34=0.1385264504 
+beta35=0.1370294384 beta36=0.134522191 COVP1=1.0597545843 COVP2=0.046909597
+   PROC MIXED call 6
+   
+iteration = 6
+convergence criterion = 0.0000526055
+beta11=19.069763317 beta12=21.316224936 beta13=10.435342234 beta14=17.974271688 
+beta15=15.810305364 beta16=17.299938278 beta21=54.425705978 beta22=53.759117691 
+beta23=52.173857166 beta24=51.55607523 beta25=49.713924201 beta26=48.490702375 
+beta31=0.1249462331 beta32=0.1235614223 beta33=0.1410304603 beta34=0.1385268624 
+beta35=0.1370331353 beta36=0.1345228814 COVP1=1.0598103361 COVP2=0.0469096039
+   PROC MIXED call 7
+   
+iteration = 7
+convergence criterion = 0.0000117157
+beta11=19.069746242 beta12=21.316208248 beta13=10.435315613 beta14=17.974246478 
+beta15=15.810113111 beta16=17.299908323 beta21=54.425694362 beta22=53.759104398 
+beta23=52.173822681 beta24=51.556053507 beta25=49.713684263 beta26=48.490666964 
+beta31=0.124946253 beta32=0.1235614572 beta33=0.1410305598 beta34=0.1385269425 
+beta35=0.1370341212 beta36=0.1345230406 COVP1=1.0598227527 COVP2=0.0469095986
+   PROC MIXED call 8
+   
+iteration = 8
+convergence criterion = 7.8134338E-7
+beta11=19.069742397 beta12=21.316204527 beta13=10.435310136 beta14=17.974240755 
+beta15=15.810064723 beta16=17.299901454 beta21=54.425691801 beta22=53.759101463 
+beta23=52.173815804 beta24=51.556048903 beta25=49.713622192 beta26=48.490658836 
+beta31=0.1249462573 beta32=0.1235614648 beta33=0.1410305791 beta34=0.1385269593 
+beta35=0.1370343803 beta36=0.1345230772 COVP1=1.0598228807 COVP2=0.0469096042
+   PROC MIXED call 9
+   
+iteration = 9
+convergence criterion = 1.669255E-7
+beta11=19.0697413 beta12=21.316203607 beta13=10.43530869 beta14=17.974239332 
+beta15=15.81005237 beta16=17.299899736 beta21=54.425691072 beta22=53.759100752 
+beta23=52.17381409 beta24=51.556047813 beta25=49.713606085 beta26=48.490656872 
+beta31=0.1249462585 beta32=0.1235614666 beta33=0.1410305836 beta34=0.138526963 
+beta35=0.1370344482 beta36=0.1345230858 COVP1=1.0598229406 COVP2=0.0469096069
+   PROC MIXED call 10
+   
+iteration = 10
+convergence criterion = 3.9825325E-8
+beta11=19.069741254 beta12=21.316203559 beta13=10.435308514 beta14=17.974239246 
+beta15=15.81004973 beta16=17.299899519 beta21=54.425691023 beta22=53.759100696 
+beta23=52.173813838 beta24=51.55604768 beta25=49.713602237 beta26=48.490656509 
+beta31=0.1249462586 beta32=0.1235614668 beta33=0.1410305844 beta34=0.1385269636 
+beta35=0.1370344653 beta36=0.1345230876 COVP1=1.0598229437 COVP2=0.046909607
+   PROC MIXED call 11
+                                 The SAS System
+
+   
+iteration = 11
+convergence criterion = 9.1702761E-9
+beta11=19.069741244 beta12=21.316203551 beta13=10.435308484 beta14=17.974239227 
+beta15=15.810049101 beta16=17.299899473 beta21=54.425691014 beta22=53.759100688 
+beta23=52.173813795 beta24=51.556047658 beta25=49.713601294 beta26=48.490656435 
+beta31=0.1249462586 beta32=0.1235614668 beta33=0.1410305846 beta34=0.1385269637 
+beta35=0.1370344695 beta36=0.134523088 COVP1=1.0598229446 COVP2=0.0469096071
+NLINMIX convergence criteria met.
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1371:71   
+NOTE: There were 412 observations read from the data set WORK._NLINMIX.
+NOTE: The data set WORK._NLINMIX has 412 observations and 63 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+   PROC MIXED call 12
+
+NOTE: Convergence criteria met.
+NOTE: The data set WORK._SOLNR has 48 observations and 7 variables.
+NOTE: The data set WORK._COV has 2 observations and 3 variables.
+NOTE: The data set WORK._SOLN has 18 observations and 6 variables.
+NOTE: The data set WORK._FIT has 4 observations and 2 variables.
+NOTE: The PROCEDURE MIXED printed pages 7-10.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1371:51   
+NOTE: There were 4 observations read from the data set WORK._FIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1372       run;
+1373       
+1374       
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           2.61 seconds
+      cpu time            2.43 seconds
+      

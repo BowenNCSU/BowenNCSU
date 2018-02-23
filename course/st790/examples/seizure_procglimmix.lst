@@ -1,0 +1,1049 @@
+                 RANDOM INTERCEPT AND TIME, ADAPTIVE QUADATURE                 1
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+             Data Set                      WORK.SEIZURE            
+             Response Variable             seize                   
+             Response Distribution         Poisson                 
+             Link Function                 Log                     
+             Variance Function             Default                 
+             Offset Variable               logo                    
+             Variance Matrix Blocked By    subject                 
+             Estimation Technique          Maximum Likelihood      
+             Likelihood Approximation      Gauss-Hermite Quadrature
+             Degrees of Freedom Method     Containment             
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           3
+                       Columns in X                     4
+                       Columns in Z per Subject         2
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    7                
+                Lower Boundaries              2                
+                Upper Boundaries              0                
+                Fixed Effects                 Not Profiled     
+                Starting From                 GLM estimates    
+                Quadrature Points             10               
+
+
+                 RANDOM INTERCEPT AND TIME, ADAPTIVE QUADATURE                 2
+
+                             The GLIMMIX Procedure
+
+                                Iteration History
+ 
+                                           Objective                         Max
+Iteration    Restarts    Evaluations        Function          Change    Gradient
+
+        0           0              4    1876.3031326       .            33.93076
+        1           0              5    1858.8495737     17.45355886    31.99571
+        2           0              5    1856.3960048      2.45356896    27.61853
+        3           0              8    1852.1488842      4.24712056    56.45549
+        4           0              5    1850.7789026      1.36998163    28.53341
+        5           0              3     1850.351003      0.42789962    20.60421
+        6           0              2    1849.4227607      0.92824232    17.96048
+        7           0              3    1849.1582979      0.26446272    6.238286
+        8           0              2    1848.9967618      0.16153611    3.269919
+        9           0              3    1848.9476034      0.04915838     3.19247
+       10           0              2    1848.9088084      0.03879507    1.119433
+       11           0              3    1848.9017448      0.00706355    0.164696
+       12           0              3    1848.9016141      0.00013076    0.074643
+       13           0              3    1848.9015889      0.00002516    0.002832
+       14           0              3    1848.9015889      0.00000003    0.000327
+
+                 Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                 Fit Statistics
+
+                      -2 Log Likelihood            1848.90
+                      AIC  (smaller is better)     1862.90
+                      AICC (smaller is better)     1863.29
+                      BIC  (smaller is better)     1877.44
+                      CAIC (smaller is better)     1884.44
+                      HQIC (smaller is better)     1868.58
+
+
+                         Fit Statistics for Conditional
+                                  Distribution
+
+                    -2 log L(seize | r. effects)     1487.89
+                    Pearson Chi-Square                383.89
+                    Pearson Chi-Square / DF             1.30
+
+
+                              Estimated G Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      0.5010     0.05631
+                   v               2     0.05631      0.2333
+
+
+                 RANDOM INTERCEPT AND TIME, ADAPTIVE QUADATURE                 3
+
+                             The GLIMMIX Procedure
+
+                        Estimated G Correlation Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      1.0000      0.1647
+                   v               2      0.1647      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.5010      0.1010
+                   UN(2,1)    subject     0.05631     0.05590
+                   UN(2,2)    subject      0.2333     0.06070
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0711      0.1405       57       7.62      <.0001
+       v            -0.00230      0.1097       57      -0.02      0.9834
+       trt           0.04959      0.1931      177       0.26      0.7976
+       v*trt         -0.3075      0.1513      177      -2.03      0.0436
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1       57       0.00    0.9834
+                trt             1      177       0.07    0.7976
+                v*trt           1      177       4.13    0.0436
+                RANDOM INTERCEPT AND TIME, LAPLACE APPROXIMATION               4
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                Data Set                      WORK.SEIZURE      
+                Response Variable             seize             
+                Response Distribution         Poisson           
+                Link Function                 Log               
+                Variance Function             Default           
+                Offset Variable               logo              
+                Variance Matrix Blocked By    subject           
+                Estimation Technique          Maximum Likelihood
+                Likelihood Approximation      Laplace           
+                Degrees of Freedom Method     Containment       
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           3
+                       Columns in X                     4
+                       Columns in Z per Subject         2
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    7                
+                Lower Boundaries              2                
+                Upper Boundaries              0                
+                Fixed Effects                 Not Profiled     
+                Starting From                 GLM estimates    
+
+
+                RANDOM INTERCEPT AND TIME, LAPLACE APPROXIMATION               5
+
+                             The GLIMMIX Procedure
+
+                                Iteration History
+ 
+                                           Objective                         Max
+Iteration    Restarts    Evaluations        Function          Change    Gradient
+
+        0           0              4    1876.9388305       .            34.27274
+        1           0              5    1859.4669821     17.47184840    32.11293
+        2           0              5    1856.9782993      2.48868272     27.7712
+        3           0              8    1852.5215193      4.45678005    54.53071
+        4           0              5    1851.1231622      1.39835709    25.22595
+        5           0              3    1850.7129596      0.41020262    18.41043
+        6           0              2    1849.7956454      0.91731419    15.45992
+        7           0              3    1849.5538319      0.24181346    5.861084
+        8           0              2     1849.449987      0.10384494    3.349198
+        9           0              3    1849.3988393      0.05114768    3.345417
+       10           0              2    1849.3409414      0.05789790    0.547254
+       11           0              3    1849.3397935      0.00114794    0.189627
+       12           0              3    1849.3396297      0.00016373    0.020145
+       13           0              3    1849.3396278      0.00000188    0.001208
+
+                 Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                 Fit Statistics
+
+                      -2 Log Likelihood            1849.34
+                      AIC  (smaller is better)     1863.34
+                      AICC (smaller is better)     1863.73
+                      BIC  (smaller is better)     1877.88
+                      CAIC (smaller is better)     1884.88
+                      HQIC (smaller is better)     1869.02
+
+
+                         Fit Statistics for Conditional
+                                  Distribution
+
+                    -2 log L(seize | r. effects)     1488.06
+                    Pearson Chi-Square                384.04
+                    Pearson Chi-Square / DF             1.30
+
+
+                              Estimated G Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      0.4999     0.05656
+                   v               2     0.05656      0.2319
+
+
+                        Estimated G Correlation Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      1.0000      0.1661
+                   v               2      0.1661      1.0000
+                RANDOM INTERCEPT AND TIME, LAPLACE APPROXIMATION               6
+
+                             The GLIMMIX Procedure
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.4999      0.1007
+                   UN(2,1)    subject     0.05656     0.05567
+                   UN(2,2)    subject      0.2319     0.06028
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0712      0.1404       57       7.63      <.0001
+       v            -0.00236      0.1095       57      -0.02      0.9828
+       trt           0.04952      0.1929      177       0.26      0.7977
+       v*trt         -0.3072      0.1510      177      -2.04      0.0433
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1       57       0.00    0.9828
+                trt             1      177       0.07    0.7977
+                v*trt           1      177       4.14    0.0433
+          RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT EB ESTIMATES          7
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                   Data Set                      WORK.SEIZURE
+                   Response Variable             seize       
+                   Response Distribution         Poisson     
+                   Link Function                 Log         
+                   Variance Function             Default     
+                   Offset Variable               logo        
+                   Variance Matrix Blocked By    subject     
+                   Estimation Technique          PL          
+                   Degrees of Freedom Method     Containment 
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           3
+                       Columns in X                     4
+                       Columns in Z per Subject         2
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    3                
+                Lower Boundaries              2                
+                Upper Boundaries              0                
+                Fixed Effects                 Profiled         
+                Starting From                 Data             
+
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         0          0               6   627.19476141     1.60301064   9.298E-6
+          RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT EB ESTIMATES          8
+
+                             The GLIMMIX Procedure
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         1          0               5   699.92997822     1.59228412   0.000095
+         2          0               4   708.52662705     0.18976942   1.647E-6
+         3          0               3   708.70735538     0.00096862   0.000015
+         4          0               1   708.70833673     0.00001045   0.000012
+         5          0               1   708.70834527     0.00002094   0.000036
+         6          0               1   708.70834653     0.00001364   8.356E-6
+         7          0               0   708.70834508     0.00000000   8.456E-6
+
+              Convergence criterion (PCONV=1.11022E-8) satisfied.       
+
+
+                                 Fit Statistics
+
+                      -2 Log Pseudo-Likelihood      708.71
+                      Generalized Chi-Square        478.91
+                      Gener. Chi-Square / DF          1.62
+
+
+                              Estimated G Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      0.4878     0.05326
+                   v               2     0.05326      0.2249
+
+
+                        Estimated G Correlation Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      1.0000      0.1608
+                   v               2      0.1608      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.4878     0.09787
+                   UN(2,1)    subject     0.05326     0.05381
+                   UN(2,2)    subject      0.2249     0.05790
+
+
+          RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT EB ESTIMATES          9
+
+                             The GLIMMIX Procedure
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0901      0.1383       57       7.88      <.0001
+       v            0.001153      0.1066       57       0.01      0.9914
+       trt           0.04896      0.1905      177       0.26      0.7975
+       v*trt         -0.3008      0.1485      177      -2.03      0.0443
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1       57       0.00    0.9914
+                trt             1      177       0.07    0.7975
+                v*trt           1      177       4.10    0.0443
+                RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT 0              10
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                   Data Set                      WORK.SEIZURE
+                   Response Variable             seize       
+                   Response Distribution         Poisson     
+                   Link Function                 Log         
+                   Variance Function             Default     
+                   Offset Variable               logo        
+                   Variance Matrix Blocked By    subject     
+                   Estimation Technique          MPL         
+                   Degrees of Freedom Method     Containment 
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           3
+                       Columns in X                     4
+                       Columns in Z per Subject         2
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    3                
+                Lower Boundaries              2                
+                Upper Boundaries              0                
+                Fixed Effects                 Profiled         
+                Starting From                 Data             
+
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         0          0              11   1404.3872603     1.76776700   0.000198
+                RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT 0              11
+
+                             The GLIMMIX Procedure
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         1          0               9    942.4205034     1.06578615   0.008396
+         2          0               7   1006.4939801     0.22419060   0.001453
+         3          0               5   1009.1332872     0.01188552   2.088E-6
+         4          0               4   1009.1390168     0.00002948   3.078E-6
+         5          0               0   1009.1390169     0.00000000    3.09E-6
+
+              Convergence criterion (PCONV=1.11022E-8) satisfied.       
+
+
+                                 Fit Statistics
+
+                      -2 Log Pseudo-Likelihood     1009.14
+                      Generalized Chi-Square        806.31
+                      Gener. Chi-Square / DF          2.73
+
+
+                              Estimated G Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      0.6949      0.2835
+                   v               2      0.2835      0.6397
+
+
+                        Estimated G Correlation Matrix
+ 
+                   Effect        Row        Col1        Col2
+
+                   Intercept       1      1.0000      0.4252
+                   v               2      0.4252      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.6949      0.1338
+                   UN(2,1)    subject      0.2835     0.09861
+                   UN(2,2)    subject      0.6397      0.1293
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.3476      0.1612       57       8.36      <.0001
+       v              0.1108      0.1583       57       0.70      0.4867
+       trt           0.02651      0.2223      177       0.12      0.9052
+                RANDOM INTERCEPT AND TIME, LINEARIZATION ABOUT 0              12
+
+                             The GLIMMIX Procedure
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       v*trt         -0.1037      0.2184      177      -0.47      0.6356
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1       57       0.49    0.4867
+                trt             1      177       0.01    0.9052
+                v*trt           1      177       0.23    0.6356
+                   RANDOM INTERCEPT ONLY, ADAPTIVE QUADATURE                  13
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+             Data Set                      WORK.SEIZURE            
+             Response Variable             seize                   
+             Response Distribution         Poisson                 
+             Link Function                 Log                     
+             Variance Function             Default                 
+             Offset Variable               logo                    
+             Variance Matrix Blocked By    subject                 
+             Estimation Technique          Maximum Likelihood      
+             Likelihood Approximation      Gauss-Hermite Quadrature
+             Degrees of Freedom Method     Containment             
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           1
+                       Columns in X                     4
+                       Columns in Z per Subject         1
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    5                
+                Lower Boundaries              1                
+                Upper Boundaries              0                
+                Fixed Effects                 Not Profiled     
+                Starting From                 GLM estimates    
+                Quadrature Points             25               
+
+
+                   RANDOM INTERCEPT ONLY, ADAPTIVE QUADATURE                  14
+
+                             The GLIMMIX Procedure
+
+                                Iteration History
+ 
+                                           Objective                         Max
+Iteration    Restarts    Evaluations        Function          Change    Gradient
+
+        0           0              4    2036.5840274       .            35.18333
+        1           0              3    2034.5118739      2.07215353    60.30939
+        2           0              3    2027.6782619      6.83361205    26.91565
+        3           0              7    2021.9274694      5.75079248     32.8911
+        4           0              4    2021.7032159      0.22425347     39.0141
+        5           0              2    2021.3645242      0.33869167    25.29765
+        6           0              3    2021.1700143      0.19450998     4.91847
+        7           0              3    2021.1624387      0.00757560    1.648635
+        8           0              2    2021.1545676      0.00787103    0.989519
+        9           0              3     2021.153581      0.00098662    0.094165
+       10           0              3      2021.15356      0.00002105    0.006272
+       11           0              3    2021.1535598      0.00000018    0.000083
+
+                 Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                 Fit Statistics
+
+                      -2 Log Likelihood            2021.15
+                      AIC  (smaller is better)     2031.15
+                      AICC (smaller is better)     2031.36
+                      BIC  (smaller is better)     2041.54
+                      CAIC (smaller is better)     2046.54
+                      HQIC (smaller is better)     2035.21
+
+
+                         Fit Statistics for Conditional
+                                  Distribution
+
+                    -2 log L(seize | r. effects)     1766.36
+                    Pearson Chi-Square                664.60
+                    Pearson Chi-Square / DF             2.25
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.6090      0.1170
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0326      0.1527       57       6.76      <.0001
+       v              0.1108     0.04689      234       2.36      0.0189
+       trt          -0.02385      0.2107      234      -0.11      0.9099
+                   RANDOM INTERCEPT ONLY, ADAPTIVE QUADATURE                  15
+
+                             The GLIMMIX Procedure
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       v*trt         -0.1037     0.06505      234      -1.59      0.1123
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1      234       5.58    0.0189
+                trt             1      234       0.01    0.9099
+                v*trt           1      234       2.54    0.1123
+                  RANDOM INTERCEPT ONLY, LAPLACE APPROXIMATION                16
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                Data Set                      WORK.SEIZURE      
+                Response Variable             seize             
+                Response Distribution         Poisson           
+                Link Function                 Log               
+                Variance Function             Default           
+                Offset Variable               logo              
+                Variance Matrix Blocked By    subject           
+                Estimation Technique          Maximum Likelihood
+                Likelihood Approximation      Laplace           
+                Degrees of Freedom Method     Containment       
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           1
+                       Columns in X                     4
+                       Columns in Z per Subject         1
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    5                
+                Lower Boundaries              1                
+                Upper Boundaries              0                
+                Fixed Effects                 Not Profiled     
+                Starting From                 GLM estimates    
+
+
+                  RANDOM INTERCEPT ONLY, LAPLACE APPROXIMATION                17
+
+                             The GLIMMIX Procedure
+
+                                Iteration History
+ 
+                                           Objective                         Max
+Iteration    Restarts    Evaluations        Function          Change    Gradient
+
+        0           0              4    2036.8184863       .            35.17727
+        1           0              3     2034.744444      2.07404224    60.34103
+        2           0              3    2027.9010732      6.84337086    26.94374
+        3           0              7    2022.1354345      5.76563867    32.95319
+        4           0              4     2021.910986      0.22444853    39.07821
+        5           0              2    2021.5708602      0.34012578    25.40031
+        6           0              3    2021.3754738      0.19538641    5.006101
+        7           0              3    2021.3668843      0.00858947    1.546571
+        8           0              2    2021.3605829      0.00630144    0.982772
+        9           0              3    2021.3585648      0.00201807    0.210072
+       10           0              3    2021.3585083      0.00005653    0.045164
+       11           0              3    2021.3585051      0.00000317    0.000113
+
+                 Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                 Fit Statistics
+
+                      -2 Log Likelihood            2021.36
+                      AIC  (smaller is better)     2031.36
+                      AICC (smaller is better)     2031.57
+                      BIC  (smaller is better)     2041.75
+                      CAIC (smaller is better)     2046.75
+                      HQIC (smaller is better)     2035.41
+
+
+                         Fit Statistics for Conditional
+                                  Distribution
+
+                    -2 log L(seize | r. effects)     1766.36
+                    Pearson Chi-Square                664.60
+                    Pearson Chi-Square / DF             2.25
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.6083      0.1169
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0326      0.1526       57       6.77      <.0001
+       v              0.1108     0.04689      234       2.36      0.0189
+       trt          -0.02385      0.2106      234      -0.11      0.9099
+                  RANDOM INTERCEPT ONLY, LAPLACE APPROXIMATION                18
+
+                             The GLIMMIX Procedure
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       v*trt         -0.1037     0.06505      234      -1.59      0.1123
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1      234       5.58    0.0189
+                trt             1      234       0.01    0.9099
+                v*trt           1      234       2.54    0.1123
+            RANDOM INTERCEPT ONLY, LINEARIZATION ABOUT EB ESTIMATES           19
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                   Data Set                      WORK.SEIZURE
+                   Response Variable             seize       
+                   Response Distribution         Poisson     
+                   Link Function                 Log         
+                   Variance Function             Default     
+                   Offset Variable               logo        
+                   Variance Matrix Blocked By    subject     
+                   Estimation Technique          PL          
+                   Degrees of Freedom Method     Containment 
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           1
+                       Columns in X                     4
+                       Columns in Z per Subject         1
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    1                
+                Lower Boundaries              1                
+                Upper Boundaries              0                
+                Fixed Effects                 Profiled         
+                Starting From                 Data             
+
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         0          0               3   729.17410684     2.00000000   5.325E-6
+            RANDOM INTERCEPT ONLY, LINEARIZATION ABOUT EB ESTIMATES           20
+
+                             The GLIMMIX Procedure
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         1          0               3   844.58116221     0.05620417   3.143E-6
+         2          0               2   857.03083746     0.00043154   0.000017
+         3          0               2    857.1877258     0.00000500   2.304E-9
+         4          0               0   857.18779853     0.00000000   9.194E-7
+
+              Convergence criterion (PCONV=1.11022E-8) satisfied.       
+
+
+                                 Fit Statistics
+
+                      -2 Log Pseudo-Likelihood      857.19
+                      Generalized Chi-Square        720.93
+                      Gener. Chi-Square / DF          2.44
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      0.5970      0.1145
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.0452      0.1512       57       6.91      <.0001
+       v              0.1108     0.04689      234       2.36      0.0189
+       trt          -0.02283      0.2087      234      -0.11      0.9130
+       v*trt         -0.1037     0.06505      234      -1.59      0.1123
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1      234       5.58    0.0189
+                trt             1      234       0.01    0.9130
+                v*trt           1      234       2.54    0.1123
+                  RANDOM INTERCEPT ONLY, LINEARIZATION ABOUT 0                21
+
+                             The GLIMMIX Procedure
+
+                               Model Information
+
+                   Data Set                      WORK.SEIZURE
+                   Response Variable             seize       
+                   Response Distribution         Poisson     
+                   Link Function                 Log         
+                   Variance Function             Default     
+                   Offset Variable               logo        
+                   Variance Matrix Blocked By    subject     
+                   Estimation Technique          MPL         
+                   Degrees of Freedom Method     Containment 
+
+
+                            Class Level Information
+ 
+       Class      Levels    Values
+
+       subject        59    101 102 103 104 106 107 108 110 111 112 113  
+                            114 116 117 118 121 122 123 124 126 128 129  
+                            130 135 137 139 141 143 145 147 201 202 203  
+                            204 205 206 207 208 209 210 211 213 214 215  
+                            217 218 219 220 221 222 225 226 227 228 230  
+                            232 234 236 238                              
+
+
+                    Number of Observations Read         295
+                    Number of Observations Used         295
+
+
+                                   Dimensions
+
+                       G-side Cov. Parameters           1
+                       Columns in X                     4
+                       Columns in Z per Subject         1
+                       Subjects (Blocks in V)          59
+                       Max Obs per Subject              5
+
+
+                           Optimization Information
+
+                Optimization Technique        Dual Quasi-Newton
+                Parameters in Optimization    1                
+                Lower Boundaries              1                
+                Upper Boundaries              0                
+                Fixed Effects                 Profiled         
+                Starting From                 Data             
+
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         0          0               7   1812.8055379     1.82185205   1.047E-8
+                  RANDOM INTERCEPT ONLY, LINEARIZATION ABOUT 0                22
+
+                             The GLIMMIX Procedure
+
+                               Iteration History
+ 
+                                           Objective                       Max
+ Iteration   Restarts   Subiterations       Function         Change   Gradient
+
+         1          0               5   1483.2897424     0.54456025     0.0004
+         2          0               4   1504.5647224     0.06652485   0.000073
+         3          0               2   1504.4172804     0.00125631   5.084E-7
+         4          0               1   1504.4169407     0.00000053   1.327E-7
+         5          0               0   1504.4169407     0.00000000   1.327E-7
+
+              Convergence criterion (PCONV=1.11022E-8) satisfied.       
+
+
+                                 Fit Statistics
+
+                      -2 Log Pseudo-Likelihood     1504.42
+                      Generalized Chi-Square       1409.04
+                      Gener. Chi-Square / DF          4.78
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov                               Standard
+                   Parm       Subject    Estimate       Error
+
+                   UN(1,1)    subject      1.1453      0.2138
+
+
+                          Solutions for Fixed Effects
+ 
+                                Standard
+       Effect       Estimate       Error       DF    t Value    Pr > |t|
+
+       Intercept      1.3476      0.2051       57       6.57      <.0001
+       v              0.1108     0.04689      234       2.36      0.0189
+       trt           0.02651      0.2829      234       0.09      0.9254
+       v*trt         -0.1037     0.06505      234      -1.59      0.1123
+
+
+                        Type III Tests of Fixed Effects
+ 
+                              Num      Den
+                Effect         DF       DF    F Value    Pr > F
+
+                v               1      234       5.58    0.0189
+                trt             1      234       0.01    0.9254
+                v*trt           1      234       2.54    0.1123

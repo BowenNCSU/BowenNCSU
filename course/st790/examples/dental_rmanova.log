@@ -1,0 +1,401 @@
+1                                                          The SAS System                            15:13 Saturday, January 9, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.16 seconds
+      cpu time            0.03 seconds
+      
+1          /*******************************************************************
+2          
+3            CHAPTER 3, EXAMPLE 1, Dental Study
+4          
+5            Univariate and multivariate repeated measures analysis of variance
+6          
+7          *******************************************************************/
+8          
+9          options ls=80 ps=59 nodate; run;
+10         
+11         /******************************************************************
+12         
+13           Read in the data (in "long" form of one record per observation)
+14           and create an alternative data set in "wide" form with one record
+15           per individual
+16         
+17         *******************************************************************/
+2                                The SAS System
+
+18         
+19         data dent1; infile 'dental.dat';
+20           input obsno child age distance gender;
+21         run;
+
+NOTE: The infile 'dental.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/dental
+      .dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=09Jan2016:10:28:31,
+      File Size (bytes)=1552
+
+NOTE: 109 records were read from the infile 'dental.dat'.
+      The minimum record length was 0.
+      The maximum record length was 16.
+NOTE: SAS went to a new line when INPUT statement reached past the end of a 
+      line.
+NOTE: The data set WORK.DENT1 has 108 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+22         
+23         proc transpose data=dent1 out=dent2 prefix=age;
+24            by gender child notsorted;
+25            var distance;
+26         run;
+
+NOTE: There were 108 observations read from the data set WORK.DENT1.
+NOTE: The data set WORK.DENT2 has 27 observations and 7 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27         
+28         /*******************************************************************
+29         
+30           Construct the univariate analysis of variance using PROC GLM
+31           via a "split plot" specification, which requires the data in
+32           "long" form (DENT1).
+33         
+34           The F ratio that PROC GLM prints out automatically for the
+35           gender effect (averaged across age) uses the MSE in the
+36           denominator, so is incorrect.
+37         
+38           The RANDOM statement produces the expected mean squares
+39         
+40           The TEST option request the test for the gender effect
+41           treating the child(gender) efffect as random, yielding the correct
+42           F ratio.  Other F-ratios are correct.
+43         
+44         *******************************************************************/
+45         
+3                                The SAS System
+
+46         title "UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC
+46       ! GLM";
+47         proc glm data=dent1;
+48           class age gender child;
+49           model distance = gender child(gender) age age*gender;
+50           random child(gender) / test;
+51         run;
+
+NOTE: TYPE I EMS not available without the E1 option.
+52         
+53         /*******************************************************************
+54         
+55           This analysis can also be done using PROC MIXED.  The
+56           MODEL and RANDOM statements have DIFFERENT interpretations in
+57           PROC GLM and PROC MIXED.  The METHOD=TYPE3 option produces the
+58           correct tests.
+59         
+60         *******************************************************************/
+61         
+62         title "UNIVARIATE ANALYSIS USING PROC MIXED";
+
+NOTE: The PROCEDURE GLM printed pages 1-4.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+63         proc mixed data=dent1 method=type3;
+64           class age gender child;
+65           model distance = gender age age*gender;
+66           random child(gender);
+67         run;
+
+NOTE: The PROCEDURE MIXED printed pages 5-6.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+68         
+69         /*******************************************************************
+70         
+71           Now carry out the same analysis using the REPEATED statement in
+72           PROC GLM.  This requires that the data be represented in the "wide"
+73           form as in DENT2.
+74         
+75           The option NOUNI suppresses individual analyses of variance
+76           for the data at each age value from being printed.
+77         
+78           The PRINTE option asks for the test of sphericity to be performed.
+79         
+80           The NOM option means "no multivariate," which means just do
+81           the univariate repeated measures analysis under the assumption
+82           that the exchangable (compound symmetry) model is correct.
+83         
+84         *******************************************************************/
+85         
+4                                The SAS System
+
+86         title "UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM";
+87         proc glm data=dent2;
+88           class gender;
+89           model age1 age2 age3 age4 = gender / nouni;
+90           repeated age / printe nom;
+91         
+92         /*******************************************************************
+93         
+94           Using the REPEATED statement, one can obtain specialized within-
+95           individual tests; the REPEATED statement allows one to specify
+96           diffrent contrast matrices U.  We demonstrate with two calls to
+97           PROC GLM like the one above specifying the Helmert and polynomial
+98           transformations.
+99         
+100          In both, the SUMMARY option asks that PROC GLM print out the
+100      ! results
+101          of tests corresponding to the contrasts in each column of the U
+102          matrix.
+103        
+104          The PRINTM option prints the U matrix; SAS calls the transpose
+105          of this matrix M, so the M printed is our U'.
+106        
+107          The NOU option suppresses the results of the univariate analysis,
+108          which we already did above.
+109        
+110          First request the orthogonal polynomial transformation.  Here, SAS
+111          DOES use the normalized version of the U matrix.  Thus, the SSs
+112          from the individual ANOVAs for each column will add up to the
+112      ! Gender
+113          by Age interaction SS (and similarly for the within-unit error SS).
+114        
+115        *******************************************************************/
+116        
+117        title "ORTHOGONAL POLYNOMIAL TRANSFORMATION";
+
+NOTE: The Huynh-Feldt epsilon and the corresponding adjusted p-value have been 
+      enhanced to include a correction based on Lecoutre (1991). Use the 
+      UEPSDEF=HF option on the REPEATED statement to revert to the previous 
+      definition.
+NOTE: The PROCEDURE GLM printed pages 7-11.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+118        proc glm data=dent2;
+119          class gender;
+120          model age1 age2 age3 age4 = gender / nouni;
+121          repeated age 4 (8 10 12 14) polynomial /summary nou nom printm;
+122        run;
+
+123        
+124        /*******************************************************************
+125        
+126          Now request the Helmert transformation.  SAS does NOT use the
+127          normalized version of the Helmert transformation matrix.  Thus,
+128          the SSs from the individual ANOVAs for each column will NOT add
+5                                The SAS System
+
+129          up to the Gender by Age interaction SS (similarly for within-unit
+130          error).  However, the F ratios are correct.
+131        
+132        *******************************************************************/
+133        
+134        title "UNNORMALIZED HELMERT TRANSFORATION";
+
+NOTE: The PROCEDURE GLM printed pages 12-15.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+135        proc glm data=dent2;
+136          class gender;
+137          model age1 age2 age3 age4 = gender / nouni;
+138          repeated age 4 (8 10 12 14) helmert /summary nou nom printm;
+139        run;
+
+140        
+141        /*******************************************************************
+142        
+143          Here, we manually perform the same analysis using the
+144          NORMALIZED version of the Helmert transformation matrix.
+145          We get each individual test separately using the PROC GLM
+146          MANOVA statement.
+147        
+148        ********************************************************************/
+149        
+150        title "NORMALIZED HELMERT TRANSFORATION";
+
+NOTE: The PROCEDURE GLM printed pages 16-19.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+151        proc glm data=dent2;
+152          model age1 age2 age3 age4 = gender /nouni;
+153          manova h=gender m=0.866025404*age1 - 0.288675135*age2-
+153      ! 0.288675135*age3 - 0.288675135*age4;
+154          manova h=gender m=
+154      ! 0.816496581*age2-0.40824829*age3-0.40824829*age4;
+155          manova h=gender m=  0.707106781*age3-  0.707106781*age4;
+156        run;
+
+157        
+158        /*******************************************************************
+159        
+160          To compare, we apply the contrasts (normalized version) to each
+161          child's data.  We thus get a single value for each child
+161      ! corresponding
+162          to each contrast.  These are in the variables AGE1P -- AGE3P.
+163          We then use PROC GLM to perform each separate ANOVA.  It can be
+164          verified that the separate gender sums of squares add up to
+165          the interaction SS in the analysis above.
+166        
+6                                The SAS System
+
+167        ********************************************************************/
+168        
+
+NOTE: The PROCEDURE GLM printed pages 20-26.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+169        data dent3; set dent2;
+170          age1p = sqrt(3/4)*(age1-age2/3-age3/3-age4/3);
+171          age2p = sqrt(2/3)*(age2-age3/2-age4/2);
+172          age3p = sqrt(1/2)*(age3-age4);
+173        run;
+
+NOTE: There were 27 observations read from the data set WORK.DENT2.
+NOTE: The data set WORK.DENT3 has 27 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+174        
+175        proc glm; class gender; model age1p age2p age3p = gender;
+176        run;
+
+177        
+178        /*******************************************************************
+179        
+180          Now carry out the multivariate analysis.
+181        
+182          The MANOVA statement yields the test of equality of gender mean
+183          vectors, which is equivalent to Hotelling's T^2 test in this case
+184          because there are 2 groups.
+185        
+186          The PRINTH and PRINTE options print the SS&CP matrices
+187          Q_H and Q_E corresponding to the null hypothesis of equal means.
+188        
+189          Without the NOUNI option, the individual analyses of variance
+190          for the data at each age value are printed.
+191        
+192        ********************************************************************/
+193        
+194        title "MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT";
+
+NOTE: The PROCEDURE GLM printed pages 27-30.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+195        proc glm data=dent2;
+196          class gender;
+197          model age1 age2 age3 age4 = gender;
+198          manova h=gender / printh printe;
+199        run;
+
+7                                The SAS System
+
+200        
+201        /*******************************************************************
+202        
+203          Use the REPEATED option to do profile analysis.  The
+204          "between subjects" (units) test is that for coincidence assuming
+205          profiles are parallel, based on averaging across times, so
+206          is th same as the univariate test.
+207        
+208          The tests for age and age*gender are the multivariate tests for
+209          profile constancy and parallelism, respectively.  The test for
+210          constancy (age effect here) is the multivariate test for constancy
+211          assuming that the profiles are parallel.  Both are different from
+212          the univariate tests, which are prediated on the assumption of
+213          compound symmetry.
+214        
+215          The within-unit analyses using different contrast matrices are
+216          be the same as in the univariate case above so are not repeated.
+217        
+218        *******************************************************************/
+219        
+220        title "MULTIVARIATE PROFILE ANALYSIS";
+
+NOTE: The PROCEDURE GLM printed pages 31-37.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+221        proc glm data=dent2;
+222          class gender;
+223          model age1 age2 age3 age4 = gender / nouni;
+224          repeated age / nou;
+225        run;
+
+NOTE: The PROCEDURE GLM printed pages 38-40.
+NOTE: PROCEDURE GLM used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.26 seconds
+      cpu time            0.13 seconds
+      

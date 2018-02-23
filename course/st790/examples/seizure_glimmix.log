@@ -1,0 +1,327 @@
+1                                                          The SAS System                                08:24 Friday, April 1, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.18 seconds
+      cpu time            0.03 seconds
+      
+1          /******************************************************************
+2          
+3            CHAPTER 9, EXAMPLE 5, Epileptic Seizure Study
+4          
+5            Fit a subject-specific (generalized linear mixed effects) loglinear model
+6            to the epileptic seizure data of Thall and Vail (1990) using
+7            the GLIMMIX macro (not to be confused with PROC GLIMMIX).  This
+8            macro implements a method that expands about current empirical
+9            Bayes estimates of random effects and is roughly similar to
+10           PQL.  It also implements a method that expands about zero and is
+11           similar to MQL.
+12         
+13           See the macro file glmm800.sas and the SAS website (search on "glimmix
+14           macro" in customer resources) for details on options and usage.  The
+15           macro relies on linearizing the model at each iteration so that
+16           the linearized model can be fitted using PROC MIXED.
+17         
+18         ******************************************************************/
+2                                                          The SAS System                                08:24 Friday, April 1, 2016
+
+19         
+20         options ls=80 ps=59 nodate; run;
+21         
+22         %inc 'glmm800.sas'  / nosource;
+1738       
+1739       /******************************************************************
+1740       
+1741           The data look like (first 8 records on first 2 subjects)
+1742       
+1743              104  11   0   0  11  31
+1744              104   5   1   0  11  31
+1745              104   3   2   0  11  31
+1746              104   3   3   0  11  31
+1747              104   3   4   0  11  31
+1748              106  11   0   0  11  30
+1749              106   3   1   0  11  30
+1750              106   5   2   0  11  30
+1751              106   3   3   0  11  30
+1752              106   3   4   0  11  30
+1753       
+1754         column 1      subject
+1755         column 2      number of seizures
+1756         column 3      visit (baseline 0, 1--4 biweekly visits)
+1757         column 4      = 0 if placebo, = 1 if progabide
+1758         column 5      baseline number of seizures in 8 weeks prior to study
+1759         column 6      age
+1760       
+1761         Note that the baseline seizures are included in the dataset as both
+1762         a separate variable and as the response at time 0.
+1763       
+1764       ******************************************************************/
+1765       
+1766       data seizure; infile 'seize.dat';
+1767           input subject seize visit trt base age;
+1768       *    if subject=207 then delete;
+1769       run;
+
+NOTE: The infile 'seize.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/nlmm_examples/s
+      eize.dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Mar2016:11:47:23,
+      File Size (bytes)=7080
+
+NOTE: 295 records were read from the infile 'seize.dat'.
+      The minimum record length was 23.
+      The maximum record length was 23.
+NOTE: The data set WORK.SEIZURE has 295 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+1770       
+1771       *  create additional indicator variables;
+3                                The SAS System
+
+1772       
+1773       data seizure; set seizure;
+1774          logage=log(age);
+1775          o=2; v=1;
+1776          if visit=0 then o=8;
+1777          if visit=0 then v=0;
+1778          logo=log(o);
+1779          visit4=1;
+1780          if visit<4 then visit4=0;
+1781       run;
+
+NOTE: There were 295 observations read from the data set WORK.SEIZURE.
+NOTE: The data set WORK.SEIZURE has 295 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1782       
+1783       /*****************************************************************
+1784       
+1785         Here, we fit two models:
+1786       
+1787         - population model contains an intercept with random effect and
+1788           no dependence on treatment; the linear (visit) term depends on
+1789           treatment but has not random effect
+1790       
+1791         - a fancier model as above but with with random effects both
+1792           intercept and linear (visit) term
+1793       
+1794         See the macro for information on syntax, required statements,
+1795         and options.  See the PROC MIXED documentation for information
+1796         on specifying the model using the "stmts=" statement.  The default
+1797         method is a version of PQL.  By adding
+1798       
+1799         options = MQL
+1800       
+1801         you can get MQL, which linearizes the model about the random
+1801     ! effects
+1802         = 0.
+1803       
+1804         The macro creates several data sets, including the random effects
+1805         estimates.  See the macro.
+1806       
+1807         The user should check the .log file for information on convergence
+1808         (or not) of the algorithm.
+1809       
+1810       ******************************************************************/
+1811       
+1812       title "RANDOM INTERCEPT AND TIME";
+1813       %glimmix(data=seizure,
+1814         procopt=method=ml,
+1815         stmts=%str(
+1816            class subject;
+1817            model seize = v trt trt*v / solution;
+1818            random intercept v / subject=subject type=un g gcorr;
+1819         ),
+4                                The SAS System
+
+1820         error=poisson,
+1821         link=log,
+1822         offset=logo
+1823       );
+
+       The GLIMMIX Macro
+
+Data Set           : WORK.SEIZURE
+Error Distribution : POISSON
+Link Function      : LOG
+Response Variable  : SEIZE
+
+
+    GLIMMIX Iteration History
+
+Iteration    Convergence criterion
+    1            2
+    2            1.2064873227
+    3            0.0362853411
+    4            0.0010918056
+    5            0.0000267639
+    6            1.0918917E-8
+    7            5.752682E-13
+
+Output from final Proc Mixed run:
+1824       run;
+1825       
+1826       
+1827       title "RANDOM INTERCEPT AND TIME, USING MQL";
+1828       %glimmix(data=seizure,
+1829         procopt=method=ml,
+1830         stmts=%str(
+1831            class subject;
+1832            model seize = v trt trt*v / solution;
+1833            random intercept v / subject=subject type=un g gcorr;
+1834         ),
+1835         error=poisson,
+1836         link=log,
+1837         offset=logo,
+1838         options=MQL
+1839         );
+
+       The GLIMMIX Macro
+
+Data Set           : WORK.SEIZURE
+Error Distribution : POISSON
+Link Function      : LOG
+Response Variable  : SEIZE
+
+
+    GLIMMIX Iteration History
+
+Iteration    Convergence criterion
+    1            1.6587903414
+    2            1.0184909355
+    3            0.2050165725
+    4            0.0085251551
+                                 The SAS System
+
+    5            0.0000725879
+    6            5.119081E-12
+
+Output from final Proc Mixed run:
+1840       run;
+1841       
+1842       title "RANDOM INTERCEPT ONLY";
+1843       %glimmix(data=seizure,
+1844         procopt=method=ml,
+1845         stmts=%str(
+1846            class subject;
+1847            model seize = v trt trt*v / solution;
+1848            random intercept / subject=subject type=un;
+1849         ),
+1850         error=poisson,
+1851         link=log,
+1852         offset=logo
+1853       );
+
+       The GLIMMIX Macro
+
+Data Set           : WORK.SEIZURE
+Error Distribution : POISSON
+Link Function      : LOG
+Response Variable  : SEIZE
+
+
+    GLIMMIX Iteration History
+
+Iteration    Convergence criterion
+    1            2
+    2            0.1466531892
+    3            0.0147324079
+    4            0.0001884409
+    5            2.6570345E-6
+    6            3.4100588E-9
+
+Output from final Proc Mixed run:
+1854       run;
+1855       
+1856       title "RANDOM INTERCEPT ONLY USING MQL";
+1857       %glimmix(data=seizure,
+1858         procopt=method=ml,
+1859         stmts=%str(
+1860            class subject;
+1861            model seize = v trt trt*v / solution;
+1862            random intercept / subject=subject type=un;
+1863         ),
+1864         error=poisson,
+1865         link=log,
+1866         offset=logo,
+1867         options=MQL
+1868       );
+
+       The GLIMMIX Macro
+
+Data Set           : WORK.SEIZURE
+                                 The SAS System
+
+Error Distribution : POISSON
+Link Function      : LOG
+Response Variable  : SEIZE
+
+
+    GLIMMIX Iteration History
+
+Iteration    Convergence criterion
+    1            1.8428122196
+    2            0.4766840525
+    3            0.0526775305
+    4            0.0008289998
+    5            6.5729824E-8
+    6            3.153495E-14
+
+Output from final Proc Mixed run:
+1869       run;
+1870       
+1871       
+1872       
+1873       
+1874       
+1875       
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           1.12 seconds
+      cpu time            0.94 seconds
+      

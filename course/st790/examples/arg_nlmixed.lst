@@ -1,0 +1,253 @@
+                ARGATROBAN PK USING ADAPTIVE GAUSSIAN QUADRATURE               1
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.ARG            
+        Dependent Variable                          conc                
+        Distribution for Dependent Variable         Normal              
+        Random Effects                              b1 b2               
+        Distribution for Random Effects             Normal              
+        Subject Variable                            id                  
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          Adaptive Gaussian   
+                                                    Quadrature          
+
+
+                                   Dimensions
+
+                    Observations Used                    475
+                    Observations Not Used                  0
+                    Total Observations                   475
+                    Subjects                              37
+                    Max Obs per Subject                   14
+                    Parameters                             7
+                    Quadrature Points                     10
+
+
+                               Initial Parameters
+ 
+                                                                        Negative
+                                                                             Log
+   beta1     beta2      s2b1      cb12      s2b2        s2     delta  Likelihood
+
+      -6        -2      0.14     0.006     0.005        20       0.5  2922.94413
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1      6      2906.5246      16.41951     256.822    -29916.2
+             2      9      2900.0966      6.427993     310.062    -1135.69
+             3     12      2887.6050      12.49165     135.536    -1895.43
+             4     15      2885.5656      2.039359     99.2731    -275.883
+             5     20      2866.7908      18.77481     146.859    -44.7006
+             6     23      2863.6000      3.190801     111.881    -75.9943
+             7     28      2862.2286       1.37138     75.9288    -3.54078
+             8     30      2861.4823        0.7463     161.461    -1.12814
+             9     32      2860.6253      0.856986     103.157    -3.70906
+            10     35      2860.1194       0.50596     48.0607    -0.69495
+            11     38      2859.7995       0.31987     59.3499    -0.39913
+                ARGATROBAN PK USING ADAPTIVE GAUSSIAN QUADRATURE               2
+
+                             The NLMIXED Procedure
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+            12     41      2859.5936      0.205865     37.6650    -0.35663
+            13     44      2859.4807      0.112985     18.3677    -0.21403
+            14     47      2859.4675      0.013164     5.68735    -0.04457
+            15     50      2859.4656      0.001881     1.73090    -0.00394
+            16     53      2859.4651      0.000565     2.26732    -0.00047
+            17     59      2859.4500      0.015104     15.9318    -0.00054
+            18     65      2858.9828      0.467146     87.4552    -0.03156
+            19     67      2858.4638      0.519031     28.1780    -0.47105
+            20     72      2858.1764      0.287337     84.9594    -0.61691
+            21     74      2857.9089      0.267562     58.7597    -0.31127
+            22     76      2857.4755      0.433403     38.2640    -0.30128
+            23     79      2857.2144      0.261036     55.6652    -0.26156
+            24     81      2857.0304      0.184008     83.7484    -0.60085
+            25     83      2856.6958       0.33462     17.2430    -1.27217
+            26     86      2856.6607      0.035097     58.9116    -0.11665
+            27     88      2856.6106      0.050141     22.8393    -0.06898
+            28     92      2856.4778      0.132799     49.3189    -0.05462
+            29     95      2856.4369      0.040887     10.4522    -0.11722
+            30     98      2856.4094      0.027451     11.5267    -0.03051
+            31    101      2856.3962      0.013266     15.1793    -0.01627
+            32    104      2856.3886       0.00756     4.58124    -0.01165
+            33    107      2856.3865      0.002101     0.99878    -0.00475
+            34    110      2856.3861      0.000358     0.98712    -0.00074
+            35    113      2856.3861      0.000037     0.20446    -0.00006
+            36    116      2856.3861      2.944E-6    0.039001    -4.87E-6
+
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 5712.8
+                    AIC (smaller is better)           5726.8
+                    AICC (smaller is better)          5727.0
+                    BIC (smaller is better)           5738.0
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  beta1      -5.4234  0.06462   35  -83.93   <.0001  -5.5546  -5.2922 -0.00116
+  beta2      -1.8693  0.03843   35  -48.64   <.0001  -1.9473  -1.7913 0.000111
+                ARGATROBAN PK USING ADAPTIVE GAUSSIAN QUADRATURE               3
+
+                             The NLMIXED Procedure
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  s2b1        0.1497  0.03594   35    4.16   0.0002  0.07673   0.2227 -0.00256
+  cb12       0.01367  0.01206   35    1.13   0.2647 -0.01081  0.03815 0.024573
+  s2b2       0.01117 0.007473   35    1.49   0.1440 -0.00400  0.02634 -0.02457
+  s2          125.70  84.9934   35    1.48   0.1481 -46.8502   298.24 -0.00003
+  delta       0.3404  0.05645   35    6.03   <.0001   0.2258   0.4550 -0.03900
+                    ARGATROBAN PK USING FO METHOD WITH GEE-2                   4
+
+                             The NLMIXED Procedure
+
+                                 Specifications
+
+        Data Set                                    WORK.ARG            
+        Dependent Variable                          conc                
+        Distribution for Dependent Variable         Normal              
+        Random Effects                              b1 b2               
+        Distribution for Random Effects             Normal              
+        Subject Variable                            id                  
+        Optimization Technique                      Dual Quasi-Newton   
+        Integration Method                          First Order         
+
+
+                                   Dimensions
+
+                    Observations Used                    475
+                    Observations Not Used                  0
+                    Total Observations                   475
+                    Subjects                              37
+                    Max Obs per Subject                   14
+                    Parameters                             7
+
+
+                               Initial Parameters
+ 
+                                                                        Negative
+                                                                             Log
+   beta1     beta2      s2b1      cb12      s2b2        s2     delta  Likelihood
+
+      -6        -2      0.14     0.006     0.005        20       0.5  3136.97492
+
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+             1     60      3088.7194      48.25549     16360.3     -170384
+             2     71      3080.5768      8.142662     14801.2    -29152.2
+             3    146      3069.2439      11.33283     28305.2    -8677.20
+             4    213      2977.6818      91.56209      219351    -405.121
+             5    226      2977.6489      0.032921      240038    -3169.64
+             6    246      2972.8949      4.754017      292558    -2874.56
+             7    255      2963.8034      9.091499      304507    -127.996
+             8    274      2961.6178      2.185599      268592    -117.645
+             9    293      2958.4687      3.149113      277408    -137.177
+            10    302      2954.2810      4.187706      133492    -60.4753
+            11    321      2952.7549      1.526073     81352.0    -18.5696
+            12    330      2951.2301      1.524795     21481.4    -2.45904
+            13    340      2951.1265      0.103645     10126.4    -0.21547
+                    ARGATROBAN PK USING FO METHOD WITH GEE-2                   5
+
+                             The NLMIXED Procedure
+
+                                Iteration History
+ 
+                            Negative
+                                 Log                   Maximum
+      Iteration Calls     Likelihood    Difference    Gradient       Slope
+
+            14    350      2951.1176      0.008863     2687.20    -0.03374
+            15    359      2951.1118      0.005789     2014.52    -0.00921
+            16    368      2951.1073      0.004478     2543.48    -0.00662
+            17    377      2951.1011      0.006202     1601.35    -0.00476
+            18    395      2951.0304      0.070747     13866.4    -0.00737
+            19    413      2950.5573      0.473117     29224.3    -0.09952
+            20    432      2948.9024      1.654852     30399.8    -0.60381
+            21    442      2947.9364      0.966014     28148.9    -2.93982
+            22    460      2944.9270      3.009433      132414    -3.76771
+            23    469      2940.5370      4.389993     73085.3    -5.48182
+            24    478      2938.7012      1.835806     49932.7    -7.30625
+            25    487      2935.6838      3.017355     25263.3    -12.8752
+            26    496      2933.0288      2.655022     67205.9    -2.99424
+            27    505      2929.4623      3.566499     11386.9    -3.77948
+            28    514      2926.5007       2.96158     22094.3    -6.53783
+            29    523      2921.9581      4.542578     4873.38    -6.77455
+            30    532      2914.5318      7.426352     18160.5    -6.04193
+            31    542      2908.9928      5.539003     14346.4    -6.15754
+            32    551      2903.2079      5.784906     14881.1    -8.79971
+            33    570      2900.1463      3.061559     2801.20    -5.38520
+            34    579      2898.6451      1.501243     9439.95    -1.10222
+            35    589      2897.8238      0.821292     9785.48    -2.27177
+            36    599      2897.4934      0.330431     663.520    -0.60509
+            37    609      2897.4538      0.039557     1411.74    -0.02725
+            38    619      2897.4458      0.008026     1725.81    -0.01123
+            39    637      2897.4201      0.025678     2757.13    -0.00320
+            40    646      2897.3993      0.020825     4009.00    -0.02239
+            41    656      2897.3926      0.006635     3218.03    -0.00918
+            42    674      2897.3576      0.035041     406.364    -0.00398
+            43    684      2897.3518      0.005835     1440.90    -0.00797
+            44    694      2897.3495      0.002299     374.753    -0.00160
+            45    703      2897.3476      0.001885     311.768    -0.00171
+            46    713      2897.3473      0.000291     12.8634    -0.00063
+            47    725      2897.3473      -186E-13     12.8634    -9.08E-7
+
+
+                  NOTE: GCONV convergence criterion satisfied.          
+
+NOTE: Moore-Penrose inverse is used in covariance matrix.
+
+
+
+                    ARGATROBAN PK USING FO METHOD WITH GEE-2                   6
+
+                             The NLMIXED Procedure
+
+                                 Fit Statistics
+
+                    -2 Log Likelihood                 5794.7
+                    AIC (smaller is better)           5808.7
+                    AICC (smaller is better)          5808.9
+                    BIC (smaller is better)           5820.0
+
+
+                              Parameter Estimates
+ 
+                     Standard                         95% Confidence
+  Parameter Estimate    Error   DF t Value Pr > |t|       Limits      Gradient
+
+  beta1      -5.3012  0.03669   35 -144.48   <.0001  -5.3757  -5.2267 -0.00554
+  beta2      -1.8447  0.04007   35  -46.04   <.0001  -1.9260  -1.7633 0.003819
+  s2b1      0.002266        .   35     .      .            .        .  2.50564
+  cb12      0.001043        .   35     .      .            .        .  70.9157
+  s2b2      0.000566        .   35     .      .            .        . -71.0311
+  s2          493.55  77.1192   35    6.40   <.0001   336.99   650.11 0.000013
+  delta       0.2415  0.01093   35   22.11   <.0001   0.2193   0.2637 0.053469

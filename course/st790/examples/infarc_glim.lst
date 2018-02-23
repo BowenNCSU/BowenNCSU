@@ -1,0 +1,86 @@
+                                 The SAS System                                1
+
+                              The GENMOD Procedure
+
+                               Model Information
+
+                         Data Set               WORK.MI
+                         Distribution          Binomial
+                         Link Function            Logit
+                         Dependent Variable          mi
+
+
+                    Number of Observations Read         200
+                    Number of Observations Used         200
+                    Number of Events                     43
+                    Number of Trials                    200
+
+
+                                Response Profile
+ 
+                           Ordered              Total
+                             Value    mi    Frequency
+
+                                 1    1            43
+                                 2    0           157
+
+PROC GENMOD is modeling the probability that mi='1'.
+
+
+                             Parameter Information
+ 
+                           Parameter       Effect
+
+                           Prm1            Intercept
+                           Prm2            oral     
+                           Prm3            age      
+                           Prm4            smoke    
+
+
+                     Criteria For Assessing Goodness Of Fit
+ 
+        Criterion                     DF           Value        Value/DF
+
+        Log Likelihood                          -75.1874                
+        Full Log Likelihood                     -75.1874                
+        AIC (smaller is better)                 158.3748                
+        AICC (smaller is better)                158.5799                
+        BIC (smaller is better)                 171.5681                
+
+
+  Algorithm converged.                                                       
+
+
+                                 The SAS System                                2
+
+                              The GENMOD Procedure
+
+              Analysis Of Maximum Likelihood Parameter Estimates
+ 
+                          Standard       Wald 95%             Wald
+ Parameter  DF  Estimate     Error   Confidence Limits  Chi-Square  Pr > ChiSq
+
+ Intercept   1   -9.1140    1.7571  -12.5579   -5.6702       26.90      <.0001
+ oral        1    1.9799    0.4697    1.0593    2.9005       17.77      <.0001
+ age         1    0.1626    0.0445    0.0753    0.2498       13.32      0.0003
+ smoke       1    1.8122    0.4294    0.9706    2.6538       17.81      <.0001
+ Scale       0    1.0000    0.0000    1.0000    1.0000                        
+
+NOTE: The scale parameter was held fixed.
+
+
+                           Contrast Estimate Results
+ 
+                               Mean           Mean            L'Beta   Standard
+ Label                     Estimate    Confidence Limits    Estimate      Error
+
+ smk log odds ratio          0.8596     0.7252     0.9342     1.8122     0.4294
+ Exp(smk log odds ratio)                                      6.1241     2.6297
+
+                           Contrast Estimate Results
+ 
+                                            L'Beta           Chi-
+  Label                      Alpha    Confidence Limits    Square   Pr > ChiSq
+
+  smk log odds ratio          0.05     0.9706     2.6538    17.81       <.0001
+  Exp(smk log odds ratio)     0.05     2.6396    14.2084                      

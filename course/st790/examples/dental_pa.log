@@ -1,0 +1,431 @@
+1                                                          The SAS System                           16:00 Thursday, January 28, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.18 seconds
+      cpu time            0.03 seconds
+      
+1           /*******************************************************************
+2          
+3            CHAPTER 5, EXAMPLE 1, Dental Study
+4          
+5            Population-averaged model
+6          
+7            We use the REPEATED statement of PROC MIXED with the
+8            TYPE= options to fit the model assuming several different
+9            covariance structures.
+10         
+11         *******************************************************************/
+12         
+13         options ls=80 ps=59 nodate; run;
+14         
+15         /******************************************************************
+16         
+17           Read in the data set
+2                                The SAS System
+
+18         
+19         *******************************************************************/
+20         
+21         data dent1; infile 'dental.dat';
+22           input obsno child age distance gender;
+23           ag = age*gender;
+24         run;
+
+NOTE: The infile 'dental.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/examples/dental
+      .dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=09Jan2016:10:28:31,
+      File Size (bytes)=1552
+
+NOTE: 109 records were read from the infile 'dental.dat'.
+      The minimum record length was 0.
+      The maximum record length was 16.
+NOTE: SAS went to a new line when INPUT statement reached past the end of a 
+      line.
+NOTE: The data set WORK.DENT1 has 108 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+25         
+26         /*******************************************************************
+27         
+28           Fit the basic model with separate intercepts and slopes for
+29           both genders with several different assumptions on the overall
+30           covariance structure.  Overall covariance structure is specified
+31           in the REPEATED statement.  We take this to be the same for both
+31       ! genders
+32           as well as different for each gender, which is specified using the
+33           GROUP = option in the REPEATED statement.  We also include fitting
+34           of a heterogeneous compound symmetric structure, which allows
+35           different variances at each time point.  See the SAS documentation
+36           for the REPEATED statement for a list of all the possible
+36       ! covariance
+37           model specifications.
+38         
+39           We use REML to fit all these models, but in the first call to MIXED
+40           show the options for specifying ML and for getting the "robust"
+40       ! sandwich
+41           covariance standard errors (EMPIRICAL option)
+42         
+43           We can compare the various fits of the same mean model using AIC
+43       ! and BIC.
+44           When ML is used, PROC MIXED defines BIC using what we have called
+44       ! N,
+45           When REML is used
+46         
+47         
+48             Thus, these will differ across implementations
+3                                The SAS System
+
+49           but can be compared within implementation.
+50         
+51           The R and RCORR options in the REPEATED statement have an option to
+52           print out the estimated covariance and correlation matrices for
+53           specific -- we print out these for the first girl (1) and first boy
+53       !  (12).
+54         
+55           *******************************************************************
+55       ! /
+56         
+57         title "COMMON UNSTRUCTURED USING REML (default) AND ROBUST SES";
+58         proc mixed empirical data=dent1;
+59           class gender child;
+60           model distance = gender gender*age / noint solution ;
+61           repeated / type = un subject = child r rcorr;
+62         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 1-3.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+63         
+64         title "(a) COMMON UNSTRUCTURED";
+65         proc mixed data=dent1 method=ml;
+66           class gender child;
+67           model distance = gender gender*age / noint solution ;
+68           repeated / type = un subject = child r rcorr;
+69         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 4-6.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+70         
+71         title "(b) SEPARATE UNSTRUCTURED BY GENDER";
+72         proc mixed data=dent1 method=ml;
+73           class gender child;
+74           model distance = gender gender*age / noint solution ;
+75           repeated / type = un subject = child r=1,12 rcorr=1,12 group=gender
+75       ! ;
+76         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 7-9.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+77         
+78         title "(c) COMMON COMPOUND SYMMETRY STRUCTURE";
+4                                The SAS System
+
+79         proc mixed data=dent1 method=ml;
+80           class gender child;
+81           model distance = gender gender*age / noint solution ;
+82           repeated / type = cs subject = child r rcorr;
+83         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 10-12.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+84         
+85         title "(d) COMMON AR(1) STRUCTURE";
+86         proc mixed data=dent1 method=ml;
+87           class gender child ;
+88           model distance = gender age*gender / noint solution chisq;
+89           repeated / type = ar(1)  subject=child r rcorr;
+90         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 13-15.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+91         
+92         title "(e) COMMON ONE-DEPENDENT STRUCTURE";
+93         proc mixed  data=dent1 method=ml;
+94           class gender child ;
+95           model distance = gender age*gender / noint solution chisq;
+96           repeated / type = toep(2)  subject=child r rcorr;
+97         run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 16-18.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+98         
+99         title "(f) COMMON HETEROGENEOUS COMPOUND SYMMETRY STRUCTURE";
+100        proc mixed data=dent1 method=ml;
+101          class gender child;
+102          model distance = gender gender*age / noint solution chisq;
+103          repeated / type = csh subject = child r rcorr;
+104        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 19-21.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+5                                The SAS System
+
+
+105        
+106        title "(g) SEPARATE COMPOUND SYMMETRY FOR EACH GENDER";
+107        proc mixed  data=dent1 method=ml;
+108          class gender child ;
+109          model distance = gender age*gender / noint solution chisq;
+110          repeated / type = cs subject=child r=1,12 rcorr=1,12 group=gender;
+111        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 22-24.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+112        
+113        title "(h) SEPARATE AR(1) FOR EACH GENDER";
+114        proc mixed  data=dent1 method=ml;
+115          class gender child ;
+116          model distance = gender age*gender / noint solution chisq;
+117          repeated / type = ar(1)  subject=child r=1,12 rcorr=1,12
+117      ! group=gender;
+118        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 25-27.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+119        
+120        title "(i) SEPARATE ONE-DEPENDENT FOR EACH GENDER";
+121        proc mixed data=dent1 method=ml;
+122          class gender child;
+123          model distance = gender age*gender / noint solution chisq;
+124          repeated / type = toep(2) subject=child r=1,12 rcorr=1,12
+124      ! group=gender;
+125        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 28-30.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+126        
+127        title "(j) SEPARATE HETEROGENEOUS COMPOUND SYMMETRY STRUCTURE";
+128        proc mixed  data=dent1 method=ml;
+129          class gender child;
+130          model distance = gender gender*age / noint solution chisq;
+131          repeated / type = csh subject = child r=1,12 rcorr=1,12
+131      ! group=gender;
+132        run;
+
+6                                The SAS System
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 31-33.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+133        
+134        /*******************************************************************
+135        
+136            AIC and BIC for these fits are as follows:
+137        
+138                      AIC     BIC
+139            (a)      447.5    465.6
+140            (b)      443.0    474.1
+141            (c)      440.6    448.4
+142            (d)      452.7    460.5
+143            (e)      469.4    477.2
+144            (f)      444.7    456.4
+145            (g)      424.8*   435.2*
+146            (h)      431.4    441.8
+147            (i)      460.6    471.0
+148            (j)      432.3    450.5
+149        
+150            Examination of the AIC, BIC suggests that a compound symmetric
+151            that is different for each gender with different constant
+151      ! variance
+152            across time for each gender is preferred.
+153        
+154            This model is adopted in further analyes shown below.  We use ML
+155            to fit a full model with different slopes and reduced model with
+156            same slop, so that the likelihood ratio test statistic can be
+156      ! calculatd.
+157            The COVB optoin prints out the covariance matrix of the fixed
+158            effects estimates.
+159        
+160            We then reparameterize the model to get the Wald and F tests for
+161            differences in intercept and slope and do
+162        
+163           We fit the first parameterization this time, so that the estimates
+164           are interpreted as the gender-specific intercepts and slopes.
+165           Thus, the TESTS OF FIXED EFFECTS in the output should be
+165      ! disregarded.
+166        
+167        *******************************************************************/
+168        
+169        *  full model again with covariance matrix of betahat printed;
+170        
+171        title "FULL MODEL WITH COMPOUND SYMMETRY FOR EACH GENDER";
+172        proc mixed method=ml data=dent1;
+173          class gender child;
+174          model distance = gender gender*age  / noint solution covb;
+175          repeated / type=cs subject=child r=1,12 rcorr=1,12 group=gender;
+176        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 34-36.
+7                                The SAS System
+
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+177        
+178        *  reduced model;
+179        
+180        title "REDUCED MODEL WITH COMPOUND SYMMETRY FOR EACH GENDER";
+181        proc mixed method=ml data=dent1;
+182          class gender child;
+183          model distance = gender age  / noint solution covb;
+184          repeated / type=cs subject=child r=1,12 rcorr=1,12 group=gender;
+185        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 37-39.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+186        
+187        *  full model using REML;
+188        *  use ESTIMATE statement to estimate the mean for a boy of age 11;
+189        *  use CONTRAST statement to test whether slopes coincide;
+190        *  use CONTRAST statement to test whether lines coincide;
+191        *  CHISQ option gets Wald test in addition to F test;
+192        
+193        title "FULL MODEL WITH COMPOUND SYMMETRY FOR EACH GENDER, REML";
+194        proc mixed data=dent1;
+195          class gender child;
+196          model distance = gender gender*age  / noint solution covb;
+197          repeated / type=cs subject=child r=1,12 rcorr=1,12 group=gender;
+198          estimate 'boy at 11' gender 0 1 gender*age 0 11;
+199          contrast 'diff in slp' gender 0 0 gender*age 1 -1 /chisq;
+200          contrast 'both diff' gender 1 -1 gender*age 0  0,
+201                               gender 0  0 gender*age 1 -1 / chisq;
+202        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 40-43.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+203        
+204        *  also fit full model in alt parameterization and use CHISQ option;
+205        *  to get Wald test in addition to F test of differences in intercept
+205      ! ;
+206        *  (gender) and slope (age*gender);
+207        
+208        title "FULL MODEL, ALTERNATIVE PARAMETERIZATION";
+209        proc mixed data=dent1;
+210          class gender child;
+211          model distance = gender age gender*age  /  solution chisq covb;
+8                                The SAS System
+
+212          repeated / type=cs subject=child r=1,12 rcorr=1,12 group=gender;
+213        run;
+
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 44-47.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.33 seconds
+      cpu time            0.18 seconds
+      

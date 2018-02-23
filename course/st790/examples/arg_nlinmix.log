@@ -1,0 +1,409 @@
+1                                                          The SAS System                                10:35 Friday, April 1, 2016
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.7.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.7.1.el6.x86_64 #1 SMP Tue Sep 22 22:00:00 UTC 2015 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.18 seconds
+      cpu time            0.03 seconds
+      
+1           /******************************************************************
+2          
+3            CHAPTER 9, Argatroban pharmacokinetic study
+4          
+5            Fit a subject-specific nonlinear mixed effects model to the
+6            argatroban PK data in Section 9.5 of Davidian and Giltinan (1995)
+7            using the SAS NLINMIX macro.  This macro implements approximate
+8            maximum likelihood based on models that are linearized about
+9            the empirical Bayes estimates of the random effects and about
+10           zero.
+11         
+12           See the macro file nlmm801.sas and the SAS website (search on "nlinmix
+13           macro" in customer resources) for details on options and usage.  The
+14           macro relies on linearizing the model at each iteration so that
+15           the linearized model can be fitted using PROC MIXED.
+16         
+17         ******************************************************************/
+18         
+2                                The SAS System
+
+19         options ps=55 ls=80 nodate;
+20         
+21         %inc 'nlmm801.sas'
+22              / nosource;
+1225       
+1226       /******************************************************************
+1227       
+1228           The data look like (data on first subject)
+1229       
+1230           1 1 1 30 95.7
+1231           2 1 1 60 122
+1232           3 1 1 90 133
+1233           4 1 1 160 162
+1234           5 1 1 200 200
+1235           6 1 1 240 172
+1236           7 1 1 245 122
+1237           8 1 1 250 120
+1238           9 1 1 260 60.6
+1239          10 1 1 275 70
+1240          11 1 1 295 47.3
+1241       
+1242         column 1      observation no
+1243         column 2      subject id
+1244         column 3      infusion rate
+1245         column 4      time (min)
+1246         column 5      argatroban concentration
+1247       
+1248       ******************************************************************/
+1249       
+1250       data arg; infile 'argconc.dat';
+1251         input obsno indiv dose time conc;
+1252         tinf=240;
+1253         t1=1; if time>tinf then t1=0;
+1254         t2=tinf*(1-t1)+t1*time;
+1255       run;
+
+NOTE: The infile 'argconc.dat' is:
+      
+      Filename=/home/davidian/ST/Documents/teaching/longitudinal/nlmm_examples/a
+      rgconc.dat,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=29Mar2016:11:01:19,
+      File Size (bytes)=8624
+
+NOTE: 475 records were read from the infile 'argconc.dat'.
+      The minimum record length was 12.
+      The maximum record length was 21.
+NOTE: The data set WORK.ARG has 475 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+3                                The SAS System
+
+
+1256       
+1257       /*****************************************************************
+1258       
+1259         We fit the mode in the course notes.  Specification of the model
+1260         is self-evident and is done in the MODEL section - the final
+1261         expression for f(z_ij,beta_i) should be in the variable PREDV.
+1262       
+1263         The user can specify analytical derivatives in the DERIVS section
+1264         if desired; see the documentation.  We use numerical derivatives
+1265         here.
+1266       
+1267         The WEIGHT section allows specification of a within-individual
+1268         variance model, but it does not support estimation of unknown
+1269         parameters delta in the variance function.  We use the estimated
+1270         value obtained from nlme() and proc nlmixed, which do allow this.
+1271       
+1272         The PARMS section is for specifying starting values for beta
+1273       
+1274         The STMTS section calls PROC MIXED to fit the linearized model
+1275         at each interation.  The response variable must be the response
+1276         variable in the data set with "PSEUDO_" in front.  The MODEL
+1277         statement includes the fixed effects, appended by "D_" and the
+1278         RANDOM statement includes the random effects similarly.
+1279       
+1280         EXPAND=ZERO does the first order linearization about zero;
+1281         EXPAND=EBLUP expands about current empirical Bayes estimates of
+1282         random effects.
+1283       
+1284         The PROCOPT section allows various options to be specified; see
+1285         the documentation in the macro.
+1286       
+1287       ******************************************************************/
+1288       
+1289       title "FIRST ORDER LINEARIZATION ABOUT ZERO";
+1290       %nlinmix(data=arg,
+1291          model=%str(
+1292            cl=exp(beta1+b1);
+1293            v=exp(beta2+b2);
+1294            predv=(dose/cl)*(1-exp(-cl*t2/v))*exp(-cl*(1-t1)*(time-tinf)/v);
+1295          ),
+1296          weight=%str(
+1297            _weight_= 1/predv**(2*0.24);
+1298          ),
+1299          parms=%str(beta1=-6.0 beta2=-2.0),
+1300          stmts=%str(
+1301             class indiv;
+1302             model pseudo_conc = d_beta1 d_beta2 / noint notest solution;
+1303             random d_b1 d_b2 / subject=indiv type=un solution;
+1304             weight _weight_;
+1305          ),
+1306             expand=zero,
+1307          procopt=%str(maxiter=500 method=ml)
+4                                The SAS System
+
+1308       )
+
+                          The NLINMIX Macro
+
+           Data Set                     : arg
+           Response                     : conc
+           Fixed-Effect Parameters      : beta1 beta2
+           Random-Effect Parameters     : b1 b2
+           Expansion Point              : zero
+
+
+Calling PROC NLIN to initialize.
+beta1 = beta1
+beta2 = beta2
+WARNING: Step size shows no improvement.
+WARNING: PROC NLIN failed to converge.
+Iteratively calling PROC MIXED.
+   PROC MIXED call 0
+   
+iteration = 0
+convergence criterion = .
+beta1=-5.556861624 beta2=-1.781440241 COVP1=0.1440247201 COVP2=0.0173834692 
+COVP3=0.01615489 COVP4=498.13710665
+   PROC MIXED call 1
+   
+iteration = 1
+convergence criterion = 0.1018640483
+beta1=-5.489964698 beta2=-1.814559027 COVP1=0.1584263911 COVP2=-0.001738944 
+COVP3=0.0162418983 COVP4=554.6344133
+   PROC MIXED call 2
+   
+iteration = 2
+convergence criterion = 0.0078135294
+beta1=-5.489249915 beta2=-1.821860242 COVP1=0.1581849581 COVP2=-0.003483234 
+COVP3=0.0163313029 COVP4=559.00219336
+   PROC MIXED call 3
+   
+iteration = 3
+convergence criterion = 0.000017069
+beta1=-5.489300628 beta2=-1.821933693 COVP1=0.1581678891 COVP2=-0.003487751 
+COVP3=0.0163299401 COVP4=559.0005141
+   PROC MIXED call 4
+   
+iteration = 4
+convergence criterion = 5.5627274E-8
+beta1=-5.489300751 beta2=-1.821933843 COVP1=0.1581678803 COVP2=-0.003487751 
+COVP3=0.0163299392 COVP4=559.00048301
+   PROC MIXED call 5
+   
+iteration = 5
+convergence criterion = 1.704976E-10
+beta1=-5.48930075 beta2=-1.821933843 COVP1=0.1581678803 COVP2=-0.003487751 
+COVP3=0.0163299392 COVP4=559.0004831
+5                                The SAS System      10:35 Friday, April 1, 2016
+
+NLINMIX convergence criteria met.
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1308:71   
+NOTE: There were 475 observations read from the data set WORK._NLINMIX.
+NOTE: The data set WORK._NLINMIX has 475 observations and 27 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+   PROC MIXED call 6
+
+NOTE: Convergence criteria met.
+NOTE: The data set WORK._SOLNR has 74 observations and 7 variables.
+NOTE: The data set WORK._COV has 4 observations and 3 variables.
+NOTE: The data set WORK._SOLN has 2 observations and 6 variables.
+NOTE: The data set WORK._FIT has 4 observations and 2 variables.
+NOTE: The PROCEDURE MIXED printed pages 1-4.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1308:51   
+NOTE: There were 4 observations read from the data set WORK._FIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1309       run;
+1310       
+1311       title "FIRST ORDER CONDITIONAL LINEARIZATION ABOUT EMPIRICAL BAYES
+1311     ! ESTIMATES";
+1312       %nlinmix(data=arg,
+1313          model=%str(
+1314            cl=exp(beta1+b1);
+1315            v=exp(beta2+b2);
+1316            predv=(dose/cl)*(1-exp(-cl*t2/v))*exp(-cl*(1-t1)*(time-tinf)/v);
+1317          ),
+1318          weight=%str(
+1319            _weight_=1/predv**(2*0.24);
+1320          ),
+1321          parms=%str(beta1=-6.0 beta2=-2.0),
+1322          stmts=%str(
+1323             class indiv;
+1324             model pseudo_conc = d_beta1 d_beta2 / noint notest solution ;
+1325             random d_b1 d_b2 / subject=indiv type=un solution;
+6                                The SAS System      10:35 Friday, April 1, 2016
+
+1326             weight _weight_;
+1327          ),
+1328             expand=eblup,
+1329          procopt=%str(maxiter=500 method=ml)
+1330       )
+
+                          The NLINMIX Macro
+
+           Data Set                     : arg
+           Response                     : conc
+           Fixed-Effect Parameters      : beta1 beta2
+           Random-Effect Parameters     : b1 b2
+           Expansion Point              : eblup
+
+
+Calling PROC NLIN to initialize.
+beta1 = beta1
+beta2 = beta2
+WARNING: Step size shows no improvement.
+WARNING: PROC NLIN failed to converge.
+Iteratively calling PROC MIXED.
+   PROC MIXED call 0
+   
+iteration = 0
+convergence criterion = .
+beta1=-5.556861624 beta2=-1.781440241 COVP1=0.1440247201 COVP2=0.0173834692 
+COVP3=0.01615489 COVP4=498.13710665
+   PROC MIXED call 1
+   
+iteration = 1
+convergence criterion = 0.1631746522
+beta1=-5.489964698 beta2=-1.814559027 COVP1=0.1369855374 COVP2=0.0099898972 
+COVP3=0.0068632304 COVP4=416.85375751
+   PROC MIXED call 2
+   
+iteration = 2
+convergence criterion = 0.0304722142
+beta1=-5.432768665 beta2=-1.893904751 COVP1=0.138113789 COVP2=0.0072204791 
+COVP3=0.0048448338 COVP4=429.95545217
+   PROC MIXED call 3
+   
+iteration = 3
+convergence criterion = 0.0073299202
+beta1=-5.432531555 beta2=-1.916902418 COVP1=0.1380646992 COVP2=0.0066231922 
+COVP3=0.0046081915 COVP4=433.13026245
+   PROC MIXED call 4
+   
+iteration = 4
+convergence criterion = 0.0006709853
+beta1=-5.432553941 beta2=-1.918827156 COVP1=0.1381027907 COVP2=0.0065814949 
+COVP3=0.004590938 COVP4=433.42108161
+   PROC MIXED call 5
+   
+                                 The SAS System
+
+iteration = 5
+convergence criterion = 0.0000683044
+beta1=-5.432542836 beta2=-1.918983814 COVP1=0.1381030042 COVP2=0.0065758109 
+COVP3=0.0045881198 COVP4=433.45068819
+   PROC MIXED call 6
+   
+iteration = 6
+convergence criterion = 7.5882071E-6
+beta1=-5.43254256 beta2=-1.918999855 COVP1=0.1381030129 COVP2=0.0065752137 
+COVP3=0.0045878025 COVP4=433.45397733
+   PROC MIXED call 7
+   
+iteration = 7
+convergence criterion = 6.6717216E-7
+beta1=-5.432542483 beta2=-1.919001451 COVP1=0.138103105 COVP2=0.0065752181 
+COVP3=0.0045878055 COVP4=433.45426652
+   PROC MIXED call 8
+   
+iteration = 8
+convergence criterion = 3.5045218E-8
+beta1=-5.43254246 beta2=-1.919001537 COVP1=0.1381031099 COVP2=0.0065752183 
+COVP3=0.0045878057 COVP4=433.45428171
+   PROC MIXED call 9
+   
+iteration = 9
+convergence criterion = 1.8829073E-9
+beta1=-5.432542459 beta2=-1.919001543 COVP1=0.1381031101 COVP2=0.0065752183 
+COVP3=0.0045878057 COVP4=433.45428252
+NLINMIX convergence criteria met.
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1330:71   
+NOTE: There were 475 observations read from the data set WORK._NLINMIX.
+NOTE: The data set WORK._NLINMIX has 475 observations and 27 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+   PROC MIXED call 10
+
+NOTE: Convergence criteria met.
+NOTE: The data set WORK._SOLNR has 74 observations and 7 variables.
+NOTE: The data set WORK._COV has 4 observations and 3 variables.
+NOTE: The data set WORK._SOLN has 2 observations and 6 variables.
+NOTE: The data set WORK._FIT has 4 observations and 2 variables.
+NOTE: The PROCEDURE MIXED printed pages 5-8.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+8                                The SAS System      10:35 Friday, April 1, 2016
+
+
+NOTE: Numeric values have been converted to character 
+      values at the places given by: (Line):(Column).
+      1330:51   
+NOTE: There were 4 observations read from the data set WORK._FIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1331       run;
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           1.09 seconds
+      cpu time            0.90 seconds
+      
