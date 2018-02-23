@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Language" content="en-US">
+<meta http-equiv="Reply-To" content="webmaster@stat.ncsu.edu">
+<meta name="author" content="Statistics: Marie Davidian">
+<meta name="revised" content="01/04/2016">
+<meta name="description" content="ST 732">
+<title> ST 790 - Spring 2018</title>
+<style type="text/css" media="screen">@import url(css/default.css);</style>
+<style type="text/css" media="print">@import url(css/print.css);</style>
+<link rel="SHORTCUT ICON" href="images/favicon/ncsu-s.ico">
+</head>
+
+<body>
+<div id="header">
+	<div style="float: left">
+	<a href="http://www.ncsu.edu" target="NCSU"><img src="ncsu_logo.gif" border="0" alt="North Carolina State University"></a>
+	</div>
+
+<div style="float:right">
+	<a href="http://www.ncsu.edu" target="NCSU"><img src="ncsu_logo.gif" border="0" alt="North Carolina State University"></a>
+	</div>
+
+<center>
+<h3><b><a name="top"></a> ST 790, Longitudinal Data Analysis, Spring 2018</b></h3> 
+<font size=3><a href="http://www4.stat.ncsu.edu/~davidian/index.html"> Marie Davidian
+</a>, 5124 <a href="http://www.ncsu.edu/facilities/buildings/sashall.html">SAS 
+    Hall</a> <br />
+T-Th, 3:00 pm - 4:15 pm, 5270
+<a href="http://www.ncsu.edu/facilities/buildings/sashall.html">
+SAS Hall</a><br /> 
+Office hours Th, 1:00 pm - 2:00 pm, and by appointment  </font><br /> 
+</center>
+</div>
+
+<br class="clear_float" />
+
+<ul id="nav">
+<li><a href="http://transcoder.ncsu.edu:8080/tt/referrer">Text Only</a></li>
+<li><a href="/">NCSU Statistics</a></li>
+</ul>
+
+<div class="col">
+<font size=2>
+<p><a href="index.html">Course info</a></p>
+<p><a href="syllabus.pdf">Course syllabus</a></p>
+<p><a href="notes.html">Class notes </a></p>
+<p><a href="hwk.html">Homework assignments and solutions</a></p>
+<p><a href="midterm.html">Midterm</a></p>
+<p><a href="project.html">Project</a></p> 
+<p><a href="examples.html">Examples</a></p> 
+<p><a href="announce.html">Announcements</a></p>
+&nbsp;<br />
+</font>
+</div>
+
+<a name="Content"></a>
+<div class="col2">
+<p>
+
+<h2><a name="info">Course objective:</a></h2> 
+<img src="fade.jpg" alt=""><br>
+<p>
+Studies in which data are collected repeatedly on a sample of
+individuals over time (or some other condition) are ubiquitous in the
+health, social, and behavioral sciences; agricultural and biological
+sciences; education; economics; and business. Questions of interest in
+the context of such longitudinal data often focus on patterns of
+change of outcomes of interest over time and on elucidating factors
+that are associated with patterns of change in relevant populations of
+individuals. Because the study of change is so pervasive across almost
+all disciplines, statistical models and methods for the analysis of
+longitudinal data have become essential tools for practicing
+statisticians. Moreover, as studies and technologies giving rise to
+longitudinal data become increasingly complex, development of new
+methodology continues to be an active research area.
+This course will provide an overview of statistical models and methods
+for longitudinal data analysis. Fundamental modeling strategies and
+methodological developments will be presented in detail and their
+properties studied via theoretical arguments carried out at a
+heuristic level. Implementation in R and SAS will also be discussed.<p>
+
+The course will begin with a conceptual framework for thinking about
+longitudinal data, followed by a brief review of "classical" methods,
+whose limitations will be highlighted. The rest of the course will
+focus on more modern methods. Selected advanced topics will also be
+covered. This course is background for study of areas such as
+semiparametric theory, functional data analysis, and analysis in the
+presence of missing data.  <p>
+
+<h2>Course prerequisites</h2> 
+<img src="fade.jpg" alt=""><br><p>
+
+<a href="http://www.stat.ncsu.edu/courses/course.php?id=ST702">ST 702</a>,
+Statistical Theory II, and
+<a href="http://www.stat.ncsu.edu/courses/course.php?id=ST705">ST 705</a>,
+Linear Models and Variance Components, or equivalents.  Students should also
+have been exposed to SAS and R and have reasonable proramming skills.
+
+
+<h2>Course topics</h2> <img src="fade.jpg" alt=""><br> 
+<ul> 
+<li>
+  <i><font color="#cc0000">Introduction and Motivation:</font> </i>
+Objectives, Examples, Overview  </li>
+
+<li><i><font color="#cc0000">Modeling Longitudinal Data:</font> </i>
+Data structure and notation, Conceptual framework for continuous
+response, Population-averaged vs. subject-specific modeling, Models for
+correlation structure, Discrete resonpse</li>
+				 
+<li> <i><font color="#cc0000">Repeated Measures Analysis of Variance:</font></i>
+Univariate repeated measures ANOVA, Specialized tests, Multivariate
+repeated Measures ANOVA</li>
+
+<li> <i><font color="#cc0000">Modern Methods: Preliminaries:</font> </i>
+Drawbacks of classical methods; Review of large sample inference and
+estimating equations</li>
+
+<li> <i><font color="#cc0000">Population-averaged Linear Models for
+Continuous Response:</font> </i> Model specification, Maximum
+likelihood undr normality, Restricted maximum likelihood, Large sample
+inference, Implications of missing data</li>
+
+<li> <i><font color="#cc0000">Linear Mixed Effects Models:</font> </i>
+Model specification, Maximum likelihood and restricted maximumm
+likelihood, Large sample inference and implications of missing data,
+Best linear unbiased prediction and empirical Bayes, Implementation
+via the EM algorithm, Testing variance components</li>
+
+<li> <i><font color="#cc0000">Review of Generalized and Non-linear
+Models for Univariate Response:</font> </i> Nonlinear and Generalized
+(non)linear models, Estimating equations and variance function
+estimation, Large sample inference</li>
+
+<li> <i><font color="#cc0000">Population-Averaged Models and
+Generalized Estimating Equations:</font> </i> Model specification,
+Linear and quadratic estimating equations for fixed effects, Quadratic
+estimating equations for covariance parameters, Large sample
+inference, Modeling issues, Implications of missing data</li>
+
+<li> <i><font color="#cc0000">Generalized Linear and Nonlinear Mixed Effects Models:</font> </i>
+Model specification, Maximum likelihood, Empirical Bayes estimators
+for random effects, Approximate inference based on individual
+estimates, Approximate inference based on linearization,"Exact"
+inference, Implications of missing data</li>
+
+<li> <i><font color="#cc0000">Advanced Topics:</font> </i> Bayesian
+formulation, Complex nonlinear models, Time-dependent covariates,
+Multilevel models, Distribution of random effects</li>
+
+</li>
+
+
+
+</li>
+
+
+
+</ul><p>
+
+<i>See the <a href="notes.html">class notes</a> for more detailed information </i>
+
+
+<br class="clear_float" />
+</div>
+<br class="clear_float" />
+<br/>
+
+
+<div id="footer">
+<hr color="#cc0000" width="100%">
+Last Updated: December 2017
+</div>
+</body>
+</html>
