@@ -1,0 +1,1489 @@
+                         UNSTRUCTURED SEPARATE BY DOSE                         1
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Group Effect                 dose                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters            63
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      3998.36484856      0.01742831
+                  2              2      3989.89655914      0.02126037
+                  3              2      3978.22256745      0.00692746
+                  4              1      3966.91793484      0.00164770
+                  5              1      3964.12059674      0.00022313
+                  6              1      3963.76420486      0.00000859
+                  7              1      3963.75146895      0.00000002
+                  8              1      3963.75143921      0.00000000
+
+
+                           Convergence criteria met.                    
+                         UNSTRUCTURED SEPARATE BY DOSE                         2
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      105.39      111.95      129.93      118.35      106.51      104.06
+     2      111.95      223.83      201.41      159.38      131.86      162.59
+     3      129.93      201.41      226.36      183.84      156.82      179.68
+     4      118.35      159.38      183.84      188.56      156.87      141.91
+     5      106.51      131.86      156.82      156.87      142.86      127.43
+     6      104.06      162.59      179.68      141.91      127.43      167.09
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7289      0.8412      0.8395      0.8680      0.7842
+     2      0.7289      1.0000      0.8948      0.7758      0.7374      0.8408
+     3      0.8412      0.8948      1.0000      0.8898      0.8721      0.9239
+     4      0.8395      0.7758      0.8898      1.0000      0.9558      0.7995
+     5      0.8680      0.7374      0.8721      0.9558      1.0000      0.8248
+     6      0.7842      0.8408      0.9239      0.7995      0.8248      1.0000
+
+
+                        Estimated R Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     90.1297     73.5038     75.3515     91.0489     77.3439     57.4300
+     2     73.5038      172.75      114.85      110.67     84.4275     52.6643
+     3     75.3515      114.85      143.41      129.92     96.1695     67.2917
+     4     91.0489      110.67      129.92      166.75      116.27     77.2113
+     5     77.3439     84.4275     96.1695      116.27      135.22     94.8692
+     6     57.4300     52.6643     67.2917     77.2113     94.8692     85.3642
+
+
+                  Estimated R Correlation Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.5891      0.6628      0.7427      0.7006      0.6547
+     2      0.5891      1.0000      0.7297      0.6521      0.5524      0.4337
+     3      0.6628      0.7297      1.0000      0.8401      0.6906      0.6082
+     4      0.7427      0.6521      0.8401      1.0000      0.7743      0.6472
+     5      0.7006      0.5524      0.6906      0.7743      1.0000      0.8830
+     6      0.6547      0.4337      0.6082      0.6472      0.8830      1.0000
+
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     78.6713     79.0920     83.9047     85.6187     74.1982     69.1905
+     2     79.0920      141.10     96.1798      116.20      123.91     96.4637
+     3     83.9047     96.1798      135.48      135.03      112.76     96.5433
+                         UNSTRUCTURED SEPARATE BY DOSE                         3
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     4     85.6187      116.20      135.03      177.68      134.84      117.98
+     5     74.1982      123.91      112.76      134.84      163.29      148.35
+     6     69.1905     96.4637     96.5433      117.98      148.35      198.24
+
+
+                  Estimated R Correlation Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7507      0.8127      0.7242      0.6546      0.5540
+     2      0.7507      1.0000      0.6956      0.7339      0.8163      0.5768
+     3      0.8127      0.6956      1.0000      0.8703      0.7581      0.5891
+     4      0.7242      0.7339      0.8703      1.0000      0.7916      0.6286
+     5      0.6546      0.8163      0.7581      0.7916      1.0000      0.8245
+     6      0.5540      0.5768      0.5891      0.6286      0.8245      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                 Cov Parm    Subject    Group         Estimate
+
+                 UN(1,1)     id         dose 0         78.6713
+                 UN(2,1)     id         dose 0         79.0920
+                 UN(2,2)     id         dose 0          141.10
+                 UN(3,1)     id         dose 0         83.9047
+                 UN(3,2)     id         dose 0         96.1798
+                 UN(3,3)     id         dose 0          135.48
+                 UN(4,1)     id         dose 0         85.6187
+                 UN(4,2)     id         dose 0          116.20
+                 UN(4,3)     id         dose 0          135.03
+                 UN(4,4)     id         dose 0          177.68
+                 UN(5,1)     id         dose 0         74.1982
+                 UN(5,2)     id         dose 0          123.91
+                 UN(5,3)     id         dose 0          112.76
+                 UN(5,4)     id         dose 0          134.84
+                 UN(5,5)     id         dose 0          163.29
+                 UN(6,1)     id         dose 0         69.1905
+                 UN(6,2)     id         dose 0         96.4637
+                 UN(6,3)     id         dose 0         96.5433
+                 UN(6,4)     id         dose 0          117.98
+                 UN(6,5)     id         dose 0          148.35
+                 UN(6,6)     id         dose 0          198.24
+                 UN(1,1)     id         dose 5000       105.39
+                 UN(2,1)     id         dose 5000       111.95
+                 UN(2,2)     id         dose 5000       223.83
+                 UN(3,1)     id         dose 5000       129.93
+                 UN(3,2)     id         dose 5000       201.41
+                 UN(3,3)     id         dose 5000       226.36
+                 UN(4,1)     id         dose 5000       118.35
+                 UN(4,2)     id         dose 5000       159.38
+                 UN(4,3)     id         dose 5000       183.84
+                         UNSTRUCTURED SEPARATE BY DOSE                         4
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                 Cov Parm    Subject    Group         Estimate
+
+                 UN(4,4)     id         dose 5000       188.56
+                 UN(5,1)     id         dose 5000       106.51
+                 UN(5,2)     id         dose 5000       131.86
+                 UN(5,3)     id         dose 5000       156.82
+                 UN(5,4)     id         dose 5000       156.87
+                 UN(5,5)     id         dose 5000       142.86
+                 UN(6,1)     id         dose 5000       104.06
+                 UN(6,2)     id         dose 5000       162.59
+                 UN(6,3)     id         dose 5000       179.68
+                 UN(6,4)     id         dose 5000       141.91
+                 UN(6,5)     id         dose 5000       127.43
+                 UN(6,6)     id         dose 5000       167.09
+                 UN(1,1)     id         dose 10000     90.1297
+                 UN(2,1)     id         dose 10000     73.5038
+                 UN(2,2)     id         dose 10000      172.75
+                 UN(3,1)     id         dose 10000     75.3515
+                 UN(3,2)     id         dose 10000      114.85
+                 UN(3,3)     id         dose 10000      143.41
+                 UN(4,1)     id         dose 10000     91.0489
+                 UN(4,2)     id         dose 10000      110.67
+                 UN(4,3)     id         dose 10000      129.92
+                 UN(4,4)     id         dose 10000      166.75
+                 UN(5,1)     id         dose 10000     77.3439
+                 UN(5,2)     id         dose 10000     84.4275
+                 UN(5,3)     id         dose 10000     96.1695
+                 UN(5,4)     id         dose 10000      116.27
+                 UN(5,5)     id         dose 10000      135.22
+                 UN(6,1)     id         dose 10000     57.4300
+                 UN(6,2)     id         dose 10000     52.6643
+                 UN(6,3)     id         dose 10000     67.2917
+                 UN(6,4)     id         dose 10000     77.2113
+                 UN(6,5)     id         dose 10000     94.8692
+                 UN(6,6)     id         dose 10000     85.3642
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              3963.8
+                     AIC (Smaller is Better)        4107.8
+                     AICC (Smaller is Better)       4128.0
+                     BIC (Smaller is Better)        4301.5
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          62        675.70          <.0001
+                         UNSTRUCTURED SEPARATE BY DOSE                         5
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.3850      1.4673     106      29.57      <.0001
+ dose              5000     46.0320      1.6908     106      27.23      <.0001
+ dose             10000     46.9526      1.4477     106      32.43      <.0001
+ week*dose            0     -1.2387      0.2738     476      -4.52      <.0001
+ week*dose         5000     -1.8561      0.2904     476      -6.39      <.0001
+ week*dose        10000     -2.8384      0.3603     476      -7.88      <.0001
+ weekplus*dose        0      1.7094      0.3193     476       5.35      <.0001
+ weekplus*dose     5000      2.4257      0.3517     476       6.90      <.0001
+ weekplus*dose    10000      3.9547      0.4569     476       8.66      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     889.15    <.0001
+               week*dose           3     476      41.13    <.0001
+               weekplus*dose       3     476      50.38    <.0001
+                              COMMON UNSTRUCTURED                              6
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters            21
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4052.96459567      0.00195385
+                  2              1      4049.51344113      0.00028631
+                  3              1      4049.04401621      0.00000975
+                  4              1      4049.02921534      0.00000001
+                  5              1      4049.02919483      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                              COMMON UNSTRUCTURED                              7
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     91.4182     87.0408     95.9414     98.4293     84.2222     73.7846
+     2     87.0408      172.92      134.01      123.96      106.32     95.4824
+     3     95.9414      134.01      167.03      148.82      118.44      109.12
+     4     98.4293      123.96      148.82      177.41      133.44      108.88
+     5     84.2222      106.32      118.44      133.44      142.68      118.00
+     6     73.7846     95.4824      109.12      108.88      118.00      141.26
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.6923      0.7764      0.7729      0.7374      0.6493
+     2      0.6923      1.0000      0.7885      0.7078      0.6769      0.6109
+     3      0.7764      0.7885      1.0000      0.8645      0.7672      0.7104
+     4      0.7729      0.7078      0.8645      1.0000      0.8387      0.6878
+     5      0.7374      0.6769      0.7672      0.8387      1.0000      0.8312
+     6      0.6493      0.6109      0.7104      0.6878      0.8312      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     id          91.4182
+                        UN(2,1)     id          87.0408
+                        UN(2,2)     id           172.92
+                        UN(3,1)     id          95.9414
+                        UN(3,2)     id           134.01
+                        UN(3,3)     id           167.03
+                        UN(4,1)     id          98.4293
+                        UN(4,2)     id           123.96
+                        UN(4,3)     id           148.82
+                        UN(4,4)     id           177.41
+                        UN(5,1)     id          84.2222
+                        UN(5,2)     id           106.32
+                        UN(5,3)     id           118.44
+                        UN(5,4)     id           133.44
+                        UN(5,5)     id           142.68
+                        UN(6,1)     id          73.7846
+                        UN(6,2)     id          95.4824
+                        UN(6,3)     id           109.12
+                        UN(6,4)     id           108.88
+                        UN(6,5)     id           118.00
+                        UN(6,6)     id           141.26
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4049.0
+                     AIC (Smaller is Better)        4109.0
+                              COMMON UNSTRUCTURED                              8
+
+                              The Mixed Procedure
+
+                                Fit Statistics
+
+                     AICC (Smaller is Better)       4112.4
+                     BIC (Smaller is Better)        4189.8
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          20        590.43          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.2613      1.5700     106      27.56      <.0001
+ dose              5000     46.0724      1.5715     106      29.32      <.0001
+ dose             10000     46.6680      1.5492     106      30.12      <.0001
+ week*dose            0     -1.0598      0.3307     106      -3.20      0.0018
+ week*dose         5000     -2.1478      0.3328     106      -6.45      <.0001
+ week*dose        10000     -2.8653      0.3237     106      -8.85      <.0001
+ weekplus*dose        0      1.3797      0.4196     106       3.29      0.0014
+ weekplus*dose     5000      2.7875      0.4258     106       6.55      <.0001
+ weekplus*dose    10000      4.0278      0.4112     106       9.80      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     842.06    <.0001
+               week*dose           3     106      43.42    <.0001
+               weekplus*dose       3     106      49.87    <.0001
+               HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY DOSE               9
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Group Effect                 dose                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters            21
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4078.51198020      0.00034259
+                  2              1      4077.96608407      0.00000500
+                  3              1      4077.95844386      0.00000001
+
+
+                           Convergence criteria met.                    
+
+
+               HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY DOSE              10
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      112.55      143.94      135.86      129.68      109.63      119.80
+     2      143.94      250.85      202.83      193.60      163.67      178.85
+     3      135.86      202.83      223.47      182.73      154.48      168.81
+     4      129.68      193.60      182.73      203.60      147.45      161.13
+     5      109.63      163.67      154.48      147.45      145.52      136.22
+     6      119.80      178.85      168.81      161.13      136.22      173.76
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.8567      0.8567      0.8567      0.8567      0.8567
+     2      0.8567      1.0000      0.8567      0.8567      0.8567      0.8567
+     3      0.8567      0.8567      1.0000      0.8567      0.8567      0.8567
+     4      0.8567      0.8567      0.8567      1.0000      0.8567      0.8567
+     5      0.8567      0.8567      0.8567      0.8567      1.0000      0.8567
+     6      0.8567      0.8567      0.8567      0.8567      0.8567      1.0000
+
+
+                        Estimated R Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     92.9829     90.4132     78.2574     82.8264     75.9864     60.3354
+     2     90.4132      185.26      110.46      116.91      107.26     85.1656
+     3     78.2574      110.46      138.80      101.19     92.8371     73.7154
+     4     82.8264      116.91      101.19      155.48     98.2574     78.0192
+     5     75.9864      107.26     92.8371     98.2574      130.86     71.5762
+     6     60.3354     85.1656     73.7154     78.0192     71.5762     82.5028
+
+
+                  Estimated R Correlation Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.6889      0.6889      0.6889      0.6889      0.6889
+     2      0.6889      1.0000      0.6889      0.6889      0.6889      0.6889
+     3      0.6889      0.6889      1.0000      0.6889      0.6889      0.6889
+     4      0.6889      0.6889      0.6889      1.0000      0.6889      0.6889
+     5      0.6889      0.6889      0.6889      0.6889      1.0000      0.6889
+     6      0.6889      0.6889      0.6889      0.6889      0.6889      1.0000
+
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     80.3273     76.3933     73.7583     85.0157     79.3021     96.0896
+     2     76.3933      138.44     96.8314      111.61      104.11      126.15
+     3     73.7583     96.8314      129.06      107.76      100.52      121.80
+               HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY DOSE              11
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     4     85.0157      111.61      107.76      171.46      115.86      140.39
+     5     79.3021      104.11      100.52      115.86      149.19      130.95
+     6     96.0896      126.15      121.80      140.39      130.95      219.04
+
+
+                  Estimated R Correlation Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7244      0.7244      0.7244      0.7244      0.7244
+     2      0.7244      1.0000      0.7244      0.7244      0.7244      0.7244
+     3      0.7244      0.7244      1.0000      0.7244      0.7244      0.7244
+     4      0.7244      0.7244      0.7244      1.0000      0.7244      0.7244
+     5      0.7244      0.7244      0.7244      0.7244      1.0000      0.7244
+     6      0.7244      0.7244      0.7244      0.7244      0.7244      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                  Cov
+                  Parm       Subject    Group         Estimate
+
+                  Var(1)     id         dose 0         80.3273
+                  Var(2)     id         dose 0          138.44
+                  Var(3)     id         dose 0          129.06
+                  Var(4)     id         dose 0          171.46
+                  Var(5)     id         dose 0          149.19
+                  Var(6)     id         dose 0          219.04
+                  CSH        id         dose 0          0.7244
+                  Var(1)     id         dose 5000       112.55
+                  Var(2)     id         dose 5000       250.85
+                  Var(3)     id         dose 5000       223.47
+                  Var(4)     id         dose 5000       203.60
+                  Var(5)     id         dose 5000       145.52
+                  Var(6)     id         dose 5000       173.76
+                  CSH        id         dose 5000       0.8567
+                  Var(1)     id         dose 10000     92.9829
+                  Var(2)     id         dose 10000      185.26
+                  Var(3)     id         dose 10000      138.80
+                  Var(4)     id         dose 10000      155.48
+                  Var(5)     id         dose 10000      130.86
+                  Var(6)     id         dose 10000     82.5028
+                  CSH        id         dose 10000      0.6889
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4078.0
+                     AIC (Smaller is Better)        4138.0
+                     AICC (Smaller is Better)       4141.3
+                     BIC (Smaller is Better)        4218.7
+               HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY DOSE              12
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          20        561.50          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.4590      1.4784     106      29.40      <.0001
+ dose              5000     48.4255      1.6713     106      28.98      <.0001
+ dose             10000     47.1711      1.5662     106      30.12      <.0001
+ week*dose            0     -1.0373      0.3113     476      -3.33      0.0009
+ week*dose         5000     -2.1513      0.3046     476      -7.06      <.0001
+ week*dose        10000     -3.0123      0.3351     476      -8.99      <.0001
+ weekplus*dose        0      1.3616      0.3952     476       3.45      0.0006
+ weekplus*dose     5000      2.8636      0.3928     476       7.29      <.0001
+ weekplus*dose    10000      4.2756      0.4216     476      10.14      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     870.27    <.0001
+               week*dose           3     476      47.25    <.0001
+               weekplus*dose       3     476      55.95    <.0001
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   13
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             7
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4108.96444775      0.00017640
+                  2              1      4108.68270774      0.00000199
+                  3              1      4108.67966499      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   14
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1     93.8065     98.8755     92.5463     96.2757     86.4418     90.3034
+     2     98.8755      183.58      129.47      134.68      120.93      126.33
+     3     92.5463      129.47      160.83      126.06      113.19      118.24
+     4     96.2757      134.68      126.06      174.05      117.75      123.01
+     5     86.4418      120.93      113.19      117.75      140.31      110.44
+     6     90.3034      126.33      118.24      123.01      110.44      153.13
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7535      0.7535      0.7535      0.7535      0.7535
+     2      0.7535      1.0000      0.7535      0.7535      0.7535      0.7535
+     3      0.7535      0.7535      1.0000      0.7535      0.7535      0.7535
+     4      0.7535      0.7535      0.7535      1.0000      0.7535      0.7535
+     5      0.7535      0.7535      0.7535      0.7535      1.0000      0.7535
+     6      0.7535      0.7535      0.7535      0.7535      0.7535      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                         Cov
+                         Parm       Subject    Estimate
+
+                         Var(1)     id          93.8065
+                         Var(2)     id           183.58
+                         Var(3)     id           160.83
+                         Var(4)     id           174.05
+                         Var(5)     id           140.31
+                         Var(6)     id           153.13
+                         CSH        id           0.7535
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4108.7
+                     AIC (Smaller is Better)        4140.7
+                     AICC (Smaller is Better)       4141.6
+                     BIC (Smaller is Better)        4183.7
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           6        530.78          <.0001
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   15
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.6271      1.6037     106      27.20      <.0001
+ dose              5000     46.8846      1.6041     106      29.23      <.0001
+ dose             10000     47.3088      1.5819     106      29.91      <.0001
+ week*dose            0     -1.0029      0.3252     476      -3.08      0.0022
+ week*dose         5000     -2.3001      0.3293     476      -6.98      <.0001
+ week*dose        10000     -3.0404      0.3196     476      -9.51      <.0001
+ weekplus*dose        0      1.2930      0.4118     476       3.14      0.0018
+ weekplus*dose     5000      3.0677      0.4199     476       7.31      <.0001
+ weekplus*dose    10000      4.3526      0.4046     476      10.76      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     829.56    <.0001
+               week*dose           3     476      49.60    <.0001
+               weekplus*dose       3     476      59.66    <.0001
+                      COMPOUND SYMMETRIC SEPARATE BY DOSE                     16
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Compound Symmetry        
+             Subject Effect               id                       
+             Group Effect                 dose                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             6
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4130.37790160      0.00001177
+                  2              1      4130.35970777      0.00000001
+
+
+                           Convergence criteria met.                    
+
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      173.34      143.58      143.58      143.58      143.58      143.58
+     2      143.58      173.34      143.58      143.58      143.58      143.58
+                      COMPOUND SYMMETRIC SEPARATE BY DOSE                     17
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     3      143.58      143.58      173.34      143.58      143.58      143.58
+     4      143.58      143.58      143.58      173.34      143.58      143.58
+     5      143.58      143.58      143.58      143.58      173.34      143.58
+     6      143.58      143.58      143.58      143.58      143.58      173.34
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.8283      0.8283      0.8283      0.8283      0.8283
+     2      0.8283      1.0000      0.8283      0.8283      0.8283      0.8283
+     3      0.8283      0.8283      1.0000      0.8283      0.8283      0.8283
+     4      0.8283      0.8283      0.8283      1.0000      0.8283      0.8283
+     5      0.8283      0.8283      0.8283      0.8283      1.0000      0.8283
+     6      0.8283      0.8283      0.8283      0.8283      0.8283      1.0000
+
+
+                        Estimated R Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      129.41     86.3072     86.3072     86.3072     86.3072     86.3072
+     2     86.3072      129.41     86.3072     86.3072     86.3072     86.3072
+     3     86.3072     86.3072      129.41     86.3072     86.3072     86.3072
+     4     86.3072     86.3072     86.3072      129.41     86.3072     86.3072
+     5     86.3072     86.3072     86.3072     86.3072      129.41     86.3072
+     6     86.3072     86.3072     86.3072     86.3072     86.3072      129.41
+
+
+                  Estimated R Correlation Matrix for Subject 6
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.6669      0.6669      0.6669      0.6669      0.6669
+     2      0.6669      1.0000      0.6669      0.6669      0.6669      0.6669
+     3      0.6669      0.6669      1.0000      0.6669      0.6669      0.6669
+     4      0.6669      0.6669      0.6669      1.0000      0.6669      0.6669
+     5      0.6669      0.6669      0.6669      0.6669      1.0000      0.6669
+     6      0.6669      0.6669      0.6669      0.6669      0.6669      1.0000
+
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      143.17      100.88      100.88      100.88      100.88      100.88
+     2      100.88      143.17      100.88      100.88      100.88      100.88
+     3      100.88      100.88      143.17      100.88      100.88      100.88
+     4      100.88      100.88      100.88      143.17      100.88      100.88
+     5      100.88      100.88      100.88      100.88      143.17      100.88
+                      COMPOUND SYMMETRIC SEPARATE BY DOSE                     18
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     6      100.88      100.88      100.88      100.88      100.88      143.17
+
+
+                  Estimated R Correlation Matrix for Subject 8
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7046      0.7046      0.7046      0.7046      0.7046
+     2      0.7046      1.0000      0.7046      0.7046      0.7046      0.7046
+     3      0.7046      0.7046      1.0000      0.7046      0.7046      0.7046
+     4      0.7046      0.7046      0.7046      1.0000      0.7046      0.7046
+     5      0.7046      0.7046      0.7046      0.7046      1.0000      0.7046
+     6      0.7046      0.7046      0.7046      0.7046      0.7046      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                 Cov Parm     Subject    Group         Estimate
+
+                 Variance     id         dose 0         42.2978
+                 CS           id         dose 0          100.88
+                 Variance     id         dose 5000      29.7587
+                 CS           id         dose 5000       143.58
+                 Variance     id         dose 10000     43.1010
+                 CS           id         dose 10000     86.3072
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4130.4
+                     AIC (Smaller is Better)        4160.4
+                     AICC (Smaller is Better)       4161.2
+                     BIC (Smaller is Better)        4200.7
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           5        509.10          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.0237      1.9459     106      22.11      <.0001
+ dose              5000     44.8157      2.1632     106      20.72      <.0001
+ dose             10000     45.2914      1.8166     106      24.93      <.0001
+ week*dose            0     -0.9535      0.3577     476      -2.67      0.0079
+                      COMPOUND SYMMETRIC SEPARATE BY DOSE                     19
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ week*dose         5000     -2.2524      0.3041     476      -7.41      <.0001
+ week*dose        10000     -2.9784      0.3556     476      -8.38      <.0001
+ weekplus*dose        0      1.2487      0.4419     476       2.83      0.0049
+ weekplus*dose     5000      3.0387      0.3781     476       8.04      <.0001
+ weekplus*dose    10000      4.3077      0.4390     476       9.81      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     513.22    <.0001
+               week*dose           3     476      44.05    <.0001
+               weekplus*dose       3     476      56.29    <.0001
+                           COMMON COMPOUND SYMMETRIC                          20
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Compound Symmetry        
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4138.96724696      0.00000314
+                  2              1      4138.96239829      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      148.46      109.91      109.91      109.91      109.91      109.91
+     2      109.91      148.46      109.91      109.91      109.91      109.91
+     3      109.91      109.91      148.46      109.91      109.91      109.91
+                           COMMON COMPOUND SYMMETRIC                          21
+
+                              The Mixed Procedure
+
+                        Estimated R Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     4      109.91      109.91      109.91      148.46      109.91      109.91
+     5      109.91      109.91      109.91      109.91      148.46      109.91
+     6      109.91      109.91      109.91      109.91      109.91      148.46
+
+
+                  Estimated R Correlation Matrix for Subject 1
+ 
+   Row        Col1        Col2        Col3        Col4        Col5        Col6
+
+     1      1.0000      0.7403      0.7403      0.7403      0.7403      0.7403
+     2      0.7403      1.0000      0.7403      0.7403      0.7403      0.7403
+     3      0.7403      0.7403      1.0000      0.7403      0.7403      0.7403
+     4      0.7403      0.7403      0.7403      1.0000      0.7403      0.7403
+     5      0.7403      0.7403      0.7403      0.7403      1.0000      0.7403
+     6      0.7403      0.7403      0.7403      0.7403      0.7403      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        CS           id           109.91
+                        Residual                 38.5552
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4139.0
+                     AIC (Smaller is Better)        4161.0
+                     AICC (Smaller is Better)       4161.4
+                     BIC (Smaller is Better)        4190.6
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           1        500.49          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.0229      1.9876     106      21.65      <.0001
+ dose              5000     44.8139      1.9870     106      22.55      <.0001
+ dose             10000     45.2910      1.9585     106      23.12      <.0001
+ week*dose            0     -0.9552      0.3416     476      -2.80      0.0054
+ week*dose         5000     -2.2499      0.3461     476      -6.50      <.0001
+ week*dose        10000     -2.9781      0.3363     476      -8.86      <.0001
+                           COMMON COMPOUND SYMMETRIC                          22
+
+                              The Mixed Procedure
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ weekplus*dose        0      1.2514      0.4220     476       2.97      0.0032
+ weekplus*dose     5000      3.0351      0.4303     476       7.05      <.0001
+ weekplus*dose    10000      4.3074      0.4152     476      10.37      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     503.98    <.0001
+               week*dose           3     476      42.84    <.0001
+               weekplus*dose       3     476      55.38    <.0001
+                           ANALYSES WITH FINAL MODEL                          23
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             7
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4639.45582878                
+                  1              2      4108.96444775      0.00017640
+                  2              1      4108.68270774      0.00000199
+                  3              1      4108.67966499      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                           ANALYSES WITH FINAL MODEL                          24
+
+                              The Mixed Procedure
+
+                         Covariance Parameter Estimates
+ 
+                         Cov
+                         Parm       Subject    Estimate
+
+                         Var(1)     id          93.8065
+                         Var(2)     id           183.58
+                         Var(3)     id           160.83
+                         Var(4)     id           174.05
+                         Var(5)     id           140.31
+                         Var(6)     id           153.13
+                         CSH        id           0.7535
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4108.7
+                     AIC (Smaller is Better)        4140.7
+                     AICC (Smaller is Better)       4141.6
+                     BIC (Smaller is Better)        4183.7
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           6        530.78          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     43.6271      1.6037     106      27.20      <.0001
+ dose              5000     46.8846      1.6041     106      29.23      <.0001
+ dose             10000     47.3088      1.5819     106      29.91      <.0001
+ week*dose            0     -1.0029      0.3252     476      -3.08      0.0022
+ week*dose         5000     -2.3001      0.3293     476      -6.98      <.0001
+ week*dose        10000     -3.0404      0.3196     476      -9.51      <.0001
+ weekplus*dose        0      1.2930      0.4118     476       3.14      0.0018
+ weekplus*dose     5000      3.0677      0.4199     476       7.31      <.0001
+ weekplus*dose    10000      4.3526      0.4046     476      10.76      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     106     829.56    <.0001
+               week*dose           3     476      49.60    <.0001
+               weekplus*dose       3     476      59.66    <.0001
+                           ANALYSES WITH FINAL MODEL                          25
+
+                              The Mixed Procedure
+
+                                   Estimates
+ 
+                                       Standard
+  Label                    Estimate       Error      DF    t Value    Pr > |t|
+
+  2nd stg slp, placebo       0.2901      0.1240     476       2.34      0.0197
+  2nd stg slp, 5000 U        0.7676      0.1278     476       6.01      <.0001
+  2nd stg slp, 10000 U       1.3122      0.1213     476      10.82      <.0001
+  mean @ wk 16, placebo     43.0970      1.9393     476      22.22      <.0001
+  mean @ wk 16, 5000 U      46.8957      1.9481     476      24.07      <.0001
+  mean @ wk 16, 10000 U     50.8943      1.9051     476      26.71      <.0001
+
+
+                                   Contrasts
+ 
+                         Num   Den
+  Label                   DF    DF  Chi-Square  F Value    Pr > ChiSq  Pr > F
+
+  common intercept         2   106        3.18     1.59        0.2044  0.2092
+  common 1st stage slp     2   476       20.39    10.20        <.0001  <.0001
+  common 2nd stage slp     2   476       34.81    17.41        <.0001  <.0001
+  diff means @ week 16     2   476        8.23     4.12        0.0163  0.0169
+                       ADD AGE AND GENDER, DOSE-SPECIFIC                      26
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             7
+                      Columns in X                     21
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4601.58270275                
+                  1              2      4089.54299840      0.00021743
+                  2              1      4089.19488603      0.00000346
+                  3              1      4089.18960819      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                       ADD AGE AND GENDER, DOSE-SPECIFIC                      27
+
+                              The Mixed Procedure
+
+                         Covariance Parameter Estimates
+ 
+                         Cov
+                         Parm       Subject    Estimate
+
+                         Var(1)     id          86.3388
+                         Var(2)     id           177.22
+                         Var(3)     id           152.48
+                         Var(4)     id           166.80
+                         Var(5)     id           135.86
+                         Var(6)     id           138.58
+                         CSH        id           0.7458
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4089.2
+                     AIC (Smaller is Better)        4145.2
+                     AICC (Smaller is Better)       4148.1
+                     BIC (Smaller is Better)        4220.5
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           6        512.39          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                         Standard
+Effect              dose     Estimate       Error      DF    t Value    Pr > |t|
+
+dose                    0     35.7276      7.5120     100       4.76      <.0001
+dose                 5000     52.6179      7.4394     100       7.07      <.0001
+dose                10000     55.1708      7.4146     100       7.44      <.0001
+gender*dose             0     -5.1022      3.1908     100      -1.60      0.1130
+gender*dose          5000     -0.3498      3.0859     100      -0.11      0.9100
+gender*dose         10000     -4.7839      3.5624     100      -1.34      0.1824
+age*dose                0      0.1862      0.1293     100       1.44      0.1530
+age*dose             5000    -0.09738      0.1267     100      -0.77      0.4438
+age*dose            10000     -0.1192      0.1312     100      -0.91      0.3657
+week*dose               0     -1.8974      0.4988     470      -3.80      0.0002
+week*dose            5000     -2.8353      0.5270     470      -5.38      <.0001
+week*dose           10000     -3.5938      0.4833     470      -7.44      <.0001
+gender*week*dose        0     0.07767      0.1576     470       0.49      0.6222
+gender*week*dose     5000      0.1085      0.1553     470       0.70      0.4850
+gender*week*dose    10000      0.1600      0.1851     470       0.86      0.3879
+age*week*dose           0     0.01546    0.006544     470       2.36      0.0186
+age*week*dose        5000    0.008197    0.006942     470       1.18      0.2382
+age*week*dose       10000    0.009305    0.006597     470       1.41      0.1590
+weekplus*dose           0      1.3520      0.4082     470       3.31      0.0010
+weekplus*dose        5000      3.1034      0.4179     470       7.43      <.0001
+weekplus*dose       10000      4.3627      0.4006     470      10.89      <.0001
+                       ADD AGE AND GENDER, DOSE-SPECIFIC                      28
+
+                              The Mixed Procedure
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                  Num     Den
+             Effect                DF      DF    F Value    Pr > F
+
+             dose                   3     100      42.67    <.0001
+             gender*dose            3     100       1.46    0.2307
+             age*dose               3     100       1.16    0.3277
+             week*dose              3     470      32.90    <.0001
+             gender*week*dose       3     470       0.49    0.6875
+             age*week*dose          3     470       2.99    0.0308
+             weekplus*dose          3     470      61.58    <.0001
+                     ADD AGE AND GENDER, NOT DOSE-SPECIFIC                    29
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CDYSTONIA           
+             Dependent Variable           twstrs                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               dose          3    0 5000 10000                  
+               time          6    0 2 4 8 12 16                 
+
+
+                                  Dimensions
+
+                      Covariance Parameters             7
+                      Columns in X                     13
+                      Columns in Z                      0
+                      Subjects                        109
+                      Max Obs per Subject               6
+
+
+                            Number of Observations
+
+                  Number of Observations Read             591
+                  Number of Observations Used             591
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4632.53269685                
+                  1              2      4095.63498747      0.00020961
+                  2              1      4095.30061245      0.00000273
+                  3              1      4095.29645420      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                     ADD AGE AND GENDER, NOT DOSE-SPECIFIC                    30
+
+                              The Mixed Procedure
+
+                         Covariance Parameter Estimates
+ 
+                         Cov
+                         Parm       Subject    Estimate
+
+                         Var(1)     id          90.6142
+                         Var(2)     id           184.24
+                         Var(3)     id           162.13
+                         Var(4)     id           173.03
+                         Var(5)     id           138.36
+                         Var(6)     id           149.89
+                         CSH        id           0.7573
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4095.3
+                     AIC (Smaller is Better)        4135.3
+                     AICC (Smaller is Better)       4136.8
+                     BIC (Smaller is Better)        4189.1
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           6        537.24          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                       Standard
+ Effect           dose     Estimate       Error      DF    t Value    Pr > |t|
+
+ dose                 0     45.3066      4.4298     104      10.23      <.0001
+ dose              5000     48.9536      4.6873     104      10.44      <.0001
+ dose             10000     48.3807      4.5041     104      10.74      <.0001
+ gender                     -3.8706      1.9047     104      -2.03      0.0447
+ age                       -0.00101     0.07536     104      -0.01      0.9893
+ week*dose            0     -1.6746      0.3899     474      -4.29      <.0001
+ week*dose         5000     -3.0170      0.4018     474      -7.51      <.0001
+ week*dose        10000     -3.6984      0.3848     474      -9.61      <.0001
+ gender*week                0.09733     0.09448     474       1.03      0.3034
+ age*week                   0.01137    0.003834     474       2.97      0.0032
+ weekplus*dose        0      1.3315      0.4108     474       3.24      0.0013
+ weekplus*dose     5000      3.1303      0.4193     474       7.47      <.0001
+ weekplus*dose    10000      4.3736      0.4034     474      10.84      <.0001
+
+
+                     ADD AGE AND GENDER, NOT DOSE-SPECIFIC                    31
+
+                              The Mixed Procedure
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                 Num     Den
+               Effect             DF      DF    F Value    Pr > F
+
+               dose                3     104      40.15    <.0001
+               gender              1     104       4.13    0.0447
+               age                 1     104       0.00    0.9893
+               week*dose           3     474      38.03    <.0001
+               gender*week         1     474       1.06    0.3034
+               age*week            1     474       8.79    0.0032
+               weekplus*dose       3     474      61.14    <.0001

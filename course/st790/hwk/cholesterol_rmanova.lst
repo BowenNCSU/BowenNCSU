@@ -1,0 +1,927 @@
+                                 The SAS System                                1
+
+                       Obs    trt    id    chol    month
+
+                         1     1      1     178       0 
+                         2     1      1     246       6 
+                         3     1      1     295      12 
+                         4     1      1     228      20 
+                         5     1      1     274      24 
+                         6     1      2     254       0 
+                         7     1      2     260       6 
+                         8     1      2     278      12 
+                         9     1      2     245      20 
+                        10     1      2     340      24 
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        2
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+Class       Levels  Values
+
+month            5  0 6 12 20 24                                                
+
+trt              2  1 2                                                         
+
+id              67  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 
+                    24 25 26 27 28 29 30 31 32 34 35 37 38 63 64 65 66 67 68 69 
+                    70 71 72 73 74 75 76 77 79 80 81 82 84 85 86 87 88 89 90 91 
+                    92 93 94 96                                                 
+
+
+                    Number of Observations Read         335
+                    Number of Observations Used         335
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        3
+
+                               The GLM Procedure
+ 
+                          Dependent Variable: chol   
+
+                                       Sum of
+ Source                     DF        Squares    Mean Square   F Value   Pr > F
+
+ Model                      74    585923.4375      7917.8843     13.09   <.0001
+
+ Error                     260    157309.4581       605.0364                   
+
+ Corrected Total           334    743232.8955                                  
+
+
+               R-Square     Coeff Var      Root MSE     chol Mean
+
+               0.788344      9.908800      24.59749      248.2388
+
+
+ Source                     DF      Type I SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.14   0.7086
+ id(trt)                    65    551355.4030      8482.3908     14.02   <.0001
+ month                       4     29915.6119      7478.9030     12.36   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.14   0.7086
+ id(trt)                    65    551355.4030      8482.3908     14.02   <.0001
+ month                       4     29391.5628      7347.8907     12.14   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        4
+
+                               The GLM Procedure
+
+   Source                  Type III Expected Mean Square
+
+   trt                     Var(Error) + 5 Var(id(trt)) + Q(trt,month*trt)    
+
+   id(trt)                 Var(Error) + 5 Var(id(trt))                       
+
+   month                   Var(Error) + Q(month,month*trt)                   
+
+   month*trt               Var(Error) + Q(month*trt)                         
+        UNIVARIATE ANALYSIS VIA SPLIT PLOT SPECIFICATION USING PROC GLM        5
+
+                               The GLM Procedure
+            Tests of Hypotheses for Mixed Model Analysis of Variance
+ 
+                          Dependent Variable: chol   
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+  *  trt                        1     84.692476     84.692476     0.01  0.9207
+
+     Error: MS(id(trt))        65        551355   8482.390816                 
+  * This test assumes one or more other fixed effects are zero.
+
+
+     Source                    DF   Type III SS   Mean Square  F Value  Pr > F
+
+     id(trt)                   65        551355   8482.390816    14.02  <.0001
+  *  month                      4         29392   7347.890708    12.14  <.0001
+     month*trt                  4   4567.729995   1141.932499     1.89  0.1130
+
+     Error: MS(Error)         260        157309    605.036377                 
+  * This test assumes one or more other fixed effects are zero.
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     6
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.CHOL2               
+             Dependent Variable           chol                     
+             Covariance Structure         Variance Components      
+             Estimation Method            Type 3                   
+             Residual Variance Method     Factor                   
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Containment              
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               month         5    0 6 12 20 24                  
+               trt           2    1 2                           
+               id           67    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 34 
+                                  35 37 38 63 64 65 66 67 68 69 
+                                  70 71 72 73 74 75 76 77 79 80 
+                                  81 82 84 85 86 87 88 89 90 91 
+                                  92 93 94 96                   
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                     18
+                      Columns in Z                     67
+                      Subjects                          1
+                      Max Obs per Subject             335
+
+
+                            Number of Observations
+
+                  Number of Observations Read             335
+                  Number of Observations Used             335
+                  Number of Observations Not Used           0
+
+
+                          Type 3 Analysis of Variance
+ 
+                                          Sum of
+               Source         DF         Squares     Mean Square
+
+               trt             1       84.692476       84.692476
+               month           4           29392     7347.890708
+               month*trt       4     4567.729995     1141.932499
+               id(trt)        65          551355     8482.390816
+               Residual      260          157309      605.036377
+
+                      UNIVARIATE ANALYSIS USING PROC MIXED                     7
+
+                              The Mixed Procedure
+
+                          Type 3 Analysis of Variance
+ 
+                                                                 Error
+Source     Expected Mean Square                  Error Term         DF  F Value
+
+trt        Var(Residual) + 5 Var(id(trt))        MS(id(trt))        65     0.01
+           + Q(trt,month*trt)                                                  
+month      Var(Residual) + Q(month,month*trt)    MS(Residual)      260    12.14
+month*trt  Var(Residual) + Q(month*trt)          MS(Residual)      260     1.89
+id(trt)    Var(Residual) + 5 Var(id(trt))        MS(Residual)      260    14.02
+Residual   Var(Residual)                         .                   .      .  
+
+                                Type 3 Analysis
+                                  of Variance
+ 
+                               Source     Pr > F
+
+                               trt        0.9207
+                               month      <.0001
+                               month*trt  0.1130
+                               id(trt)    <.0001
+                               Residual    .    
+
+
+                             Covariance Parameter
+                                   Estimates
+ 
+                             Cov Parm     Estimate
+
+                             id(trt)       1575.47
+                             Residual       605.04
+
+
+                                Fit Statistics
+
+                     -2 Res Log Likelihood          3210.7
+                     AIC (Smaller is Better)        3214.7
+                     AICC (Smaller is Better)       3214.8
+                     BIC (Smaller is Better)        3219.2
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                 Effect         DF      DF    F Value    Pr > F
+
+                 trt             1      65       0.01    0.9207
+                 month           4     260      12.14    <.0001
+                 month*trt       4     260       1.89    0.1130
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           8
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM           9
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                       Repeated Measures Level Information
+ 
+       Dependent Variable      month0   month6  month12  month20  month24
+
+           Level of month           1        2        3        4        5
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+ DF = 65        month0        month6       month12       month20       month24
+
+ month0       1.000000      0.764140      0.747985      0.758061      0.605668
+                              <.0001        <.0001        <.0001        <.0001
+
+ month6       0.764140      1.000000      0.807003      0.821539      0.694507
+                <.0001                      <.0001        <.0001        <.0001
+
+ month12      0.747985      0.807003      1.000000      0.741500      0.703566
+                <.0001        <.0001                      <.0001        <.0001
+
+ month20      0.758061      0.821539      0.741500      1.000000      0.649642
+                <.0001        <.0001        <.0001                      <.0001
+
+ month24      0.605668      0.694507      0.703566      0.649642      1.000000
+                <.0001        <.0001        <.0001        <.0001              
+
+
+                             E = Error SSCP Matrix
+                                       
+  month_N represents the contrast between the nth level of month and the last
+ 
+                       month_1      month_2      month_3      month_4
+
+          month_1       127518        74521        70225        79103
+          month_2        74521        93604        64088        73453
+          month_3        70225        64088        86365        62328
+          month_4        79103        73453        62328       101008
+
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+      DF = 65        month_1        month_2        month_3        month_4
+
+      month_1       1.000000       0.682097       0.669168       0.696994
+                                     <.0001         <.0001         <.0001
+
+      month_2       0.682097       1.000000       0.712786       0.755410
+                      <.0001                        <.0001         <.0001
+
+      month_3       0.669168       0.712786       1.000000       0.667319
+                      <.0001         <.0001                        <.0001
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          10
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+      DF = 65        month_1        month_2        month_3        month_4
+
+      month_4       0.696994       0.755410       0.667319       1.000000
+                      <.0001         <.0001         <.0001               
+
+
+                                Sphericity Tests
+ 
+                                       Mauchly's
+    Variables                    DF    Criterion    Chi-Square    Pr > ChiSq
+
+    Transformed Variates          9    0.0785124     161.36364        <.0001
+    Orthogonal Components         9    0.7139999     21.363325        0.0111
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          11
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.01   0.9207
+ Error                      65    551355.4030      8482.3908                   
+            UNIVARIATE ANALYSIS USING REPEATED STATEMENT IN PROC GLM          12
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ month                       4     29391.5628      7347.8907     12.14   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+ Error(month)              260    157309.4581       605.0364                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    month                  <.0001    <.0001
+                    month*trt              0.1251    0.1210
+                    Error(month)                           
+
+
+                     Greenhouse-Geisser Epsilon      0.8441
+                     Huynh-Feldt-Lecoutre Epsilon    0.8959
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    13
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    14
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                       Repeated Measures Level Information
+ 
+       Dependent Variable      month0   month6  month12  month20  month24
+
+           Level of month           0        6       12       20       24
+
+
+        month_N represents the nth degree polynomial contrast for month
+                                       
+                   M Matrix Describing Transformed Variables
+ 
+                month0        month6       month12       month20       month24
+
+ month_1  -.6301646118  -.3252462513  -.0203278907  0.3862299234  0.5895088304
+ month_2  0.5486453173  -.3038650988  -.5992895005  -.1266104578  0.4811197398
+ month_3  -.2910141505  0.5936224902  -.1031882844  -.6156514498  0.4162313945
+ month_4  0.1311169020  -.4994929598  0.6555845098  -.5057366218  0.2185281699
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    15
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.01   0.9207
+ Error                      65    551355.4030      8482.3908                   
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    16
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ month                       4     29391.5628      7347.8907     12.14   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+ Error(month)              260    157309.4581       605.0364                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    month                  <.0001    <.0001
+                    month*trt              0.1251    0.1210
+                    Error(month)                           
+
+
+                     Greenhouse-Geisser Epsilon      0.8441
+                     Huynh-Feldt-Lecoutre Epsilon    0.8959
+                      ORTHOGONAL POLYNOMIAL TRANSFORMATION                    17
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+        month_N represents the nth degree polynomial contrast for month
+
+                           Contrast Variable: month_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    26107.11795    26107.11795     33.34   <.0001
+ trt                         1        0.50900        0.50900      0.00   0.9797
+ Error                      65    50899.28120      783.06586                   
+
+
+                           Contrast Variable: month_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     2122.38235     2122.38235      3.82   0.0549
+ trt                         1     2169.74257     2169.74257      3.91   0.0523
+ Error                      65    36099.21675      555.37257                   
+
+
+                           Contrast Variable: month_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1      192.00287      192.00287      0.34   0.5590
+ trt                         1     1961.35369     1961.35369      3.52   0.0650
+ Error                      65    36182.57415      556.65499                   
+
+
+                           Contrast Variable: month_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1      970.05965      970.05965      1.85   0.1788
+ trt                         1      436.12473      436.12473      0.83   0.3655
+ Error                      65    34128.38597      525.05209                   
+                      UNNORMALIZED PROFILE TRANSFORMATION                     18
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+                      UNNORMALIZED PROFILE TRANSFORMATION                     19
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                       Repeated Measures Level Information
+ 
+       Dependent Variable      month0   month6  month12  month20  month24
+
+           Level of month           0        6       12       20       24
+
+
+           month_N represents the nth successive difference in month
+                                       
+                   M Matrix Describing Transformed Variables
+ 
+                month0        month6       month12       month20       month24
+
+ month_1   1.000000000  -1.000000000   0.000000000   0.000000000   0.000000000
+ month_2   0.000000000   1.000000000  -1.000000000   0.000000000   0.000000000
+ month_3   0.000000000   0.000000000   1.000000000  -1.000000000   0.000000000
+ month_4   0.000000000   0.000000000   0.000000000   1.000000000  -1.000000000
+                      UNNORMALIZED PROFILE TRANSFORMATION                     20
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.01   0.9207
+ Error                      65    551355.4030      8482.3908                   
+                      UNNORMALIZED PROFILE TRANSFORMATION                     21
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ month                       4     29391.5628      7347.8907     12.14   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+ Error(month)              260    157309.4581       605.0364                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    month                  <.0001    <.0001
+                    month*trt              0.1251    0.1210
+                    Error(month)                           
+
+
+                     Greenhouse-Geisser Epsilon      0.8441
+                     Huynh-Feldt-Lecoutre Epsilon    0.8959
+                      UNNORMALIZED PROFILE TRANSFORMATION                     22
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+           month_N represents the nth successive difference in month
+
+                           Contrast Variable: month_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    14506.07655    14506.07655     13.08   0.0006
+ trt                         1     4347.62879     4347.62879      3.92   0.0519
+ Error                      65    72079.77419     1108.91960                   
+
+
+                           Contrast Variable: month_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1      297.44632      297.44632      0.37   0.5433
+ trt                         1       52.43139       52.43139      0.07   0.7984
+ Error                      65    51793.41935      796.82184                   
+
+
+                           Contrast Variable: month_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     5326.61757     5326.61757      5.52   0.0218
+ trt                         1     4716.34891     4716.34891      4.89   0.0306
+ Error                      65    62718.06900      964.89337                   
+
+
+                           Contrast Variable: month_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1        11.6419        11.6419      0.01   0.9313
+ trt                         1      1066.7464      1066.7464      0.69   0.4104
+ Error                      65    101008.2984      1553.9738                   
+                      UNNORMALIZED HELMERT TRANSFORMATION                     23
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+                      UNNORMALIZED HELMERT TRANSFORMATION                     24
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                       Repeated Measures Level Information
+ 
+       Dependent Variable      month0   month6  month12  month20  month24
+
+           Level of month           0        6       12       20       24
+
+
+                month_N represents the contrast between the nth
+                level of month and the mean of subsequent levels
+                                        
+                   M Matrix Describing Transformed Variables
+ 
+                month0        month6       month12       month20       month24
+
+ month_1   1.000000000  -0.250000000  -0.250000000  -0.250000000  -0.250000000
+ month_2   0.000000000   1.000000000  -0.333333333  -0.333333333  -0.333333333
+ month_3   0.000000000   0.000000000   1.000000000  -0.500000000  -0.500000000
+ month_4   0.000000000   0.000000000   0.000000000   1.000000000  -1.000000000
+                      UNNORMALIZED HELMERT TRANSFORMATION                     25
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.01   0.9207
+ Error                      65    551355.4030      8482.3908                   
+                      UNNORMALIZED HELMERT TRANSFORMATION                     26
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+           Univariate Tests of Hypotheses for Within Subject Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ month                       4     29391.5628      7347.8907     12.14   <.0001
+ month*trt                   4      4567.7300      1141.9325      1.89   0.1130
+ Error(month)              260    157309.4581       605.0364                   
+
+                                              Adj Pr > F
+                    Source                  G - G     H-F-L
+
+                    month                  <.0001    <.0001
+                    month*trt              0.1251    0.1210
+                    Error(month)                           
+
+
+                     Greenhouse-Geisser Epsilon      0.8441
+                     Huynh-Feldt-Lecoutre Epsilon    0.8959
+                      UNNORMALIZED HELMERT TRANSFORMATION                     27
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                   Analysis of Variance of Contrast Variables
+ 
+month_N represents the contrast between the nth level of month and the mean of 
+                               subsequent levels
+
+                           Contrast Variable: month_1
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1    28566.06436    28566.06436     31.94   <.0001
+ trt                         1     2042.56063     2042.56063      2.28   0.1356
+ Error                      65    58138.23415      894.43437                   
+
+
+                           Contrast Variable: month_2
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     4194.51524     4194.51524      7.45   0.0081
+ trt                         1      764.84360      764.84360      1.36   0.2480
+ Error                      65    36579.91926      562.76799                   
+
+
+                           Contrast Variable: month_3
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1     5080.50594     5080.50594      6.70   0.0119
+ trt                         1     2740.01340     2740.01340      3.61   0.0618
+ Error                      65    49289.67316      758.30266                   
+
+
+                           Contrast Variable: month_4
+
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ Mean                        1        11.6419        11.6419      0.01   0.9313
+ trt                         1      1066.7464      1066.7464      0.69   0.4104
+ Error                      65    101008.2984      1553.9738                   
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            28
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            29
+
+                               The GLM Procedure
+
+ Level of          -----------month0-----------    -----------month6-----------
+ trt          N            Mean         Std Dev            Mean         Std Dev
+
+ 1           36      226.777778      44.2997008      249.611111      41.4151648
+ 2           31      236.645161      55.5016807      243.322581      52.4927850
+
+ Level of          -----------month12----------    -----------month20----------
+ trt          N            Mean         Std Dev            Mean         Std Dev
+
+ 1           36      252.611111      39.4195584      253.138889      33.8763742
+ 2           31      244.548387      47.6206109      261.903226      51.6425889
+
+                Level of          -----------month24-----------
+                trt          N            Mean          Std Dev
+
+                1           36      256.722222       50.4548517
+                2           31      257.483871       49.3881706
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            30
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                             E = Error SSCP Matrix
+ 
+                month0        month6       month12       month20       month24
+
+ month0     161099.319  115858.43728  105041.92115  105477.04659  97928.100358
+ month6   115858.43728  142697.32975  106661.07168  107582.91219   105684.2724
+ month12  105041.92115  106661.07168  122418.23297  89937.589606  99163.885305
+ month20  105477.04659  107582.91219  89937.589606  120175.01523  90720.840502
+ month24  97928.100358   105684.2724  99163.885305  90720.840502  162274.96416
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+ DF = 65        month0        month6       month12       month20       month24
+
+ month0       1.000000      0.764140      0.747985      0.758061      0.605668
+                              <.0001        <.0001        <.0001        <.0001
+
+ month6       0.764140      1.000000      0.807003      0.821539      0.694507
+                <.0001                      <.0001        <.0001        <.0001
+
+ month12      0.747985      0.807003      1.000000      0.741500      0.703566
+                <.0001        <.0001                      <.0001        <.0001
+
+ month20      0.758061      0.821539      0.741500      1.000000      0.649642
+                <.0001        <.0001        <.0001                      <.0001
+
+ month24      0.605668      0.694507      0.703566      0.649642      1.000000
+                <.0001        <.0001        <.0001        <.0001              
+             MULTIVARIATE ANALYSIS USING PROC GLM MANOVA STATEMENT            31
+
+                               The GLM Procedure
+                       Multivariate Analysis of Variance
+
+                       H = Type III SSCP Matrix for trt
+ 
+                month0        month6       month12       month20       month24
+
+ month0   1621.7854812  -1033.571604  -1325.174878  1440.4907185  125.18322367
+ month6   -1033.571604  658.70010164  844.54025571  -918.0315894  -79.77986412
+ month12  -1325.174878  844.54025571  1082.8118012  -1177.037367  -102.2882897
+ month20  1440.4907185  -918.0315894  -1177.037367   1279.462379  111.18934895
+ month24  125.18322367  -79.77986412  -102.2882897  111.18934895  9.6627079655
+
+
+           Characteristic Roots and Vectors of: E Inverse * H, where
+                        H = Type III SSCP Matrix for trt
+                             E = Error SSCP Matrix
+ 
+Characteristic           Characteristic Vector  V'EV=1
+          Root  Percent        month0        month6       month12       month20
+                              month24
+
+    0.14245891   100.00    0.00220554   -0.00305693   -0.00282254    0.00322378
+                           0.00063319
+    0.00000000     0.00   -0.00044839   -0.00051369   -0.00110939   -0.00120058
+                           0.00363890
+    0.00000000     0.00    0.00195700    0.00081925    0.00072593   -0.00094766
+                           0.00000000
+    0.00000000     0.00   -0.00069779   -0.00452352    0.00443391    0.00161888
+                           0.00000000
+    0.00000000     0.00   -0.00303759    0.00103249   -0.00034209    0.00384601
+                           0.00000000
+
+
+                  MANOVA Test Criteria and Exact F Statistics
+                  for the Hypothesis of No Overall trt Effect
+                        H = Type III SSCP Matrix for trt
+                             E = Error SSCP Matrix
+                                        
+                             S=1    M=1.5    N=29.5
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.87530500       1.74         5        61    0.1395
+Pillai's Trace              0.12469500       1.74         5        61    0.1395
+Hotelling-Lawley Trace      0.14245891       1.74         5        61    0.1395
+Roy's Greatest Root         0.14245891       1.74         5        61    0.1395
+                         MULTIVARIATE PROFILE ANALYSIS                        32
+
+                               The GLM Procedure
+
+                            Class Level Information
+ 
+                         Class         Levels    Values
+
+                         trt                2    1 2   
+
+
+                    Number of Observations Read          67
+                    Number of Observations Used          67
+                         MULTIVARIATE PROFILE ANALYSIS                        33
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+                       Repeated Measures Level Information
+ 
+       Dependent Variable      month0   month6  month12  month20  month24
+
+           Level of month           1        2        3        4        5
+
+
+   Partial Correlation Coefficients from the Error SSCP Matrix / Prob > |r|
+                                       
+ DF = 65        month0        month6       month12       month20       month24
+
+ month0       1.000000      0.764140      0.747985      0.758061      0.605668
+                              <.0001        <.0001        <.0001        <.0001
+
+ month6       0.764140      1.000000      0.807003      0.821539      0.694507
+                <.0001                      <.0001        <.0001        <.0001
+
+ month12      0.747985      0.807003      1.000000      0.741500      0.703566
+                <.0001        <.0001                      <.0001        <.0001
+
+ month20      0.758061      0.821539      0.741500      1.000000      0.649642
+                <.0001        <.0001        <.0001                      <.0001
+
+ month24      0.605668      0.694507      0.703566      0.649642      1.000000
+                <.0001        <.0001        <.0001        <.0001              
+
+
+                             E = Error SSCP Matrix
+                                       
+  month_N represents the contrast between the nth level of month and the last
+ 
+                       month_1      month_2      month_3      month_4
+
+          month_1       127518        74521        70225        79103
+          month_2        74521        93604        64088        73453
+          month_3        70225        64088        86365        62328
+          month_4        79103        73453        62328       101008
+
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+      DF = 65        month_1        month_2        month_3        month_4
+
+      month_1       1.000000       0.682097       0.669168       0.696994
+                                     <.0001         <.0001         <.0001
+
+      month_2       0.682097       1.000000       0.712786       0.755410
+                      <.0001                        <.0001         <.0001
+
+      month_3       0.669168       0.712786       1.000000       0.667319
+                      <.0001         <.0001                        <.0001
+                         MULTIVARIATE PROFILE ANALYSIS                        34
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+
+       Partial Correlation Coefficients from the Error SSCP Matrix of the
+         Variables Defined by the Specified Transformation / Prob > |r|
+                                        
+      DF = 65        month_1        month_2        month_3        month_4
+
+      month_4       0.696994       0.755410       0.667319       1.000000
+                      <.0001         <.0001         <.0001               
+
+
+                                Sphericity Tests
+ 
+                                       Mauchly's
+    Variables                    DF    Criterion    Chi-Square    Pr > ChiSq
+
+    Transformed Variates          9    0.0785124     161.36364        <.0001
+    Orthogonal Components         9    0.7139999     21.363325        0.0111
+
+
+                  MANOVA Test Criteria and Exact F Statistics
+                     for the Hypothesis of no month Effect
+                       H = Type III SSCP Matrix for month
+                             E = Error SSCP Matrix
+                                        
+                               S=1    M=1    N=30
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.58517690      10.99         4        62    <.0001
+Pillai's Trace              0.41482310      10.99         4        62    <.0001
+Hotelling-Lawley Trace      0.70888495      10.99         4        62    <.0001
+Roy's Greatest Root         0.70888495      10.99         4        62    <.0001
+
+
+                  MANOVA Test Criteria and Exact F Statistics
+                   for the Hypothesis of no month*trt Effect
+                     H = Type III SSCP Matrix for month*trt
+                             E = Error SSCP Matrix
+                                        
+                               S=1    M=1    N=30
+ 
+Statistic                        Value    F Value    Num DF    Den DF    Pr > F
+
+Wilks' Lambda               0.87568485       2.20         4        62    0.0792
+Pillai's Trace              0.12431515       2.20         4        62    0.0792
+Hotelling-Lawley Trace      0.14196335       2.20         4        62    0.0792
+Roy's Greatest Root         0.14196335       2.20         4        62    0.0792
+                         MULTIVARIATE PROFILE ANALYSIS                        35
+
+                               The GLM Procedure
+                     Repeated Measures Analysis of Variance
+                Tests of Hypotheses for Between Subjects Effects
+
+ Source                     DF    Type III SS    Mean Square   F Value   Pr > F
+
+ trt                         1        84.6925        84.6925      0.01   0.9207
+ Error                      65    551355.4030      8482.3908                   

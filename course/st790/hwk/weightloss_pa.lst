@@ -1,0 +1,1352 @@
+                        UNSTRUCTURED SEPARATE BY PROGRAM                       1
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Group Effect                 diet                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters            45
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              2      4048.68843490      0.00091779
+                  2              1      4047.03546316      0.00008162
+                        UNSTRUCTURED SEPARATE BY PROGRAM                       2
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  3              1      4046.89755468      0.00000164
+                  4              1      4046.89494500      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      280.47      254.17      213.15      266.88      230.17
+           2      254.17      444.95      269.64      274.31      241.01
+           3      213.15      269.64      314.51      271.46      240.77
+           4      266.88      274.31      271.46      462.16      239.31
+           5      230.17      241.01      240.77      239.31      328.66
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7195      0.7177      0.7413      0.7581
+           2      0.7195      1.0000      0.7208      0.6049      0.6302
+           3      0.7177      0.7208      1.0000      0.7120      0.7489
+           4      0.7413      0.6049      0.7120      1.0000      0.6140
+           5      0.7581      0.6302      0.7489      0.6140      1.0000
+
+
+                          Estimated R Matrix for id 35
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      502.96      371.50      512.74      440.58      545.85
+           2      371.50      449.19      428.29      341.04      446.52
+           3      512.74      428.29      782.34      449.02      619.66
+           4      440.58      341.04      449.02      518.61      468.06
+           5      545.85      446.52      619.66      468.06      745.35
+
+
+                    Estimated R Correlation Matrix for id 35
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7816      0.8174      0.8626      0.8915
+           2      0.7816      1.0000      0.7225      0.7066      0.7717
+           3      0.8174      0.7225      1.0000      0.7049      0.8115
+           4      0.8626      0.7066      0.7049      1.0000      0.7528
+           5      0.8915      0.7717      0.8115      0.7528      1.0000
+                        UNSTRUCTURED SEPARATE BY PROGRAM                       3
+
+                              The Mixed Procedure
+
+                          Estimated R Matrix for id 63
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      514.99      288.52      466.53      488.00      399.82
+           2      288.52      431.20      360.73      282.82      319.50
+           3      466.53      360.73      560.73      460.21      431.00
+           4      488.00      282.82      460.21      621.22      423.29
+           5      399.82      319.50      431.00      423.29      512.76
+
+
+                    Estimated R Correlation Matrix for id 63
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.6123      0.8682      0.8628      0.7780
+           2      0.6123      1.0000      0.7336      0.5464      0.6795
+           3      0.8682      0.7336      1.0000      0.7798      0.8038
+           4      0.8628      0.5464      0.7798      1.0000      0.7500
+           5      0.7780      0.6795      0.8038      0.7500      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                   Cov Parm    Subject    Group     Estimate
+
+                   UN(1,1)     id         diet 1      280.47
+                   UN(2,1)     id         diet 1      254.17
+                   UN(2,2)     id         diet 1      444.95
+                   UN(3,1)     id         diet 1      213.15
+                   UN(3,2)     id         diet 1      269.64
+                   UN(3,3)     id         diet 1      314.51
+                   UN(4,1)     id         diet 1      266.88
+                   UN(4,2)     id         diet 1      274.31
+                   UN(4,3)     id         diet 1      271.46
+                   UN(4,4)     id         diet 1      462.16
+                   UN(5,1)     id         diet 1      230.17
+                   UN(5,2)     id         diet 1      241.01
+                   UN(5,3)     id         diet 1      240.77
+                   UN(5,4)     id         diet 1      239.31
+                   UN(5,5)     id         diet 1      328.66
+                   UN(1,1)     id         diet 2      502.96
+                   UN(2,1)     id         diet 2      371.50
+                   UN(2,2)     id         diet 2      449.19
+                   UN(3,1)     id         diet 2      512.74
+                   UN(3,2)     id         diet 2      428.29
+                   UN(3,3)     id         diet 2      782.34
+                   UN(4,1)     id         diet 2      440.58
+                   UN(4,2)     id         diet 2      341.04
+                   UN(4,3)     id         diet 2      449.02
+                   UN(4,4)     id         diet 2      518.61
+                   UN(5,1)     id         diet 2      545.85
+                   UN(5,2)     id         diet 2      446.52
+                   UN(5,3)     id         diet 2      619.66
+                   UN(5,4)     id         diet 2      468.06
+                        UNSTRUCTURED SEPARATE BY PROGRAM                       4
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                   Cov Parm    Subject    Group     Estimate
+
+                   UN(5,5)     id         diet 2      745.35
+                   UN(1,1)     id         diet 3      514.99
+                   UN(2,1)     id         diet 3      288.52
+                   UN(2,2)     id         diet 3      431.20
+                   UN(3,1)     id         diet 3      466.53
+                   UN(3,2)     id         diet 3      360.73
+                   UN(3,3)     id         diet 3      560.73
+                   UN(4,1)     id         diet 3      488.00
+                   UN(4,2)     id         diet 3      282.82
+                   UN(4,3)     id         diet 3      460.21
+                   UN(4,4)     id         diet 3      621.22
+                   UN(5,1)     id         diet 3      399.82
+                   UN(5,2)     id         diet 3      319.50
+                   UN(5,3)     id         diet 3      431.00
+                   UN(5,4)     id         diet 3      423.29
+                   UN(5,5)     id         diet 3      512.76
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4046.9
+                     AIC (Smaller is Better)        4154.9
+                     AICC (Smaller is Better)       4168.2
+                     BIC (Smaller is Better)        4295.6
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          44        453.04          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         247.58      2.7989      97      88.46      <.0001
+   diet           2         246.18      3.9569      97      62.22      <.0001
+   diet           3         237.49      3.1249      97      76.00      <.0001
+   month*diet     1        -2.5630      0.6224     394      -4.12      <.0001
+   month*diet     2       -12.0208      0.6795     394     -17.69      <.0001
+   month*diet     3        -5.8379      0.4860     394     -12.01      <.0001
+   month2*diet    1         0.2334     0.05147     394       4.53      <.0001
+   month2*diet    2         0.3702     0.06108     394       6.06      <.0001
+   month2*diet    3         0.2705     0.04348     394       6.22      <.0001
+                        UNSTRUCTURED SEPARATE BY PROGRAM                       5
+
+                              The Mixed Procedure
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    5823.73    <.0001
+                month*diet        3     394     158.06    <.0001
+                month2*diet       3     394      31.99    <.0001
+                              COMMON UNSTRUCTURED                              6
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              2      4076.44579696      0.00005741
+                  2              1      4076.35095805      0.00000035
+                  3              1      4076.35040425      0.00000000
+                              COMMON UNSTRUCTURED                              7
+
+                              The Mixed Procedure
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      413.43      292.77      373.71      390.77      366.48
+           2      292.77      434.40      329.07      296.95      318.88
+           3      373.71      329.07      506.48      382.52      394.23
+           4      390.77      296.95      382.52      545.61      361.05
+           5      366.48      318.88      394.23      361.05      498.68
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.6908      0.8167      0.8228      0.8071
+           2      0.6908      1.0000      0.7016      0.6100      0.6851
+           3      0.8167      0.7016      1.0000      0.7277      0.7844
+           4      0.8228      0.6100      0.7277      1.0000      0.6922
+           5      0.8071      0.6851      0.7844      0.6922      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     id           413.43
+                        UN(2,1)     id           292.77
+                        UN(2,2)     id           434.40
+                        UN(3,1)     id           373.71
+                        UN(3,2)     id           329.07
+                        UN(3,3)     id           506.48
+                        UN(4,1)     id           390.77
+                        UN(4,2)     id           296.95
+                        UN(4,3)     id           382.52
+                        UN(4,4)     id           545.61
+                        UN(5,1)     id           366.48
+                        UN(5,2)     id           318.88
+                        UN(5,3)     id           394.23
+                        UN(5,4)     id           361.05
+                        UN(5,5)     id           498.68
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4076.4
+                     AIC (Smaller is Better)        4124.4
+                     AICC (Smaller is Better)       4126.9
+                     BIC (Smaller is Better)        4186.9
+                              COMMON UNSTRUCTURED                              8
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14        423.58          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         244.03      3.3101      97      73.72      <.0001
+   diet           2         249.12      3.6476      97      68.30      <.0001
+   diet           3         240.94      3.1311      97      76.95      <.0001
+   month*diet     1        -2.4086      0.5887      97      -4.09      <.0001
+   month*diet     2       -11.3990      0.6488      97     -17.57      <.0001
+   month*diet     3        -6.4356      0.5569      97     -11.56      <.0001
+   month2*diet    1         0.2336     0.05123      97       4.56      <.0001
+   month2*diet    2         0.3221     0.05645      97       5.71      <.0001
+   month2*diet    3         0.3120     0.04846      97       6.44      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    5340.32    <.0001
+                month*diet        3      97     153.00    <.0001
+                month2*diet       3      97      31.60    <.0001
+              HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY PROGRAM             9
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Group Effect                 diet                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters            18
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              4      4095.06487712      0.00135674
+              HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY PROGRAM            10
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  2              1      4092.78591494      0.00013450
+                  3              1      4092.55240733      0.00000382
+                  4              1      4092.54619526      0.00000001
+
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      272.20      244.45      201.37      249.20      213.19
+           2      244.45      449.41      258.74      320.21      273.94
+           3      201.37      258.74      304.95      263.77      225.66
+           4      249.20      320.21      263.77      467.04      279.26
+           5      213.19      273.94      225.66      279.26      341.82
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.6989      0.6989      0.6989      0.6989
+           2      0.6989      1.0000      0.6989      0.6989      0.6989
+           3      0.6989      0.6989      1.0000      0.6989      0.6989
+           4      0.6989      0.6989      0.6989      1.0000      0.6989
+           5      0.6989      0.6989      0.6989      0.6989      1.0000
+
+
+                          Estimated R Matrix for id 35
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      485.44      386.90      515.74      405.20      479.56
+           2      386.90      488.73      517.49      406.58      481.18
+           3      515.74      517.49      868.43      541.97      641.42
+           4      405.20      406.58      541.97      536.07      503.94
+           5      479.56      481.18      641.42      503.94      750.85
+
+
+                    Estimated R Correlation Matrix for id 35
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7943      0.7943      0.7943      0.7943
+           2      0.7943      1.0000      0.7943      0.7943      0.7943
+           3      0.7943      0.7943      1.0000      0.7943      0.7943
+           4      0.7943      0.7943      0.7943      1.0000      0.7943
+           5      0.7943      0.7943      0.7943      0.7943      1.0000
+              HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY PROGRAM            11
+
+                              The Mixed Procedure
+
+                          Estimated R Matrix for id 63
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      419.71      427.60      363.46      354.38      388.00
+           2      427.60      739.27      482.37      470.33      514.94
+           3      363.46      482.37      534.12      399.78      437.69
+           4      354.38      470.33      399.78      507.78      426.77
+           5      388.00      514.94      437.69      426.77      608.67
+
+
+                    Estimated R Correlation Matrix for id 63
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7676      0.7676      0.7676      0.7676
+           2      0.7676      1.0000      0.7676      0.7676      0.7676
+           3      0.7676      0.7676      1.0000      0.7676      0.7676
+           4      0.7676      0.7676      0.7676      1.0000      0.7676
+           5      0.7676      0.7676      0.7676      0.7676      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                    Cov
+                    Parm       Subject    Group     Estimate
+
+                    Var(1)     id         diet 1      272.20
+                    Var(2)     id         diet 1      449.41
+                    Var(3)     id         diet 1      304.95
+                    Var(4)     id         diet 1      467.04
+                    Var(5)     id         diet 1      341.82
+                    CSH        id         diet 1      0.6989
+                    Var(1)     id         diet 2      485.44
+                    Var(2)     id         diet 2      488.73
+                    Var(3)     id         diet 2      868.43
+                    Var(4)     id         diet 2      536.07
+                    Var(5)     id         diet 2      750.85
+                    CSH        id         diet 2      0.7943
+                    Var(1)     id         diet 3      419.71
+                    Var(2)     id         diet 3      739.27
+                    Var(3)     id         diet 3      534.12
+                    Var(4)     id         diet 3      507.78
+                    Var(5)     id         diet 3      608.67
+                    CSH        id         diet 3      0.7676
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4092.5
+                     AIC (Smaller is Better)        4146.5
+                     AICC (Smaller is Better)       4149.7
+                     BIC (Smaller is Better)        4216.9
+              HETEROGENEOUS COMPOUND SYMMETRIC SEPARATE BY PROGRAM            12
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          17        407.39          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         246.97      2.7627      97      89.40      <.0001
+   diet           2         244.66      3.8453      97      63.62      <.0001
+   diet           3         250.02      3.2851      97      76.11      <.0001
+   month*diet     1        -2.4845      0.6254     394      -3.97      <.0001
+   month*diet     2       -12.2993      0.7834     394     -15.70      <.0001
+   month*diet     3        -6.1424      0.6496     394      -9.46      <.0001
+   month2*diet    1         0.2406     0.05073     394       4.74      <.0001
+   month2*diet    2         0.3927     0.06478     394       6.06      <.0001
+   month2*diet    3         0.3005     0.05399     394       5.57      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    5943.95    <.0001
+                month*diet        3     394     117.23    <.0001
+                month2*diet       3     394      30.07    <.0001
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   13
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Heterogeneous Compound   
+                                          Symmetry                 
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters             6
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              2      4106.13855296      0.00004922
+                  2              1      4106.05611324      0.00000033
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   14
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  3              1      4106.05557687      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      374.55      317.72      310.59      328.48      318.90
+           2      317.72      499.34      358.62      379.28      368.21
+           3      310.59      358.62      477.18      370.77      359.95
+           4      328.48      379.28      370.77      533.74      380.68
+           5      318.90      368.21      359.95      380.68      503.05
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7347      0.7347      0.7347      0.7347
+           2      0.7347      1.0000      0.7347      0.7347      0.7347
+           3      0.7347      0.7347      1.0000      0.7347      0.7347
+           4      0.7347      0.7347      0.7347      1.0000      0.7347
+           5      0.7347      0.7347      0.7347      0.7347      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                         Cov
+                         Parm       Subject    Estimate
+
+                         Var(1)     id           374.55
+                         Var(2)     id           499.34
+                         Var(3)     id           477.18
+                         Var(4)     id           533.74
+                         Var(5)     id           503.05
+                         CSH        id           0.7347
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4106.1
+                     AIC (Smaller is Better)        4136.1
+                     AICC (Smaller is Better)       4137.0
+                     BIC (Smaller is Better)        4175.1
+                    COMMON HETEROGENEOUS COMPOUND SYMMETRIC                   15
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           5        393.88          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         246.57      3.2989      97      74.74      <.0001
+   diet           2         251.34      3.6352      97      69.14      <.0001
+   diet           3         244.59      3.1205      97      78.38      <.0001
+   month*diet     1        -2.5149      0.6946     394      -3.62      0.0003
+   month*diet     2       -11.4434      0.7654     394     -14.95      <.0001
+   month*diet     3        -6.5816      0.6570     394     -10.02      <.0001
+   month2*diet    1         0.2504     0.05660     394       4.42      <.0001
+   month2*diet    2         0.3358     0.06237     394       5.38      <.0001
+   month2*diet    3         0.3360     0.05354     394       6.28      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    5503.58    <.0001
+                month*diet        3     394     112.34    <.0001
+                month2*diet       3     394      29.31    <.0001
+                     COMPOUND SYMMETRIC SEPARATE BY PROGRAM                   16
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Compound Symmetry        
+             Subject Effect               id                       
+             Group Effect                 diet                     
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters             6
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              1      4110.08953948      0.00000000
+                     COMPOUND SYMMETRIC SEPARATE BY PROGRAM                   17
+
+                              The Mixed Procedure
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      363.97      250.09      250.09      250.09      250.09
+           2      250.09      363.97      250.09      250.09      250.09
+           3      250.09      250.09      363.97      250.09      250.09
+           4      250.09      250.09      250.09      363.97      250.09
+           5      250.09      250.09      250.09      250.09      363.97
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.6871      0.6871      0.6871      0.6871
+           2      0.6871      1.0000      0.6871      0.6871      0.6871
+           3      0.6871      0.6871      1.0000      0.6871      0.6871
+           4      0.6871      0.6871      0.6871      1.0000      0.6871
+           5      0.6871      0.6871      0.6871      0.6871      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                   Cov Parm     Subject    Group     Estimate
+
+                   Variance     id         diet 1      113.88
+                   CS           id         diet 1      250.09
+                   Variance     id         diet 2      136.76
+                   CS           id         diet 2      431.90
+                   Variance     id         diet 3      135.18
+                   CS           id         diet 3      368.50
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4110.1
+                     AIC (Smaller is Better)        4140.1
+                     AICC (Smaller is Better)       4141.1
+                     BIC (Smaller is Better)        4179.2
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           5        389.85          <.0001
+
+
+                     COMPOUND SYMMETRIC SEPARATE BY PROGRAM                   18
+
+                              The Mixed Procedure
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         245.08      3.2128      97      76.28      <.0001
+   diet           2         250.44      4.4442      97      56.35      <.0001
+   diet           3         242.51      3.5844      97      67.66      <.0001
+   month*diet     1        -2.2769      0.6801     394      -3.35      0.0009
+   month*diet     2       -11.5964      0.8213     394     -14.12      <.0001
+   month*diet     3        -6.2914      0.7009     394      -8.98      <.0001
+   month2*diet    1         0.2355     0.05435     394       4.33      <.0001
+   month2*diet    2         0.3465     0.06563     394       5.28      <.0001
+   month2*diet    3         0.3181     0.05601     394       5.68      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    4523.97    <.0001
+                month*diet        3     394      97.05    <.0001
+                month2*diet       3     394      26.31    <.0001
+                           COMMON COMPOUND SYMMETRIC                          19
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Compound Symmetry        
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     Profile                  
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters             2
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              1      4113.68039084      0.00000000
+                           COMMON COMPOUND SYMMETRIC                          20
+
+                              The Mixed Procedure
+
+                           Convergence criteria met.                    
+
+
+                           Estimated R Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      474.37      345.99      345.99      345.99      345.99
+           2      345.99      474.37      345.99      345.99      345.99
+           3      345.99      345.99      474.37      345.99      345.99
+           4      345.99      345.99      345.99      474.37      345.99
+           5      345.99      345.99      345.99      345.99      474.37
+
+
+                     Estimated R Correlation Matrix for id 1
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.7294      0.7294      0.7294      0.7294
+           2      0.7294      1.0000      0.7294      0.7294      0.7294
+           3      0.7294      0.7294      1.0000      0.7294      0.7294
+           4      0.7294      0.7294      0.7294      1.0000      0.7294
+           5      0.7294      0.7294      0.7294      0.7294      1.0000
+
+
+                         Covariance Parameter Estimates
+ 
+                        Cov Parm     Subject    Estimate
+
+                        CS           id           345.99
+                        Residual                  128.38
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4113.7
+                     AIC (Smaller is Better)        4135.7
+                     AICC (Smaller is Better)       4136.2
+                     BIC (Smaller is Better)        4164.3
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           1        386.25          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         245.08      3.6770      97      66.65      <.0001
+   diet           2         250.44      4.0519      97      61.81      <.0001
+                           COMMON COMPOUND SYMMETRIC                          21
+
+                              The Mixed Procedure
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           3         242.51      3.4781      97      69.72      <.0001
+   month*diet     1        -2.2769      0.7221     394      -3.15      0.0017
+   month*diet     2       -11.5964      0.7957     394     -14.57      <.0001
+   month*diet     3        -6.2914      0.6830     394      -9.21      <.0001
+   month2*diet    1         0.2355     0.05770     394       4.08      <.0001
+   month2*diet    2         0.3465     0.06359     394       5.45      <.0001
+   month2*diet    3         0.3181     0.05458     394       5.83      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    4374.70    <.0001
+                month*diet        3     394     102.39    <.0001
+                month2*diet       3     394      26.78    <.0001
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                22
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                      9
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              2      4076.44579696      0.00005741
+                  2              1      4076.35095805      0.00000035
+                  3              1      4076.35040425      0.00000000
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                23
+
+                              The Mixed Procedure
+
+                           Convergence criteria met.                    
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     id           413.43
+                        UN(2,1)     id           292.77
+                        UN(2,2)     id           434.40
+                        UN(3,1)     id           373.71
+                        UN(3,2)     id           329.07
+                        UN(3,3)     id           506.48
+                        UN(4,1)     id           390.77
+                        UN(4,2)     id           296.95
+                        UN(4,3)     id           382.52
+                        UN(4,4)     id           545.61
+                        UN(5,1)     id           366.48
+                        UN(5,2)     id           318.88
+                        UN(5,3)     id           394.23
+                        UN(5,4)     id           361.05
+                        UN(5,5)     id           498.68
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4076.4
+                     AIC (Smaller is Better)        4124.4
+                     AICC (Smaller is Better)       4126.9
+                     BIC (Smaller is Better)        4186.9
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14        423.58          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   diet           1         244.03      3.3101      97      73.72      <.0001
+   diet           2         249.12      3.6476      97      68.30      <.0001
+   diet           3         240.94      3.1311      97      76.95      <.0001
+   month*diet     1        -2.4086      0.5887      97      -4.09      <.0001
+   month*diet     2       -11.3990      0.6488      97     -17.57      <.0001
+   month*diet     3        -6.4356      0.5569      97     -11.56      <.0001
+   month2*diet    1         0.2336     0.05123      97       4.56      <.0001
+   month2*diet    2         0.3221     0.05645      97       5.71      <.0001
+   month2*diet    3         0.3120     0.04846      97       6.44      <.0001
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                24
+
+                              The Mixed Procedure
+
+                         Type 3 Tests of Fixed Effects
+ 
+                                Num     Den
+                Effect           DF      DF    F Value    Pr > F
+
+                diet              3      97    5340.32    <.0001
+                month*diet        3      97     153.00    <.0001
+                month2*diet       3      97      31.60    <.0001
+
+
+                                   Estimates
+ 
+                                           Standard
+Label                           Estimate      Error     DF   t Value   Pr > |t|
+
+mean @ month 12, diet 1           248.76     3.7166     97     66.93     <.0001
+mean @ month 12, diet 2           158.71     4.0955     97     38.75     <.0001
+mean @ month 12, diet 3           208.64     3.5155     97     59.35     <.0001
+rate of chng @ month 8 diet 1     1.3287     0.2971     97      4.47     <.0001
+rate of chng @ month 8 diet 2    -6.2457     0.3274     97    -19.08     <.0001
+rate of chng @ month 8 diet 3    -1.4431     0.2810     97     -5.14     <.0001
+
+
+                                   Contrasts
+ 
+                          Num   Den
+  Label                    DF    DF  Chi-Square  F Value    Pr > ChiSq  Pr > F
+
+  quadratic effect          3    97       94.80    31.60        <.0001  <.0001
+  diff quad effect          2    97        1.74     0.87        0.4192  0.4224
+  diff means @ month 12     2    97      265.13   132.56        <.0001  <.0001
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                25
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.WEIGHT2             
+             Dependent Variable           weight                   
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               diet          3    1 2 3                         
+               id          100    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100         
+               time          5    0 3 6 9 12                    
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                     12
+                      Columns in Z                      0
+                      Subjects                        100
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             500
+                  Number of Observations Used             500
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4499.93500766                
+                  1              2      4076.44579696      0.00005741
+                  2              1      4076.35095805      0.00000035
+                  3              1      4076.35040425      0.00000000
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                26
+
+                              The Mixed Procedure
+
+                           Convergence criteria met.                    
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     id           413.43
+                        UN(2,1)     id           292.77
+                        UN(2,2)     id           434.40
+                        UN(3,1)     id           373.71
+                        UN(3,2)     id           329.07
+                        UN(3,3)     id           506.48
+                        UN(4,1)     id           390.77
+                        UN(4,2)     id           296.95
+                        UN(4,3)     id           382.52
+                        UN(4,4)     id           545.61
+                        UN(5,1)     id           366.48
+                        UN(5,2)     id           318.88
+                        UN(5,3)     id           394.23
+                        UN(5,4)     id           361.05
+                        UN(5,5)     id           498.68
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4076.4
+                     AIC (Smaller is Better)        4124.4
+                     AICC (Smaller is Better)       4126.9
+                     BIC (Smaller is Better)        4186.9
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14        423.58          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   Intercept                240.94      3.1311      97      76.95      <.0001
+   diet           1         3.0939      4.5564      97       0.68      0.4987
+   diet           2         8.1870      4.8071      97       1.70      0.0918
+   diet           3              0           .       .        .         .    
+   month                   -6.4356      0.5569      97     -11.56      <.0001
+   month*diet     1         4.0271      0.8104      97       4.97      <.0001
+   month*diet     2        -4.9634      0.8550      97      -5.81      <.0001
+   month*diet     3              0           .       .        .         .    
+   month2                   0.3120     0.04846      97       6.44      <.0001
+   month2*diet    1       -0.07845     0.07052      97      -1.11      0.2687
+   month2*diet    2        0.01005     0.07440      97       0.14      0.8928
+                  ANALYSES WITH COMMON UNSTRUCTURED COVARIANCE                27
+
+                              The Mixed Procedure
+
+                           Solution for Fixed Effects
+ 
+                                      Standard
+   Effect         diet    Estimate       Error      DF    t Value    Pr > |t|
+
+   month2*diet    3              0           .       .        .         .    
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+ Row  Effect        diet       Col1       Col2       Col3       Col4       Col5
+
+   1  Intercept              9.8035    -9.8035    -9.8035               -0.3347
+   2  diet          1       -9.8035    20.7604     9.8035                0.3347
+   3  diet          2       -9.8035     9.8035    23.1083                0.3347
+   4  diet          3                                                          
+   5  month                 -0.3347     0.3347     0.3347                0.3101
+   6  month*diet    1        0.3347    -0.7088    -0.3347               -0.3101
+   7  month*diet    2        0.3347    -0.3347    -0.7890               -0.3101
+   8  month*diet    3                                                          
+   9  month2                0.02474   -0.02474   -0.02474              -0.02601
+  10  month2*diet   1      -0.02474    0.05239    0.02474               0.02601
+  11  month2*diet   2      -0.02474    0.02474    0.05832               0.02601
+  12  month2*diet   3                                                          
+
+                       Covariance Matrix for Fixed Effects
+ 
+    Row      Col6      Col7      Col8      Col9     Col10     Col11     Col12
+
+      1    0.3347    0.3347             0.02474  -0.02474  -0.02474          
+      2   -0.7088   -0.3347            -0.02474   0.05239   0.02474          
+      3   -0.3347   -0.7890            -0.02474   0.02474   0.05832          
+      4                                                                      
+      5   -0.3101   -0.3101            -0.02601   0.02601   0.02601          
+      6    0.6568    0.3101             0.02601  -0.05508  -0.02601          
+      7    0.3101    0.7310             0.02601  -0.02601  -0.06131          
+      8                                                                      
+      9   0.02601   0.02601            0.002348  -0.00235  -0.00235          
+     10  -0.05508  -0.02601            -0.00235  0.004973  0.002348          
+     11  -0.02601  -0.06131            -0.00235  0.002348  0.005535          
+     12                                                                      
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                 Num     Den
+ Effect           DF      DF    Chi-Square    F Value      Pr > ChiSq    Pr > F
+
+ diet              2      97          2.91       1.45          0.2335    0.2385
+ month             1      97        380.26     380.26          <.0001    <.0001
+ month*diet        2      97        105.31      52.66          <.0001    <.0001
+ month2            1      97         92.27      92.27          <.0001    <.0001
+ month2*diet       2      97          1.74       0.87          0.4192    0.4224
