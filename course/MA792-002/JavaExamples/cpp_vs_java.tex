@@ -1,0 +1,379 @@
+\documentclass[12pt]{article}
+
+\usepackage{html}
+
+%begin{latexonly}
+\usepackage{mathptm}
+\usepackage{longtable}
+%end{latexonly}
+
+\begin{htmlonly}
+\renewcommand{\allowbreak}{ } %%% does not exist in HTML
+\end{htmlonly}
+
+\let\abk=\allowbreak %%% to save typing
+
+% narrow margins
+% note: 1in + \hoffset + sidemargin = 2cm
+\hoffset=0pt
+\setlength{\oddsidemargin}{2cm}
+\addtolength{\oddsidemargin}{-1in}% makes left margin exactly 2cm
+\setlength{\evensidemargin}{2cm}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{8.5truein}
+\addtolength{\textwidth}{-4cm}% makes right margin exactly 2cm
+%
+\setlength{\textheight}{11truein}
+\addtolength{\textheight}{-4cm}% text has 2cm top and bottom margins
+% note: 1in + \voffset + \topmargin + \headheight + \headsep = 2cm
+\voffset=-1.0in
+\setlength{\topmargin}{1cm}
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0cm}
+\setlength{\footskip}{1cm}
+
+\newcommand{\threedots}{...}
+\newcommand{\mycr}{\\\hline}
+
+%begin{latexonly}
+\newlength{\colwidth}\setlength{\colwidth}{\textwidth}
+\addtolength{\colwidth}{-24pt}
+\divide\colwidth 2
+\newenvironment{mytabular}%
+{\par\noindent
+\begin{longtable}[l]{%
+|p{\colwidth}% first column
+p{\colwidth}|% second column
+}% end preamble
+}%
+{\end{longtable}\par\vspace{\medskipamount}\goodbreak}
+%end{latexonly}
+
+\begin{htmlonly}
+\newenvironment{mytabular}
+{
+\begin{tabular}[t]{|ll|}
+}
+{
+\end{tabular}
+}
+\end{htmlonly}
+
+\newcommand{\code}[1]{{\ttfamily #1}}
+\newcommand{\ital}[1]{{{\normalfont\itshape #1}}}% for ``variables''
+
+\begin{document}
+\title{Erich's Java cheat sheet for C++ programmers}
+\author{\copyright
+\htmladdnormallink{Erich Kaltofen}
+{http://www.math.ncsu.edu/\~{}kaltofen/index.html}\\
+{\ttfamily kaltofen@math.ncsu.edu}}
+\maketitle
+
+\begin{htmlonly}
+Text versions:
+\htmladdnormallink{gzipped postscript}
+{http://www.math.ncsu.edu/\~{}kaltofen/courses/Languages/JavaExamples/cpp_vs_java.ps.gz},
+\htmladdnormallink{pdf}
+{http://www.math.ncsu.edu/\~{}kaltofen/courses/Languages/JavaExamples/cpp_vs_java.pdf}.
+\end{htmlonly}
+
+\begin{mytabular}%
+\hline
+{\bfseries C++} & {\bfseries Java} \mycr
+%begin{latexonly}
+\endhead
+%end{latexonly}
+
+assignment \code{operator=} & cannot be user-defined for
+  a class and performs assignment of a reference to the
+  instance of the class (see also reference types)\mycr
+
+\code{basic}\verb!_!\code{string} & \code{String} and \code{StringBuffer}\mycr
+
+\code{bool} & \code{boolean}\mycr
+
+\code{char} & \code{byte}\mycr
+
+\code{const} variables/data members & \code{final} variables/fields\mycr
+
+copy constructor & no default; one implements the interface
+  \code{Cloneable} by the method
+  \code{Object clone()}, which can be an abstract (in C++ notion: virtual)
+  method\mycr
+
+data members & fields, so-called \ital{instance variables}
+  (a term borrowed from Smalltalk) \mycr
+
+\code{delete} & does not exist; all unreferenced memory
+  is garbage collected \mycr
+
+derived classes & subclasses; the keyword
+  \code{extends} replaces C++'s colon. \mycr
+
+destructors \code{\~{}\ital{Class}} &
+  \code{protected void finalize()}; note, however,
+  that these are used for freeing resources
+  {\bfseries other than memory} and are therefore
+  rarely needed \mycr
+
+exceptions, \code{try}, \code{catch}, \code{throw},
+  \code{std:exception}&
+  same concept; Java adds a keyword \code{throws} that
+  is used to declare the exceptions a method throws;
+  the hierarchy of exceptions is rooted in
+  \code{java.lang.Exception};
+  a \code{finally} block is introduced to contain
+  all common clean-up code. \mycr
+
+\code{extern "C"} functions &
+  \code{native} methods \mycr
+
+functions & do not exist; \code{static} methods (``class
+            methods'') are used \mycr
+
+\code{\#include} & does not exist;
+the paths to the files are known and can be
+made know in the \code{CLASSPATH} environment
+variable \mycr
+
+input/output: \code{istream\& operator>>},
+   \code{ostream\& operator<<} &
+   \code{System.in} and \code{System.out} are the streams;
+   Java has number formatting tools in
+   \code{java.\allowbreak lang.\allowbreak Number}
+   and \code{java.\allowbreak text.\allowbreak Format.\allowbreak NumberFormat}
+  \mycr
+
+\code{main(int argc, char* argv[])}
+  & \code{public static void main(String [] args)}
+    within a \code{public} class \mycr
+
+member functions & methods \mycr
+
+multiple inheritance & does not exist; however,
+interfaces provide a weak form of multiple inheritance.\mycr
+
+namespaces & packages \mycr
+
+\code{namespace \ital{Namespace}}\verb!{!\threedots\verb!}!
+   & \code{package}\ital{Package}\code{;} which must appear
+     as the first line in the file \mycr
+
+nested (member, inner) classes &
+  Java~1.1 has \code{static} (``top-level'')
+  and non-static (``member'') inner classes, as well
+  as local classes and anonymous classes. Member classes
+  can refer to the members of the outer class
+  and to \ital{OuterClass}\code{.this};
+  they cannot have the name of an outer class
+  and cannot declare \code{static} members.\mycr
+
+\code{new} \ital{Class}\code{(}\threedots\code{)} &
+   \code{new} \ital{Class}\code{(}\threedots\code{)}, which
+   returns a reference to the created object\mycr
+
+\code{NULL} (the 0 pointer value) and the type
+  \code{void*} & \code{null} in Java is a keyword and
+  represents an uninitialized reference \mycr
+
+overloaded operators & do not exist; however, methods
+  can be overloaded.  This may be a major shortcoming of
+  Java, as one cannot revise old Java code by redefining
+  the operators used (cf. MITMatlab) \mycr
+
+passing arguments to base class constructor &
+  place the statement \code{super(}\threedots\code{);} as the
+  first statement in the subclass's constructor\mycr
+
+\code{public}, \code{private}, \code{protected} modifiers &
+  similar as in C++; visibility of classes and nested classes can
+  be also restricted; there are no friends, but within the same package
+  protected members are visible\mycr
+
+purely \code{virtual} member functions
+  & \code{abstract} methods; the enclosing class
+  must also be declared \code{abstract} \mycr
+
+reference types \ital{Type}\code{\&} &
+  all Java types except scalar primitive types
+  are reference types; note that the
+  method\newline
+  \code{void swap(}\ital{T} \code{a, }\ital{T}\code{ b)}
+  \verb!{!\ital{T} \code{t; t = a; a = b; b = t;}\verb!}!\newline
+  does nothing to its arguments.\mycr
+
+scope resolution, operator \code{::} &
+  does not exist;  methods must be defined inside the class
+  declaration.  If a base class field is to be
+  explicitly referred, one uses typecasting:
+  \code{((}\ital{Baseclass}\code{)}\ital{Variable}\code{).}\ital{Member};
+  a direct base class member can be referred to by
+  \code{super.}\ital{Member};
+  typecasting has no effect on methods (see \code{virtual} member functions).
+  \mycr
+
+\code{static} data members & \code{static} fields, so-called
+  {\ital class variables}; they are
+  accessed by \ital{Class}\code{.}\ital{Field} rather than
+  the C++ \ital{Variable}\code{.}\ital{Member}; they can
+  be initialized by \code{=}\threedots\code{;} within
+  the class definition and need not be declared outside
+  like C++ static data members.\mycr
+
+\code{static} member functions & \code{static} methods,
+  so-called \ital{class methods}; they are defined
+  within the class declaration, unlike in C++. \mycr
+
+\code{this} & \code{this}, which is a reference to the
+  object and has the type of the class,
+  not a pointer; note that the call \code{this(\threedots);} as
+  the first statement in a constructor invokes a
+  constructor call for the matching argument types.\mycr
+
+traits & marker interfaces\mycr
+
+\code{type}\verb!_!\code{id} & \code{instanceof}; this is an operator
+   returning a \code{boolean}, not a ``\code{type}\verb!_!\code{info}'' as
+   in C++. \mycr
+
+\code{using namespace} \ital{Package}\code{;}
+  & \code{import} \ital{Package}\code{.*;}\mycr
+
+\code{virtual} member functions
+  & in Java, all methods use dynamic method lookup
+    and therefore are be default virtual. There is no way
+    to explicity call an overridden base class method,
+    but overwriting can be prevented by declaring a
+    method \code{final}.
+  \mycr
+
+\code{wchar}\verb!_!\code{t} & \code{char} \mycr
+
+wide character stream \code{wostream}
+   & \code{PrintWriter} replaces \code{PrintStream} 
+   that cannot hold unicode;
+   the constructor of \code{PrintStream} has been
+   deprecated in Java 1.1, but \code{System.out} is not. \mycr
+\end{mytabular}
+
+\begin{mytabular}
+\hline
+\multicolumn{2}{|l|}{\bfseries Java concepts missing in C++}\mycr
+%begin{latexonly}
+\endhead
+%end{latexonly}
+abstract windows toolkit AWT & standard library for building a GUI \mycr
+
+concatenation of strings by \code{+} operator & \mycr
+
+documentation comments & can be processed (e.g., by \code{javadoc})
+   for automatic online documentation \mycr
+
+\code{final} methods & those cannot be overridden by a subclass \mycr
+
+interfaces & are used to denote abstract classes without any
+   method of their own. They can have \code{static final} fields.
+   One class can implement several interfaces, but it
+   must implement the abstract methods of each interface. \mycr
+
+reflection & 
+   allows the inspection of a class
+   (which arguments does which member take? etc.);
+   this is critical for plug-and-play design, such
+   as a Java bean \mycr
+
+right shift operator with zero extension \code{>}\code{>}\code{>} & \mycr
+
+serialization &
+   C++ requires the programmer to implement object
+   serialization member functions \mycr
+
+sockets & \mycr
+
+threads & \mycr
+\end{mytabular}
+
+\begin{mytabular}
+\hline
+\multicolumn{2}{|l|}{\bfseries C++ concepts missing in Java}\mycr
+%begin{latexonly}
+\endhead
+%end{latexonly}
+
+\code{const} member functions &
+  do not exist; \code{final} methods cannot be
+  overridden by subclasses \mycr
+
+\code{friend} classes, functions &
+  do not exist; however, \code{protected} members are visible
+  within the same package\mycr
+
+\code{goto} &
+  is a reserved work in Java, but is not supported by
+  the language; however \code{break} and \code{continue}
+  statements can give a statement label \mycr
+
+multiple inheritance & \code{virtual} base classes seem
+  unachievable by using interfaces \mycr
+
+\code{new(}\ital{Pointer}\code{) }\ital{Type}\code{(}\threedots\code{);}
+\ital{Pointer}\code{->}\verb!~!\ital{Type}\code{();} &
+  this is C++'s explicit memory allocation mechanism.
+  In Java, all memory is managed by the VM and garbage collection
+  is automatic.  Thus, in C++, a garbage collector can be implemented,
+  while in Java a memory manager cannot.\P\mycr
+
+pointer types \ital{Type}\code{*} & do not exist; actually, since
+  Java has only reference types, all variables are some kind
+  of pointers and the \code{=} operator behaves like a
+  pointer assignment\mycr
+
+pointer to function, member & not a serious restriction,
+  as one may encapsulate a function in a function object \mycr
+
+standard template library STL & 
+  \code{java.util.Vector} provides an expandable vector.
+  Java 1.2 provides
+\htmladdnormallink{\code{Collection}s}
+{http://java.sun.com/products/jdk/1.2/docs/guide/collections/index.html},
+  which are essentially  C++ STL containers, but many of the members are
+  renamed.
+  Note that \code{List} is a scrollable list in the AWT.
+  There are third-party vendor container packages: See
+\htmladdnormallink{{\ttfamily http://\abk reality.\abk sgi.\abk com/\abk 
+austern\_mti/\abk java/\abk index.\abk html}}%
+{http://reality.sgi.com/austern\_mti/java/index.html},
+\htmladdnormallink{{\ttfamily http://\abk www.\abk objectspace.\abk
+com/\abk developers/\abk jgl/\abk downloads/\abk index.\abk html}}
+{http://www.objectspace.com/developers/jgl/downloads/index.html}\S
+  \mycr
+
+templates & there is a the GJ compiler 
+\htmladdnormallink{\code{http://\abk www.\abk cs.\abk bell-labs.\abk
+com/\abk \~{}wadler/\abk pizza/\abk gj/}}
+{http://www.cs.bell-labs.com/~wadler/pizza/gj/}.\S{}  C++'s
+template expansion mechanism is a full-fledged programming
+language and has been used for compiler optimization task
+(e.g., in the
+\htmladdnormallink{Blitz++}
+{http://oonumerics.org/blitz/}
+matrix library)\mycr
+
+\code{typedef} & asside as a shorthand, \code{typedef}s
+   can be encapsulated in a class scope to provide a
+   generic type; they function as
+   assignments in template meta-programming. \mycr
+
+\multicolumn{2}{|l|}{\P Laurent Bernardin points out that this isn't exactly
+true: place all objects on arrays/lists for reuse}
+\mycr
+\multicolumn{2}{|l|}{\S These references were provided by Thierry Gautier}
+%begin{latexonly}
+\mycr
+\endlastfoot
+%end{latexonly}
+
+\end{mytabular}
+
+\end{document}
