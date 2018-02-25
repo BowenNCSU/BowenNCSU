@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Language" content="en-US">
+<meta http-equiv="Reply-To" content="webmaster@stat.ncsu.edu">
+<meta name="author" content="Statistics: Marie Davidian">
+<meta name="revised" content="01/04/2015">
+<meta name="description" content="ST 732">
+<title> ST 790 - Spring 2017</title>
+<style type="text/css" media="screen">@import url(css/default.css);</style>
+<style type="text/css" media="print">@import url(css/print.css);</style>
+<link rel="SHORTCUT ICON" href="images/favicon/ncsu-s.ico">
+</head>
+
+<body>
+<div id="header">
+	<div style="float: left">
+	<a href="http://www.ncsu.edu" target="NCSU"><img src="ncsu_logo.gif" border="0" alt="North Carolina State University"></a>
+	</div>
+
+<div style="float:right">
+	<a href="http://www.ncsu.edu" target="NCSU"><img src="ncsu_logo.gif" border="0" alt="North Carolina State University"></a>
+	</div>
+
+<center>
+<h3><b><a name="top"></a> ST 790, Statistical Methods for Analysis With Missing Data, Spring 2017</b></h3> 
+<font size=3><a href="http://www4.stat.ncsu.edu/~davidian/index.html"> Marie Davidian
+</a>, 5124 <a href="http://www.ncsu.edu/facilities/buildings/sashall.html">SAS 
+    Hall</a> <br />
+T-Th, 3:00 pm - 4:15 pm, 1108
+<a href="http://www.ncsu.edu/facilities/buildings/sashall.html">
+SAS Hall</a><br /> 
+Office hours Th, 11:00 am - 1:00 pm, and by appointment  </font><br /> 
+</center>
+</div>
+
+<br class="clear_float" />
+
+<ul id="nav">
+<li><a href="http://transcoder.ncsu.edu:8080/tt/referrer">Text Only</a></li>
+<li><a href="/">NCSU Statistics</a></li>
+</ul>
+
+<div class="col">
+<font size=2>
+<p><a href="index.html">Course info</a></p>
+<p><a href="syllabus.pdf">Course syllabus</a></p>
+<p><a href="notes.html">Class notes </a></p>
+<p><a href="hwk.html">Homework assignments and solutions</a></p>
+<p><a href="project.html">Project</a></p> 
+<p><a href="examples.html">Examples</a></p> 
+<p><a href="announce.html">Announcements</a></p>
+&nbsp;<br />
+</font>
+</div>
+
+<a name="Content"></a>
+<div class="col2">
+<p>
+
+  <h2>SAS and R Examples</h2> <img src="fade.jpg" alt=""><br> We will
+  use both R and SAS to implement many of the methods discussed in the
+  course.  Below are links to R and SAS documentation and example
+  programs discussed in class.
+  <ul>
+
+<li> <i> <font color="#cc0000">Information on R</font></i>.  <a
+href="http://www.r-project.org/">The R Homepage</a> has links to 
+  manuals and other information. <p>
+
+    <li> <i> <font color="#cc0000">SAS documentation</font></i>.
+      <a
+href="http://support.sas.com/documentation/94/">SAS 9.4 Documentation Homepage</a>.<p>
+
+<li><i> <font color="#cc0000">Chapter 1, EXAMPLE 1, Estimation of a single mean</font></i>.  
+  <a href="examples/mean_sim.R">R program</a> to carry out a simulation study of estimators
+for a single mean under different missingness mechanisms. <p>
+
+    <li><i> <font color="#cc0000">Chapter 3, EXAMPLE 2,  Maximum likelihood for bivariate normal data
+	  via the EM algorithm and direct maximization of the observed data likelihood</font></i>.
+      <a href="examples/bvnormal_em.R">Homegrown R program</a> to carry
+    out the EM algorithm under the assumption of bivariate normal data as in EXAMPLE 2 of
+    Chapter 3 of the notes, and <a href="examples/bvnormal_em.Rout">output</a>.
+    <a href="examples/bvnormal_em_ml.sas">SAS program using proc mi
+    and proc mixed</a> to implement the same EM algorithm using the EM
+    statement and to maximize the observed data
+    lklihood, <a href="examples/bvnormal.dat">simulated data set</a>
+    with missing values indicated using the SAS convention ".",
+    and <a href="examples/bvnormal_em_ml.lst">output</a>.
+    <a href="examples/norm_em.R">R program implementing the EM
+    algorithm</a> using the norm (Analysis of multivariate normal datasets
+    with missing values) package available
+    on <a href="http://cran.r-project.org/">CRAN</a>, <a href="examples/bvnormal_ml.R">R program
+    using the gls() function of the nlme package to do ML</a>,  and
+    same <a href="examples/bvnormal.R.dat">simulated data set</a> with
+    missing values indicated using the R convention "NA". <p>
+
+      <li> <i> 
+	    <a href="examples/norm_package_doc.pdf"><font color="#cc0000">Documentation for the R norm package</font></a></i>.<p>
+<!-- 
+<li><i><font color="#cc0000">Chapter 3, Using the R gls() function
+    with unstructured covariance matrix</font></i>.  
+    <a href="examples/dental_gls.R">Example using the dental data from Homework
+      1 with artificial missingness</a><p> -->
+
+<li><i><font color="#cc0000">Chapter 4, Implementing proper multiple imputation in SAS and R</font></i>.
+We use the same simulated bivariate normal data sets as for the EM algorithm above.  
+<a href="examples/bvnormal_mi.sas">SAS program using proc mi</a> on the 
+    <a href="examples/bvnormal.dat">simulated data set</a>
+    with missing values indicated using the SAS convention ".",
+    and <a href="examples/bvnormal_mi.lst">output</a>.
+    <a href="examples/norm_mi.R">R program</a> using the norm
+     package and same <a href="examples/bvnormal.R.dat">simulated data set</a>
+    with missing values indicated using the R convention "NA".<p>
+
+ <li> <i> <a href="http://www.jstatsoft.org/v45/i03/"><font color="#cc0000">Journal
+ of Statistical Software article for the R package
+  mice</a></font></i>.<p>
+
+ <li><i><font color="#cc0000">Chapter 4, Implementing Multivariate
+ Imputation via Chained Equations (Fully Conditional
+ Specification) in SAS and R</font></i>.  We demonstrate
+  using a data set from a study of hypertension that contains
+  continuous, binary, and categorical variables (see the
+  comments in the SAS program for details).  <a href="examples/hyper_mi.sas">SAS program
+   using proc mi</a> on the <a href="examples/hyper.dat">data set</a> with missing values
+  indicated using the SAS convention ".",
+  and <a href="examples/hyper_mi.lst">output</a>.  <a href="examples/hyper_mi.R">R
+  program</a> using the mice package and
+  same <a href="examples/hyper.R.dat">simulated data set</a> with
+  missing values indicated using the R convention "NA".<p>
+
+<li><i><font color="#cc0000">Chapter 5, Implementing weighted GEE
+ analyses using proc gee in SAS</font></i>.  We demonstrate
+  using a (different) simulated data set from a study of hypertension
+  that contains continuous, binary, and categorical variables and involves
+  only <i>monotone</i> missingness (dropout).  <a href="examples/hyper_wgee.sas">SAS program
+ using proc gee</a> on the
+    <a href="examples/hyper_mono.dat">data set</a> with missing values
+    indicated using the SAS convention ".",
+    and <a href="examples/hyper_wgee.lst">output</a>.  Because these
+    are simulated data, we also have access to
+    the <a href="examples/hyper_mono_full.dat">full data set</a> with
+    no missing data; these data are also analyzed in the program for
+    comparison to the weighted GEE analyses.  <p>
+
+    
+    
+  </ul> 
+
+<br class="clear_float" />
+</div>
+<br class="clear_float" />
+<br/>
+
+
+<div id="footer">
+<hr color="#cc0000" width="100%">
+Last Updated: January 2017
+</div>
+</body>
+</html>
