@@ -1,0 +1,86 @@
+                                 The SAS System                                1
+
+                                The MI Procedure
+
+                               Model Information
+
+          Data Set                             WORK.BIVARIATE         
+          Method                               MCMC                   
+          Multiple Imputation Chain            Single Chain           
+          Initial Estimates for MCMC           EM Posterior Mode      
+          Start                                Starting Value         
+          Prior                                Jeffreys               
+          Number of Imputations                0                      
+          Number of Burn-in Iterations         200                    
+          Number of Iterations                 100                    
+          Seed for random number generator     1518971                
+
+
+                             Missing Data Patterns
+ 
+                                                ---------Group Means--------
+   Group    y1    y2        Freq     Percent              y1              y2
+
+       1    X     X          548       54.80        5.042471        7.952805
+       2    X     .          238       23.80        4.875706               .
+       3    .     X          214       21.40               .        7.923907
+
+
+                             Univariate Statistics
+ 
+  Variable           N          Mean       Std Dev       Minimum       Maximum
+
+  y1               786       4.99197       1.00321       2.07500       8.31100
+  y2               762       7.94469       1.05077       4.95300      11.10800
+
+                             Univariate Statistics
+ 
+                                    ---Missing Values--
+                        Variable       Count    Percent
+
+                        y1               214      21.40
+                        y2               238      23.80
+
+
+                             Pairwise Correlations
+ 
+                                       y1                y2
+
+                     y1       1.000000000       0.479652903
+                     y2       0.479652903       1.000000000
+
+
+                       Initial Parameter Estimates for EM
+ 
+               _TYPE_    _NAME_                y1              y2
+
+               MEAN                      5.042471        7.952805
+               COV       y1              1.026614        0.494137
+               COV       y2              0.494137        1.033791
+                                 The SAS System                                2
+
+                                The MI Procedure
+
+                           EM (MLE) Iteration History
+ 
+           _Iteration_        -2 Log L             y1              y2
+
+                     0     1487.034933       5.042471        7.952805
+                     1     1483.474685       4.999825        7.927517
+                     2     1483.321173       4.993289        7.925820
+                     3     1483.310831       4.992063        7.926060
+                     4     1483.309990       4.991777        7.926233
+                     5     1483.309911       4.991699        7.926302
+                     6     1483.309903       4.991675        7.926327
+                     7     1483.309901       4.991668        7.926336
+                     8     1483.309901       4.991665        7.926339
+                     9     1483.309901       4.991664        7.926340
+
+
+                          EM (MLE) Parameter Estimates
+ 
+               _TYPE_    _NAME_                y1              y2
+
+               MEAN                      4.991664        7.926340
+               COV       y1              1.016240        0.514834
+               COV       y2              0.514834        1.098031

@@ -1,0 +1,200 @@
+1                                                          The SAS System                             15:54 Monday, January 23, 2017
+
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M2) 
+      Licensed to NORTH CAROLINA STATE UNIVERSITY-SFA-T&R, Site 70081220.
+NOTE: This session is executing on the Linux 2.6.32-573.26.1.el6.x86_64 (LIN X64) platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 13.2
+      SAS/ETS 13.2
+      SAS/OR 13.2
+      SAS/IML 13.2
+
+NOTE: Additional host information:
+
+ Linux LIN X64 2.6.32-573.26.1.el6.x86_64 #1 SMP Wed May 4 00:57:44 UTC 2016 x86_64 CentOS release 6.7 (Final) 
+
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.15 seconds
+      cpu time            0.03 seconds
+      
+1          /*********************************************************************
+2          
+3              Use PROC MI to carry out the EM algorithm on bivariate normal
+4              data given in EXAMPLE 2 of Chapter 3 of the notes
+5          
+6              Also use PROC MIXED to maximize the observed data likelihood
+7              directly
+8          
+9          ***********************************************************************/
+10         
+11         options ls=80 nodate; run;
+12         
+13         /********************************************************************
+13       ! *
+14         
+15           Read in the data set
+16         
+17         *********************************************************************
+2                                The SAS System
+
+17       ! **/
+18         
+19         data bivariate;  infile "bvnormal.dat";
+20             input y1 y2;
+21         run;
+
+NOTE: The infile "bvnormal.dat" is:
+      Filename=/home/davidian/ST/Documents/teaching/miss17/examples/bvnormal.dat
+      ,
+      Owner Name=davidian,Group Name=ncsu,
+      Access Permission=-rwxr-xr-x,
+      Last Modified=05Jan2017:14:39:09,
+      File Size (bytes)=10043
+
+NOTE: 1000 records were read from the infile "bvnormal.dat".
+      The minimum record length was 5.
+      The maximum record length was 12.
+NOTE: The data set WORK.BIVARIATE has 1000 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+22         
+23         /********************************************************************
+23       ! *
+24         
+25           Read in the data set
+26         
+27         *********************************************************************
+27       ! **/
+28         
+29         data bivariate; set bivariate; id = _n_; run;
+
+NOTE: There were 1000 observations read from the data set WORK.BIVARIATE.
+NOTE: The data set WORK.BIVARIATE has 1000 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+30         
+31         /********************************************************************
+31       ! **
+32         
+33           Call proc mi to carry out the EM algorithm.  Here, we use the
+34           complete case usual sample mean and sample covariance matrix as
+35           the starting values (initial=cc), set the maximum number of
+36           iterations to 100, and specify the convergence criterion as 1e-4.
+37           The nimpute=0 options suppresses multiple imputation, so that the
+38           procedure does only the EM.  The seed for the random number
+38       ! generator
+39           is for multiple imputation and thus is superfluous here. The output
+40           data set "outem" contains the final estimates.  See the
+40       ! documentation
+41           for more options.
+42         
+43         *********************************************************************
+3                                The SAS System
+
+43       ! **/
+44         
+45         proc mi data=bivariate seed=1518971 simple nimpute=0;
+46             em initial=cc maxiter=100 converge=1e-4 itprint outem=outem;
+47             var y1 y2;
+48         run;
+
+NOTE: The EM algorithm (MLE) converges in 9 iterations.
+NOTE: The data set WORK.OUTEM has 3 observations and 4 variables.
+NOTE: The PROCEDURE MI printed pages 1-2.
+NOTE: PROCEDURE MI used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+49         
+50         /********************************************************************
+50       ! **
+51         
+52           Now reconfigure the data set from the "wide" format of one record
+53           per individual to the "long" format of one record per observation
+54           as required by proc mixed
+55         
+56         *********************************************************************
+56       ! **/
+57         
+58         data bivariate2; set bivariate;
+59           array wt(2) y1 y2;
+60           do time = 1 to 2;
+61              y = wt(time);
+62              output;
+63           end;
+64           drop y1 y2;
+65         run;
+
+NOTE: There were 1000 observations read from the data set WORK.BIVARIATE.
+NOTE: The data set WORK.BIVARIATE2 has 2000 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+66         
+67         /********************************************************************
+67       ! **
+68         
+69           Call proc mixed to maximize the observed data likelihood.  Be
+70           sure to specify "method=ML" in the proc mixed statement; otherwise,
+71           it will use the default of restricted maximum likelihood.
+72         
+73         *********************************************************************
+73       ! **/
+74         
+75         proc mixed data=bivariate2 method=ml;
+76           class time id;
+77           model y = time / noint solution;
+78           repeated / subject=id type=un r=1 rcorr=1;
+79         run;
+4                                The SAS System
+
+
+NOTE: 452 observations are not included because of missing values.
+NOTE: Convergence criteria met.
+NOTE: The PROCEDURE MIXED printed pages 3-8.
+NOTE: PROCEDURE MIXED used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+80         
+81         
+82         
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.23 seconds
+      cpu time            0.11 seconds
+      

@@ -1,0 +1,1394 @@
+                                 The SAS System                                1
+
+                                The MI Procedure
+
+                               Model Information
+
+          Data Set                             WORK.BIVARIATE         
+          Method                               MCMC                   
+          Multiple Imputation Chain            Single Chain           
+          Initial Estimates for MCMC           EM Posterior Mode      
+          Start                                Starting Value         
+          Prior                                Jeffreys               
+          Number of Imputations                10                     
+          Number of Burn-in Iterations         200                    
+          Number of Iterations                 100                    
+          Seed for random number generator     1518971                
+
+
+                             Missing Data Patterns
+ 
+                                                ---------Group Means--------
+   Group    y1    y2        Freq     Percent              y1              y2
+
+       1    X     X          548       54.80        5.042471        7.952805
+       2    X     .          238       23.80        4.875706               .
+       3    .     X          214       21.40               .        7.923907
+
+
+                             Univariate Statistics
+ 
+  Variable           N          Mean       Std Dev       Minimum       Maximum
+
+  y1               786       4.99197       1.00321       2.07500       8.31100
+  y2               762       7.94469       1.05077       4.95300      11.10800
+
+                             Univariate Statistics
+ 
+                                    ---Missing Values--
+                        Variable       Count    Percent
+
+                        y1               214      21.40
+                        y2               238      23.80
+
+
+                             Pairwise Correlations
+ 
+                                       y1                y2
+
+                     y1       1.000000000       0.479652903
+                     y2       0.479652903       1.000000000
+
+
+                         EM (Posterior Mode) Estimates
+ 
+               _TYPE_    _NAME_                y1              y2
+
+               MEAN                      4.991666        7.926321
+               COV       y1              1.012642        0.513569
+               COV       y2              0.513569        1.094004
+                                 The SAS System                                2
+
+                                The MI Procedure
+
+                             Variance Information
+ 
+                    -----------------Variance-----------------
+        Variable         Between         Within          Total       DF
+
+        y1              0.000200       0.001023       0.001243   213.28
+        y2              0.000361       0.001101       0.001499    108.9
+
+                              Variance Information
+ 
+                             Relative       Fraction
+                             Increase        Missing       Relative
+             Variable     in Variance    Information     Efficiency
+
+             y1              0.214666       0.182383       0.982088
+             y2              0.361015       0.276479       0.973096
+
+
+                              Parameter Estimates
+ 
+   Variable            Mean      Std Error    95% Confidence Limits        DF
+
+   y1              4.995372       0.035254     4.925882     5.064862   213.28
+   y2              7.926057       0.038717     7.849320     8.002795    108.9
+
+                              Parameter Estimates
+ 
+                                                          t for H0:
+ Variable         Minimum        Maximum            Mu0    Mean=Mu0   Pr > |t|
+
+ y1              4.972765       5.014742              0      141.70     <.0001
+ y2              7.905677       7.969132              0      204.72     <.0001
+                                 The SAS System                                3
+
+                    Obs    _Imputation_       y1         y2
+
+                      1          1         2.63200    6.30500
+                      2          1         6.50684    9.41500
+                      3          1         4.88700    7.76203
+                      4          1         4.35409    8.34000
+                      5          1         5.07500    7.42300
+                      6          1         4.90000    7.70400
+                      7          1         4.08800    9.08278
+                      8          1         4.71700    8.94600
+                      9          1         4.06100    6.02455
+                     10          1         4.24600    6.33900
+                     11          1         5.33500    7.82400
+                     12          1         4.36200    6.42047
+                     13          1         3.43400    9.19500
+                     14          1         5.09900    7.72400
+                     15          1         5.52800    8.55100
+                     16          1         5.43600    9.92500
+                     17          1         4.98200    9.33625
+                     18          1         3.93100    7.65113
+                     19          1         4.98997    7.23600
+                     20          1         5.88900    8.90000
+                                 The SAS System                                4
+
+                   Obs    _Imputation_    id    ind       y
+
+                     1          1          1     1     2.63200
+                     2          1          1     2     6.30500
+                     3          1          2     1     6.50684
+                     4          1          2     2     9.41500
+                     5          1          3     1     4.88700
+                     6          1          3     2     7.76203
+                     7          1          4     1     4.35409
+                     8          1          4     2     8.34000
+                     9          1          5     1     5.07500
+                    10          1          5     2     7.42300
+                    11          1          6     1     4.90000
+                    12          1          6     2     7.70400
+                    13          1          7     1     4.08800
+                    14          1          7     2     9.08278
+                    15          1          8     1     4.71700
+                    16          1          8     2     8.94600
+                    17          1          9     1     4.06100
+                    18          1          9     2     6.02455
+                    19          1         10     1     4.24600
+                    20          1         10     2     6.33900
+                                 The SAS System                                5
+
+----------------------------- Imputation Number=1 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0543     0.04715     22.36      <.0001
+       UN(2,1)     id           0.5418     0.03842     14.10      <.0001
+       UN(2,2)     id           1.1219     0.05017     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002223    0.001142    0.000587
+                 2    UN(2,1)     0.001142    0.001476    0.001216
+                 3    UN(2,2)     0.000587    0.001216    0.002517
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5558.4
+                     AIC (Smaller is Better)        5568.4
+                     AICC (Smaller is Better)       5568.4
+                     BIC (Smaller is Better)        5592.9
+                                 The SAS System                                6
+
+----------------------------- Imputation Number=1 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        286.20          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9974     0.03247    1000     153.91      <.0001
+      ind       2        7.9213     0.03349    1000     236.50      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001054    0.000542
+                    2    ind       2      0.000542    0.001122
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    28831.9    <.0001
+                                 The SAS System                                7
+
+----------------------------- Imputation Number=2 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0164     0.04545     22.36      <.0001
+       UN(2,1)     id           0.4938     0.03705     13.33      <.0001
+       UN(2,2)     id           1.1107     0.04967     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002066    0.001004    0.000488
+                 2    UN(2,1)     0.001004    0.001373    0.001097
+                 3    UN(2,2)     0.000488    0.001097    0.002467
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5553.6
+                     AIC (Smaller is Better)        5563.6
+                     AICC (Smaller is Better)       5563.7
+                     BIC (Smaller is Better)        5588.2
+                                 The SAS System                                8
+
+----------------------------- Imputation Number=2 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        245.32          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9873     0.03188    1000     156.44      <.0001
+      ind       2        7.9691     0.03333    1000     239.12      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001016    0.000494
+                    2    ind       2      0.000494    0.001111
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29897.7    <.0001
+                                 The SAS System                                9
+
+----------------------------- Imputation Number=3 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0197     0.04560     22.36      <.0001
+       UN(2,1)     id           0.5216     0.03741     13.94      <.0001
+       UN(2,2)     id           1.1055     0.04944     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002080    0.001064    0.000544
+                 2    UN(2,1)     0.001064    0.001399    0.001153
+                 3    UN(2,2)     0.000544    0.001153    0.002444
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5519.3
+                     AIC (Smaller is Better)        5529.3
+                     AICC (Smaller is Better)       5529.3
+                     BIC (Smaller is Better)        5553.8
+                                 The SAS System                               10
+
+----------------------------- Imputation Number=3 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        277.88          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        5.0090     0.03193    1000     156.86      <.0001
+      ind       2        7.9152     0.03325    1000     238.06      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001020    0.000522
+                    2    ind       2      0.000522    0.001105
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29386.0    <.0001
+                                 The SAS System                               11
+
+----------------------------- Imputation Number=4 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0352     0.04630     22.36      <.0001
+       UN(2,1)     id           0.5081     0.03661     13.88      <.0001
+       UN(2,2)     id           1.0454     0.04675     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002143    0.001052    0.000516
+                 2    UN(2,1)     0.001052    0.001340    0.001062
+                 3    UN(2,2)     0.000516    0.001062    0.002186
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5482.3
+                     AIC (Smaller is Better)        5492.3
+                     AICC (Smaller is Better)       5492.3
+                     BIC (Smaller is Better)        5516.8
+                                 The SAS System                               12
+
+----------------------------- Imputation Number=4 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        272.58          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9859     0.03218    1000     154.96      <.0001
+      ind       2        7.9428     0.03233    1000     245.66      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001035    0.000508
+                    2    ind       2      0.000508    0.001045
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    30976.7    <.0001
+                                 The SAS System                               13
+
+----------------------------- Imputation Number=5 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0146     0.04538     22.36      <.0001
+       UN(2,1)     id           0.4935     0.03635     13.58      <.0001
+       UN(2,2)     id           1.0622     0.04750     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002059    0.001002    0.000487
+                 2    UN(2,1)     0.001002    0.001321    0.001049
+                 3    UN(2,2)     0.000487    0.001049    0.002257
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5494.5
+                     AIC (Smaller is Better)        5504.5
+                     AICC (Smaller is Better)       5504.5
+                     BIC (Smaller is Better)        5529.0
+                                 The SAS System                               14
+
+----------------------------- Imputation Number=5 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        256.71          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        5.0147     0.03185    1000     157.43      <.0001
+      ind       2        7.9304     0.03259    1000     243.32      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001015    0.000494
+                    2    ind       2      0.000494    0.001062
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    30729.4    <.0001
+                                 The SAS System                               15
+
+----------------------------- Imputation Number=6 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0267     0.04592     22.36      <.0001
+       UN(2,1)     id           0.5009     0.03737     13.40      <.0001
+       UN(2,2)     id           1.1159     0.04991     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002108    0.001029    0.000502
+                 2    UN(2,1)     0.001029    0.001397    0.001118
+                 3    UN(2,2)     0.000502    0.001118    0.002491
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5564.6
+                     AIC (Smaller is Better)        5574.6
+                     AICC (Smaller is Better)       5574.6
+                     BIC (Smaller is Better)        5599.2
+                                 The SAS System                               16
+
+----------------------------- Imputation Number=6 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        248.93          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9984     0.03204    1000     155.99      <.0001
+      ind       2        7.9057     0.03341    1000     236.66      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001027    0.000501
+                    2    ind       2      0.000501    0.001116
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29313.7    <.0001
+                                 The SAS System                               17
+
+----------------------------- Imputation Number=7 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0367     0.04636     22.36      <.0001
+       UN(2,1)     id           0.5571     0.03843     14.50      <.0001
+       UN(2,2)     id           1.1250     0.05031     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002149    0.001155    0.000621
+                 2    UN(2,1)     0.001155    0.001477    0.001254
+                 3    UN(2,2)     0.000621    0.001254    0.002531
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5520.1
+                     AIC (Smaller is Better)        5530.1
+                     AICC (Smaller is Better)       5530.1
+                     BIC (Smaller is Better)        5554.6
+                                 The SAS System                               18
+
+----------------------------- Imputation Number=7 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        311.14          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9778     0.03220    1000     154.60      <.0001
+      ind       2        7.9337     0.03354    1000     236.54      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001037    0.000557
+                    2    ind       2      0.000557    0.001125
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    28697.9    <.0001
+                                 The SAS System                               19
+
+----------------------------- Imputation Number=8 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0215     0.04568     22.36      <.0001
+       UN(2,1)     id           0.5302     0.03750     14.14      <.0001
+       UN(2,2)     id           1.1017     0.04927     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002087    0.001083    0.000562
+                 2    UN(2,1)     0.001083    0.001407    0.001168
+                 3    UN(2,2)     0.000562    0.001168    0.002428
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5506.6
+                     AIC (Smaller is Better)        5516.6
+                     AICC (Smaller is Better)       5516.6
+                     BIC (Smaller is Better)        5541.1
+                                 The SAS System                               20
+
+----------------------------- Imputation Number=8 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        288.77          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        4.9728     0.03196    1000     155.59      <.0001
+      ind       2        7.9102     0.03319    1000     238.31      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001022    0.000530
+                    2    ind       2      0.000530    0.001102
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29283.6    <.0001
+                                 The SAS System                               21
+
+----------------------------- Imputation Number=9 ------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           0.9740     0.04356     22.36      <.0001
+       UN(2,1)     id           0.4791     0.03637     13.17      <.0001
+       UN(2,2)     id           1.1221     0.05018     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.001897    0.000933    0.000459
+                 2    UN(2,1)     0.000933    0.001322    0.001075
+                 3    UN(2,2)     0.000459    0.001075    0.002518
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5528.9
+                     AIC (Smaller is Better)        5538.9
+                     AICC (Smaller is Better)       5538.9
+                     BIC (Smaller is Better)        5563.4
+                                 The SAS System                               22
+
+----------------------------- Imputation Number=9 ------------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        240.76          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        5.0000     0.03121    1000     160.22      <.0001
+      ind       2        7.9120     0.03350    1000     236.19      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.000974    0.000479
+                    2    ind       2      0.000479    0.001122
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29602.7    <.0001
+                                 The SAS System                               23
+
+----------------------------- Imputation Number=10 -----------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.BVNOUT_ALT          
+             Dependent Variable           y                        
+             Covariance Structure         Unstructured             
+             Subject Effect               id                       
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                                  Dimensions
+
+                      Covariance Parameters             3
+                      Columns in X                      2
+                      Columns in Z                      0
+                      Subjects                       1000
+                      Max Obs per Subject               2
+
+
+                            Number of Observations
+
+                  Number of Observations Read            2000
+                  Number of Observations Used            2000
+                  Number of Observations Not Used           0
+
+
+                        Covariance Parameter Estimates
+ 
+                                          Standard         Z
+       Cov Parm    Subject    Estimate       Error     Value        Pr Z
+
+       UN(1,1)     id           1.0225     0.04573     22.36      <.0001
+       UN(2,1)     id           0.5163     0.03720     13.88      <.0001
+       UN(2,2)     id           1.0927     0.04887     22.36      <.0001
+
+
+                    Asymptotic Covariance Matrix of Estimates
+ 
+               Row    Cov Parm       CovP1       CovP2       CovP3
+
+                 1    UN(1,1)     0.002091    0.001056    0.000533
+                 2    UN(2,1)     0.001056    0.001384    0.001128
+                 3    UN(2,2)     0.000533    0.001128    0.002388
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              5514.1
+                     AIC (Smaller is Better)        5524.1
+                     AICC (Smaller is Better)       5524.1
+                     BIC (Smaller is Better)        5548.6
+                                 The SAS System                               24
+
+----------------------------- Imputation Number=10 -----------------------------
+
+                              The Mixed Procedure
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                           2        273.64          <.0001
+
+
+                           Solution for Fixed Effects
+ 
+                                   Standard
+      Effect    ind    Estimate       Error      DF    t Value    Pr > |t|
+
+      ind       1        5.0104     0.03198    1000     156.69      <.0001
+      ind       2        7.9203     0.03306    1000     239.61      <.0001
+
+
+                      Covariance Matrix for Fixed Effects
+ 
+                  Row    Effect    ind        Col1        Col2
+
+                    1    ind       1      0.001022    0.000516
+                    2    ind       2      0.000516    0.001093
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  ind          2    1000    29738.6    <.0001
+                                 The SAS System                               25
+
+   Obs  _Imputation_  Effect  ind  Estimate    StdErr    DF   tValue   Probt
+
+     1        1        ind     1     4.9974   0.03247  1000   153.91  <.0001
+     2        1        ind     2     7.9213   0.03349  1000   236.50  <.0001
+     3        2        ind     1     4.9873   0.03188  1000   156.44  <.0001
+     4        2        ind     2     7.9691   0.03333  1000   239.12  <.0001
+     5        3        ind     1     5.0090   0.03193  1000   156.86  <.0001
+     6        3        ind     2     7.9152   0.03325  1000   238.06  <.0001
+     7        4        ind     1     4.9859   0.03218  1000   154.96  <.0001
+     8        4        ind     2     7.9428   0.03233  1000   245.66  <.0001
+     9        5        ind     1     5.0147   0.03185  1000   157.43  <.0001
+    10        5        ind     2     7.9304   0.03259  1000   243.32  <.0001
+    11        6        ind     1     4.9984   0.03204  1000   155.99  <.0001
+    12        6        ind     2     7.9057   0.03341  1000   236.66  <.0001
+    13        7        ind     1     4.9778   0.03220  1000   154.60  <.0001
+    14        7        ind     2     7.9337   0.03354  1000   236.54  <.0001
+    15        8        ind     1     4.9728   0.03196  1000   155.59  <.0001
+    16        8        ind     2     7.9102   0.03319  1000   238.31  <.0001
+    17        9        ind     1     5.0000   0.03121  1000   160.22  <.0001
+    18        9        ind     2     7.9120   0.03350  1000   236.19  <.0001
+    19       10        ind     1     5.0104   0.03198  1000   156.69  <.0001
+    20       10        ind     2     7.9203   0.03306  1000   239.61  <.0001
+                                 The SAS System                               26
+
+      Obs    _Imputation_     Row    Effect    ind        Col1        Col2
+
+        1          1            1     ind       1     0.001054    0.000542
+        2          1            2     ind       2     0.000542    0.001122
+        3          2            1     ind       1     0.001016    0.000494
+        4          2            2     ind       2     0.000494    0.001111
+        5          3            1     ind       1     0.001020    0.000522
+        6          3            2     ind       2     0.000522    0.001105
+        7          4            1     ind       1     0.001035    0.000508
+        8          4            2     ind       2     0.000508    0.001045
+        9          5            1     ind       1     0.001015    0.000494
+       10          5            2     ind       2     0.000494    0.001062
+       11          6            1     ind       1     0.001027    0.000501
+       12          6            2     ind       2     0.000501    0.001116
+       13          7            1     ind       1     0.001037    0.000557
+       14          7            2     ind       2     0.000557    0.001125
+       15          8            1     ind       1     0.001022    0.000530
+       16          8            2     ind       2     0.000530    0.001102
+       17          9            1     ind       1     0.000974    0.000479
+       18          9            2     ind       2     0.000479    0.001122
+       19         10            1     ind       1     0.001022    0.000516
+       20         10            2     ind       2     0.000516    0.001093
+                                 The SAS System                               27
+
+ Obs   _Imputation_   CovParm   Subject   Estimate     StdErr   ZValue    ProbZ
+
+   1         1        UN(1,1)     id        1.0543    0.04715    22.36   <.0001
+   2         1        UN(2,1)     id        0.5418    0.03842    14.10   <.0001
+   3         1        UN(2,2)     id        1.1219    0.05017    22.36   <.0001
+   4         2        UN(1,1)     id        1.0164    0.04545    22.36   <.0001
+   5         2        UN(2,1)     id        0.4938    0.03705    13.33   <.0001
+   6         2        UN(2,2)     id        1.1107    0.04967    22.36   <.0001
+   7         3        UN(1,1)     id        1.0197    0.04560    22.36   <.0001
+   8         3        UN(2,1)     id        0.5216    0.03741    13.94   <.0001
+   9         3        UN(2,2)     id        1.1055    0.04944    22.36   <.0001
+  10         4        UN(1,1)     id        1.0352    0.04630    22.36   <.0001
+  11         4        UN(2,1)     id        0.5081    0.03661    13.88   <.0001
+  12         4        UN(2,2)     id        1.0454    0.04675    22.36   <.0001
+  13         5        UN(1,1)     id        1.0146    0.04538    22.36   <.0001
+  14         5        UN(2,1)     id        0.4935    0.03635    13.58   <.0001
+  15         5        UN(2,2)     id        1.0622    0.04750    22.36   <.0001
+  16         6        UN(1,1)     id        1.0267    0.04592    22.36   <.0001
+  17         6        UN(2,1)     id        0.5009    0.03737    13.40   <.0001
+  18         6        UN(2,2)     id        1.1159    0.04991    22.36   <.0001
+  19         7        UN(1,1)     id        1.0367    0.04636    22.36   <.0001
+  20         7        UN(2,1)     id        0.5571    0.03843    14.50   <.0001
+  21         7        UN(2,2)     id        1.1250    0.05031    22.36   <.0001
+  22         8        UN(1,1)     id        1.0215    0.04568    22.36   <.0001
+  23         8        UN(2,1)     id        0.5302    0.03750    14.14   <.0001
+  24         8        UN(2,2)     id        1.1017    0.04927    22.36   <.0001
+  25         9        UN(1,1)     id        0.9740    0.04356    22.36   <.0001
+  26         9        UN(2,1)     id        0.4791    0.03637    13.17   <.0001
+  27         9        UN(2,2)     id        1.1221    0.05018    22.36   <.0001
+  28        10        UN(1,1)     id        1.0225    0.04573    22.36   <.0001
+  29        10        UN(2,1)     id        0.5163    0.03720    13.88   <.0001
+  30        10        UN(2,2)     id        1.0927    0.04887    22.36   <.0001
+                                 The SAS System                               28
+
+   Obs    _Imputation_     Row    CovParm       CovP1       CovP2       CovP3
+
+     1          1            1    UN(1,1)    0.002223    0.001142    0.000587
+     2          1            2    UN(2,1)    0.001142    0.001476    0.001216
+     3          1            3    UN(2,2)    0.000587    0.001216    0.002517
+     4          2            1    UN(1,1)    0.002066    0.001004    0.000488
+     5          2            2    UN(2,1)    0.001004    0.001373    0.001097
+     6          2            3    UN(2,2)    0.000488    0.001097    0.002467
+     7          3            1    UN(1,1)    0.002080    0.001064    0.000544
+     8          3            2    UN(2,1)    0.001064    0.001399    0.001153
+     9          3            3    UN(2,2)    0.000544    0.001153    0.002444
+    10          4            1    UN(1,1)    0.002143    0.001052    0.000516
+    11          4            2    UN(2,1)    0.001052    0.001340    0.001062
+    12          4            3    UN(2,2)    0.000516    0.001062    0.002186
+    13          5            1    UN(1,1)    0.002059    0.001002    0.000487
+    14          5            2    UN(2,1)    0.001002    0.001321    0.001049
+    15          5            3    UN(2,2)    0.000487    0.001049    0.002257
+    16          6            1    UN(1,1)    0.002108    0.001029    0.000502
+    17          6            2    UN(2,1)    0.001029    0.001397    0.001118
+    18          6            3    UN(2,2)    0.000502    0.001118    0.002491
+    19          7            1    UN(1,1)    0.002149    0.001155    0.000621
+    20          7            2    UN(2,1)    0.001155    0.001477    0.001254
+    21          7            3    UN(2,2)    0.000621    0.001254    0.002531
+    22          8            1    UN(1,1)    0.002087    0.001083    0.000562
+    23          8            2    UN(2,1)    0.001083    0.001407    0.001168
+    24          8            3    UN(2,2)    0.000562    0.001168    0.002428
+    25          9            1    UN(1,1)    0.001897    0.000933    0.000459
+    26          9            2    UN(2,1)    0.000933    0.001322    0.001075
+    27          9            3    UN(2,2)    0.000459    0.001075    0.002518
+    28         10            1    UN(1,1)    0.002091    0.001056    0.000533
+    29         10            2    UN(2,1)    0.001056    0.001384    0.001128
+    30         10            3    UN(2,2)    0.000533    0.001128    0.002388
+                                 The SAS System                               29
+
+                            The MIANALYZE Procedure
+
+                               Model Information
+
+                    PARMS Data Set            WORK.MEANPARMS
+                    Number of Imputations     10            
+
+
+                              Variance Information
+ 
+                             -----------------Variance-----------------
+Parameter             ind         Between         Within          Total       DF
+
+ind              1.000000        0.000200       0.001022       0.001242   287.68
+ind              2.000000        0.000361       0.001100       0.001498   127.73
+
+                             Variance Information
+ 
+                                     Relative       Fraction
+                                     Increase        Missing       Relative
+    Parameter             ind     in Variance    Information     Efficiency
+
+    ind              1.000000        0.214880       0.182537       0.982074
+    ind              2.000000        0.361377       0.276687       0.973076
+
+
+                              Parameter Estimates
+ 
+Parameter            ind       Estimate      Std Error    95% Confidence Limits
+
+ind             1.000000       4.995372       0.035239     4.926013     5.064731
+ind             2.000000       7.926057       0.038703     7.849475     8.002640
+
+                              Parameter Estimates
+ 
+        Parameter            ind       DF        Minimum        Maximum
+
+        ind             1.000000   287.68       4.972765       5.014742
+        ind             2.000000   127.73       7.905677       7.969132
+
+                              Parameter Estimates
+ 
+                                                      t for H0:
+     Parameter            ind         Theta0   Parameter=Theta0   Pr > |t|
+
+     ind             1.000000              0             141.76     <.0001
+     ind             2.000000              0             204.79     <.0001
+                                 The SAS System                               30
+
+                            The MIANALYZE Procedure
+
+                               Model Information
+
+                    PARMS Data Set            WORK.MEANPARMS
+                    COVB Data Set             WORK.MEANCOV  
+                    Number of Imputations     10            
+
+
+                              Variance Information
+ 
+                             -----------------Variance-----------------
+Parameter             ind         Between         Within          Total       DF
+
+ind              1.000000        0.000200       0.001022       0.001242   287.68
+ind              2.000000        0.000361       0.001100       0.001498   127.73
+
+                             Variance Information
+ 
+                                     Relative       Fraction
+                                     Increase        Missing       Relative
+    Parameter             ind     in Variance    Information     Efficiency
+
+    ind              1.000000        0.214880       0.182537       0.982074
+    ind              2.000000        0.361377       0.276687       0.973076
+
+
+                              Parameter Estimates
+ 
+Parameter            ind       Estimate      Std Error    95% Confidence Limits
+
+ind             1.000000       4.995372       0.035239     4.926013     5.064731
+ind             2.000000       7.926057       0.038703     7.849475     8.002640
+
+                              Parameter Estimates
+ 
+        Parameter            ind       DF        Minimum        Maximum
+
+        ind             1.000000   287.68       4.972765       5.014742
+        ind             2.000000   127.73       7.905677       7.969132
+
+                              Parameter Estimates
+ 
+                                                      t for H0:
+     Parameter            ind         Theta0   Parameter=Theta0   Pr > |t|
+
+     ind             1.000000              0             141.76     <.0001
+     ind             2.000000              0             204.79     <.0001
+
+
+                       Within-Imputation Covariance Matrix
+ 
+          Row    Effect             ind            Col1            Col2
+
+            1    ind           1.000000        0.001022        0.000514
+            2    ind           2.000000        0.000514        0.001100
+                                 The SAS System                               31
+
+                            The MIANALYZE Procedure
+
+                      Between-Imputation Covariance Matrix
+ 
+          Row    Effect             ind            Col1            Col2
+
+            1    ind           1.000000        0.000200    -0.000063481
+            2    ind           2.000000    -0.000063481        0.000361
+                                 The SAS System                               32
+
+   Obs     c1       c2       c3       sc1       sc2       sc3    _Imputation_
+
+     1  1.05430  0.54177  1.12185  0.047150  0.038422  0.050171        1     
+     2  1.01635  0.49380  1.11070  0.045453  0.037050  0.049672        2     
+     3  1.01971  0.52163  1.10545  0.045603  0.037408  0.049437        3     
+     4  1.03523  0.50813  1.04543  0.046297  0.036612  0.046753        4     
+     5  1.01464  0.49354  1.06224  0.045376  0.036351  0.047505        5     
+     6  1.02672  0.50094  1.11593  0.045916  0.037372  0.049906        6     
+     7  1.03669  0.55715  1.12499  0.046362  0.038428  0.050311        7     
+     8  1.02152  0.53017  1.10175  0.045684  0.037504  0.049272        8     
+     9  0.97395  0.47910  1.12215  0.043556  0.036366  0.050184        9     
+    10  1.02249  0.51626  1.09266  0.045727  0.037199  0.048865       10     
+                                 The SAS System                               33
+
+                            The MIANALYZE Procedure
+
+                               Model Information
+
+                    Data Set                  WORK.COVPARMS2
+                    Number of Imputations     10            
+
+
+                              Variance Information
+ 
+                     -----------------Variance-----------------
+        Parameter         Between         Within          Total       DF
+
+        c1               0.000428       0.002090       0.002562   265.85
+        c2               0.000579       0.001390       0.002026   91.217
+        c3               0.000717       0.002423       0.003211   149.29
+
+                             Variance Information
+ 
+                             Relative       Fraction
+                             Increase        Missing       Relative
+            Parameter     in Variance    Information     Efficiency
+
+            c1               0.225483       0.190066       0.981348
+            c2               0.457964       0.328672       0.968179
+            c3               0.325435       0.255439       0.975092
+
+
+                              Parameter Estimates
+ 
+  Parameter        Estimate      Std Error    95% Confidence Limits        DF
+
+  c1               1.022161       0.050614     0.922506     1.121815   265.85
+  c2               0.514248       0.045011     0.424841     0.603655   91.217
+  c3               1.100314       0.056667     0.988342     1.212286   149.29
+
+                              Parameter Estimates
+ 
+                    Parameter         Minimum        Maximum
+
+                    c1               0.973951       1.054299
+                    c2               0.479103       0.557149
+                    c3               1.045428       1.124989
+
+                              Parameter Estimates
+ 
+                                               t for H0:
+            Parameter          Theta0   Parameter=Theta0   Pr > |t|
+
+            c1                      0              20.20     <.0001
+            c2                      0              11.42     <.0001
+            c3                      0              19.42     <.0001
