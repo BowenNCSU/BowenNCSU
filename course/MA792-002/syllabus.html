@@ -1,0 +1,837 @@
+<html><head>
+<title>MA792-002 Spring 2018 Syllabus</title>
+<META HTTP-EQUIV="Content-Type"
+      CONTENT="text/html; charset=ISO-8859-1">
+<style>
+#menu {
+border: 2px solid red;
+border-collapse: collapse;
+width: 100%;
+}
+tr, td {
+border: 1px solid red;
+}
+tr#norule, td#norule {
+border: 0px white;
+}
+</style>
+</head>
+
+<body bgcolor="#ffffff">
+
+<!--
+<H2><FONT COLOR="RED">UPDATED VERSION, EXAM DATES HAVE CHANGED</FONT></H2>
+-->
+
+<TABLE id="menu"
+WIDTH="100%"
+RULES="COLS,ROWS"
+CELLSPACING="0%"
+CELLPADDING="1%"
+>
+<TR
+BGCOLOR="#FFFFCC"
+ALIGN="CENTER"
+>
+<TD><A href="#outline">Outline</A></TD>
+<TD><A href="#people">People</A></TD>
+<TD><A href="#reading">Reading</A></TD>
+<TD><A href="#grading">Grading</A></TD>
+<TD><A href="#academics">Academics</A></TD>
+<TD><A href="index.html">Homepage</A></TD>
+</TR>
+</TABLE>
+
+<P>
+<h2>MA 792-002 Spring 2018 Syllabus</h2>
+</P>
+
+<TABLE id="menu"
+WIDTH="100%"
+RULES="COLS,ROWS"
+CELLSPACING="0%"
+CELLPADDING="1%"
+>
+
+<TR><TD COLSPAN="6" align="left" BGCOLOR="#FFCCCC">
+<h2><a name="outline">Course Outline</a><a href="#caption">*</a></h2>
+</TD></TR>
+
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP">
+<TH WIDTH="15%">Lecture</TH>
+<TH WIDTH="34%">Topic(s)</TH>
+<TH WIDTH="26%">Programs</TH>
+<TH WIDTH="25%">Book(s), Notes</TH>
+</TD></TR>
+
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP"><TD COLSPAN=6 align="center">
+<b>C Language</b>
+</TD></TR>
+
+<!--
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>1. Jan 10</TD>
+<TD COLSPAN="3">
+Introductory meeting
+</TD>
+</TR>
+-->
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>1. Jan 8</TD>
+<TD>First program <!--;
+running a program from a web browser--></TD>
+<TD>
+<a href="helloworld.c"><tt>helloworld. c</tt></a><br>
+<a href="../CExamples/first_pgm.c"><tt>first_ pgm. c</tt></a><br>
+<a href="../CExamples/first_pgm_cgi.c"><tt>first_ pgm_ cgi. c</tt></a><br>
+<a href="../CExamples/first_pgm.html"><tt>first_ pgm. html</tt></a><br>
+<a href="../CExamples/first_pgm_cgi_get.c"><tt>first_ pgm_ cgi_ get. c</tt></a><br>
+<a href="../CExamples/first_pgm_get.html"><tt>first_ pgm_ get. html</tt></a><br>
+</TD>
+<TD>DDC &sect;2.1-3</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>2. Jan 10</TD>
+<TD>Operators; flow of control</TD>
+<TD>
+<a href="../CExamples/selfprint2.c"><tt>selfprint2. c</tt></a>,
+<a href="../CExamples/selfprint3.c"><tt>selfprint3. c</tt></a> (without
+non-standard strnlen call)
+<BR></TD>
+<TD>DDC &sect;2.5-6; DDC &sect;4;
+<a href="../Fall98/syntax.html">Semicolon before else</a>
+</TD>
+</TR>
+
+<TR BGCOLOR="#CCFFCC" VALIGN="TOP">
+<TD COLSPAN="1">Mon, Jan 15</TD>
+<TD COLSPAN="3"><b>M. L. King Holiday</b></TD>
+
+<!--
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>4. Aug 26</TD>
+<TD>Flow of control</TD>
+<TD><BR></TD>
+<TD>DDC &sect;4;
+<a href="../Fall98/syntax.html">Semicolon before else</a>
+</TD>
+</TR>
+-->
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>3. Jan 17</TD>
+<TD>Functions; the C runtime library</TD>
+<TD><a href="../CExamples/math.c"><tt>math.c</tt></a>,
+<a href="../CExamples/rand.c"><tt>rand.c</tt></a>,
+<a href="../CExamples/rand2.c"><tt>rand2.c</tt></a></TD>
+<TD>DDC &sect;5.1-8</TD>
+</TR>
+
+<!--
+<TR BGCOLOR="#FFCC66" VALIGN="TOP">
+<TD COLSPAN="2">Wednesday,&nbsp;Sep&nbsp;3, 17h00</TD>
+<TD COLSPAN="4">
+<b>Last day to add course; please use TRACS </b></TD>
+</TR>
+-->
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>4. Jan 22</TD>
+<TD>Scope of variables, storage classes; separate compilation</TD>
+<TD><a href="../CExamples/StorageClasses">StorageClasses/</a></TD>
+<TD>DDC &sect;5.12</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>5. Jan 24</TD>
+<TD>Arrays and pointers, args to main</TD>
+<TD><a href="../CExamples/arrays.c"><tt>arrays.c</tt></a>,
+<a href="../CExamples/mainarg.c"><tt>mainarg.c</tt></a>
+</TD>
+<TD>DDC &sect;6.1-6.5, &sect;6.10, &sect;6.20-22</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>6. Jan 29</TD>
+<TD>Recursion, debugging</TD>
+<TD><a href="../CExamples/Recursion">Recursion/</a></TD>
+<TD>DDC &sect;5.13-18</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>7. Jan 31</TD>
+<TD>strings; scanf, printf, I/O;
+the preprocessor, macros</TD>
+<TD><a href="../CExamples/scanf.c"><tt>scanf.c</tt></a>,
+<a href="../CExamples/types.c"><tt>types.c</tt></a></TD>
+<TD>DDC &sect;8,
+DDC &sect;13</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>8. Feb 5</TD>
+<TD>Typedef, structures, unions, header files;
+storage allocation, lists</TD>
+<TD><a href="../CExamples/Lists">Lists/</a></TD>
+<TD>DDC &sect;10.1-5, &sect;10.18,
+&sect;12.1-4</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>9. Feb 7</TD>
+<TD>Pointers to functions;
+OO programming in C</TD>
+<TD><a href="../CExamples/ptrs2fncs.c"><tt>ptrs2fncs. c</tt></a>,
+<a href="../CExamples/OO_pgm_in_C_new/">OO_pgm_in_C_new/</a></TD>
+<TD>DDC &sect;7.26</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>10. Feb 12</TD>
+<TD>
+Class canceled; was: Catch-up
+</TD>
+<TD> <br> </TD>
+<TD> <br> </TD>
+</TR>
+
+<!--
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP"><TD COLSPAN=6 align="center">
+<b>A Brief Introduction to the Java Language</b>
+</TD></TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>
+First Java program;
+Basic object design: members, constructors, cloning, destructors
+</TD>
+<TD><a href="../JavaExamples/account.java"><tt>account.java</tt></a>,
+<a href="../JavaExamples/test_acc.java"><tt>test_acc.java</tt></a>,
+<a href="../JavaExamples/Inherit/"><tt>Inherit/<tt></a>
+</TD>
+<TD>DDJ &sect;8</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>Derivation, inheritance, public, private</TD>
+<TD><a href="../JavaExamples/Inherit/"><tt>Inherit/</tt></a> continued</TD>
+<TD>DDJ &sect;9</TD>
+</TR>
+-->
+
+<!--
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>19. Mar 22</TD>
+<TD>Abstract methods;
+collections, packages
+</TD>
+<TD><a href="../JavaExamples/Stacks">Stacks/</a>,
+<a href="../JavaExamples/Lists12/">Lists12/</a></TD>
+<TD>DDJ &sect;9</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>14. Feb 24</TD>
+<TD>Catch-up; exceptions; inner classes</TD>
+<TD><a href="../JavaExamples/exception.java"><tt>exception.java</tt></a></TD>
+<TD>DDJ &sect;14</TD>
+</TR>
+-->
+
+<!--
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>Abstract Window Toolkit, the Java 1.0 and 1.1 event models, applets;
+Panel and Button
+</TD>
+<TD>
+<a href="../JavaExamples/Nutshell/ch06/"><tt>Nutshell/ ch6/ First Applet.*</tt></a>,
+<a href="../JavaExamples/Nutshell/ch07/">Nutshell/ ch7/</a>
+</TD>
+<TD>DDJ &sect;3</TD>
+</TR>
+-->
+
+<!--
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>16. Mar 3</TD>
+<TD>AWT continued: Frame, Canvas, Checkbox, CheckboxGroup, Label</TD>
+<TD>
+<a href="../JavaExamples/Caviness/CheckboxTest.java"><tt>CheckboxTest. java</tt></a>
+</TD>
+<TD><BR></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>17. Mar 15</TD>
+<TD>AWT continued: TextField, ScrollBar, Color;
+Java archive files</TD>
+<TD>
+<a href="../JavaExamples/Caviness/">Caviness/</a>,
+<a href="../JavaExamples/Caviness/ScrollTest_1_1.java"><tt>Scroll Test _1 _1. java</tt></a>,
+<a href="../JavaExamples/Graphdraw/">Graphdraw/</a>
+</TD>
+<TD><BR></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>18. Mar 17</TD>
+<TD>Multiple threads; animation</TD>
+<TD><a href="../JavaExamples/Threads/">Threads/</a>,
+<a href="../JavaExamples/ExampNut/examples/BouncingCircle.java">
+<tt>BouncingCircle. java</tt></a>,
+<a href="../JavaExamples/ExampNut/examples/BouncingCircle.html">
+BouncingCircle. html</a>,
+<a href="../JavaExamples/ExampNut/examples/SmoothCircle.java">
+<tt>SmoothCircle. java</tt></a>,
+<a href="../JavaExamples/ExampNut/examples/SmoothCircle.html">
+SmoothCircle. html</a>
+</TD>
+<TD>DDJ &sect;15,
+<a href="http://java.sun.com/docs/books/tutorial/essential/threads/index.html">Sun tutorial</a></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>19. Oct 28</TD>
+<TD>Java beans</TD>
+<TD>
+<a href="../JavaExamples/Nutshell/ch10/">Nutshell/ ch10/</a>
+</TD>
+<TD>
+<a href="../JavaExamples/Beans/">Sun's BDK</a>,
+DDJ &sect;25</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>20. Oct 30</TD>
+<TD>Systems programming: sockets
+</TD>
+<TD><BR></TD>
+<TD>DDJ &sect;21</TD>
+</TR>
+
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>19. Mar 22</TD>
+<TD>Multiple threads continued</TD>
+<TD>
+<BR></TD>
+<TD>
+<BR></TR>
+-->
+
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP"><TD COLSPAN=6 align="center">
+<b>C++ Language</b>
+</TD></TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>11. Feb 14 <font color="red">&#x2764;</font></TD>
+<TD>First C++ program;
+basic object design: members, constructors, copy, destructors
+</TD>
+<TD><a href="../C++Examples/account.cpp"><tt>account. cpp</tt></a>,
+<a href="../C++Examples/inherit.cpp"><tt>inherit. cpp<tt></a>
+</TD>
+<TD>DDC &sect;16;
+My <a href="../JavaExamples/cpp_vs_java/index.html">comparision</a>
+of C++ and Java <!-- <br>
+<a href="1a.ram">audio1a.ram</a> (streamed);
+<a href="audio/1a.ra">audio1a.ra</a> (5.1M)
+<a href="1b.ram">audio1b.ram</a> (streamed);
+<a href="audio/1b.ra">audio1b.ra</a> (5.1M)
+<a href="1c.ram">audio1c.ram</a> (streamed);
+<a href="audio/1c.ra">audio1c.ra</a> (2.8M)
+-->
+</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>12. Feb 19</TD>
+<TD>Derivation, inheritance, public, private;
+polymorphism: overloading of functions and operators; stream I/O
+</TD>
+<TD>
+<a href="../C++Examples/inherit.cpp"><tt>inherit. cpp</tt></a> continued
+</TD>
+<TD>DDC &sect;18,
+DDC &sect;19, &sect;21
+</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>13. Feb 21</TD>
+<TD>Pointers and references, const, static<BR></TD>
+<TD><BR></TD>
+<TD>DDC &sect;15.8, &sect;17.2, &sect;17.7</TD>
+</TR>
+
+<TR BGCOLOR="#FFCC66" VALIGN="TOP">
+<TD COLSPAN="2">
+<a name="project1">
+<B STYLE="background: #FFFF00"><font color="red">NEW</font></B>
+Wednesday, Feb 21, at 23:59pm
+</a>
+</TD>
+<TD COLSPAN="2">
+<b>
+<a href="../Fall2K/Cproject1/writeup4.html">C project</a>
+due, counts 33.33%</b></TD>
+</TR>
+
+<!--
+<TR BGCOLOR="#FFCC66" VALIGN="TOP">
+<TD COLSPAN="2">
+Wednesday, Apr 2, at 23:59pm
+</TD>
+<TD COLSPAN="2">
+<b><afut href="../Fall99/Jproject">Java project</a> due, counts 33.33%</b></TD>
+</TR>
+-->
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>14. Feb 26</TD>
+<TD>Templates and the STL</TD>
+<TD>
+<a href="../C++Examples/templates.cpp">templates.cpp/</a>,
+<a href="../C++Examples/Lists">Lists/</a>
+</TD>
+<TD>DDC &sect;17.10,
+<a href="http://www.sgi.com/tech/stl/">SGI's online manual</a></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>15. Feb 28</TD>
+<TD>STL containers</TD>
+<TD><a href="../C++Examples/map.cpp"><tt>map.cpp</tt></a>,
+<a href="../C++Examples/index.cpp"><tt>index.cpp</tt></a>
+</TD>
+<TD><BR></TD>
+</TR>
+
+<TR BGCOLOR="#CCFFCC" VALIGN="TOP">
+<TD COLSPAN="1">Mar 5-9, 2018</TD>
+<TD COLSPAN="3"><b>Spring Break, no class</b></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>16. Mar 12</TD>
+<TD>STL iterators</TD>
+<TD><BR></TD>
+<TD><BR></TD>
+</TR>
+
+<TR
+BGCOLOR="#FFCC66"
+VALIGN="TOP">
+<TD COLSPAN="4">Mon, Mar 12, 11:59pm
+<b>Last day to drop the course</b>
+</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>17. Mar 14</TD>
+<TD>STL algorithms</TD>
+<TD><a href="../C++Examples/indir_sort.cpp"><tt>indir_ sort. cpp</tt></a></TD>
+<TD><BR></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>18. Mar 19</TD>
+<TD>Advanced topics: virtual member functions;
+code bloat and how to avoid it
+</TD>
+<TD><a href="../C++Examples/Stacks">Stacks/</a></TD>
+<TD>DDC &sect;20</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>19. Mar 21</TD>
+<TD>Namespaces and inner classes;
+exceptions;
+multiple inheritance
+<TD><a href="../C++Examples/exception.cpp"><tt>exception.cpp</tt></a>;
+<a href="../C++Examples/MultInher/">MultInher/</a></TD>
+<TD>DDC &sect;19.15</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>20. Mar 26</TD>
+<TD>Wrappers/adaptors to existing libraries;
+traits; partial template specialization</TD>
+<TD>
+<a href="../C++Examples/Lists/prof3A.h"><tt>prof3A.h</tt></a>
+<BR></TD>
+<TD><a href="http://www.cantrip.org/traits.html">N. Myers report on traits</a><!-- <br>
+<B STYLE="background: #FFFF00"><font color="red">NEW</font></B>
+<a href="3a.ram">audio3a.ram</a> (streamed);
+<a href="audio/3a.ra">audio3a.ra</a> (5.1M)
+<a href="3b.ram">audio3b.ram</a> (streamed);
+<a href="audio/3b.ra">audio3b.ra</a> (5.1M)
+<a href="3c.ram">audio3c.ram</a> (streamed);
+<a href="audio/3c.ra">audio3c.ra</a> (1.1M)
+-->
+</TD>
+</TR>
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP"><TD COLSPAN=6 align="center">
+<b>Python Language</b>
+</TD></TR>
+
+<TR
+BGCOLOR="#FFFFFF"
+VALIGN="TOP">
+<TD>21. Mar 28</TD>
+<TD>
+First python program
+<br></TD> 
+<TD>
+<a href="../PythonExamples/python-lectures/code/hello.py">hello.py</a>,
+<a href="../PythonExamples/python-lectures/code/fibonacci.py">fibonacci.py</a>,
+<a href="../PythonExamples/python-lectures/code/fibo2.py">fibo2.py</a>,
+<a href="../PythonExamples/python-lectures/code/breakdance.py">breakdance.py</a>
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/one.html">Lecture 1</a>,
+<a href="http://diveintopython.net/toc/index.html">DIP</a>
+&sect;2
+<br></TD>
+</TR>
+
+<TR BGCOLOR="#CCFFCC" VALIGN="TOP">
+<TD COLSPAN="1">Friday, Mar 30</TD>
+<TD COLSPAN="3"><b>Spring Holiday, no class</b></TD>
+</TR>
+
+<TR
+BGCOLOR="#FFFFCC"
+VALIGN="TOP">
+<TD>22. Apr 2</TD>
+<TD>
+Native types
+<br></TD> 
+<TD>
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/two.html">Lecture 2</a>,
+<a href="http://diveintopython.net/toc/index.html">DIP</a>
+&sect;3
+<br></TD>
+</TR>
+
+<TR BGCOLOR="#FFCC66" VALIGN="TOP">
+<TD COLSPAN="2">
+Mon, Apr 2, at 23:59pm
+</TD>
+<TD COLSPAN="2">
+<b><a href="../Fall04/C++project/README.html">C++ project</a>
+due, counts 33.33%</b></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>23. Apr 4</TD>
+<TD>
+Python as an OO language
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/code/image.py">image.py</a>,
+<a href="../PythonExamples/python-lectures/code/counter.py">counter.py</a>,
+<a href="../PythonExamples/python-lectures/code/private.py">private.py</a>,
+<a href="../PythonExamples/python-lectures/code/square.py">square.py</a>,
+<a href="../PythonExamples/python-lectures/code/newstring.py">newstring.py</a>,
+<a href="../PythonExamples/python-lectures/code/singleton.py">singleton.py</a>,
+<a href="../PythonExamples/python-lectures/code/borg.py">borg.py</a>,
+<a href="../PythonExamples/python-lectures/code/multi.py">multi.py</a>
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/three.html">Lecture 3</a>,
+<a href="http://diveintopython.net/toc/index.html">DIP</a>
+&sect;5
+<br></TD>
+</TR>
+
+<TR
+BGCOLOR="#FFFFCC"
+VALIGN="TOP">
+<TD>24. Apr 9</TD>
+<TD>
+Files and exceptions
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/code/person.py">person.py</a>,
+<a href="../PythonExamples/python-lectures/code/student.py">student.py</a>,
+<a href="../PythonExamples/python-lectures/code/compare.py">compare.py</a>,
+<a href="../PythonExamples/python-lectures/code/withexample.py">withexample.py</a>,
+<a href="../PythonExamples/python-lectures/code/output.py">output.py</a>,
+<a href="../PythonExamples/python-lectures/code/filepath.py">filepath.py</a>
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/three-review.html">Lecture 3 review</a>,
+<a href="../PythonExamples/python-lectures/_build/html/lectures/four.html">Lecture 4</a>,
+<a href="http://diveintopython.net/toc/index.html">DIP</a>
+&sect;6
+<br></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>25. Apr 11</TD>
+<TD>
+Python as a functional language
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/code/nightmare.py">nightmare.py</a>,
+<a href="../PythonExamples/python-lectures/code/identity.py">identity.py</a>,
+<a href="../PythonExamples/python-lectures/code/matrix.py">matrix.py</a>,
+<a href="../PythonExamples/python-lectures/code/listsort.py">listsort.py</a>,
+<a href="../PythonExamples/python-lectures/code/keys.py">keys.py</a>,
+<a href="../PythonExamples/python-lectures/code/iter.py">iter.py</a>,
+<a href="../PythonExamples/python-lectures/code/closure.py">closure.py</a>,
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/five.html">Lecture 5</a>,
+<a href="http://diveintopython.net/toc/index.html">DIP</a>
+&sect;16
+<br></TD>
+</TR>
+
+<TR
+BGCOLOR="#FFFFCC"
+VALIGN="TOP">
+<TD>26. Apr 16</TD>
+<TD>
+Tour of the standard library
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/code/dateformat.py">dateformat.py</a>,
+<a href="../PythonExamples/python-lectures/code/dateparse.py">dateparse.py</a>,
+<a href="../PythonExamples/python-lectures/code/twitter.py">twitter.py</a>,
+<a href="../PythonExamples/python-lectures/code/regex.py">regex.py</a>,
+<a href="../PythonExamples/python-lectures/code/log.conf">log.conf</a>,
+<a href="../PythonExamples/python-lectures/code/log.py">log.py</a>,
+<a href="../PythonExamples/python-lectures/code/timeme.py">timeme.py</a>,
+<a href="../PythonExamples/python-lectures/code/program.py">program.py</a>,
+<a href="../PythonExamples/python-lectures/code/program_test.py">program_test.py</a>,
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/six.html">Lecture 6</a>
+<br></TD>
+</TR>
+
+
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>27. Apr 18</TD>
+<TD>
+Overview of common Python packages and where you can find more: lxml,
+BeautifulSoup, PIL, NumPy, SciPy
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/code/geonames.py">geonames.py</a>,
+<a href="../PythonExamples/python-lectures/code/mandel.py">mandel.py</a>,
+<br></TD>
+<TD>
+<a href="../PythonExamples/python-lectures/_build/html/lectures/seven.html">Lecture 7</a>
+<br></TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>28. Apr 23</TD>
+<TD>Library examples continued
+</TD>
+<TD> <br> </TD>
+<TD> <br> </TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>29. Apr 25</TD>
+<TD>Catch-up
+</TD>
+<TD> <br> </TD>
+<TD> <br> </TD>
+</TR>
+
+<TR BGCOLOR="#FFCC66" VALIGN="TOP">
+<TD COLSPAN="2">
+Mon, May 7, at 23:59pm
+</TD>
+<TD COLSPAN="2">
+<b><a href="PythonProject/spring2011.py">Python project</a> due, counts 33.33%</b></TD>
+</TR>
+
+<TR BGCOLOR="#FFCCCC" VALIGN="TOP"><TD COLSPAN=6 align="center">
+<b>A Brief Introduction to the Java Language</b>
+</TD></TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>
+First Java program;
+Basic object design: members, constructors, cloning, destructors
+</TD>
+<TD><a href="../JavaExamples/account.java"><tt>account.java</tt></a>,
+<a href="../JavaExamples/test_acc.java"><tt>test_acc.java</tt></a>,
+<a href="../JavaExamples/Inherit/"><tt>Inherit/<tt></a>
+</TD>
+<TD>DDJ &sect;8</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFFF" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>Derivation, inheritance, public, private</TD>
+<TD><a href="../JavaExamples/Inherit/"><tt>Inherit/</tt></a> continued</TD>
+<TD>DDJ &sect;9</TD>
+</TR>
+
+<TR BGCOLOR="#FFFFCC" VALIGN="TOP">
+<TD>Not covered</TD>
+<TD>Abstract Window Toolkit, the Java 1.0 and 1.1 event models, applets;
+Panel and Button
+</TD>
+<TD>
+<a href="../JavaExamples/Nutshell/ch06/"><tt>Nutshell/ ch6/ First Applet.*</tt></a>,
+<a href="../JavaExamples/Nutshell/ch07/">Nutshell/ ch7/</a>
+</TD>
+<TD>DDJ &sect;3</TD>
+</TR>
+
+<caption align="bottom">
+<a name="caption">*</a> This is a <i>projected</i> list and subject to amendment.
+</caption>
+</TABLE>
+
+<h2><a name="people">Instruction Personnel</a></h2>
+
+For instructor, office hours, telephone numbers,
+email and physical address see the homepages of
+<a href="../../..">Erich Kaltofen</a>.
+
+<h2><a name="reading">Textbook</a> and Online Notes</h2>
+
+For students who do not already know C, I have ordered
+
+<ul>
+<a href="http://www.prenhall.com/deitel">
+"C How to program"</a><br>
+    H. M. Deitel/P.J. Deitel<br>
+    Prentice Hall
+</ul>
+
+The syllabus above refers to chapters in this book, which
+also contains C++ material.
+The classical reference to the C programming language is
+
+<ul>
+"C A reference manual"<br>
+S. P. Harbison, G. L. Steele Jr.<br>
+Prentice Hall
+</ul>
+
+and to the C++ programming language
+
+<ul>
+"The C++ programming language"<br>
+Third edition<br>
+B. Stroustrup<br>
+Addison-Wesley
+</ul>
+The Standard Template Library of C++ (not covered in Deitel/Deitel)
+has an <a href="http://www.sgi.com/tech/stl/"> online
+tutorial</a> by SGI.
+
+<!--
+<p>
+I am using
+<ul>
+"Java How To Program"</a><br>
+ H. M. Deitel/P.J. Deitel<br>
+ Prentice Hall
+</ul>
+as the introduction/reference to Java.
+<afut href="../JavaExamples/DDexamples">All examples</a> have been downloaded.
+This book uses the new Swing GUI components, and has little information
+on the classical AWT classes.
+However, there is also an
+<a href="http://java.sun.com/docs/books/tutorial/index.html">online
+tutorial</a> by Sun Microsystems.
+-->
+
+<p>
+<i>On-line information:</i> All information on courses that I teach (except
+individual grades) is now accessible via html browsers,
+which includes this syllabus.  My courses' directory is at
+<ul>
+  <a href="http://www.math.ncsu.edu/~kaltofen/courses/courses/courses.html">
+  http://www.math.ncsu.edu/~kaltofen/courses/courses/courses.html</a>
+</ul>
+You can also find information on courses that I have taught in the past,
+and examinations that I have given.
+</p>
+
+<h2><a name="grading">Grading</a> and General Information</h2>
+
+   There will be three programming assignments of
+approximately equal weight, constituting the final grade.
+Please submit your solutions in archived, compressed, and
+ASCII-encoded form according to
+<a href="../Spring18/submit.html">these procedures</a>.
+<!--
+<ul>
+<table>
+<tr><td colspan="2" align="left">
+<b>Grade split up</b>
+</td></tr>
+<tr><td>Accumulated homework grade&nbsp;&nbsp;</td><td>40%</td></tr> 
+<tr><td>Final examination</td><td>25%</td></tr>
+<tr><td>First mid-semester exam</td><td>17.5%</td></tr>
+<tr><td>Second mid-semester exam</td><td>17.5%</td></tr>
+<tr><td><br></td><td><hr></td></tr>
+<tr><td>Course grade</td><td>100%</td></tr>
+</table>
+</ul>
+Last semester's
+<a href="../Fall97/sorted_grades">grade distribution</a>.
+-->
+
+<p>
+If you need assistance in any way, please let me know
+(see also the University's
+<a href="http://www2.ncsu.edu/ncsu/provost/info/hat/current/appendix/appen_k.html">policy</a>).
+</p>
+
+<p>
+<h2><a name="academics">Academic</a> Standards</h2>
+<!--
+<i>Examinations:</i>All three examinations will be <b>closed book-closed notes.</b>
+However, you will be able to bring <b>note sheets</b> of paper with
+pertinent information to the examinations (1 for first exam,
+2 for second exam, and 3 for final exam with the intent that you
+reuse your sheets for subsequent exams).
+<b>The examinations will require your physical presence on campus</b>.
+<p>
+-->
+<i>Collaboration on programs:</i>
+I expect every student to be his/her own programmer.
+Therefore the only thing you can discuss with anyone is how
+you might go about solving a particular problem.
+You may use freely information
+that you retrieve from public (electronic) libraries or texts, but
+you must properly reference your source.<p>
+<i>Late submissions:</i>
+All programs must be submitted on time.
+The following penalties are given for (unexcused) late
+submissions:<ul>
+  <li> up to 1 day late: 20% reduction
+  <li> up to 2 days late: 50% reduction
+  <li> after 2 days: no credit (= 100% reduction)
+</ul>
+<i> Alleged cheating incidents:</i>
+I will not decide any penalty myself, but
+refer all such cases to the proper
+<a href="http://www.ncsu.edu/policies/student_services/student_discipline/POL11.35.1.php">judiciary procedures</a>.
+
+<HR NOSHADE><P>
+&copy;2011, 2018 Erich Kaltofen.
+</body>
+</html>
