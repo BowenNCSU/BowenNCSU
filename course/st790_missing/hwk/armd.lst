@@ -1,0 +1,1242 @@
+                    Available case analysis, both treatments                   1
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.ARMD_ALT            
+             Dependent Variable           visual                   
+             Covariance Structure         Unstructured             
+             Subject Effect               pid                      
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          5    0 4 12 24 52                  
+               pid         240    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100 101 102 
+                                  103 104 105 106 107 108 109   
+                                  110 111 112 113 114 115 116   
+                                  117 118 119 120 121 122 123   
+                                  124 125 126 127 128 129 130   
+                                  131 132 133 134 135 136 137   
+                                  138 139 140 141 142 143 144   
+                                  145 146 147 148 149 150 151   
+                                  152 153 154 155 156 157 158   
+                                  159 160 161 162 163 164 165   
+                                  166 167 168 169 170 171 172   
+                                  173 174 175 176 177 178 179   
+                                  180 181 182 183 184 185 186   
+                                  187 188 189 190 191 192 193   
+                                  194 195 196 197 198 199 200   
+                                  201 202 203 204 205 206 207   
+                                  208 209 210 211 212 213 214   
+                                  215 216 217 218 219 220 221   
+                                  222 223 224 225 226 227 228   
+                                  229 230 231 232 233 234 235   
+                                  236 237 238 239 240           
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                     10
+                      Columns in Z                      0
+                      Subjects                        240
+                    Available case analysis, both treatments                   2
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                                  Dimensions
+
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read            1200
+                  Number of Observations Used            1107
+                  Number of Observations Not Used          93
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      9397.35166027                
+                  1              2      8322.52528835      0.00055348
+                  2              1      8320.58206210      0.00002480
+                  3              1      8320.50144871      0.00000007
+                  4              1      8320.50122099      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                          Estimated R Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      220.50      201.61      188.80      182.46      143.80
+           2      201.61      250.77      228.68      219.41      175.34
+           3      188.80      228.68      295.72      262.49      224.77
+           4      182.46      219.41      262.49      342.45      290.87
+           5      143.80      175.34      224.77      290.87      350.17
+
+
+                    Estimated R Correlation Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.8574      0.7394      0.6640      0.5175
+           2      0.8574      1.0000      0.8397      0.7487      0.5917
+           3      0.7394      0.8397      1.0000      0.8249      0.6985
+           4      0.6640      0.7487      0.8249      1.0000      0.8400
+           5      0.5175      0.5917      0.6985      0.8400      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     pid          220.50
+                        UN(2,1)     pid          201.61
+                        UN(2,2)     pid          250.77
+                    Available case analysis, both treatments                   3
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(3,1)     pid          188.80
+                        UN(3,2)     pid          228.68
+                        UN(3,3)     pid          295.72
+                        UN(4,1)     pid          182.46
+                        UN(4,2)     pid          219.41
+                        UN(4,3)     pid          262.49
+                        UN(4,4)     pid          342.45
+                        UN(5,1)     pid          143.80
+                        UN(5,2)     pid          175.34
+                        UN(5,3)     pid          224.77
+                        UN(5,4)     pid          290.87
+                        UN(5,5)     pid          350.17
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              8320.5
+                     AIC (Smaller is Better)        8370.5
+                     AICC (Smaller is Better)       8371.7
+                     BIC (Smaller is Better)        8457.5
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14       1076.85          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                     Standard
+   Effect        week    Estimate       Error      DF    t Value    Pr > |t|
+
+   week           0       55.3361      1.3612     240      40.65      <.0001
+   week           4       54.0549      1.4543     240      37.17      <.0001
+   week          12       52.9845      1.5814     240      33.50      <.0001
+   week          24       49.3162      1.7133     240      28.78      <.0001
+   week          52       44.0251      1.7588     240      25.03      <.0001
+   treat*week     0       -0.7576      1.9171     240      -0.40      0.6931
+   treat*week     4       -2.9619      2.0537     240      -1.44      0.1506
+   treat*week    12       -4.2656      2.2432     240      -1.90      0.0584
+   treat*week    24       -3.8274      2.4421     240      -1.57      0.1184
+   treat*week    52       -5.6238      2.5338     240      -2.22      0.0274
+
+
+                    Available case analysis, both treatments                   4
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                Effect          DF      DF    F Value    Pr > F
+
+                week             5     240     341.36    <.0001
+                treat*week       5     240       1.78    0.1176
+                    Complete case analysis, both treatments                    5
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.ARMD_CC_ALT         
+             Dependent Variable           visual                   
+             Covariance Structure         Unstructured             
+             Subject Effect               pid                      
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          5    0 4 12 24 52                  
+               pid         188    2 4 6 7 8 9 12 13 14 15 16 17 
+                                  18 19 20 22 23 24 25 26 27 29 
+                                  33 34 35 36 39 40 42 43 44 45 
+                                  46 49 51 52 53 54 55 57 58 59 
+                                  60 61 62 63 64 65 66 67 68 69 
+                                  70 71 72 74 75 76 77 78 79 80 
+                                  81 82 83 84 85 86 87 88 89 92 
+                                  93 94 95 96 99 102 103 104 105
+                                  106 107 108 109 110 111 112   
+                                  113 115 116 117 118 119 120   
+                                  121 123 124 125 126 127 128   
+                                  129 130 132 134 135 137 138   
+                                  139 140 141 142 143 145 146   
+                                  149 151 152 153 154 155 156   
+                                  157 158 159 160 161 162 164   
+                                  165 166 168 169 170 171 172   
+                                  173 175 176 178 179 180 181   
+                                  182 183 184 185 187 188 190   
+                                  192 193 194 195 199 202 203   
+                                  205 206 208 209 210 211 212   
+                                  214 215 217 218 220 221 222   
+                                  223 224 225 226 227 228 229   
+                                  232 233 234 235 236 237 238   
+                                  239 240                       
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                     10
+                      Columns in Z                      0
+                      Subjects                        188
+                      Max Obs per Subject               5
+
+
+                    Complete case analysis, both treatments                    6
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                            Number of Observations
+
+                  Number of Observations Read             940
+                  Number of Observations Used             940
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      7974.07773131                
+                  1              1      6965.82514752      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                          Estimated R Matrix for pid 4
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      219.06      205.22      194.81      191.84      151.27
+           2      205.22      242.87      221.54      217.76      174.92
+           3      194.81      221.54      282.61      254.05      218.12
+           4      191.84      217.76      254.05      330.01      279.89
+           5      151.27      174.92      218.12      279.89      340.08
+
+
+                    Estimated R Correlation Matrix for pid 4
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.8897      0.7830      0.7135      0.5542
+           2      0.8897      1.0000      0.8456      0.7692      0.6087
+           3      0.7830      0.8456      1.0000      0.8319      0.7036
+           4      0.7135      0.7692      0.8319      1.0000      0.8355
+           5      0.5542      0.6087      0.7036      0.8355      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     pid          219.06
+                        UN(2,1)     pid          205.22
+                        UN(2,2)     pid          242.87
+                        UN(3,1)     pid          194.81
+                        UN(3,2)     pid          221.54
+                        UN(3,3)     pid          282.61
+                        UN(4,1)     pid          191.84
+                        UN(4,2)     pid          217.76
+                        UN(4,3)     pid          254.05
+                        UN(4,4)     pid          330.01
+                        UN(5,1)     pid          151.27
+                    Complete case analysis, both treatments                    7
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(5,2)     pid          174.92
+                        UN(5,3)     pid          218.12
+                        UN(5,4)     pid          279.89
+                        UN(5,5)     pid          340.08
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              6965.8
+                     AIC (Smaller is Better)        7015.8
+                     AICC (Smaller is Better)       7017.2
+                     BIC (Smaller is Better)        7096.7
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14       1008.25          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                     Standard
+   Effect        week    Estimate       Error      DF    t Value    Pr > |t|
+
+   week           0       55.3922      1.4655     188      37.80      <.0001
+   week           4       54.4706      1.5431     188      35.30      <.0001
+   week          12       53.0784      1.6645     188      31.89      <.0001
+   week          24       49.7941      1.7987     188      27.68      <.0001
+   week          52       44.4314      1.8259     188      24.33      <.0001
+   treat*week     0       -0.5433      2.1668     188      -0.25      0.8023
+   treat*week     4       -2.8659      2.2815     188      -1.26      0.2106
+   treat*week    12       -2.8924      2.4611     188      -1.18      0.2414
+   treat*week    24       -3.2709      2.6595     188      -1.23      0.2203
+   treat*week    52       -4.7104      2.6997     188      -1.74      0.0827
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                Effect          DF      DF    F Value    Pr > F
+
+                week             5     188     294.70    <.0001
+                treat*week       5     188       1.42    0.2171
+                         LOCF analysis, both treatments                        8
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.ARMD_LOCF_ALT       
+             Dependent Variable           visual                   
+             Covariance Structure         Unstructured             
+             Subject Effect               pid                      
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          5    0 4 12 24 52                  
+               pid         240    1 2 3 4 5 6 7 8 9 10 11 12 13 
+                                  14 15 16 17 18 19 20 21 22 23 
+                                  24 25 26 27 28 29 30 31 32 33 
+                                  34 35 36 37 38 39 40 41 42 43 
+                                  44 45 46 47 48 49 50 51 52 53 
+                                  54 55 56 57 58 59 60 61 62 63 
+                                  64 65 66 67 68 69 70 71 72 73 
+                                  74 75 76 77 78 79 80 81 82 83 
+                                  84 85 86 87 88 89 90 91 92 93 
+                                  94 95 96 97 98 99 100 101 102 
+                                  103 104 105 106 107 108 109   
+                                  110 111 112 113 114 115 116   
+                                  117 118 119 120 121 122 123   
+                                  124 125 126 127 128 129 130   
+                                  131 132 133 134 135 136 137   
+                                  138 139 140 141 142 143 144   
+                                  145 146 147 148 149 150 151   
+                                  152 153 154 155 156 157 158   
+                                  159 160 161 162 163 164 165   
+                                  166 167 168 169 170 171 172   
+                                  173 174 175 176 177 178 179   
+                                  180 181 182 183 184 185 186   
+                                  187 188 189 190 191 192 193   
+                                  194 195 196 197 198 199 200   
+                                  201 202 203 204 205 206 207   
+                                  208 209 210 211 212 213 214   
+                                  215 216 217 218 219 220 221   
+                                  222 223 224 225 226 227 228   
+                                  229 230 231 232 233 234 235   
+                                  236 237 238 239 240           
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                     10
+                      Columns in Z                      0
+                      Subjects                        240
+                         LOCF analysis, both treatments                        9
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                                  Dimensions
+
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read            1200
+                  Number of Observations Used            1200
+                  Number of Observations Not Used           0
+
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1     10217.39278318                
+                  1              1      8944.46412467      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                          Estimated R Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      220.50      202.55      190.01      184.36      152.43
+           2      202.55      250.71      230.54      224.94      186.47
+           3      190.01      230.54      294.38      267.20      232.11
+           4      184.36      224.94      267.20      341.13      296.18
+           5      152.43      186.47      232.11      296.18      353.08
+
+
+                    Estimated R Correlation Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.8615      0.7458      0.6722      0.5463
+           2      0.8615      1.0000      0.8486      0.7692      0.6267
+           3      0.7458      0.8486      1.0000      0.8432      0.7200
+           4      0.6722      0.7692      0.8432      1.0000      0.8534
+           5      0.5463      0.6267      0.7200      0.8534      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     pid          220.50
+                        UN(2,1)     pid          202.55
+                        UN(2,2)     pid          250.71
+                        UN(3,1)     pid          190.01
+                        UN(3,2)     pid          230.54
+                        UN(3,3)     pid          294.38
+                         LOCF analysis, both treatments                       10
+                                                 09:59 Tuesday, January 24, 2017
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(4,1)     pid          184.36
+                        UN(4,2)     pid          224.94
+                        UN(4,3)     pid          267.20
+                        UN(4,4)     pid          341.13
+                        UN(5,1)     pid          152.43
+                        UN(5,2)     pid          186.47
+                        UN(5,3)     pid          232.11
+                        UN(5,4)     pid          296.18
+                        UN(5,5)     pid          353.08
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              8944.5
+                     AIC (Smaller is Better)        8994.5
+                     AICC (Smaller is Better)       8995.6
+                     BIC (Smaller is Better)        9081.5
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14       1272.93          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                     Standard
+   Effect        week    Estimate       Error      DF    t Value    Pr > |t|
+
+   week           0       55.3361      1.3612     240      40.65      <.0001
+   week           4       54.0588      1.4515     240      37.24      <.0001
+   week          12       53.0168      1.5728     240      33.71      <.0001
+   week          24       49.4622      1.6931     240      29.21      <.0001
+   week          52       44.7059      1.7225     240      25.95      <.0001
+   treat*week     0       -0.7576      1.9171     240      -0.40      0.6931
+   treat*week     4       -2.7861      2.0442     240      -1.36      0.1742
+   treat*week    12       -3.9176      2.2151     240      -1.77      0.0782
+   treat*week    24       -2.8754      2.3845     240      -1.21      0.2291
+   treat*week    52       -3.6976      2.4259     240      -1.52      0.1288
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                               Num     Den
+                Effect          DF      DF    F Value    Pr > F
+
+                week             5     240     339.87    <.0001
+                treat*week       5     240       1.37    0.2371
+         Separate fits by treatment, available data, ML via proc mixed        11
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.ARMD_ALT            
+             Dependent Variable           visual                   
+             Covariance Structure         Unstructured             
+             Subject Effect               pid                      
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          5    0 4 12 24 52                  
+               pid         119    3 4 7 8 10 14 16 18 19 25 26  
+                                  29 30 33 34 35 37 39 42 43 45 
+                                  46 48 50 53 55 57 58 60 62 65 
+                                  67 68 71 72 74 76 78 81 83 84 
+                                  87 89 91 93 94 96 98 100 102  
+                                  104 105 107 109 110 113 114   
+                                  117 119 121 123 124 127 129   
+                                  132 134 135 137 140 141 143   
+                                  145 146 149 150 153 154 157   
+                                  158 160 161 162 164 166 170   
+                                  172 173 176 178 180 181 184   
+                                  185 188 190 192 194 195 196   
+                                  198 199 204 205 206 209 211   
+                                  213 215 216 217 219 220 223   
+                                  225 227 228 233 236 238       
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                      5
+                      Columns in Z                      0
+                      Subjects                        119
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             595
+                  Number of Observations Used             570
+                  Number of Observations Not Used          25
+
+
+         Separate fits by treatment, available data, ML via proc mixed        12
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4844.97064577                
+                  1              2      4289.41515597      0.00131874
+                  2              1      4286.92805595      0.00013099
+                  3              1      4286.70020143      0.00000196
+                  4              1      4286.69699622      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                          Estimated R Matrix for pid 4
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      223.15      206.17      188.80      188.82      148.25
+           2      206.17      248.10      223.43      219.37      176.35
+           3      188.80      223.43      291.25      251.31      217.76
+           4      188.82      219.37      251.31      353.02      296.47
+           5      148.25      176.35      217.76      296.47      349.42
+
+
+                    Estimated R Correlation Matrix for pid 4
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.8762      0.7406      0.6727      0.5309
+           2      0.8762      1.0000      0.8312      0.7412      0.5989
+           3      0.7406      0.8312      1.0000      0.7837      0.6826
+           4      0.6727      0.7412      0.7837      1.0000      0.8441
+           5      0.5309      0.5989      0.6826      0.8441      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     pid          223.15
+                        UN(2,1)     pid          206.17
+                        UN(2,2)     pid          248.10
+                        UN(3,1)     pid          188.80
+                        UN(3,2)     pid          223.43
+                        UN(3,3)     pid          291.25
+                        UN(4,1)     pid          188.82
+                        UN(4,2)     pid          219.37
+                        UN(4,3)     pid          251.31
+                        UN(4,4)     pid          353.02
+                        UN(5,1)     pid          148.25
+                        UN(5,2)     pid          176.35
+                        UN(5,3)     pid          217.76
+         Separate fits by treatment, available data, ML via proc mixed        13
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(5,4)     pid          296.47
+                        UN(5,5)     pid          349.42
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4286.7
+                     AIC (Smaller is Better)        4326.7
+                     AICC (Smaller is Better)       4328.2
+                     BIC (Smaller is Better)        4382.3
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14        558.27          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                   Standard
+     Effect    week    Estimate       Error      DF    t Value    Pr > |t|
+
+     week       0       55.3361      1.3694     119      40.41      <.0001
+     week       4       54.0529      1.4463     119      37.37      <.0001
+     week      12       52.9808      1.5695     119      33.76      <.0001
+     week      24       49.3409      1.7409     119      28.34      <.0001
+     week      52       44.0346      1.7566     119      25.07      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  week         5     119     338.54    <.0001
+         Separate fits by treatment, available data, ML via proc mixed        14
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                              The Mixed Procedure
+
+                               Model Information
+
+             Data Set                     WORK.ARMD_ALT            
+             Dependent Variable           visual                   
+             Covariance Structure         Unstructured             
+             Subject Effect               pid                      
+             Estimation Method            ML                       
+             Residual Variance Method     None                     
+             Fixed Effects SE Method      Model-Based              
+             Degrees of Freedom Method    Between-Within           
+
+
+                            Class Level Information
+ 
+               Class    Levels    Values
+
+               week          5    0 4 12 24 52                  
+               pid         121    1 2 5 6 9 11 12 13 15 17 20 21
+                                  22 23 24 27 28 31 32 36 38 40 
+                                  41 44 47 49 51 52 54 56 59 61 
+                                  63 64 66 69 70 73 75 77 79 80 
+                                  82 85 86 88 90 92 95 97 99 101
+                                  103 106 108 111 112 115 116   
+                                  118 120 122 125 126 128 130   
+                                  131 133 136 138 139 142 144   
+                                  147 148 151 152 155 156 159   
+                                  163 165 167 168 169 171 174   
+                                  175 177 179 182 183 186 187   
+                                  189 191 193 197 200 201 202   
+                                  203 207 208 210 212 214 218   
+                                  221 222 224 226 229 230 231   
+                                  232 234 235 237 239 240       
+
+
+                                  Dimensions
+
+                      Covariance Parameters            15
+                      Columns in X                      5
+                      Columns in Z                      0
+                      Subjects                        121
+                      Max Obs per Subject               5
+
+
+                            Number of Observations
+
+                  Number of Observations Read             605
+                  Number of Observations Used             537
+                  Number of Observations Not Used          68
+
+
+         Separate fits by treatment, available data, ML via proc mixed        15
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                              The Mixed Procedure
+
+                               Iteration History
+ 
+          Iteration    Evaluations        -2 Log Like       Criterion
+
+                  0              1      4552.31011513                
+                  1              3      4023.30134097      0.00095250
+                  2              1      4021.65874990      0.00006274
+                  3              1      4021.55877741      0.00000041
+                  4              1      4021.55815809      0.00000000
+
+
+                           Convergence criteria met.                    
+
+
+                          Estimated R Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      217.90      196.94      189.02      174.60      139.30
+           2      196.94      253.38      233.98      217.41      173.77
+           3      189.02      233.98      300.15      272.20      230.93
+           4      174.60      217.41      272.20      326.03      282.20
+           5      139.30      173.77      230.93      282.20      351.13
+
+
+                    Estimated R Correlation Matrix for pid 2
+ 
+         Row        Col1        Col2        Col3        Col4        Col5
+
+           1      1.0000      0.8381      0.7391      0.6551      0.5036
+           2      0.8381      1.0000      0.8484      0.7564      0.5826
+           3      0.7391      0.8484      1.0000      0.8701      0.7113
+           4      0.6551      0.7564      0.8701      1.0000      0.8340
+           5      0.5036      0.5826      0.7113      0.8340      1.0000
+
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(1,1)     pid          217.90
+                        UN(2,1)     pid          196.94
+                        UN(2,2)     pid          253.38
+                        UN(3,1)     pid          189.02
+                        UN(3,2)     pid          233.98
+                        UN(3,3)     pid          300.15
+                        UN(4,1)     pid          174.60
+                        UN(4,2)     pid          217.41
+                        UN(4,3)     pid          272.20
+                        UN(4,4)     pid          326.03
+                        UN(5,1)     pid          139.30
+                        UN(5,2)     pid          173.77
+                        UN(5,3)     pid          230.93
+         Separate fits by treatment, available data, ML via proc mixed        16
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                              The Mixed Procedure
+
+                        Covariance Parameter Estimates
+ 
+                        Cov Parm    Subject    Estimate
+
+                        UN(5,4)     pid          282.20
+                        UN(5,5)     pid          351.13
+
+
+                                Fit Statistics
+
+                     -2 Log Likelihood              4021.6
+                     AIC (Smaller is Better)        4061.6
+                     AICC (Smaller is Better)       4063.2
+                     BIC (Smaller is Better)        4117.5
+
+
+                        Null Model Likelihood Ratio Test
+ 
+                          DF    Chi-Square      Pr > ChiSq
+
+                          14        530.75          <.0001
+
+
+                          Solution for Fixed Effects
+ 
+                                   Standard
+     Effect    week    Estimate       Error      DF    t Value    Pr > |t|
+
+     week       0       54.5785      1.3419     121      40.67      <.0001
+     week       4       51.0966      1.4587     121      35.03      <.0001
+     week      12       48.7181      1.6020     121      30.41      <.0001
+     week      24       45.5213      1.6941     121      26.87      <.0001
+     week      52       38.4559      1.8278     121      21.04      <.0001
+
+
+                         Type 3 Tests of Fixed Effects
+ 
+                             Num     Den
+                  Effect      DF      DF    F Value    Pr > F
+
+                  week         5     121     332.59    <.0001
+        Separate fits by treatment, available data, ML via EM algorithm       17
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                                The MI Procedure
+
+                               Model Information
+
+          Data Set                             WORK.ARMD              
+          Method                               MCMC                   
+          Multiple Imputation Chain            Single Chain           
+          Initial Estimates for MCMC           EM Posterior Mode      
+          Start                                Starting Value         
+          Prior                                Jeffreys               
+          Number of Imputations                0                      
+          Number of Burn-in Iterations         200                    
+          Number of Iterations                 100                    
+          Seed for random number generator     370252                 
+
+
+                             Missing Data Patterns
+ 
+Group  visual0   visual4   visual12   visual24   visual52       Freq    Percent
+
+    1  X         X         X          X          X               102      85.71
+    2  X         X         X          X          .                 9       7.56
+    3  X         X         X          .          X                 2       1.68
+    4  X         X         X          .          .                 3       2.52
+    5  X         X         .          .          .                 1       0.84
+    6  X         .         X          X          X                 1       0.84
+    7  X         .         .          .          .                 1       0.84
+
+                             Missing Data Patterns
+ 
+       -------------------------------Group Means------------------------------
+Group       visual0        visual4       visual12       visual24       visual52
+
+    1     55.392157      54.470588      53.078431      49.794118      44.431373
+    2     50.333333      49.111111      52.444444      42.666667              .
+    3     64.500000      52.000000      45.500000              .      46.000000
+    4     53.000000      49.000000      49.000000              .              .
+    5     75.000000      65.000000              .              .              .
+    6     61.000000              .      62.000000      62.000000      42.000000
+    7     58.000000              .              .              .              .
+
+
+                             Univariate Statistics
+ 
+  Variable           N          Mean       Std Dev       Minimum       Maximum
+
+  visual0          119      55.33613      15.00129      22.00000      85.00000
+  visual4          117      53.96581      15.90973      12.00000      84.00000
+  visual12         117      52.87179      17.20091       3.00000      85.00000
+  visual24         112      49.33036      18.51242       5.00000      85.00000
+  visual52         105      44.43810      18.53683      11.00000      85.00000
+
+        Separate fits by treatment, available data, ML via EM algorithm       18
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                                The MI Procedure
+
+                             Univariate Statistics
+ 
+                                    ---Missing Values--
+                        Variable       Count    Percent
+
+                        visual0            0       0.00
+                        visual4            2       1.68
+                        visual12           2       1.68
+                        visual24           7       5.88
+                        visual52          14      11.76
+
+
+                             Pairwise Correlations
+ 
+                visual0       visual4      visual12      visual24      visual52
+
+ visual0    1.000000000   0.877465040   0.742680528   0.678944310   0.541494984
+ visual4    0.877465040   1.000000000   0.832658120   0.724379411   0.597845544
+ visual12   0.742680528   0.832658120   1.000000000   0.772966814   0.677587450
+ visual24   0.678944310   0.724379411   0.772966814   1.000000000   0.838927445
+ visual52   0.541494984   0.597845544   0.677587450   0.838927445   1.000000000
+
+
+                      Initial Parameter Estimates for EM
+ 
+ _TYPE_   _NAME_          visual0        visual4       visual12       visual24
+
+ MEAN                   55.336134      53.965812      52.871795      49.330357
+ COV      visual0      225.038598              0              0              0
+ COV      visual4               0     253.119511              0              0
+ COV      visual12              0              0     295.871353              0
+ COV      visual24              0              0              0     342.709701
+ COV      visual52              0              0              0              0
+
+                       Initial Parameter Estimates for EM
+ 
+                                      visual52
+
+                                     44.438095
+                                             0
+                                             0
+                                             0
+                                             0
+                                    343.613919
+
+
+                           EM (MLE) Iteration History
+ 
+   _Iteration_        -2 Log L        visual4        visual12        visual24
+
+             0     3789.599822      53.965812       52.871795       49.330357
+             1     3259.816772      53.965812       52.871795       49.330357
+             2     3239.911909      54.044974       52.981374       49.397146
+        Separate fits by treatment, available data, ML via EM algorithm       19
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=0 ------------------------------------
+
+                                The MI Procedure
+
+                           EM (MLE) Iteration History
+ 
+   _Iteration_        -2 Log L        visual4        visual12        visual24
+
+             3     3239.141341      54.050700       52.980985       49.360826
+             4     3239.109379      54.052314       52.980817       49.347261
+             5     3239.107284      54.052745       52.980789       49.342944
+             6     3239.107091      54.052871       52.980783       49.341574
+             7     3239.107070      54.052911       52.980781       49.341134
+             8     3239.107068      54.052925       52.980780       49.340990
+
+                           EM (MLE) Iteration History
+ 
+                          _Iteration_        visual52
+
+                                    0       44.438095
+                                    1       44.438095
+                                    2       44.163638
+                                    3       44.063508
+                                    4       44.040205
+                                    5       44.035537
+                                    6       44.034697
+                                    7       44.034571
+                                    8       44.034562
+
+
+                         EM (MLE) Parameter Estimates
+ 
+ _TYPE_   _NAME_          visual0        visual4       visual12       visual24
+
+ MEAN                   55.336134      54.052925      52.980780      49.340990
+ COV      visual0      223.147518     206.169154     188.798637     188.815488
+ COV      visual4      206.169154     248.105146     223.429001     219.361610
+ COV      visual12     188.798637     223.429001     291.253074     251.299053
+ COV      visual24     188.815488     219.361610     251.299053     353.015463
+ COV      visual52     148.249535     176.348266     217.761896     296.465010
+
+                          EM (MLE) Parameter Estimates
+ 
+                                      visual52
+
+                                     44.034562
+                                    148.249535
+                                    176.348266
+                                    217.761896
+                                    296.465010
+                                    349.424750
+        Separate fits by treatment, available data, ML via EM algorithm       20
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                                The MI Procedure
+
+                               Model Information
+
+          Data Set                             WORK.ARMD              
+          Method                               MCMC                   
+          Multiple Imputation Chain            Single Chain           
+          Initial Estimates for MCMC           EM Posterior Mode      
+          Start                                Starting Value         
+          Prior                                Jeffreys               
+          Number of Imputations                0                      
+          Number of Burn-in Iterations         200                    
+          Number of Iterations                 100                    
+          Seed for random number generator     370252                 
+
+
+                             Missing Data Patterns
+ 
+Group  visual0   visual4   visual12   visual24   visual52       Freq    Percent
+
+    1  X         X         X          X          X                86      71.07
+    2  X         X         X          X          .                15      12.40
+    3  X         X         X          .          X                 2       1.65
+    4  X         X         X          .          .                 5       4.13
+    5  X         X         .          .          X                 1       0.83
+    6  X         X         .          .          .                 5       4.13
+    7  X         .         X          X          X                 1       0.83
+    8  X         .         X          .          .                 1       0.83
+    9  X         .         .          .          .                 5       4.13
+
+                             Missing Data Patterns
+ 
+       -------------------------------Group Means------------------------------
+Group       visual0        visual4       visual12       visual24       visual52
+
+    1     54.848837      51.604651      50.186047      46.523256      39.720930
+    2     52.733333      45.533333      38.133333      39.600000              .
+    3     44.500000      49.500000      47.500000              .      14.500000
+    4     56.800000      55.400000      50.600000              .              .
+    5     52.000000      56.000000              .              .      38.000000
+    6     54.200000      50.200000              .              .              .
+    7     54.000000              .      53.000000      42.000000      36.000000
+    8     66.000000              .      65.000000              .              .
+    9     56.000000              .              .              .              .
+
+
+                             Univariate Statistics
+ 
+  Variable           N          Mean       Std Dev       Minimum       Maximum
+
+  visual0          121      54.57851      14.82270      20.00000      82.00000
+  visual4          114      50.91228      15.81114      12.00000      84.00000
+  visual12         110      48.67273      17.47665      12.00000      82.00000
+  visual24         102      45.46078      18.08050       5.00000      84.00000
+  visual52          90      39.10000      18.40069       4.00000      84.00000
+        Separate fits by treatment, available data, ML via EM algorithm       21
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                                The MI Procedure
+
+                             Univariate Statistics
+ 
+                                    ---Missing Values--
+                        Variable       Count    Percent
+
+                        visual0            0       0.00
+                        visual4            7       5.79
+                        visual12          11       9.09
+                        visual24          19      15.70
+                        visual52          31      25.62
+
+
+                             Pairwise Correlations
+ 
+                visual0       visual4      visual12      visual24      visual52
+
+ visual0    1.000000000   0.833130763   0.752733195   0.644634394   0.584241064
+ visual4    0.833130763   1.000000000   0.850074138   0.749004261   0.622847804
+ visual12   0.752733195   0.850074138   1.000000000   0.871122743   0.725361467
+ visual24   0.644634394   0.749004261   0.871122743   1.000000000   0.827995366
+ visual52   0.584241064   0.622847804   0.725361467   0.827995366   1.000000000
+
+
+                      Initial Parameter Estimates for EM
+ 
+ _TYPE_   _NAME_          visual0        visual4       visual12       visual24
+
+ MEAN                   54.578512      50.912281      48.672727      45.460784
+ COV      visual0      219.712534              0              0              0
+ COV      visual4               0     249.992237              0              0
+ COV      visual12              0              0     305.433194              0
+ COV      visual24              0              0              0     326.904387
+ COV      visual52              0              0              0              0
+
+                       Initial Parameter Estimates for EM
+ 
+                                      visual52
+
+                                     39.100000
+                                             0
+                                             0
+                                             0
+                                             0
+                                    338.585393
+
+
+                           EM (MLE) Iteration History
+ 
+   _Iteration_        -2 Log L        visual4        visual12        visual24
+
+             0     3558.080126      50.912281       48.672727       45.460784
+             1     3096.286641      50.912281       48.672727       45.460784
+             2     3043.079929      51.071080       48.715609       45.570768
+        Separate fits by treatment, available data, ML via EM algorithm       22
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                                The MI Procedure
+
+                           EM (MLE) Iteration History
+ 
+   _Iteration_        -2 Log L        visual4        visual12        visual24
+
+             3     3036.188470      51.093012       48.719629       45.575060
+             4     3034.953036      51.096114       48.719262       45.554137
+             5     3034.696548      51.096503       48.718810       45.538186
+             6     3034.637781      51.096565       48.718530       45.529536
+             7     3034.623280      51.096590       48.718364       45.525290
+             8     3034.619534      51.096605       48.718268       45.523252
+             9     3034.618540      51.096613       48.718214       45.522266
+            10     3034.618273      51.096618       48.718183       45.521781
+            11     3034.618201      51.096621       48.718167       45.521539
+            12     3034.618181      51.096623       48.718158       45.521416
+            13     3034.618175      51.096624       48.718154       45.521354
+            14     3034.618174      51.096624       48.718151       45.521321
+            15     3034.618174      51.096624       48.718150       45.521305
+
+                           EM (MLE) Iteration History
+ 
+                          _Iteration_        visual52
+
+                                    0       39.100000
+                                    1       39.100000
+                                    2       38.700640
+                                    3       38.541613
+                                    4       38.490991
+                                    5       38.473696
+                                    6       38.466163
+                                    7       38.462030
+                                    8       38.459532
+                                    9       38.458012
+                                   10       38.457106
+                                   11       38.456581
+                                   12       38.456283
+                                   13       38.456117
+                                   14       38.456026
+                                   15       38.455976
+
+
+                         EM (MLE) Parameter Estimates
+ 
+ _TYPE_   _NAME_          visual0        visual4       visual12       visual24
+
+ MEAN                   54.578512      51.096624      48.718150      45.521305
+
+                          EM (MLE) Parameter Estimates
+ 
+                                      visual52
+
+                                     38.455976
+        Separate fits by treatment, available data, ML via EM algorithm       23
+                                                 09:59 Tuesday, January 24, 2017
+
+----------------------------------- treat=1 ------------------------------------
+
+                                The MI Procedure
+
+                         EM (MLE) Parameter Estimates
+ 
+ _TYPE_   _NAME_          visual0        visual4       visual12       visual24
+
+ COV      visual0      217.896728     196.936457     189.016355     174.599657
+ COV      visual4      196.936457     253.382251     233.979421     217.406702
+ COV      visual12     189.016355     233.979421     300.146006     272.195593
+ COV      visual24     174.599657     217.406702     272.195593     326.030258
+ COV      visual52     139.305009     173.764660     230.928394     282.195016
+
+                          EM (MLE) Parameter Estimates
+ 
+                                      visual52
+
+                                    139.305009
+                                    173.764660
+                                    230.928394
+                                    282.195016
+                                    351.124415
